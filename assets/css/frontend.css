@@ -1,0 +1,409 @@
+/**
+ * Smart Product Options and Addons Frontend Styles
+ *
+ * Minimal CSS for the product page option fields.
+ * Uses CSS variables for easy customization.
+ *
+ * @since 1.0.0
+ */
+
+/* ─── Variables & Wrapper ─────────────────────────────────────────── */
+.ob-options-wrapper {
+    /* Colors */
+    --ob-primary: #007cba;
+    --ob-success: #77a464;
+    --ob-error: #e2401c;
+    --ob-border: #ddd;
+    --ob-border-light: #e5e5e5;
+    --ob-text-main: #444;
+    --ob-text-muted: #666;
+    --ob-text-light: #999;
+    --ob-bg: #fff;
+    --ob-bg-alt: #f7f7f7;
+    --ob-bg-placeholder: #f0f0f1;
+    
+    /* Shapes & Shadows */
+    --ob-radius: 4px;
+    --ob-radius-swatch: 8px;
+    --ob-shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+    --ob-shadow-focus: 0 0 0 1px var(--ob-primary);
+    --ob-shadow-swatch-checked: 0 0 0 2px rgba(0, 124, 186, 0.2), 0 1px 3px rgba(0,0,0,0.1);
+    
+    /* Sizes */
+    --ob-swatch-size: 32px;
+    --ob-swatch-image-size: 64px;
+    --ob-swatch-radius: 4px;
+    --ob-swatch-image-radius: 4px;
+    
+    /* Layout Spacing */
+    --ob-gap-group: 20px;
+    --ob-gap-field: 24px;
+    --ob-gap-option: 8px;
+    --ob-gap-swatch: 12px;
+
+    /* Typography */
+    --ob-font-size-title: inherit;
+    --ob-font-size-label: inherit;
+    --ob-font-size-input: inherit;
+    --ob-font-size-description: inherit;
+    --ob-font-size-total: inherit;
+    --ob-font-size-swatch: inherit;
+
+    margin: 16px 0;
+    padding: 0;
+}
+
+/* ─── Group ────────────────────────────────────────────────────────── */
+.ob-group {
+    margin-bottom: var(--ob-gap-group);
+}
+
+.ob-group__title {
+    font-size: var(--ob-font-size-title);
+    font-weight: 600;
+    margin: 0 0 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--ob-border-light);
+    color: var(--ob-text-main);
+}
+
+/* ─── Field Wrapper ────────────────────────────────────────────────── */
+.ob-field {
+    margin-bottom: var(--ob-gap-field);
+}
+
+.ob-field.ob-hidden {
+    display: none;
+}
+
+/* ─── Label ────────────────────────────────────────────────────────── */
+.ob-field__label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 4px;
+    font-size: var(--ob-font-size-label);
+    color: var(--ob-text-main);
+}
+
+.ob-required {
+    color: var(--ob-error);
+    font-weight: 700;
+    text-decoration: none;
+    border: none;
+}
+
+/* ─── Inputs ───────────────────────────────────────────────────────── */
+.ob-input {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.ob-input--text,
+.ob-input--email,
+.ob-input--textarea,
+.ob-input--number,
+.ob-input--select {
+    padding: 8px 12px;
+    border: 1px solid var(--ob-border);
+    border-radius: var(--ob-radius);
+    font-size: var(--ob-font-size-input);
+    line-height: 1.5;
+    background: var(--ob-bg);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    color: var(--ob-text-main);
+}
+
+.ob-input--text:focus,
+.ob-input--email:focus,
+.ob-input--textarea:focus,
+.ob-input--number:focus,
+.ob-input--select:focus {
+    border-color: var(--ob-primary);
+    outline: none;
+    box-shadow: var(--ob-shadow-focus);
+}
+
+.ob-input--textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.ob-input--number {
+    width: auto;
+    min-width: 100px;
+}
+
+.ob-input--file {
+    padding: 6px 0;
+}
+
+/* ─── Radio & Checkbox Groups ─────────────────────────────────────── */
+.ob-radio-group,
+.ob-checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+/* Horizontal Orientation */
+[data-orientation="horizontal"] .ob-radio-group,
+[data-orientation="horizontal"] .ob-checkbox-group {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px 20px;
+}
+
+.ob-radio-option,
+.ob-checkbox-option,
+.ob-checkbox-single {
+    display: flex;
+    align-items: center;
+    gap: var(--ob-gap-option);
+    cursor: pointer;
+    font-size: var(--ob-font-size-input);
+    color: var(--ob-text-main);
+}
+
+.ob-radio-option.ob-option-disabled,
+.ob-checkbox-option.ob-option-disabled,
+.ob-checkbox-single.ob-option-disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    color: var(--ob-text-light);
+}
+
+.ob-radio-option input,
+.ob-checkbox-option input,
+.ob-checkbox-single input {
+    width: 1.2em;
+    height: 1.2em;
+    margin: 0;
+    flex-shrink: 0;
+}
+.ob-radio-option input:focus,
+.ob-checkbox-option input:focus,
+.ob-checkbox-single input:focus {
+    outline: none;
+}
+
+/* ─── Description ──────────────────────────────────────────────────── */
+.ob-field__description {
+    margin: 4px 0 0;
+    font-size: var(--ob-font-size-description);
+    color: var(--ob-text-muted);
+    line-height: 1.4;
+}
+
+
+.ob-field__file-info {
+    margin: 4px 0 0;
+    font-size: var(--ob-font-size-description);
+    color: var(--ob-text-light);
+}
+
+/* ─── Live Pricing ─────────────────────────────────────────────────── */
+.spoa-live-total {
+    margin-top: var(--ob-gap-field);
+    padding: 10px 14px;
+    background: var(--ob-bg-alt);
+    border: 1px solid var(--ob-border-light);
+    border-radius: var(--ob-radius);
+    font-size: var(--ob-font-size-total);
+    color: var(--ob-text-main);
+}
+
+.ob-total-label {
+    font-weight: 600;
+}
+
+.spoa-live-total .amount {
+    font-weight: 700;
+    color: var(--ob-success);
+}
+
+.ob-price-adjustment {
+    font-size: 0.9em;
+    color: var(--ob-success);
+    font-weight: 500;
+    margin-left: 2px;
+}
+
+.ob-btn-disabled {
+    opacity: 0.5 !important;
+    cursor: not-allowed !important;
+    pointer-events: none !important;
+}
+
+/* ─── Stock Badges ─────────────────────────────────────────────────── */
+.ob-stock-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 6px;
+    border-radius: 12px;
+    font-size: 0.75em;
+    font-weight: 600;
+    line-height: 1;
+    margin-left: 6px;
+    vertical-align: middle;
+}
+
+.ob-stock-badge.out-of-stock {
+    background: #fff5f5;
+    color: var(--ob-error);
+    border: 1px solid #fed7d7;
+}
+
+.ob-stock-badge.low-stock {
+    background: #fffaf0;
+    color: #c05621;
+    border: 1px solid #feebc8;
+}
+
+/* ─── Swatch Groups ────────────────────────────────────────────────── */
+.ob-swatch-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--ob-gap-swatch);
+    margin-top: 4px;
+}
+
+/* Horizontal Orientation */
+[data-orientation="horizontal"] .ob-swatch-group,
+.ob-swatch-group[data-display-style="swatch_only"] {
+    flex-direction: row !important;
+    flex-wrap: wrap;
+}
+
+.ob-swatch-option {
+    position: relative;
+}
+
+.ob-swatch-input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+    margin: 0;
+}
+
+.ob-swatch-label {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--ob-gap-option);
+    cursor: pointer;
+    font-size: var(--ob-font-size-swatch);
+    margin: 0 !important;
+}
+
+.ob-swatch-visual {
+    width: var(--ob-swatch-size, 32px);
+    height: var(--ob-swatch-size, 32px);
+    border-radius: var(--ob-swatch-radius, 4px);
+    border: 2px solid transparent;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background: #fff;
+    box-shadow: var(--ob-shadow-sm);
+}
+
+.ob-swatch-group--image .ob-swatch-visual {
+    width: var(--ob-swatch-image-size);
+    height: var(--ob-swatch-image-size);
+    border-radius: var(--ob-swatch-image-radius, 4px);
+}
+
+.ob-swatch-visual img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ob-swatch-visual .ob-swatch-placeholder {
+    background: var(--ob-bg-placeholder);
+    width: 100%;
+    height: 100%;
+}
+
+.ob-swatch-input:checked + .ob-swatch-label .ob-swatch-visual {
+    border-color: var(--ob-primary);
+    box-shadow: var(--ob-shadow-swatch-checked);
+}
+
+.ob-swatch-check {
+    position: absolute;
+    width: var(--ob-swatch-size, 32px);
+    margin-left: 2px;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    background: rgba(0,0,0,0.15);
+    transition: opacity 0.2s ease;
+    pointer-events: none;
+}
+.ob-swatch-group--image .ob-swatch-check{
+    width: var(--ob-swatch-image-size, 32px);
+}
+
+.ob-swatch-check::after {
+    content: '';
+    width: 14px;
+    height: 7px;
+    border-left: 3px solid #fff;
+    border-bottom: 3px solid #fff;
+    transform: rotate(-45deg);
+    margin-top: -4px;
+    filter: drop-shadow(0 1px 2px rgba(0,0,0,0.3));
+}
+
+.ob-swatch-input:checked + .ob-swatch-label .ob-swatch-check {
+    opacity: 1;
+}
+
+.ob-swatch-text {
+    font-weight: 500;
+    color: var(--ob-text-main);
+}
+
+.ob-swatch-visual:hover {
+    border-color: var(--ob-primary);
+}
+
+/* Disabled/Out of Stock Swatches */
+.ob-option-disabled .ob-swatch-visual {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background: var(--ob-bg-placeholder);
+    position: relative;
+}
+
+.ob-option-disabled .ob-swatch-visual::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: -10%;
+    width: 120%;
+    height: 2px;
+    background: #ff0000;
+    transform: rotate(-45deg);
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.ob-option-disabled .ob-swatch-text {
+    color: var(--ob-text-light);
+    text-decoration: line-through;
+}
+
+/* ─── Responsive ───────────────────────────────────────────────────── */
+@media (max-width: 480px) {
+    .ob-radio-group,
+    .ob-checkbox-group {
+        gap: 8px;
+    }
+}

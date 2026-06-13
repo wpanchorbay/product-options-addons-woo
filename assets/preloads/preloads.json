@@ -1,0 +1,4192 @@
+[
+    {
+        "title": "Gift Wrapping & Celebration Set",
+        "schema": [
+            {
+                "id": "g1_add_wrap",
+                "type": "single_checkbox",
+                "label": "Add Premium Gift Wrapping?",
+                "description": "Wrapped in high-quality paper with a hand-tied ribbon.",
+                "price": 5.99,
+                "price_type": "flat",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g1_paper_style",
+                "type": "select",
+                "label": "Wrapping Paper Design",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Gold Foil",
+                        "value": "gold",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Stars",
+                        "value": "stars",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Eco-Kraft",
+                        "value": "kraft",
+                        "price": 0,
+                        "price_type": "none"
+                    }
+                ],
+                "conditions": {
+                    "status": "active",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": [
+                        {
+                            "target_field_id": "g1_add_wrap",
+                            "operator": "not_empty",
+                            "value": "any"
+                        }
+                    ]
+                },
+                "required": false
+            },
+            {
+                "id": "g1_ribbon_color",
+                "type": "color_swatch",
+                "label": "Ribbon Color",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Red",
+                        "value": "red",
+                        "color": "#FF0000",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Green",
+                        "value": "green",
+                        "color": "#008000",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Silver",
+                        "value": "silver",
+                        "color": "#C0C0C0",
+                        "price": 0,
+                        "price_type": "none"
+                    }
+                ],
+                "conditions": {
+                    "status": "active",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": [
+                        {
+                            "target_field_id": "g1_add_wrap",
+                            "operator": "not_empty",
+                            "value": "any"
+                        }
+                    ]
+                },
+                "required": false
+            },
+            {
+                "id": "g1_add_card",
+                "type": "single_checkbox",
+                "label": "Include Greeting Card?",
+                "price": 2.5,
+                "price_type": "flat",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g1_card_theme",
+                "type": "radio",
+                "label": "Card Theme",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Birthday",
+                        "value": "bday",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Anniversary",
+                        "value": "anniv",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Thank You",
+                        "value": "thanks",
+                        "price": 0,
+                        "price_type": "none"
+                    }
+                ],
+                "conditions": {
+                    "status": "active",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": [
+                        {
+                            "target_field_id": "g1_add_card",
+                            "operator": "not_empty",
+                            "value": "any"
+                        }
+                    ]
+                },
+                "required": false
+            },
+            {
+                "id": "g1_card_msg",
+                "type": "textarea",
+                "label": "Your Message",
+                "placeholder": "Write your heart out...",
+                "price": 0,
+                "price_type": "none",
+                "conditions": {
+                    "status": "active",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": [
+                        {
+                            "target_field_id": "g1_add_card",
+                            "operator": "not_empty",
+                            "value": "any"
+                        }
+                    ]
+                },
+                "required": false
+            },
+            {
+                "id": "g1_font_style",
+                "type": "select",
+                "label": "Handwriting Font Style",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Elegant Cursive",
+                        "value": "cursive",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Modern Minimal",
+                        "value": "modern",
+                        "price": 0,
+                        "price_type": "none"
+                    }
+                ],
+                "conditions": {
+                    "status": "active",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": [
+                        {
+                            "target_field_id": "g1_add_card",
+                            "operator": "not_empty",
+                            "value": "any"
+                        }
+                    ]
+                },
+                "required": false
+            },
+            {
+                "id": "g1_add_scent",
+                "type": "single_checkbox",
+                "label": "Add Scented Spray?",
+                "price": 1.0,
+                "price_type": "flat",
+                "conditions": {
+                    "status": "active",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": [
+                        {
+                            "target_field_id": "g1_add_wrap",
+                            "operator": "not_empty",
+                            "value": "any"
+                        }
+                    ]
+                },
+                "required": false
+            },
+            {
+                "id": "g1_scent_type",
+                "type": "radio",
+                "label": "Choose Scent",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Lavender",
+                        "value": "lav",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Vanilla Bean",
+                        "value": "van",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Fresh Linen",
+                        "value": "linen",
+                        "price": 0,
+                        "price_type": "none"
+                    }
+                ],
+                "conditions": {
+                    "status": "active",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": [
+                        {
+                            "target_field_id": "g1_add_scent",
+                            "operator": "not_empty",
+                            "value": "any"
+                        }
+                    ]
+                },
+                "required": false
+            },
+            {
+                "id": "g1_delivery_instr",
+                "type": "text",
+                "label": "Delivery Instructions",
+                "placeholder": "e.g. Leave at the back door",
+                "price": 0,
+                "price_type": "none",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g1_security_seal",
+                "type": "single_checkbox",
+                "label": "Add Tamper-Proof Seal?",
+                "price": 0.5,
+                "price_type": "flat",
+                "conditions": {
+                    "status": "active",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": [
+                        {
+                            "target_field_id": "g1_add_wrap",
+                            "operator": "not_empty",
+                            "value": "any"
+                        }
+                    ]
+                },
+                "required": false
+            }
+        ]
+    },
+    {
+        "title": "Custom Electronics Configurator",
+        "schema": [
+            {
+                "id": "g2_color",
+                "type": "color_swatch",
+                "label": "Exterior Finish",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Gray",
+                        "value": "gray",
+                        "color": "#53565A",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Silver",
+                        "value": "silver",
+                        "color": "#C0C0C0",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Midnight",
+                        "value": "blue",
+                        "color": "#191970",
+                        "price": 10,
+                        "price_type": "flat"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g2_processor",
+                "type": "radio",
+                "label": "Processor",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Std Quad",
+                        "value": "std",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Hexa (+ $150)",
+                        "value": "high",
+                        "price": 150,
+                        "price_type": "flat"
+                    },
+                    {
+                        "label": "Octa (+ $300)",
+                        "value": "extreme",
+                        "price": 300,
+                        "price_type": "flat"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g2_ram",
+                "type": "select",
+                "label": "RAM",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "8GB",
+                        "value": "8",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "16GB (+ $200)",
+                        "value": "16",
+                        "price": 200,
+                        "price_type": "flat"
+                    },
+                    {
+                        "label": "32GB (+ $400)",
+                        "value": "32",
+                        "price": 400,
+                        "price_type": "flat"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g2_storage_type",
+                "type": "radio",
+                "label": "Storage Type",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "SSD",
+                        "value": "ssd",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "NVMe (+ $50)",
+                        "value": "nvme",
+                        "price": 50,
+                        "price_type": "flat"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g2_storage_size",
+                "type": "select",
+                "label": "Storage Capacity",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "256GB",
+                        "value": "256",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "512GB (+ $100)",
+                        "value": "512",
+                        "price": 100,
+                        "price_type": "flat"
+                    },
+                    {
+                        "label": "1TB (+ $250)",
+                        "value": "1tb",
+                        "price": 250,
+                        "price_type": "flat"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g2_os",
+                "type": "radio",
+                "label": "OS",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Home",
+                        "value": "home",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Pro (+ $99)",
+                        "value": "pro",
+                        "price": 99,
+                        "price_type": "flat"
+                    },
+                    {
+                        "label": "Linux",
+                        "value": "linux",
+                        "price": 0,
+                        "price_type": "none"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g2_software",
+                "type": "checkbox",
+                "label": "Software",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Office (+ $120)",
+                        "value": "off",
+                        "price": 120,
+                        "price_type": "flat"
+                    },
+                    {
+                        "label": "Design (+ $299)",
+                        "value": "adobe",
+                        "price": 299,
+                        "price_type": "flat"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g2_warranty",
+                "type": "select",
+                "label": "Warranty",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "1y",
+                        "value": "1",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "2y (+ 10%)",
+                        "value": "2",
+                        "price": 10,
+                        "price_type": "flat"
+                    },
+                    {
+                        "label": "3y (+ 20%)",
+                        "value": "3",
+                        "price": 20,
+                        "price_type": "flat"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g2_insurance",
+                "type": "single_checkbox",
+                "label": "Theft Protection? ($5/mo)",
+                "price": 5.0,
+                "price_type": "flat",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            }
+        ]
+    },
+    {
+        "title": "Gourmet Pizza Customizer",
+        "schema": [
+            {
+                "id": "g3_size",
+                "type": "radio",
+                "label": "Size",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "12\"",
+                        "value": "12",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "14\" (+ $3)",
+                        "value": "14",
+                        "price": 3,
+                        "price_type": "flat"
+                    },
+                    {
+                        "label": "16\" (+ $6)",
+                        "value": "16",
+                        "price": 6,
+                        "price_type": "flat"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g3_crust",
+                "type": "select",
+                "label": "Crust",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Hand",
+                        "value": "hand",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Thin",
+                        "value": "thin",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "GF (+ $4)",
+                        "value": "gf",
+                        "price": 4,
+                        "price_type": "flat"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g3_add_sauce",
+                "type": "single_checkbox",
+                "label": "Extra Sauce?",
+                "price": 0.5,
+                "price_type": "flat",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g3_sauce_type",
+                "type": "radio",
+                "label": "Sauce",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Tomato",
+                        "value": "tom",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Alfredo (+ $1)",
+                        "value": "alf",
+                        "price": 1,
+                        "price_type": "flat"
+                    },
+                    {
+                        "label": "BBQ",
+                        "value": "bbq",
+                        "price": 0,
+                        "price_type": "none"
+                    }
+                ],
+                "conditions": {
+                    "status": "active",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": [
+                        {
+                            "target_field_id": "g3_add_sauce",
+                            "operator": "not_empty",
+                            "value": "any"
+                        }
+                    ]
+                },
+                "required": false
+            },
+            {
+                "id": "g3_cheese",
+                "type": "select",
+                "label": "Cheese",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Std",
+                        "value": "std",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Extra (+ $2)",
+                        "value": "extra",
+                        "price": 2,
+                        "price_type": "flat"
+                    },
+                    {
+                        "label": "Vegan (+ $4)",
+                        "value": "vegan",
+                        "price": 4,
+                        "price_type": "flat"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g3_toppings",
+                "type": "checkbox",
+                "label": "Toppings ($1.50 ea)",
+                "options": [
+                    {
+                        "label": "Pep",
+                        "value": "pep",
+                        "price": 1.5,
+                        "price_type": "flat"
+                    },
+                    {
+                        "label": "Mush",
+                        "value": "mush",
+                        "price": 1.5,
+                        "price_type": "flat"
+                    },
+                    {
+                        "label": "Bacon",
+                        "value": "bacon",
+                        "price": 1.5,
+                        "price_type": "flat"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g3_add_dip",
+                "type": "single_checkbox",
+                "label": "Add Dip?",
+                "price": 0.75,
+                "price_type": "flat",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g3_dip_type",
+                "type": "radio",
+                "label": "Dip",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Garlic",
+                        "value": "gar",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Ranch",
+                        "value": "ran",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Mari",
+                        "value": "mari",
+                        "price": 0,
+                        "price_type": "none"
+                    }
+                ],
+                "conditions": {
+                    "status": "active",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": [
+                        {
+                            "target_field_id": "g3_add_dip",
+                            "operator": "not_empty",
+                            "value": "any"
+                        }
+                    ]
+                },
+                "required": false
+            },
+            {
+                "id": "g3_side",
+                "type": "select",
+                "label": "Add Side",
+                "options": [
+                    {
+                        "label": "Wings (+ $8)",
+                        "value": "wings",
+                        "price": 8,
+                        "price_type": "flat"
+                    },
+                    {
+                        "label": "Fries (+ $4)",
+                        "value": "fries",
+                        "price": 4,
+                        "price_type": "flat"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g3_drink",
+                "type": "radio",
+                "label": "Add Drink",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Coke (+ $2)",
+                        "value": "coke",
+                        "price": 2,
+                        "price_type": "flat"
+                    },
+                    {
+                        "label": "Water",
+                        "value": "water",
+                        "price": 0,
+                        "price_type": "none"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g3_drink_size",
+                "type": "select",
+                "label": "Drink Size",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Med",
+                        "value": "m",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Large (+ $1)",
+                        "value": "l",
+                        "price": 1,
+                        "price_type": "flat"
+                    }
+                ],
+                "conditions": {
+                    "status": "active",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": [
+                        {
+                            "target_field_id": "g3_drink",
+                            "operator": "not_empty",
+                            "value": "any"
+                        }
+                    ]
+                },
+                "required": false
+            },
+            {
+                "id": "g3_instr",
+                "type": "textarea",
+                "label": "Instructions",
+                "placeholder": "e.g. Well done...",
+                "price": 0,
+                "price_type": "none",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            }
+        ]
+    },
+    {
+        "title": "Custom Sports Jersey",
+        "schema": [
+            {
+                "id": "g4_opt",
+                "type": "select",
+                "label": "Personalization",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Plain",
+                        "value": "p",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Name (+ $12)",
+                        "value": "n",
+                        "price": 12,
+                        "price_type": "flat"
+                    },
+                    {
+                        "label": "Full (+ $20)",
+                        "value": "f",
+                        "price": 20,
+                        "price_type": "flat"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g4_name",
+                "type": "text",
+                "label": "Name",
+                "price": 0,
+                "price_type": "none",
+                "conditions": {
+                    "status": "active",
+                    "action": "show",
+                    "match": "ANY",
+                    "rules": [
+                        {
+                            "target_field_id": "g4_opt",
+                            "operator": "==",
+                            "value": "n"
+                        },
+                        {
+                            "target_field_id": "g4_opt",
+                            "operator": "==",
+                            "value": "f"
+                        }
+                    ]
+                },
+                "required": false
+            },
+            {
+                "id": "g4_num",
+                "type": "number",
+                "label": "Number",
+                "price": 0,
+                "price_type": "none",
+                "conditions": {
+                    "status": "active",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": [
+                        {
+                            "target_field_id": "g4_opt",
+                            "operator": "==",
+                            "value": "f"
+                        }
+                    ]
+                },
+                "required": false
+            },
+            {
+                "id": "g4_font",
+                "type": "radio",
+                "label": "Font",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Varsity",
+                        "value": "v",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Mod",
+                        "value": "m",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Retro",
+                        "value": "r",
+                        "price": 0,
+                        "price_type": "none"
+                    }
+                ],
+                "conditions": {
+                    "status": "active",
+                    "action": "show",
+                    "match": "ANY",
+                    "rules": [
+                        {
+                            "target_field_id": "g4_opt",
+                            "operator": "==",
+                            "value": "n"
+                        },
+                        {
+                            "target_field_id": "g4_opt",
+                            "operator": "==",
+                            "value": "f"
+                        }
+                    ]
+                },
+                "required": false
+            },
+            {
+                "id": "g4_patch",
+                "type": "single_checkbox",
+                "label": "Add Patch?",
+                "price": 5.0,
+                "price_type": "flat",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g4_p_type",
+                "type": "select",
+                "label": "Patch",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "League",
+                        "value": "l",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Star",
+                        "value": "s",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Anniv",
+                        "value": "a",
+                        "price": 0,
+                        "price_type": "none"
+                    }
+                ],
+                "conditions": {
+                    "status": "active",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": [
+                        {
+                            "target_field_id": "g4_patch",
+                            "operator": "not_empty",
+                            "value": "any"
+                        }
+                    ]
+                },
+                "required": false
+            },
+            {
+                "id": "g4_sleeve",
+                "type": "radio",
+                "label": "Sleeve",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Short",
+                        "value": "s",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Long (+ $8)",
+                        "value": "l",
+                        "price": 8,
+                        "price_type": "flat"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g4_fabric",
+                "type": "select",
+                "label": "Fabric",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Dri",
+                        "value": "d",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Elite (+ $15)",
+                        "value": "e",
+                        "price": 15,
+                        "price_type": "flat"
+                    },
+                    {
+                        "label": "Eco (+ $5)",
+                        "value": "eco",
+                        "price": 5,
+                        "price_type": "flat"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g4_rush",
+                "type": "single_checkbox",
+                "label": "Rush Production?",
+                "price": 25.0,
+                "price_type": "flat",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            }
+        ]
+    },
+    {
+        "title": "Luxury Watch Customizer",
+        "schema": [
+            {
+                "id": "g5_mat",
+                "type": "color_swatch",
+                "label": "Material",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Steel",
+                        "value": "s",
+                        "color": "#E5",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Rose (+ $500)",
+                        "value": "r",
+                        "color": "#B7",
+                        "price": 500,
+                        "price_type": "flat"
+                    },
+                    {
+                        "label": "Titan (+ $250)",
+                        "value": "t",
+                        "color": "#87",
+                        "price": 250,
+                        "price_type": "flat"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g5_dial",
+                "type": "select",
+                "label": "Dial",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Blue",
+                        "value": "b",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Black",
+                        "value": "k",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Green",
+                        "value": "g",
+                        "price": 0,
+                        "price_type": "none"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g5_strap",
+                "type": "radio",
+                "label": "Strap",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Oyster",
+                        "value": "o",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Leather (+ $120)",
+                        "value": "l",
+                        "price": 120,
+                        "price_type": "flat"
+                    },
+                    {
+                        "label": "Rubber",
+                        "value": "r",
+                        "price": 0,
+                        "price_type": "none"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g5_eng",
+                "type": "single_checkbox",
+                "label": "Add Engraving?",
+                "price": 30.0,
+                "price_type": "flat",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g5_txt",
+                "type": "text",
+                "label": "Text",
+                "price": 0,
+                "price_type": "none",
+                "conditions": {
+                    "status": "active",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": [
+                        {
+                            "target_field_id": "g5_eng",
+                            "operator": "not_empty",
+                            "value": "any"
+                        }
+                    ]
+                },
+                "required": false
+            },
+            {
+                "id": "g5_crys",
+                "type": "select",
+                "label": "Crystal",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Min",
+                        "value": "m",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Sapph (+ $150)",
+                        "value": "s",
+                        "price": 150,
+                        "price_type": "flat"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g5_move",
+                "type": "radio",
+                "label": "Movement",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Auto",
+                        "value": "a",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Quartz",
+                        "value": "q",
+                        "price": 0,
+                        "price_type": "none"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g5_water",
+                "type": "select",
+                "label": "Water",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "50m",
+                        "value": "50",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "100m (+ $80)",
+                        "value": "100",
+                        "price": 80,
+                        "price_type": "flat"
+                    },
+                    {
+                        "label": "300m (+ $200)",
+                        "value": "300",
+                        "price": 200,
+                        "price_type": "flat"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g5_box",
+                "type": "radio",
+                "label": "Box",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Std",
+                        "value": "s",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Wood (+ $45)",
+                        "value": "w",
+                        "price": 45,
+                        "price_type": "flat"
+                    },
+                    {
+                        "label": "Pouch",
+                        "value": "p",
+                        "price": 0,
+                        "price_type": "none"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g5_serv",
+                "type": "single_checkbox",
+                "label": "Service Plan? ($299)",
+                "price": 299.0,
+                "price_type": "flat",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g5_links",
+                "type": "number",
+                "label": "Extra Links",
+                "min_value": 0,
+                "max_value": 5,
+                "price": 10,
+                "price_type": "flat",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            }
+        ]
+    },
+    {
+        "title": "Healthy Meal Prep Plan",
+        "schema": [
+            {
+                "id": "g6_plan",
+                "type": "select",
+                "label": "Plan",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "5m",
+                        "value": "5",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "10m (+ $40)",
+                        "value": "10",
+                        "price": 40,
+                        "price_type": "flat"
+                    },
+                    {
+                        "label": "15m (+ $75)",
+                        "value": "15",
+                        "price": 75,
+                        "price_type": "flat"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g6_diet",
+                "type": "radio",
+                "label": "Diet",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Keto",
+                        "value": "k",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Vegan",
+                        "value": "v",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Protein",
+                        "value": "p",
+                        "price": 0,
+                        "price_type": "none"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g6_aller",
+                "type": "checkbox",
+                "label": "Allergens",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "GF",
+                        "value": "gf",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "DF",
+                        "value": "df",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "NF",
+                        "value": "nf",
+                        "price": 0,
+                        "price_type": "none"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g6_prot",
+                "type": "select",
+                "label": "Protein",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Chick",
+                        "value": "c",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Beef (+ $5/m)",
+                        "value": "b",
+                        "price": 5,
+                        "price_type": "flat"
+                    },
+                    {
+                        "label": "Salmon (+ $7/m)",
+                        "value": "s",
+                        "price": 7,
+                        "price_type": "flat"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g6_snack",
+                "type": "single_checkbox",
+                "label": "Add Snack? ($15/wk)",
+                "price": 15.0,
+                "price_type": "flat",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g6_s_type",
+                "type": "radio",
+                "label": "Snack",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Bar",
+                        "value": "b",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Nuts",
+                        "value": "n",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Yogurt",
+                        "value": "y",
+                        "price": 0,
+                        "price_type": "none"
+                    }
+                ],
+                "conditions": {
+                    "status": "active",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": [
+                        {
+                            "target_field_id": "g6_snack",
+                            "operator": "not_empty",
+                            "value": "any"
+                        }
+                    ]
+                },
+                "required": false
+            },
+            {
+                "id": "g6_freq",
+                "type": "radio",
+                "label": "Freq",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Wk",
+                        "value": "w",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Bi (-5%)",
+                        "value": "b",
+                        "price": -5,
+                        "price_type": "flat"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g6_day",
+                "type": "select",
+                "label": "Day",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Sun",
+                        "value": "s",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Mon",
+                        "value": "m",
+                        "price": 0,
+                        "price_type": "none"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g6_notes",
+                "type": "textarea",
+                "label": "Notes",
+                "placeholder": "Allergies...",
+                "price": 0,
+                "price_type": "none",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            }
+        ]
+    },
+    {
+        "title": "Event Photography Package",
+        "schema": [
+            {
+                "id": "g7_dur",
+                "type": "select",
+                "label": "Duration",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "4h",
+                        "value": "4",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "8h (+ $400)",
+                        "value": "8",
+                        "price": 400,
+                        "price_type": "flat"
+                    },
+                    {
+                        "label": "12h (+ $700)",
+                        "value": "12",
+                        "price": 700,
+                        "price_type": "flat"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g7_photog",
+                "type": "radio",
+                "label": "Photogs",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "1",
+                        "value": "1",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "2 (+ $250)",
+                        "value": "2",
+                        "price": 250,
+                        "price_type": "flat"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g7_vid",
+                "type": "single_checkbox",
+                "label": "Add Video? ($500)",
+                "price": 500,
+                "price_type": "flat",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g7_v_len",
+                "type": "select",
+                "label": "Length",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "3m",
+                        "value": "s",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "10m (+ $200)",
+                        "value": "l",
+                        "price": 200,
+                        "price_type": "flat"
+                    }
+                ],
+                "conditions": {
+                    "status": "active",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": [
+                        {
+                            "target_field_id": "g7_vid",
+                            "operator": "not_empty",
+                            "value": "any"
+                        }
+                    ]
+                },
+                "required": false
+            },
+            {
+                "id": "g7_drone",
+                "type": "single_checkbox",
+                "label": "Drone? ($150)",
+                "price": 150,
+                "price_type": "flat",
+                "conditions": {
+                    "status": "active",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": [
+                        {
+                            "target_field_id": "g7_vid",
+                            "operator": "not_empty",
+                            "value": "any"
+                        }
+                    ]
+                },
+                "required": false
+            },
+            {
+                "id": "g7_album",
+                "type": "select",
+                "label": "Album",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "None",
+                        "value": "n",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Std (+ $100)",
+                        "value": "s",
+                        "price": 100,
+                        "price_type": "flat"
+                    },
+                    {
+                        "label": "Leath (+ $250)",
+                        "value": "l",
+                        "price": 250,
+                        "price_type": "flat"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g7_expr",
+                "type": "single_checkbox",
+                "label": "Express 48h? ($100)",
+                "price": 100,
+                "price_type": "flat",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g7_eng",
+                "type": "single_checkbox",
+                "label": "Engagement? ($200)",
+                "price": 200,
+                "price_type": "flat",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g7_reel",
+                "type": "single_checkbox",
+                "label": "Social Reel? ($50)",
+                "price": 50,
+                "price_type": "flat",
+                "conditions": {
+                    "status": "active",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": [
+                        {
+                            "target_field_id": "g7_vid",
+                            "operator": "not_empty",
+                            "value": "any"
+                        }
+                    ]
+                },
+                "required": false
+            },
+            {
+                "id": "g7_raw",
+                "type": "single_checkbox",
+                "label": "Raw Files? ($300)",
+                "price": 300,
+                "price_type": "flat",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g7_loc",
+                "type": "text",
+                "label": "Venue",
+                "placeholder": "Venue name...",
+                "price": 0,
+                "price_type": "none",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g7_notes",
+                "type": "textarea",
+                "label": "Shot List",
+                "price": 0,
+                "price_type": "none",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            }
+        ]
+    },
+    {
+        "title": "Pet Grooming Service",
+        "schema": [
+            {
+                "id": "g8_type",
+                "type": "radio",
+                "label": "Pet",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Dog",
+                        "value": "d",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Cat",
+                        "value": "c",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Other",
+                        "value": "o",
+                        "price": 0,
+                        "price_type": "none"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g8_size",
+                "type": "select",
+                "label": "Size",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "S",
+                        "value": "s",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "M (+ $15)",
+                        "value": "m",
+                        "price": 15,
+                        "price_type": "flat"
+                    },
+                    {
+                        "label": "L (+ $30)",
+                        "value": "l",
+                        "price": 30,
+                        "price_type": "flat"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g8_pack",
+                "type": "select",
+                "label": "Pack",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Wash",
+                        "value": "w",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Full (+ $25)",
+                        "value": "f",
+                        "price": 25,
+                        "price_type": "flat"
+                    },
+                    {
+                        "label": "Works (+ $45)",
+                        "value": "a",
+                        "price": 45,
+                        "price_type": "flat"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g8_flea",
+                "type": "single_checkbox",
+                "label": "Flea? ($10)",
+                "price": 10,
+                "price_type": "flat",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g8_desh",
+                "type": "single_checkbox",
+                "label": "Deshed? ($20)",
+                "price": 20,
+                "price_type": "flat",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g8_nail",
+                "type": "radio",
+                "label": "Nails",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Trim",
+                        "value": "t",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Grind (+ $5)",
+                        "value": "g",
+                        "price": 5,
+                        "price_type": "flat"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g8_sham",
+                "type": "select",
+                "label": "Sham",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Std",
+                        "value": "s",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Oat (+ $3)",
+                        "value": "o",
+                        "price": 3,
+                        "price_type": "flat"
+                    },
+                    {
+                        "label": "Flea (+ $5)",
+                        "value": "f",
+                        "price": 5,
+                        "price_type": "flat"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g8_aggr",
+                "type": "single_checkbox",
+                "label": "Aggro Fee? ($15)",
+                "price": 15,
+                "price_type": "flat",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g8_pick",
+                "type": "single_checkbox",
+                "label": "Pickup? ($10)",
+                "price": 10,
+                "price_type": "flat",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            }
+        ]
+    },
+    {
+        "title": "Real Estate Listing Service",
+        "schema": [
+            {
+                "id": "g9_tier",
+                "type": "radio",
+                "label": "Tier",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Std",
+                        "value": "s",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Prem (+ $199)",
+                        "value": "p",
+                        "price": 199,
+                        "price_type": "flat"
+                    },
+                    {
+                        "label": "Plat (+ $499)",
+                        "value": "a",
+                        "price": 499,
+                        "price_type": "flat"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g9_phot",
+                "type": "single_checkbox",
+                "label": "Photo? ($150)",
+                "price": 150,
+                "price_type": "flat",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g9_tour",
+                "type": "select",
+                "label": "Tour",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "None",
+                        "value": "n",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "3D (+ $250)",
+                        "value": "3d",
+                        "price": 250,
+                        "price_type": "flat"
+                    },
+                    {
+                        "label": "Vid (+ $400)",
+                        "value": "v",
+                        "price": 400,
+                        "price_type": "flat"
+                    }
+                ],
+                "conditions": {
+                    "status": "active",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": [
+                        {
+                            "target_field_id": "g9_phot",
+                            "operator": "not_empty",
+                            "value": "any"
+                        }
+                    ]
+                },
+                "required": false
+            },
+            {
+                "id": "g9_ads",
+                "type": "select",
+                "label": "Ads",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "None",
+                        "value": "0",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "$100",
+                        "value": "1",
+                        "price": 100,
+                        "price_type": "flat"
+                    },
+                    {
+                        "label": "$250",
+                        "value": "2",
+                        "price": 250,
+                        "price_type": "flat"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g9_dron",
+                "type": "single_checkbox",
+                "label": "Drone? ($120)",
+                "price": 120,
+                "price_type": "flat",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g9_sign",
+                "type": "select",
+                "label": "Sign",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "None",
+                        "value": "n",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Std",
+                        "value": "s",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "QR (+ $45)",
+                        "value": "q",
+                        "price": 45,
+                        "price_type": "flat"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g9_flor",
+                "type": "single_checkbox",
+                "label": "Floor Plan? ($80)",
+                "price": 80,
+                "price_type": "flat",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g9_open",
+                "type": "single_checkbox",
+                "label": "Open House? ($150)",
+                "price": 150,
+                "price_type": "flat",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g9_cln",
+                "type": "single_checkbox",
+                "label": "Cleaning? ($250)",
+                "price": 250,
+                "price_type": "flat",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g9_addr",
+                "type": "text",
+                "label": "Address",
+                "placeholder": "123 Main St...",
+                "price": 0,
+                "price_type": "none",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g9_lbox",
+                "type": "single_checkbox",
+                "label": "Lockbox Provided?",
+                "price": 0,
+                "price_type": "none",
+                "conditions": {
+                    "status": "active",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": [
+                        {
+                            "target_field_id": "g9_tier",
+                            "operator": "==",
+                            "value": "a"
+                        }
+                    ]
+                },
+                "required": false
+            }
+        ]
+    },
+    {
+        "title": "Personal Fitness Coaching",
+        "schema": [
+            {
+                "id": "g10_gl",
+                "type": "select",
+                "label": "Goal",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Loss",
+                        "value": "l",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Gain",
+                        "value": "g",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Endur",
+                        "value": "e",
+                        "price": 0,
+                        "price_type": "none"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g10_ss",
+                "type": "radio",
+                "label": "Sessions",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "2",
+                        "value": "2",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "3 (+ $50)",
+                        "value": "3",
+                        "price": 50,
+                        "price_type": "flat"
+                    },
+                    {
+                        "label": "5 (+ $120)",
+                        "value": "5",
+                        "price": 120,
+                        "price_type": "flat"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g10_ml",
+                "type": "single_checkbox",
+                "label": "Meal Plan? ($40)",
+                "price": 40,
+                "price_type": "flat",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g10_cl",
+                "type": "number",
+                "label": "Calories",
+                "price": 0,
+                "price_type": "none",
+                "conditions": {
+                    "status": "active",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": [
+                        {
+                            "target_field_id": "g10_ml",
+                            "operator": "not_empty",
+                            "value": "any"
+                        }
+                    ]
+                },
+                "required": false
+            },
+            {
+                "id": "g10_sp",
+                "type": "single_checkbox",
+                "label": "Supps? ($15)",
+                "price": 15,
+                "price_type": "flat",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g10_tr",
+                "type": "radio",
+                "label": "Trainer",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Any",
+                        "value": "a",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "M",
+                        "value": "m",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "F",
+                        "value": "f",
+                        "price": 0,
+                        "price_type": "none"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g10_gy",
+                "type": "select",
+                "label": "Loc",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Gym",
+                        "value": "g",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Home",
+                        "value": "h",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Park",
+                        "value": "p",
+                        "price": 0,
+                        "price_type": "none"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g10_ap",
+                "type": "single_checkbox",
+                "label": "App? ($10)",
+                "price": 10,
+                "price_type": "flat",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g10_in",
+                "type": "textarea",
+                "label": "Injuries",
+                "placeholder": "Physical limitations...",
+                "price": 0,
+                "price_type": "none",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            }
+        ]
+    },
+    {
+        "title": "Custom Coffee Subscription",
+        "schema": [
+            {
+                "id": "g11_rst",
+                "type": "radio",
+                "label": "Roast",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Light",
+                        "value": "l",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Med",
+                        "value": "m",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Dark",
+                        "value": "d",
+                        "price": 0,
+                        "price_type": "none"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g11_grd",
+                "type": "select",
+                "label": "Grind",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Whole",
+                        "value": "w",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Drip",
+                        "value": "d",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Espr",
+                        "value": "e",
+                        "price": 0,
+                        "price_type": "none"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g11_frq",
+                "type": "radio",
+                "label": "Freq",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Wk (-10%)",
+                        "value": "w",
+                        "price": -10,
+                        "price_type": "flat"
+                    },
+                    {
+                        "label": "Bi (-5%)",
+                        "value": "b",
+                        "price": -5,
+                        "price_type": "flat"
+                    },
+                    {
+                        "label": "Mon",
+                        "value": "m",
+                        "price": 0,
+                        "price_type": "none"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g11_qty",
+                "type": "number",
+                "label": "Bags",
+                "price": 12,
+                "price_type": "flat",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g11_flv",
+                "type": "checkbox",
+                "label": "Flavors",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Choc",
+                        "value": "c",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Nut",
+                        "value": "n",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Cit",
+                        "value": "i",
+                        "price": 0,
+                        "price_type": "none"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g11_dec",
+                "type": "single_checkbox",
+                "label": "Decaf?",
+                "price": 0,
+                "price_type": "none",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g11_gft",
+                "type": "single_checkbox",
+                "label": "Gift Pack? ($3)",
+                "price": 3,
+                "price_type": "flat",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g11_org",
+                "type": "select",
+                "label": "Origin",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Single (+ $5)",
+                        "value": "s",
+                        "price": 5,
+                        "price_type": "flat"
+                    },
+                    {
+                        "label": "Blend",
+                        "value": "b",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Africa (+ $3)",
+                        "value": "a",
+                        "price": 3,
+                        "price_type": "flat"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g11_jar",
+                "type": "single_checkbox",
+                "label": "Glass Jar? ($10)",
+                "price": 10,
+                "price_type": "flat",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g11_stk",
+                "type": "single_checkbox",
+                "label": "Stickers? ($2)",
+                "price": 2,
+                "price_type": "flat",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g11_mug",
+                "type": "single_checkbox",
+                "label": "Custom Mug? ($15)",
+                "price": 15,
+                "price_type": "flat",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g11_nte",
+                "type": "text",
+                "label": "Gift Note",
+                "price": 0,
+                "price_type": "none",
+                "conditions": {
+                    "status": "active",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": [
+                        {
+                            "target_field_id": "g11_gft",
+                            "operator": "not_empty",
+                            "value": "any"
+                        }
+                    ]
+                },
+                "required": false
+            },
+            {
+                "id": "g11_brw",
+                "type": "textarea",
+                "label": "Brew Method",
+                "price": 0,
+                "price_type": "none",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            }
+        ]
+    },
+    {
+        "title": "Home Interior Design Consult",
+        "schema": [
+            {
+                "id": "g12_rm",
+                "type": "select",
+                "label": "Room",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Living",
+                        "value": "l",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Bedroom",
+                        "value": "b",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Kitchen",
+                        "value": "k",
+                        "price": 0,
+                        "price_type": "none"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g12_sc",
+                "type": "radio",
+                "label": "Scope",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Full",
+                        "value": "f",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Decor",
+                        "value": "d",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Refresh",
+                        "value": "r",
+                        "price": 0,
+                        "price_type": "none"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g12_bd",
+                "type": "select",
+                "label": "Budget",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "<$5k",
+                        "value": "5",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "$15k",
+                        "value": "15",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "$30k+",
+                        "value": "30",
+                        "price": 0,
+                        "price_type": "none"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g12_st",
+                "type": "image_swatch",
+                "label": "Style",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "MCM",
+                        "value": "m",
+                        "image_url": "h",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Ind",
+                        "value": "i",
+                        "image_url": "h",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Scan",
+                        "value": "s",
+                        "image_url": "h",
+                        "price": 0,
+                        "price_type": "none"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g12_pl",
+                "type": "color_swatch",
+                "label": "Palette",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Earth",
+                        "value": "e",
+                        "color": "#D2",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Mono",
+                        "value": "m",
+                        "color": "#00",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Bold",
+                        "value": "b",
+                        "color": "#FF",
+                        "price": 0,
+                        "price_type": "none"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g12_fr",
+                "type": "single_checkbox",
+                "label": "Keep Furn?",
+                "price": 0,
+                "price_type": "none",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g12_dm",
+                "type": "text",
+                "label": "Dimensions",
+                "placeholder": "15x20...",
+                "price": 0,
+                "price_type": "none",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g12_up",
+                "type": "file",
+                "label": "Photos",
+                "description": "Up to 3 photos.",
+                "price": 0,
+                "price_type": "none",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g12_md",
+                "type": "radio",
+                "label": "Mode",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Online",
+                        "value": "o",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Visit (+ $150)",
+                        "value": "v",
+                        "price": 150,
+                        "price_type": "flat"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            }
+        ]
+    },
+    {
+        "title": "Custom PC Master Build",
+        "schema": [
+            {
+                "id": "g13_case",
+                "type": "select",
+                "label": "Case",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Tower",
+                        "value": "t",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Glass (+ $40)",
+                        "value": "m",
+                        "price": 40,
+                        "price_type": "flat"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g13_cpu",
+                "type": "radio",
+                "label": "CPU",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "i7",
+                        "value": "7",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "i9 (+ $200)",
+                        "value": "9",
+                        "price": 200,
+                        "price_type": "flat"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g13_cool",
+                "type": "select",
+                "label": "Cooling",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Air",
+                        "value": "a",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Liquid (+ $80)",
+                        "value": "l",
+                        "price": 80,
+                        "price_type": "flat"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g13_gpu",
+                "type": "radio",
+                "label": "GPU",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "4070",
+                        "value": "7",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "4090 (+ $1200)",
+                        "value": "9",
+                        "price": 1200,
+                        "price_type": "flat"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g13_ram",
+                "type": "select",
+                "label": "RAM",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "32G",
+                        "value": "32",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "64G (+ $180)",
+                        "value": "64",
+                        "price": 180,
+                        "price_type": "flat"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g13_ssd",
+                "type": "select",
+                "label": "SSD",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "1T",
+                        "value": "1",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "2T (+ $90)",
+                        "value": "2",
+                        "price": 90,
+                        "price_type": "flat"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g13_rgb",
+                "type": "single_checkbox",
+                "label": "RGB? ($30)",
+                "price": 30,
+                "price_type": "flat",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g13_rgb_c",
+                "type": "color_swatch",
+                "label": "Color",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Neon",
+                        "value": "n",
+                        "color": "#F0",
+                        "price": 0,
+                        "price_type": "none"
+                    }
+                ],
+                "conditions": {
+                    "status": "active",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": [
+                        {
+                            "target_field_id": "g13_rgb",
+                            "operator": "not_empty",
+                            "value": "any"
+                        }
+                    ]
+                },
+                "required": false
+            },
+            {
+                "id": "g13_oc",
+                "type": "single_checkbox",
+                "label": "OC? ($50)",
+                "price": 50,
+                "price_type": "flat",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g13_os",
+                "type": "radio",
+                "label": "OS",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "W11",
+                        "value": "11",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "None",
+                        "value": "0",
+                        "price": 0,
+                        "price_type": "none"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g13_psu",
+                "type": "select",
+                "label": "PSU",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "850W",
+                        "value": "8",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "1200W (+ $150)",
+                        "value": "12",
+                        "price": 150,
+                        "price_type": "flat"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g13_cbl",
+                "type": "single_checkbox",
+                "label": "Cables? ($40)",
+                "price": 40,
+                "price_type": "flat",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g13_prf",
+                "type": "checkbox",
+                "label": "Periph",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Mouse (+ $80)",
+                        "value": "m",
+                        "price": 80,
+                        "price_type": "flat"
+                    },
+                    {
+                        "label": "Keys (+ $150)",
+                        "value": "k",
+                        "price": 150,
+                        "price_type": "flat"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g13_bnch",
+                "type": "single_checkbox",
+                "label": "Bench? ($20)",
+                "price": 20,
+                "price_type": "flat",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g13_shp",
+                "type": "single_checkbox",
+                "label": "Crate? ($100)",
+                "price": 100,
+                "price_type": "flat",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            }
+        ]
+    },
+    {
+        "title": "Wedding Florist Consultation",
+        "schema": [
+            {
+                "id": "g14_dt",
+                "type": "text",
+                "label": "Date",
+                "price": 0,
+                "price_type": "none",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g14_vn",
+                "type": "text",
+                "label": "Venue",
+                "price": 0,
+                "price_type": "none",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g14_pl",
+                "type": "color_swatch",
+                "label": "Palette",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Pastel",
+                        "value": "p",
+                        "color": "#F0",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Bold",
+                        "value": "b",
+                        "color": "#80",
+                        "price": 0,
+                        "price_type": "none"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g14_st",
+                "type": "radio",
+                "label": "Style",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Boho",
+                        "value": "b",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Classic",
+                        "value": "c",
+                        "price": 0,
+                        "price_type": "none"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g14_bq",
+                "type": "number",
+                "label": "Bouquets",
+                "price": 120,
+                "price_type": "flat",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g14_ar",
+                "type": "single_checkbox",
+                "label": "Arch? ($400)",
+                "price": 400,
+                "price_type": "flat",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g14_dl",
+                "type": "single_checkbox",
+                "label": "Setup? ($200)",
+                "price": 200,
+                "price_type": "flat",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g14_bd",
+                "type": "select",
+                "label": "Budget",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "$1k",
+                        "value": "1",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "$5k",
+                        "value": "5",
+                        "price": 0,
+                        "price_type": "none"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            }
+        ]
+    },
+    {
+        "title": "Luxury Yacht Charter",
+        "schema": [
+            {
+                "id": "g15_dr",
+                "type": "radio",
+                "label": "Dur",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Half",
+                        "value": "h",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Full (+ $2k)",
+                        "value": "f",
+                        "price": 2000,
+                        "price_type": "flat"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g15_ps",
+                "type": "number",
+                "label": "Pass",
+                "price": 0,
+                "price_type": "none",
+                "min_value": 1,
+                "max_value": 12,
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g15_cf",
+                "type": "single_checkbox",
+                "label": "Chef? ($600)",
+                "price": 600,
+                "price_type": "flat",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g15_mn",
+                "type": "select",
+                "label": "Menu",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Sea",
+                        "value": "s",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Veg",
+                        "value": "v",
+                        "price": 0,
+                        "price_type": "none"
+                    }
+                ],
+                "conditions": {
+                    "status": "active",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": [
+                        {
+                            "target_field_id": "g15_cf",
+                            "operator": "not_empty",
+                            "value": "any"
+                        }
+                    ]
+                },
+                "required": false
+            },
+            {
+                "id": "g15_br",
+                "type": "radio",
+                "label": "Bar",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Std",
+                        "value": "s",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Prem (+ $400)",
+                        "value": "p",
+                        "price": 400,
+                        "price_type": "flat"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g15_ty",
+                "type": "checkbox",
+                "label": "Toys",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Jet (+ $300)",
+                        "value": "j",
+                        "price": 300,
+                        "price_type": "flat"
+                    },
+                    {
+                        "label": "Slide (+ $500)",
+                        "value": "s",
+                        "price": 500,
+                        "price_type": "flat"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g15_cr",
+                "type": "single_checkbox",
+                "label": "Crew? ($200)",
+                "price": 200,
+                "price_type": "flat",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g15_ph",
+                "type": "single_checkbox",
+                "label": "Photog? ($400)",
+                "price": 400,
+                "price_type": "flat",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g15_ds",
+                "type": "select",
+                "label": "Dest",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Cove",
+                        "value": "c",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Island (+ $500)",
+                        "value": "i",
+                        "price": 500,
+                        "price_type": "flat"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g15_ms",
+                "type": "radio",
+                "label": "Music",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "BT",
+                        "value": "b",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "DJ (+ $800)",
+                        "value": "d",
+                        "price": 800,
+                        "price_type": "flat"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g15_tw",
+                "type": "single_checkbox",
+                "label": "Towels? ($50)",
+                "price": 50,
+                "price_type": "flat",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g15_in",
+                "type": "single_checkbox",
+                "label": "Insur? ($100)",
+                "price": 100,
+                "price_type": "flat",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g15_nt",
+                "type": "textarea",
+                "label": "Notes",
+                "price": 0,
+                "price_type": "none",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            }
+        ]
+    },
+    {
+        "title": "Professional Translation Service",
+        "schema": [
+            {
+                "id": "g16_lg",
+                "type": "select",
+                "label": "Target",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "FR",
+                        "value": "f",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "DE (+ $0.05)",
+                        "value": "d",
+                        "price": 0.05,
+                        "price_type": "flat"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g16_wd",
+                "type": "number",
+                "label": "Words",
+                "price": 0.12,
+                "price_type": "flat",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g16_sp",
+                "type": "radio",
+                "label": "Spec",
+                "price": 0,
+                "price_type": "none",
+                "options": [
+                    {
+                        "label": "Gen",
+                        "value": "g",
+                        "price": 0,
+                        "price_type": "none"
+                    },
+                    {
+                        "label": "Legal (+ 20%)",
+                        "value": "l",
+                        "price": 20,
+                        "price_type": "flat"
+                    }
+                ],
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g16_ct",
+                "type": "single_checkbox",
+                "label": "Cert? ($50)",
+                "price": 50,
+                "price_type": "flat",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g16_rs",
+                "type": "single_checkbox",
+                "label": "Rush (+ 50%)",
+                "price": 50,
+                "price_type": "flat",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g16_dt",
+                "type": "single_checkbox",
+                "label": "DTP? ($100)",
+                "price": 100,
+                "price_type": "flat",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            },
+            {
+                "id": "g16_fl",
+                "type": "file",
+                "label": "Upload",
+                "price": 0,
+                "price_type": "none",
+                "required": false,
+                "conditions": {
+                    "status": "inactive",
+                    "action": "show",
+                    "match": "ALL",
+                    "rules": []
+                }
+            }
+        ]
+    }
+]

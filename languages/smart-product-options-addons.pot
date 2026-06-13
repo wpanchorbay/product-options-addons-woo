@@ -1,0 +1,1758 @@
+# Copyright (C) 2026 WPAnchorBay
+# This file is distributed under the GPLv2 or later.
+msgid ""
+msgstr ""
+"Project-Id-Version: Smart Product Options and Addons 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/smart-product-options-addons\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-05-23T07:13:19+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: smart-product-options-addons\n"
+
+#. Plugin Name of the plugin
+#: smart-product-options-addons.php
+#: app/Admin/Admin.php:71
+#: app/Admin/Admin.php:72
+#: app/Admin/Admin.php:73
+#: build/options.js:10
+msgid "Smart Product Options and Addons"
+msgstr ""
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+#: smart-product-options-addons.php
+msgid "https://wpanchorbay.com"
+msgstr ""
+
+#. Description of the plugin
+#: smart-product-options-addons.php
+msgid "Add custom product options, add-ons, and extra fields to WooCommerce products with advanced pricing, inventory, and conditional logic."
+msgstr ""
+
+#. Author of the plugin
+#: smart-product-options-addons.php
+msgid "WPAnchorBay"
+msgstr ""
+
+#: app/Admin/Admin.php:97
+#: app/Admin/Admin.php:98
+#: app/Admin/Admin.php:116
+#: app/Admin/WCSettingsTab.php:27
+msgid "Options"
+msgstr ""
+
+#: app/Admin/Admin.php:203
+msgid "Loading..."
+msgstr ""
+
+#: app/Admin/Admin.php:287
+#: build/options.js:10
+msgid "Settings"
+msgstr ""
+
+#: app/Admin/Admin.php:288
+msgid "Documentation"
+msgstr ""
+
+#: app/Admin/Admin.php:289
+msgid "Support"
+msgstr ""
+
+#: app/Api/AddonGroupController.php:321
+#: app/Api/AddonGroupController.php:460
+#: app/Api/AddonGroupController.php:571
+#: app/Api/AddonGroupController.php:627
+#: app/Api/AddonGroupController.php:696
+msgid "Option group not found."
+msgstr ""
+
+#: app/Api/AddonGroupController.php:382
+#: app/Api/AddonGroupController.php:509
+msgid "Failed to create global inventory item."
+msgstr ""
+
+#: app/Api/AddonGroupController.php:430
+msgid "Option group created successfully."
+msgstr ""
+
+#: app/Api/AddonGroupController.php:548
+msgid "Option group updated successfully."
+msgstr ""
+
+#: app/Api/AddonGroupController.php:582
+#: build/options.js:10
+msgid "Option group permanently deleted."
+msgstr ""
+
+#: app/Api/AddonGroupController.php:586
+#: build/options.js:10
+msgid "Option group moved to trash."
+msgstr ""
+
+#: app/Api/AddonGroupController.php:592
+msgid "Failed to delete option group."
+msgstr ""
+
+#: app/Api/AddonGroupController.php:633
+#: build/options.js:10
+msgid "(Copy)"
+msgstr ""
+
+#: app/Api/AddonGroupController.php:651
+msgid "Failed to duplicate option group."
+msgstr ""
+
+#: app/Api/AddonGroupController.php:673
+msgid "Option group duplicated successfully."
+msgstr ""
+
+#: app/Api/AddonGroupController.php:712
+#: build/options.js:10
+msgid "Failed to update status."
+msgstr ""
+
+#: app/Api/AddonGroupController.php:743
+msgid "No option group IDs provided."
+msgstr ""
+
+#. translators: 1: action name, 2: processed count, 3: failed count
+#: app/Api/AddonGroupController.php:825
+#, php-format
+msgid "Bulk action \"%1$s\" completed. Success: %2$d, Failed: %3$d."
+msgstr ""
+
+#: app/Api/AddonGroupController.php:1154
+msgid "is required"
+msgstr ""
+
+#: app/Api/AddonGroupController.php:1155
+msgid "minimum is :min"
+msgstr ""
+
+#: app/Api/AddonGroupController.php:1156
+msgid "maximum is :max"
+msgstr ""
+
+#: app/Api/AddonGroupController.php:1157
+msgid "must be a number"
+msgstr ""
+
+#: app/Api/AddonGroupController.php:1169
+#: build/options.js:10
+msgid "Title"
+msgstr ""
+
+#: app/Api/AddonGroupController.php:1170
+#: build/options.js:10
+msgid "Label"
+msgstr ""
+
+#: app/Api/AddonGroupController.php:1171
+#: build/options.js:10
+msgid "Type"
+msgstr ""
+
+#: app/Api/AddonGroupController.php:1172
+#: build/options.js:10
+msgid "Choice Label"
+msgstr ""
+
+#: app/Api/AddonGroupController.php:1173
+msgid "Assignment target"
+msgstr ""
+
+#: app/Api/AddonGroupController.php:1202
+#: app/Api/AddonGroupController.php:1220
+msgid "Price must be greater than 0 when a price type is selected."
+msgstr ""
+
+#: app/Api/AddonGroupController.php:1227
+msgid "Field stock tracking cannot be enabled when individual choice stock tracking is enabled."
+msgstr ""
+
+#: app/Api/AddonGroupController.php:1235
+#: app/Api/ApiController.php:206
+msgid "Invalid data provided."
+msgstr ""
+
+#: app/Api/ApiController.php:101
+msgid "Cloning is not allowed."
+msgstr ""
+
+#: app/Api/ApiController.php:112
+msgid "Unserializing is not allowed."
+msgstr ""
+
+#: app/Api/ApiController.php:126
+#: app/Api/ApiController.php:150
+msgid "Sorry, you are not allowed to access this resource."
+msgstr ""
+
+#: app/Api/ApiController.php:133
+msgid "The security token is invalid."
+msgstr ""
+
+#: app/Api/ApiController.php:164
+msgid "Invalid or missing nonce."
+msgstr ""
+
+#: app/Api/ExportImportController.php:134
+msgid "Invalid JSON payload."
+msgstr ""
+
+#: app/Api/ExportImportController.php:142
+msgid "Data imported successfully."
+msgstr ""
+
+#: app/Api/InventoryController.php:156
+msgid "Inventory item not found"
+msgstr ""
+
+#: app/Api/InventoryController.php:204
+msgid "Failed to create inventory item"
+msgstr ""
+
+#: app/Api/InventoryController.php:239
+msgid "Failed to update inventory item"
+msgstr ""
+
+#: app/Api/InventoryController.php:287
+msgid "This inventory is currently being used by one or more option groups. It cannot be deleted."
+msgstr ""
+
+#: app/Api/InventoryController.php:296
+#: build/options.js:10
+msgid "Failed to delete inventory item."
+msgstr ""
+
+#: app/Api/SettingsController.php:147
+msgid "Settings updated successfully."
+msgstr ""
+
+#: app/Core/AddonGroup.php:77
+msgctxt "Post type general name"
+msgid "Option Groups"
+msgstr ""
+
+#: app/Core/AddonGroup.php:78
+msgctxt "Post type singular name"
+msgid "Option Group"
+msgstr ""
+
+#: app/Core/AddonGroup.php:79
+msgctxt "Admin Menu text"
+msgid "Option Groups"
+msgstr ""
+
+#: app/Core/AddonGroup.php:80
+msgid "Add New"
+msgstr ""
+
+#: app/Core/AddonGroup.php:81
+msgid "Add New Option Group"
+msgstr ""
+
+#: app/Core/AddonGroup.php:82
+#: build/options.js:10
+msgid "Edit Option Group"
+msgstr ""
+
+#: app/Core/AddonGroup.php:83
+#: build/options.js:10
+msgid "New Option Group"
+msgstr ""
+
+#: app/Core/AddonGroup.php:84
+msgid "View Option Group"
+msgstr ""
+
+#: app/Core/AddonGroup.php:85
+msgid "Search Option Groups"
+msgstr ""
+
+#: app/Core/AddonGroup.php:86
+msgid "No option groups found"
+msgstr ""
+
+#: app/Core/AddonGroup.php:87
+msgid "No option groups found in Trash"
+msgstr ""
+
+#: app/Core/AddonRenderer.php:192
+msgid "Total Product Price:"
+msgstr ""
+
+#: app/Core/AddonRenderer.php:266
+#: assets/js/frontend.js:376
+#: assets/js/frontend.js:433
+#: assets/js/frontend.js:436
+msgid "Out of stock"
+msgstr ""
+
+#. translators: 1: inventory pool name, 2: remaining stock amount
+#: app/Core/CartManager.php:178
+#, php-format
+msgid "Insufficient stock for \"%1$s\". Only %2$s remaining."
+msgstr ""
+
+#. translators: %s: inventory pool name
+#: app/Core/CartManager.php:277
+#: app/Core/CartManager.php:339
+#, php-format
+msgid "Cannot update quantity for \"%s\". Insufficient stock."
+msgstr ""
+
+#. translators: %s: inventory pool name
+#: app/Core/CartManager.php:391
+#, php-format
+msgid "Insufficient stock for \"%s\". Please reduce quantity."
+msgstr ""
+
+#. translators: %1$d: inventory ID
+#: app/Core/CartManager.php:788
+#, php-format
+msgid "Insufficient stock for an option in your cart (Inventory #%1$d). Please adjust your order."
+msgstr ""
+
+#. translators: 1: inventory ID, 2: reduction amount
+#: app/Core/CartManager.php:791
+#, php-format
+msgid "Smart Product Options and Addons: Failed to reduce stock for inventory #%1$d (Amount: %2$s). Order halted."
+msgstr ""
+
+#: app/Fields/BaseField.php:170
+msgid "required"
+msgstr ""
+
+#. translators: %s: field label
+#: app/Fields/BaseField.php:222
+#: app/Fields/FileField.php:72
+#, php-format
+msgid "%s is required."
+msgstr ""
+
+#: app/Fields/BaseField.php:314
+msgid "Dynamic"
+msgstr ""
+
+#: app/Fields/BaseField.php:323
+msgid " / character"
+msgstr ""
+
+#. translators: %s: field label
+#: app/Fields/CheckboxField.php:120
+#: app/Fields/RadioField.php:91
+#: app/Fields/SelectField.php:102
+#, php-format
+msgid "Invalid selection for %s."
+msgstr ""
+
+#: app/Fields/CheckboxField.php:157
+msgid "Yes"
+msgstr ""
+
+#: app/Fields/CheckboxField.php:157
+msgid "No"
+msgstr ""
+
+#. translators: %s: field label
+#: app/Fields/EmailField.php:83
+#, php-format
+msgid "%s must be a valid email address."
+msgstr ""
+
+#. translators: %1$s: allowed types, %2$d: max size in MB
+#: app/Fields/FileField.php:50
+#, php-format
+msgid "Allowed: %1$s. Max size: %2$d MB."
+msgstr ""
+
+#. translators: 1: file label, 2: max size in MB
+#: app/Fields/FileField.php:87
+#, php-format
+msgid "%1$s exceeds the maximum file size of %2$d MB."
+msgstr ""
+
+#. translators: 1: file label, 2: allowed extensions
+#: app/Fields/FileField.php:104
+#, php-format
+msgid "%1$s: File type not allowed. Allowed: %2$s"
+msgstr ""
+
+#. translators: 1: field label, 2: minimum value
+#: app/Fields/NumberField.php:93
+#, php-format
+msgid "%1$s must be at least %2$s."
+msgstr ""
+
+#. translators: 1: field label, 2: maximum value
+#: app/Fields/NumberField.php:105
+#, php-format
+msgid "%1$s must be at most %2$s."
+msgstr ""
+
+#: app/Fields/SelectField.php:48
+msgid "Choose an option..."
+msgstr ""
+
+#. translators: 1: field label, 2: max length
+#: app/Fields/TextareaField.php:78
+#: app/Fields/TextField.php:90
+#, php-format
+msgid "%1$s must be at most %2$d characters."
+msgstr ""
+
+#. translators: 1: field label, 2: min length
+#: app/Fields/TextField.php:102
+#, php-format
+msgid "%1$s must be at least %2$d characters."
+msgstr ""
+
+#: build/options.js:10
+msgid "Option Groups"
+msgstr ""
+
+#: build/options.js:10
+msgid "Inventory Management"
+msgstr ""
+
+#: build/options.js:10
+msgid "Total Pools:"
+msgstr ""
+
+#: build/options.js:10
+msgid "Close"
+msgstr ""
+
+#: build/options.js:10
+msgid "Search inventory..."
+msgstr ""
+
+#: build/options.js:10
+msgid "Refresh"
+msgstr ""
+
+#: build/options.js:10
+msgid "ID"
+msgstr ""
+
+#: build/options.js:10
+msgid "Name"
+msgstr ""
+
+#: build/options.js:10
+msgid "Stock Status"
+msgstr ""
+
+#: build/options.js:10
+msgid "Backorders"
+msgstr ""
+
+#: build/options.js:10
+msgid "Action"
+msgstr ""
+
+#: build/options.js:10
+msgid "Loading inventory data..."
+msgstr ""
+
+#: build/options.js:10
+msgid "No matching inventory found."
+msgstr ""
+
+#: build/options.js:10
+msgid "No inventory pools created yet."
+msgstr ""
+
+#: build/options.js:10
+msgid "Edit"
+msgstr ""
+
+#: build/options.js:10
+msgid "Click to toggle backorders"
+msgstr ""
+
+#: build/options.js:10
+msgid "Allowed"
+msgstr ""
+
+#: build/options.js:10
+msgid "Denied"
+msgstr ""
+
+#: build/options.js:10
+msgid "Adjust Stock"
+msgstr ""
+
+#: build/options.js:10
+msgid "Delete Inventory"
+msgstr ""
+
+#: build/options.js:10
+msgid "Are you sure you want to delete this inventory item? This action cannot be undone."
+msgstr ""
+
+#: build/options.js:10
+msgid "Delete"
+msgstr ""
+
+#: build/options.js:10
+msgid "Cannot Delete Inventory"
+msgstr ""
+
+#: build/options.js:10
+msgid "Used by Option Groups:"
+msgstr ""
+
+#: build/options.js:10
+msgid "Export Data"
+msgstr ""
+
+#: build/options.js:10
+msgid "Select which entities you want to export to a JSON file."
+msgstr ""
+
+#: build/options.js:10
+msgid "Entities to Export"
+msgstr ""
+
+#: build/options.js:10
+msgid "Inventory Pools"
+msgstr ""
+
+#: build/options.js:10
+msgid "Plugin Settings"
+msgstr ""
+
+#: build/options.js:10
+msgid "Please select at least one entity to export."
+msgstr ""
+
+#: build/options.js:10
+msgid "Export downloaded successfully."
+msgstr ""
+
+#: build/options.js:10
+msgid "Failed to export data."
+msgstr ""
+
+#: build/options.js:10
+msgid "Exporting..."
+msgstr ""
+
+#: build/options.js:10
+msgid "Download JSON Export"
+msgstr ""
+
+#: build/options.js:10
+msgid "Import Data"
+msgstr ""
+
+#: build/options.js:10
+msgid "Upload an Smart Product Options and Addons JSON export file to restore data."
+msgstr ""
+
+#: build/options.js:10
+msgid "JSON File"
+msgstr ""
+
+#: build/options.js:10
+msgid "Please select a valid .json file."
+msgstr ""
+
+#: build/options.js:10
+msgid "Invalid JSON file."
+msgstr ""
+
+#: build/options.js:10
+msgid "What would you like to import?"
+msgstr ""
+
+#: build/options.js:10
+msgid "Option Groups (Appends as new)"
+msgstr ""
+
+#: build/options.js:10
+msgid "Inventory Pools (Appends as new)"
+msgstr ""
+
+#: build/options.js:10
+msgid "Plugin Settings (Overwrites current)"
+msgstr ""
+
+#: build/options.js:10
+msgid "Please select at least one entity to import."
+msgstr ""
+
+#: build/options.js:10
+msgid "Data imported successfully. Please reload the page to see changes."
+msgstr ""
+
+#: build/options.js:10
+msgid "Failed to import data."
+msgstr ""
+
+#: build/options.js:10
+msgid "Importing..."
+msgstr ""
+
+#: build/options.js:10
+msgid "Run Import"
+msgstr ""
+
+#: build/options.js:10
+msgid "permanently delete"
+msgstr ""
+
+#: build/options.js:10
+msgid "move to trash"
+msgstr ""
+
+#: build/options.js:10
+msgid "restore"
+msgstr ""
+
+#: build/options.js:10
+msgid "publish"
+msgstr ""
+
+#: build/options.js:10
+msgid "draft"
+msgstr ""
+
+#: build/options.js:10
+msgid "Confirm Action"
+msgstr ""
+
+#: build/options.js:10
+#, js-format
+msgid "Are you sure you want to %s %d selected items?"
+msgstr ""
+
+#: build/options.js:10
+msgid "Bulk action applied successfully."
+msgstr ""
+
+#: build/options.js:10
+msgid "Failed to execute bulk action."
+msgstr ""
+
+#: build/options.js:10
+msgid "Permanently Delete"
+msgstr ""
+
+#: build/options.js:10
+msgid "Move to Trash"
+msgstr ""
+
+#: build/options.js:10
+msgid "Are you sure you want to permanently delete this option group? This action cannot be undone."
+msgstr ""
+
+#: build/options.js:10
+msgid "Are you sure you want to move this option group to trash?"
+msgstr ""
+
+#: build/options.js:10
+msgid "Failed to delete group."
+msgstr ""
+
+#: build/options.js:10
+msgid "None"
+msgstr ""
+
+#: build/options.js:10
+msgid "All Products"
+msgstr ""
+
+#: build/options.js:10
+msgid "categories"
+msgstr ""
+
+#: build/options.js:10
+msgid "products"
+msgstr ""
+
+#: build/options.js:10
+msgid "Bulk actions"
+msgstr ""
+
+#: build/options.js:10
+msgid "Restore"
+msgstr ""
+
+#: build/options.js:10
+msgid "Delete Permanently"
+msgstr ""
+
+#: build/options.js:10
+msgid "Publish"
+msgstr ""
+
+#: build/options.js:10
+msgid "Draft"
+msgstr ""
+
+#: build/options.js:10
+msgid "Apply"
+msgstr ""
+
+#: build/options.js:10
+#, js-format
+msgid "%1$d of %2$d selected"
+msgstr ""
+
+#: build/options.js:10
+msgid "items"
+msgstr ""
+
+#: build/options.js:10
+msgid "← Previous"
+msgstr ""
+
+#: build/options.js:10
+msgid "Page"
+msgstr ""
+
+#: build/options.js:10
+msgid "of"
+msgstr ""
+
+#: build/options.js:10
+msgid "Next →"
+msgstr ""
+
+#: build/options.js:10
+msgid "Display Columns"
+msgstr ""
+
+#: build/options.js:10
+msgid "Fields"
+msgstr ""
+
+#: build/options.js:10
+msgid "Assigned To"
+msgstr ""
+
+#: build/options.js:10
+msgid "Status"
+msgstr ""
+
+#: build/options.js:10
+msgid "Created By"
+msgstr ""
+
+#: build/options.js:10
+msgid "Created At"
+msgstr ""
+
+#: build/options.js:10
+msgid "Updated By"
+msgstr ""
+
+#: build/options.js:10
+msgid "Updated At"
+msgstr ""
+
+#: build/options.js:10
+msgid "Add new group"
+msgstr ""
+
+#: build/options.js:10
+msgid "Import"
+msgstr ""
+
+#: build/options.js:10
+msgid "Export"
+msgstr ""
+
+#: build/options.js:10
+msgid "Import Option Groups"
+msgstr ""
+
+#: build/options.js:10
+msgid "Export Option Groups"
+msgstr ""
+
+#: build/options.js:10
+msgid "Loading…"
+msgstr ""
+
+#: build/options.js:10
+msgid "All"
+msgstr ""
+
+#: build/options.js:10
+msgid "Published"
+msgstr ""
+
+#: build/options.js:10
+msgid "Trash"
+msgstr ""
+
+#: build/options.js:10
+msgid "View Inventory"
+msgstr ""
+
+#: build/options.js:10
+msgid "Search option groups..."
+msgstr ""
+
+#: build/options.js:10
+msgid "Search groups"
+msgstr ""
+
+#: build/options.js:10
+msgid "No option groups found."
+msgstr ""
+
+#: build/options.js:10
+msgid "Create your first option group"
+msgstr ""
+
+#: build/options.js:10
+msgid "(Untitled)"
+msgstr ""
+
+#: build/options.js:10
+msgid "Option group restored."
+msgstr ""
+
+#: build/options.js:10
+msgid "Failed to restore group."
+msgstr ""
+
+#: build/options.js:10
+msgid "Option group duplicated."
+msgstr ""
+
+#: build/options.js:10
+msgid "Failed to duplicate group."
+msgstr ""
+
+#: build/options.js:10
+msgid "Duplicate"
+msgstr ""
+
+#: build/options.js:10
+msgid "Option group published."
+msgstr ""
+
+#: build/options.js:10
+msgid "Option group moved to draft."
+msgstr ""
+
+#: build/options.js:10
+msgid "Target field is required"
+msgstr ""
+
+#: build/options.js:10
+msgid "Value is required"
+msgstr ""
+
+#: build/options.js:10
+msgid "At least one rule is required when logic is active"
+msgstr ""
+
+#: build/options.js:10
+msgid "Choice label is required"
+msgstr ""
+
+#: build/options.js:10
+msgid "Choice value is required"
+msgstr ""
+
+#: build/options.js:10
+msgid "Price is required"
+msgstr ""
+
+#: build/options.js:10
+msgid "Formula is required"
+msgstr ""
+
+#: build/options.js:10
+msgid "Inventory pool is required"
+msgstr ""
+
+#: build/options.js:10
+msgid "Reduction formula is required"
+msgstr ""
+
+#: build/options.js:10
+msgid "Field label is required"
+msgstr ""
+
+#: build/options.js:10
+msgid "At least one choice is required"
+msgstr ""
+
+#: build/options.js:10
+msgid "Color is required for swatch choices"
+msgstr ""
+
+#: build/options.js:10
+msgid "Image is required for swatch choices"
+msgstr ""
+
+#: build/options.js:10
+msgid "Content is required for static fields"
+msgstr ""
+
+#: build/options.js:10
+msgid "Field stock tracking cannot be enabled when individual choice stock tracking is enabled"
+msgstr ""
+
+#: build/options.js:10
+msgid "Group Title is required"
+msgstr ""
+
+#: build/options.js:10
+msgid "Back to List"
+msgstr ""
+
+#: build/options.js:10
+msgid "Status:"
+msgstr ""
+
+#: build/options.js:10
+msgid "Saving…"
+msgstr ""
+
+#: build/options.js:10
+msgid "Update Group"
+msgstr ""
+
+#: build/options.js:10
+msgid "Create Group"
+msgstr ""
+
+#: build/options.js:10
+msgid "Text Input"
+msgstr ""
+
+#: build/options.js:10
+msgid "Textarea"
+msgstr ""
+
+#: build/options.js:10
+msgid "Dropdown"
+msgstr ""
+
+#: build/options.js:10
+msgid "Checkboxes"
+msgstr ""
+
+#: build/options.js:10
+msgid "Radio Buttons"
+msgstr ""
+
+#: build/options.js:10
+msgid "Checkbox"
+msgstr ""
+
+#: build/options.js:10
+msgid "Number"
+msgstr ""
+
+#: build/options.js:10
+msgid "File upload"
+msgstr ""
+
+#: build/options.js:10
+msgid "Email"
+msgstr ""
+
+#: build/options.js:10
+msgid "Color Swatch"
+msgstr ""
+
+#: build/options.js:10
+msgid "Image Swatch"
+msgstr ""
+
+#: build/options.js:10
+msgid "Static Content"
+msgstr ""
+
+#: build/options.js:10
+msgid "No Price"
+msgstr ""
+
+#: build/options.js:10
+msgid "Flat Fee"
+msgstr ""
+
+#: build/options.js:10
+msgid "Percentage of Base"
+msgstr ""
+
+#: build/options.js:10
+msgid "Per Character"
+msgstr ""
+
+#: build/options.js:10
+msgid "Formula"
+msgstr ""
+
+#: build/options.js:10
+msgid "Per Item Quantity"
+msgstr ""
+
+#: build/options.js:10
+msgid "Per Line Item (Once)"
+msgstr ""
+
+#: build/options.js:10
+msgid "Custom Formula"
+msgstr ""
+
+#: build/options.js:10
+msgid "Add Fields"
+msgstr ""
+
+#: build/options.js:10
+msgid "Add Field"
+msgstr ""
+
+#: build/options.js:10
+msgid "Products"
+msgstr ""
+
+#: build/options.js:10
+msgid "Search products…"
+msgstr ""
+
+#: build/options.js:10
+msgid "Categories"
+msgstr ""
+
+#: build/options.js:10
+msgid "Search categories…"
+msgstr ""
+
+#: build/options.js:10
+msgid "Tags"
+msgstr ""
+
+#: build/options.js:10
+msgid "Search tags…"
+msgstr ""
+
+#: build/options.js:10
+msgid "Assignment Rules"
+msgstr ""
+
+#: build/options.js:10
+msgid "Control where this option group appears on your store."
+msgstr ""
+
+#: build/options.js:10
+msgid "Visibility"
+msgstr ""
+
+#: build/options.js:10
+msgid "The broad scope of where this option group is active."
+msgstr ""
+
+#: build/options.js:10
+msgid "Apply to all products"
+msgstr ""
+
+#: build/options.js:10
+msgid "Apply to specific products, categories, or tags"
+msgstr ""
+
+#: build/options.js:10
+msgid "Reach"
+msgstr ""
+
+#: build/options.js:10
+msgid "Specific targets for displaying this group."
+msgstr ""
+
+#: build/options.js:10
+msgid "Exceptions"
+msgstr ""
+
+#: build/options.js:10
+msgid "Specific targets to ignore regardless of other rules."
+msgstr ""
+
+#: build/options.js:10
+msgid "The name of the field shown to the customer on the product page."
+msgstr ""
+
+#: build/options.js:10
+msgid "A unique identifier for this field, used for internal tracking and conditional logic."
+msgstr ""
+
+#: build/options.js:10
+msgid "The input method used to collect data from customers."
+msgstr ""
+
+#: build/options.js:10
+msgid "Additional instruction text displayed below the field input on the product page."
+msgstr ""
+
+#: build/options.js:10
+msgid "A short hint displayed inside the input when it is empty."
+msgstr ""
+
+#: build/options.js:10
+msgid "Whether this field must be completed before the product can be added to the cart."
+msgstr ""
+
+#: build/options.js:10
+msgid "Custom CSS class for advanced styling of the field container."
+msgstr ""
+
+#: build/options.js:10
+msgid "The calculation method used to determine the price impact of this field."
+msgstr ""
+
+#: build/options.js:10
+msgid "The monetary value added to or subtracted from the product price."
+msgstr ""
+
+#: build/options.js:10
+msgid "The weight adjustment for this field, used in shipping calculations."
+msgstr ""
+
+#: build/options.js:10
+msgid "Validation rules such as character limits or numeric ranges."
+msgstr ""
+
+#: build/options.js:10
+msgid "Allowed file extensions and maximum file size for uploads."
+msgstr ""
+
+#: build/options.js:10
+msgid "The list of selectable options available for this field."
+msgstr ""
+
+#: build/options.js:10
+msgid "Rules that determine when this field is shown or hidden based on other field values."
+msgstr ""
+
+#: build/options.js:10
+msgid "Select inventory pool…"
+msgstr ""
+
+#: build/options.js:10
+msgid "[New]"
+msgstr ""
+
+#: build/options.js:10
+msgid "in stock"
+msgstr ""
+
+#: build/options.js:10
+msgid "OUT OF STOCK"
+msgstr ""
+
+#: build/options.js:10
+msgid "Create New Pool"
+msgstr ""
+
+#: build/options.js:10
+msgid "New Inventory Pool"
+msgstr ""
+
+#: build/options.js:10
+msgid "Pool Name"
+msgstr ""
+
+#: build/options.js:10
+msgid "e.g. Premium Material"
+msgstr ""
+
+#: build/options.js:10
+msgid "Initial Stock"
+msgstr ""
+
+#: build/options.js:10
+msgid "Backorders?"
+msgstr ""
+
+#: build/options.js:10
+msgid "Cancel"
+msgstr ""
+
+#: build/options.js:10
+msgid "Add & Select"
+msgstr ""
+
+#: build/options.js:10
+msgid "Choices"
+msgstr ""
+
+#: build/options.js:10
+msgid "Price Type"
+msgstr ""
+
+#: build/options.js:10
+msgid "Formula Expression"
+msgstr ""
+
+#: build/options.js:10
+msgid "Price Amount"
+msgstr ""
+
+#: build/options.js:10
+msgid "Price"
+msgstr ""
+
+#: build/options.js:10
+msgid "Weight (kg)"
+msgstr ""
+
+#: build/options.js:10
+msgid "Weight"
+msgstr ""
+
+#: build/options.js:10
+msgid "Stock Tracking"
+msgstr ""
+
+#: build/options.js:10
+msgid "Enable Stock Tracking"
+msgstr ""
+
+#: build/options.js:10
+msgid "Select Pool"
+msgstr ""
+
+#: build/options.js:10
+msgid "Reduction Mode"
+msgstr ""
+
+#: build/options.js:10
+msgid "Select Image"
+msgstr ""
+
+#: build/options.js:10
+msgid "Use this image"
+msgstr ""
+
+#: build/options.js:10
+msgid "Change image"
+msgstr ""
+
+#: build/options.js:10
+msgid "Upload image"
+msgstr ""
+
+#: build/options.js:10
+msgid "Stock Enabled"
+msgstr ""
+
+#: build/options.js:10
+msgid "kg"
+msgstr ""
+
+#: build/options.js:10
+msgid "Collapse settings"
+msgstr ""
+
+#: build/options.js:10
+msgid "Expand settings"
+msgstr ""
+
+#: build/options.js:10
+msgid "Remove choice"
+msgstr ""
+
+#: build/options.js:10
+msgid "No choices added yet."
+msgstr ""
+
+#: build/options.js:10
+msgid "Add Choice"
+msgstr ""
+
+#: build/options.js:10
+msgid "Add more fields to set up conditional logic."
+msgstr ""
+
+#: build/options.js:10
+msgid "Enable Conditional Logic"
+msgstr ""
+
+#: build/options.js:10
+msgid "Add Rule"
+msgstr ""
+
+#: build/options.js:10
+msgid "Show"
+msgstr ""
+
+#: build/options.js:10
+msgid "Hide"
+msgstr ""
+
+#: build/options.js:10
+msgid "this field if"
+msgstr ""
+
+#: build/options.js:10
+msgid "ALL"
+msgstr ""
+
+#: build/options.js:10
+msgid "ANY"
+msgstr ""
+
+#: build/options.js:10
+msgid "of these rules match:"
+msgstr ""
+
+#: build/options.js:10
+msgid "Field"
+msgstr ""
+
+#: build/options.js:10
+msgid "Operator"
+msgstr ""
+
+#: build/options.js:10
+msgid "Value"
+msgstr ""
+
+#: build/options.js:10
+msgid "equals"
+msgstr ""
+
+#: build/options.js:10
+msgid "not equals"
+msgstr ""
+
+#: build/options.js:10
+msgid "greater than"
+msgstr ""
+
+#: build/options.js:10
+msgid "less than"
+msgstr ""
+
+#: build/options.js:10
+msgid "greater than or equals"
+msgstr ""
+
+#: build/options.js:10
+msgid "less than or equals"
+msgstr ""
+
+#: build/options.js:10
+msgid "contains"
+msgstr ""
+
+#: build/options.js:10
+msgid "not contains"
+msgstr ""
+
+#: build/options.js:10
+msgid "is empty"
+msgstr ""
+
+#: build/options.js:10
+msgid "is not empty"
+msgstr ""
+
+#: build/options.js:10
+msgid "Select field…"
+msgstr ""
+
+#: build/options.js:10
+msgid "Checked"
+msgstr ""
+
+#: build/options.js:10
+msgid "Unchecked"
+msgstr ""
+
+#: build/options.js:10
+msgid "Select option…"
+msgstr ""
+
+#: build/options.js:10
+msgid "Remove rule"
+msgstr ""
+
+#: build/options.js:10
+msgid "No rules added yet."
+msgstr ""
+
+#: build/options.js:10
+msgid "This field has errors"
+msgstr ""
+
+#: build/options.js:10
+msgid "Drag to reorder"
+msgstr ""
+
+#: build/options.js:10
+msgid "(No name)"
+msgstr ""
+
+#: build/options.js:10
+msgid "Edit field"
+msgstr ""
+
+#: build/options.js:10
+msgid "Move up"
+msgstr ""
+
+#: build/options.js:10
+msgid "Move down"
+msgstr ""
+
+#: build/options.js:10
+msgid "Delete field"
+msgstr ""
+
+#: build/options.js:10
+msgid "Field Type"
+msgstr ""
+
+#: build/options.js:10
+msgid "The label for static content is for internal admin reference only and will not be displayed on the frontend."
+msgstr ""
+
+#: build/options.js:10
+msgid "Enter field label"
+msgstr ""
+
+#: build/options.js:10
+msgid "Content"
+msgstr ""
+
+#: build/options.js:10
+msgid "The static content to be displayed on the product page."
+msgstr ""
+
+#: build/options.js:10
+msgid "Enter text, images, or other static content using the visual editor."
+msgstr ""
+
+#: build/options.js:10
+msgid "Description"
+msgstr ""
+
+#: build/options.js:10
+msgid "Help text shown below the field"
+msgstr ""
+
+#: build/options.js:10
+msgid "Validation"
+msgstr ""
+
+#: build/options.js:10
+msgid "Field is Required"
+msgstr ""
+
+#: build/options.js:10
+msgid "Pricing Logic"
+msgstr ""
+
+#: build/options.js:10
+msgid "The mathematical expression used to calculate the price."
+msgstr ""
+
+#: build/options.js:10
+msgid "Use placeholders: [value], [char_count], [base_price]. Example: [char_count] * 2"
+msgstr ""
+
+#: build/options.js:10
+msgid "Placeholder"
+msgstr ""
+
+#: build/options.js:10
+msgid "Optional placeholder text"
+msgstr ""
+
+#: build/options.js:10
+msgid "Restrictions"
+msgstr ""
+
+#: build/options.js:10
+msgid "Min Length:"
+msgstr ""
+
+#: build/options.js:10
+msgid "Max Length:"
+msgstr ""
+
+#: build/options.js:10
+msgid "Min:"
+msgstr ""
+
+#: build/options.js:10
+msgid "Max:"
+msgstr ""
+
+#: build/options.js:10
+msgid "Step Value:"
+msgstr ""
+
+#: build/options.js:10
+msgid "File Restrictions"
+msgstr ""
+
+#: build/options.js:10
+msgid "Allowed Extensions (comma separated):"
+msgstr ""
+
+#: build/options.js:10
+msgid "Max File Size (MB):"
+msgstr ""
+
+#: build/options.js:10
+msgid "Display Style"
+msgstr ""
+
+#: build/options.js:10
+msgid "The visual presentation of swatches on the frontend."
+msgstr ""
+
+#: build/options.js:10
+msgid "Choose whether to show just the swatch or the swatch with the label name."
+msgstr ""
+
+#: build/options.js:10
+msgid "Swatch Only"
+msgstr ""
+
+#: build/options.js:10
+msgid "Swatch + Label"
+msgstr ""
+
+#: build/options.js:10
+msgid "Stock tracking and automatic reduction rules for this field."
+msgstr ""
+
+#: build/options.js:10
+msgid "If enabled, stock is reduced automatically when an order is placed."
+msgstr ""
+
+#: build/options.js:10
+msgid "Conditional Logic"
+msgstr ""
+
+#: build/options.js:10
+msgid "Delete Field"
+msgstr ""
+
+#: build/options.js:10
+msgid "Are you sure you want to remove this field?"
+msgstr ""
+
+#: build/options.js:10
+msgid "Failed to load option group."
+msgstr ""
+
+#: build/options.js:10
+msgid "Choice"
+msgstr ""
+
+#: build/options.js:10
+msgid "Group Title : "
+msgstr ""
+
+#: build/options.js:10
+msgid "Option Group Title"
+msgstr ""
+
+#: build/options.js:10
+msgid "Assignment Rules : "
+msgstr ""
+
+#: build/options.js:10
+msgid "Please fix the validation errors below."
+msgstr ""
+
+#: build/options.js:10
+msgid "Option group updated."
+msgstr ""
+
+#: build/options.js:10
+msgid "Option group created."
+msgstr ""
+
+#: build/options.js:10
+msgid "Please fix the validation errors reported by the server."
+msgstr ""
+
+#: build/options.js:10
+msgid "Failed to save option group."
+msgstr ""
+
+#: build/options.js:10
+msgid "Enter Option Group Title"
+msgstr ""
+
+#: build/options.js:10
+msgid "Drag and drop fields to reorder them."
+msgstr ""
+
+#: build/options.js:10
+msgid "Your group is empty"
+msgstr ""
+
+#: build/options.js:10
+msgid "Click the field buttons in the sidebar to start building."
+msgstr ""
+
+#: build/options.js:10
+msgid "Add field"
+msgstr ""
+
+#: build/options.js:10
+#: build/settings.js:10
+msgid "Validation Error"
+msgstr ""
+
+#: build/options.js:10
+#: build/settings.js:10
+msgid "Locate & Edit Field"
+msgstr ""
+
+#: build/settings.js:10
+msgid "Failed to load settings."
+msgstr ""
+
+#: build/settings.js:10
+msgid "Settings saved successfully."
+msgstr ""
+
+#: build/settings.js:10
+msgid "Failed to save settings."
+msgstr ""
+
+#: build/settings.js:10
+msgid "General Settings"
+msgstr ""
+
+#: build/settings.js:10
+msgid "Manage global display and layout preferences for your product options."
+msgstr ""
+
+#: build/settings.js:10
+msgid "Options Orientation"
+msgstr ""
+
+#: build/settings.js:10
+msgid "The visual arrangement of radio and checkbox groups."
+msgstr ""
+
+#: build/settings.js:10
+msgid "Vertical"
+msgstr ""
+
+#: build/settings.js:10
+msgid "Horizontal"
+msgstr ""
+
+#: build/settings.js:10
+msgid "How options inside a group are arranged."
+msgstr ""
+
+#: build/settings.js:10
+msgid "Label Font Size"
+msgstr ""
+
+#: build/settings.js:10
+msgid "Font size for field labels."
+msgstr ""
+
+#: build/settings.js:10
+msgid "Use 'inherit' or a value like '14px', '1rem'."
+msgstr ""
+
+#: build/settings.js:10
+msgid "Input Font Size"
+msgstr ""
+
+#: build/settings.js:10
+msgid "Font size for inputs and choice labels."
+msgstr ""
+
+#: build/settings.js:10
+msgid "Color Swatch Size"
+msgstr ""
+
+#: build/settings.js:10
+msgid "Width and height of color swatches."
+msgstr ""
+
+#: build/settings.js:10
+msgid "Default is '32px'."
+msgstr ""
+
+#: build/settings.js:10
+msgid "Image Swatch Size"
+msgstr ""
+
+#: build/settings.js:10
+msgid "Width and height of image swatches."
+msgstr ""
+
+#: build/settings.js:10
+msgid "Default is '64px'."
+msgstr ""
+
+#: build/settings.js:10
+msgid "Color Swatch Roundness"
+msgstr ""
+
+#: build/settings.js:10
+msgid "Border radius of color swatches."
+msgstr ""
+
+#: build/settings.js:10
+msgid "Use '4px' or '50%'."
+msgstr ""
+
+#: build/settings.js:10
+msgid "Image Swatch Roundness"
+msgstr ""
+
+#: build/settings.js:10
+msgid "Border radius of image swatches."
+msgstr ""
+
+#: build/settings.js:10
+msgid "System & Maintenance"
+msgstr ""
+
+#: build/settings.js:10
+msgid "Advanced configurations for data persistence and troubleshooting."
+msgstr ""
+
+#: build/settings.js:10
+msgid "Debug Mode"
+msgstr ""
+
+#: build/settings.js:10
+msgid "Enable developer logging"
+msgstr ""
+
+#: build/settings.js:10
+msgid "Detailed logs will be written to the database for troubleshooting."
+msgstr ""
+
+#: build/settings.js:10
+msgid "Delete Data on Uninstall"
+msgstr ""
+
+#: build/settings.js:10
+msgid "Purge data on plugin deletion"
+msgstr ""
+
+#: build/settings.js:10
+msgid "CAUTION: If enabled, all Smart Product Options and Addons data (groups, assignments, settings) will be permanently deleted when the plugin is uninstalled."
+msgstr ""

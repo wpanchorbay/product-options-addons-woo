@@ -1,0 +1,22 @@
+{
+    "name": "wpanchorbay/smart-product-options-addons",
+    "description": "WooCommerce product options and add-ons with advanced pricing, inventory, and conditional logic.",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0-or-later",
+    "authors": [
+        {
+            "name": "WP Anchor Bay",
+            "email": "wpanchorbay@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "rakit/validation": "^1.4",
+        "mossadal/math-parser": "^1.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "SmartProductOptionsAddons\\": "app/"
+        }
+    }
+}

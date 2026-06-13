@@ -1,0 +1,23 @@
+.spoa-discount-table{
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.spoa-discount-table th,
+.spoa-discount-table td {
+    border: 1px solid #dddddd86;
+    padding: 8px;
+    text-align: left;
+}
+
+.spoa-discount-table th {
+    font-weight: bold;
+}
+
+.spoa-discount-table tr:nth-child(even) {
+}
+
+.spoa-discount-table tr:hover {
+
+}

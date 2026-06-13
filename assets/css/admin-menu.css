@@ -1,0 +1,96 @@
+/* This file contains ONLY the styles needed for the admin menu icon. */
+
+#adminmenu #toplevel_page_smart-product-options-addons .wp-menu-image img {
+    width: 20px;
+    height: 20px;
+    padding: 7px 0 0;
+}
+
+#adminmenu #toplevel_page_smart-product-options-addons .wp-menu-open .wp-menu-image {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    & img {
+        width: 20px;
+        height: 20px;
+        padding: 0;
+    }
+}
+
+.spoa-loader-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.spoa-newtons-cradle {
+ --uib-size: 50px;
+ --uib-speed: 1.2s;
+ --uib-color: #f02a74;
+ position: relative;
+ display: flex;
+ align-items: center;
+ justify-content: center;
+ width: var(--uib-size);
+ height: var(--uib-size);
+}
+
+.spoa-newtons-cradle__dot {
+ position: relative;
+ display: flex;
+ align-items: center;
+ height: 100%;
+ width: 25%;
+ transform-origin: center top;
+}
+
+.spoa-newtons-cradle__dot::after {
+ content: '';
+ display: block;
+ width: 100%;
+ height: 25%;
+ border-radius: 50%;
+ background-color: var(--uib-color);
+}
+
+.spoa-newtons-cradle__dot:first-child {
+ animation: spoa-swing var(--uib-speed) linear infinite;
+}
+
+.spoa-newtons-cradle__dot:last-child {
+ animation: spoa-swing2 var(--uib-speed) linear infinite;
+}
+
+@keyframes spoa-swing {
+ 0% {
+  transform: rotate(0deg);
+  animation-timing-function: ease-out;
+ }
+
+ 25% {
+  transform: rotate(70deg);
+  animation-timing-function: ease-in;
+ }
+
+ 50% {
+  transform: rotate(0deg);
+  animation-timing-function: linear;
+ }
+}
+
+@keyframes spoa-swing2 {
+ 0% {
+  transform: rotate(0deg);
+  animation-timing-function: linear;
+ }
+
+ 50% {
+  transform: rotate(0deg);
+  animation-timing-function: ease-out;
+ }
+
+ 75% {
+  transform: rotate(-70deg);
+  animation-timing-function: ease-in;
+ }
+}
