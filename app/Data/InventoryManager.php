@@ -71,9 +71,10 @@ class InventoryManager {
 
 		global $wpdb;
 
+		// phpcs:ignore PluginCheck.Security.DirectDB.UnescapedDBParameter -- Internal table name is safe.
 		$table_name = DbManager::get_inventory_table();
 
-		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, PluginCheck.Security.DirectDB.UnescapedDBParameter
 		$item = $wpdb->get_row(
 			$wpdb->prepare(
 				// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, PluginCheck.Security.DirectDB.UnescapedDBParameter -- Internal table name is safe.
@@ -99,6 +100,7 @@ class InventoryManager {
 	 */
 	public function create_item( $data ) {
 		global $wpdb;
+		// phpcs:ignore PluginCheck.Security.DirectDB.UnescapedDBParameter -- Internal table name is safe.
 		$table_name = DbManager::get_inventory_table();
 
 		$now = current_time( 'mysql' );
@@ -129,6 +131,7 @@ class InventoryManager {
 	 */
 	public function update_item( $id, $data ) {
 		global $wpdb;
+		// phpcs:ignore PluginCheck.Security.DirectDB.UnescapedDBParameter -- Internal table name is safe.
 		$table_name = DbManager::get_inventory_table();
 
 		$update_data   = array();
@@ -181,6 +184,7 @@ class InventoryManager {
 	 */
 	public function delete_item( $id ) {
 		global $wpdb;
+		// phpcs:ignore PluginCheck.Security.DirectDB.UnescapedDBParameter -- Internal table name is safe.
 		$table_name = DbManager::get_inventory_table();
 
 		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
@@ -211,9 +215,10 @@ class InventoryManager {
 	public function decrement_stock( $id, $amount ) {
 		global $wpdb;
 
+		// phpcs:ignore PluginCheck.Security.DirectDB.UnescapedDBParameter -- Internal table name is safe.
 		$table_name = DbManager::get_inventory_table();
 
-		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, PluginCheck.Security.DirectDB.UnescapedDBParameter
 		$result = $wpdb->query(
 			$wpdb->prepare(
 				// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, PluginCheck.Security.DirectDB.UnescapedDBParameter -- Internal table name is safe.
@@ -246,9 +251,10 @@ class InventoryManager {
 	public function increment_stock( $id, $amount ) {
 		global $wpdb;
 
+		// phpcs:ignore PluginCheck.Security.DirectDB.UnescapedDBParameter -- Internal table name is safe.
 		$table_name = DbManager::get_inventory_table();
 
-		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, PluginCheck.Security.DirectDB.UnescapedDBParameter
 		$result = $wpdb->query(
 			$wpdb->prepare(
 				// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, PluginCheck.Security.DirectDB.UnescapedDBParameter -- Internal table name is safe.
@@ -280,9 +286,10 @@ class InventoryManager {
 	public function search_items( $search, $limit = 20 ) {
 		global $wpdb;
 
+		// phpcs:ignore PluginCheck.Security.DirectDB.UnescapedDBParameter -- Internal table name is safe.
 		$table_name = DbManager::get_inventory_table();
 
-		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, PluginCheck.Security.DirectDB.UnescapedDBParameter
 		return $wpdb->get_results(
 			$wpdb->prepare(
 				// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, PluginCheck.Security.DirectDB.UnescapedDBParameter -- Internal table name is safe.

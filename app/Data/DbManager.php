@@ -158,6 +158,7 @@ class DbManager {
 	 */
 	public function delete_assignments_for_group( $group_id ) {
 		global $wpdb;
+		// phpcs:ignore PluginCheck.Security.DirectDB.UnescapedDBParameter -- Internal table name is safe.
 		$table_name = self::get_assignments_table();
 
 		$result = $wpdb->delete( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
@@ -190,6 +191,7 @@ class DbManager {
 	 */
 	public function insert_assignments( $group_id, $assignments ) {
 		global $wpdb;
+		// phpcs:ignore PluginCheck.Security.DirectDB.UnescapedDBParameter -- Internal table name is safe.
 		$table_name = self::get_assignments_table();
 		$inserted   = 0;
 
@@ -245,9 +247,10 @@ class DbManager {
 	public function get_assignments_for_group( $group_id ) {
 		global $wpdb;
 
+		// phpcs:ignore PluginCheck.Security.DirectDB.UnescapedDBParameter -- Internal table name is safe.
 		$table_name = self::get_assignments_table();
 
-		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, PluginCheck.Security.DirectDB.UnescapedDBParameter
 		$results = $wpdb->get_results(
 			$wpdb->prepare(
 				// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, PluginCheck.Security.DirectDB.UnescapedDBParameter -- Internal table name is safe.
