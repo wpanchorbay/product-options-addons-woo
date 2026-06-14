@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name:       OptionBay - Product Options and Addons
- * Plugin URI:        https://wpanchorbay.com
+ * Plugin URI:        https://wpanchorbay.com/plugins/smart-product-options-addons/
  * Description:       Add custom product options, add-ons, and extra fields to WooCommerce products with advanced pricing, inventory, and conditional logic.
  * Requires at least: 6.0
  * Requires PHP:      7.4
