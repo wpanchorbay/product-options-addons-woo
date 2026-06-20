@@ -24,11 +24,11 @@ use SmartProductOptionsAddons\Data\DbManager;
  * REST API controller for Option Groups (CRUD + assignment sync).
  *
  * Endpoints:
- *   GET    /product-options-addons-woo/v1/groups         - List all groups
- *   GET    /product-options-addons-woo/v1/groups/{id}    - Get single group
- *   POST   /product-options-addons-woo/v1/groups         - Create group
- *   PUT    /product-options-addons-woo/v1/groups/{id}    - Update group
- *   DELETE /product-options-addons-woo/v1/groups/{id}    - Delete group
+ *   GET    /optionbay-product-options-addons-woo/v1/groups         - List all groups
+ *   GET    /optionbay-product-options-addons-woo/v1/groups/{id}    - Get single group
+ *   POST   /optionbay-product-options-addons-woo/v1/groups         - Create group
+ *   PUT    /optionbay-product-options-addons-woo/v1/groups/{id}    - Update group
+ *   DELETE /optionbay-product-options-addons-woo/v1/groups/{id}    - Delete group
  *
  * @since      1.0.0
  * @package    SmartProductOptionsAddons
@@ -233,7 +233,7 @@ class AddonGroupController extends ApiController {
 	 * @return \WP_REST_Response|\WP_Error
 	 */
 	public function get_items( $request ) {
-		product_options_addons_woo_log( 'AddonGroupController: Fetching multiple items (GET /groups).', 'DEBUG' );
+		opopw_log( 'AddonGroupController: Fetching multiple items (GET /groups).', 'DEBUG' );
 
 		$page     = $request->get_param( 'page' );
 		$per_page = min( $request->get_param( 'per_page' ), 100 );
@@ -311,14 +311,14 @@ class AddonGroupController extends ApiController {
 	 */
 	public function get_item( $request ) {
 		$id = absint( $request->get_param( 'id' ) );
-		product_options_addons_woo_log( "AddonGroupController: Fetching single item ID {$id} (GET /groups/{$id}).", 'DEBUG' );
+		opopw_log( "AddonGroupController: Fetching single item ID {$id} (GET /groups/{$id}).", 'DEBUG' );
 
 		$post = get_post( $id );
 
 		if ( ! $post || AddonGroup::POST_TYPE !== $post->post_type ) {
 			return new WP_Error(
 				'not_found',
-				__( 'Option group not found.', 'product-options-addons-woo' ),
+				__( 'Option group not found.', 'optionbay-product-options-addons-woo' ),
 				array( 'status' => 404 )
 			);
 		}
@@ -351,7 +351,7 @@ class AddonGroupController extends ApiController {
 	 * @throws \Exception On failure.
 	 */
 	public function create_item( $request ) {
-		product_options_addons_woo_log( 'AddonGroupController: Creating new item (POST /groups).', 'INFO' );
+		opopw_log( 'AddonGroupController: Creating new item (POST /groups).', 'INFO' );
 
 		$validated = $this->validate(
 			$request,
@@ -380,10 +380,10 @@ class AddonGroupController extends ApiController {
 			foreach ( $new_inventories as $new_inv ) {
 				$inv_id = \SmartProductOptionsAddons\Data\InventoryManager::get_instance()->create_item( $new_inv );
 				if ( ! inv_id ) {
-					throw new \Exception( __( 'Failed to create global inventory item.', 'product-options-addons-woo' ) );
+					throw new \Exception( __( 'Failed to create global inventory item.', 'optionbay-product-options-addons-woo' ) );
 				}
 				$id_map[ $new_inv['tmp_id'] ] = $inv_id;
-				product_options_addons_woo_log( sprintf( 'AddonGroupController: Created global inventory item %d for tmp_id %s.', $inv_id, $new_inv['tmp_id'] ), 'DEBUG' );
+				opopw_log( sprintf( 'AddonGroupController: Created global inventory item %d for tmp_id %s.', $inv_id, $new_inv['tmp_id'] ), 'DEBUG' );
 			}
 
 			// 2. Swap temporary IDs in schema
@@ -406,17 +406,17 @@ class AddonGroupController extends ApiController {
 				throw new \Exception( $post_id->get_error_message() );
 			}
 
-			product_options_addons_woo_log( sprintf( 'AddonGroupController: Created CPT post ID %d with title "%s" and status "%s".', $post_id, $title, $status ), 'INFO' );
+			opopw_log( sprintf( 'AddonGroupController: Created CPT post ID %d with title "%s" and status "%s".', $post_id, $title, $status ), 'INFO' );
 
 			// 5. Save schema as post meta
 			$encoded_schema = wp_json_encode( $schema );
 			update_post_meta( $post_id, AddonGroup::META_SCHEMA, wp_slash( $encoded_schema ) );
-			product_options_addons_woo_log( sprintf( 'AddonGroupController: Saved schema JSON meta for post ID %d.', $post_id ), 'DEBUG' );
+			opopw_log( sprintf( 'AddonGroupController: Saved schema JSON meta for post ID %d.', $post_id ), 'DEBUG' );
 
 			// 6. Sync assignments
 			if ( ! empty( $assignments ) ) {
 				DbManager::get_instance()->sync_assignments( $post_id, $assignments );
-				product_options_addons_woo_log( sprintf( 'AddonGroupController: Synced assignments for post ID %d.', $post_id ), 'DEBUG' );
+				opopw_log( sprintf( 'AddonGroupController: Synced assignments for post ID %d.', $post_id ), 'DEBUG' );
 			}
 
 			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
@@ -429,7 +429,7 @@ class AddonGroupController extends ApiController {
 				array(
 					'success' => true,
 					'id'      => $post_id,
-					'message' => __( 'Option group created successfully.', 'product-options-addons-woo' ),
+					'message' => __( 'Option group created successfully.', 'optionbay-product-options-addons-woo' ),
 				),
 				201
 			);
@@ -437,7 +437,7 @@ class AddonGroupController extends ApiController {
 		} catch ( \Exception $e ) {
 			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 			$wpdb->query( 'ROLLBACK' );
-			product_options_addons_woo_log( 'AddonGroupController: Failed to create addon group CPT. Error: ' . $e->getMessage(), 'ERROR' );
+			opopw_log( 'AddonGroupController: Failed to create addon group CPT. Error: ' . $e->getMessage(), 'ERROR' );
 			return new WP_Error( 'create_failed', $e->getMessage(), array( 'status' => 500 ) );
 		}
 	}
@@ -453,14 +453,14 @@ class AddonGroupController extends ApiController {
 	public function update_item( $request ) {
 
 		$id = absint( $request->get_param( 'id' ) );
-		product_options_addons_woo_log( "AddonGroupController: Updating item ID {$id} (PUT /groups/{$id}).", 'INFO' );
+		opopw_log( "AddonGroupController: Updating item ID {$id} (PUT /groups/{$id}).", 'INFO' );
 
 		$post = get_post( $id );
 
 		if ( ! $post || AddonGroup::POST_TYPE !== $post->post_type ) {
 			return new WP_Error(
 				'not_found',
-				__( 'Option group not found.', 'product-options-addons-woo' ),
+				__( 'Option group not found.', 'optionbay-product-options-addons-woo' ),
 				array( 'status' => 404 )
 			);
 		}
@@ -510,10 +510,10 @@ class AddonGroupController extends ApiController {
 				foreach ( $new_inventories as $new_inv ) {
 					$inv_id = \SmartProductOptionsAddons\Data\InventoryManager::get_instance()->create_item( $new_inv );
 					if ( ! inv_id ) {
-						throw new \Exception( __( 'Failed to create global inventory item.', 'product-options-addons-woo' ) );
+						throw new \Exception( __( 'Failed to create global inventory item.', 'optionbay-product-options-addons-woo' ) );
 					}
 					$id_map[ $new_inv['tmp_id'] ] = $inv_id;
-					product_options_addons_woo_log( sprintf( 'AddonGroupController: Created global inventory item %d for tmp_id %s.', $inv_id, $new_inv['tmp_id'] ), 'DEBUG' );
+					opopw_log( sprintf( 'AddonGroupController: Created global inventory item %d for tmp_id %s.', $inv_id, $new_inv['tmp_id'] ), 'DEBUG' );
 				}
 
 				$schema = $validated['schema'] ?? json_decode( get_post_meta( $id, AddonGroup::META_SCHEMA, true ), true );
@@ -526,14 +526,14 @@ class AddonGroupController extends ApiController {
 
 				$encoded_schema = wp_json_encode( $schema );
 				update_post_meta( $id, AddonGroup::META_SCHEMA, wp_slash( $encoded_schema ) );
-				product_options_addons_woo_log( sprintf( 'AddonGroupController: Updated schema JSON meta for post ID %d.', $id ), 'DEBUG' );
+				opopw_log( sprintf( 'AddonGroupController: Updated schema JSON meta for post ID %d.', $id ), 'DEBUG' );
 
 				// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 				$wpdb->query( 'COMMIT' );
 			} catch ( \Exception $e ) {
 				// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 				$wpdb->query( 'ROLLBACK' );
-				product_options_addons_woo_log( sprintf( 'AddonGroupController: Failed to update addon group ID %d. Error: %s', $id, $e->getMessage() ), 'ERROR' );
+				opopw_log( sprintf( 'AddonGroupController: Failed to update addon group ID %d. Error: %s', $id, $e->getMessage() ), 'ERROR' );
 				return new WP_Error( 'update_failed', $e->getMessage(), array( 'status' => 500 ) );
 			}
 		}
@@ -541,7 +541,7 @@ class AddonGroupController extends ApiController {
 		// Sync assignments (delete & re-insert)
 		if ( isset( $validated['assignments'] ) ) {
 			DbManager::get_instance()->sync_assignments( $id, $validated['assignments'] );
-			product_options_addons_woo_log( sprintf( 'AddonGroupController: Synced assignments for post ID %d.', $id ), 'DEBUG' );
+			opopw_log( sprintf( 'AddonGroupController: Synced assignments for post ID %d.', $id ), 'DEBUG' );
 		}
 
 		// Invalidate cache
@@ -551,7 +551,7 @@ class AddonGroupController extends ApiController {
 			array(
 				'success'  => true,
 				'id'       => $id,
-				'message'  => __( 'Option group updated successfully.', 'product-options-addons-woo' ),
+				'message'  => __( 'Option group updated successfully.', 'optionbay-product-options-addons-woo' ),
 				'modified' => current_time( 'mysql' ),
 			),
 			200
@@ -567,14 +567,14 @@ class AddonGroupController extends ApiController {
 	 */
 	public function delete_item( $request ) {
 		$id = absint( $request->get_param( 'id' ) );
-		product_options_addons_woo_log( "AddonGroupController: Deleting/Trashing item ID {$id} (DELETE /groups/{$id}).", 'WARNING' );
+		opopw_log( "AddonGroupController: Deleting/Trashing item ID {$id} (DELETE /groups/{$id}).", 'WARNING' );
 
 		$post = get_post( $id );
 
 		if ( ! $post || AddonGroup::POST_TYPE !== $post->post_type ) {
 			return new WP_Error(
 				'rest_not_found',
-				__( 'Option group not found.', 'product-options-addons-woo' ),
+				__( 'Option group not found.', 'optionbay-product-options-addons-woo' ),
 				array( 'status' => 404 )
 			);
 		}
@@ -585,17 +585,17 @@ class AddonGroupController extends ApiController {
 			DbManager::get_instance()->delete_assignments_for_group( $id );
 
 			$deleted = wp_delete_post( $id, true );
-			$message = __( 'Option group permanently deleted.', 'product-options-addons-woo' );
+			$message = __( 'Option group permanently deleted.', 'optionbay-product-options-addons-woo' );
 		} else {
 			// Move to trash
 			$deleted = wp_trash_post( $id );
-			$message = __( 'Option group moved to trash.', 'product-options-addons-woo' );
+			$message = __( 'Option group moved to trash.', 'optionbay-product-options-addons-woo' );
 		}
 
 		if ( ! $deleted ) {
 			return new WP_Error(
 				'delete_failed',
-				__( 'Failed to delete option group.', 'product-options-addons-woo' ),
+				__( 'Failed to delete option group.', 'optionbay-product-options-addons-woo' ),
 				array( 'status' => 500 )
 			);
 		}
@@ -623,20 +623,20 @@ class AddonGroupController extends ApiController {
 	 */
 	public function duplicate_item( $request ) {
 		$id = absint( $request->get_param( 'id' ) );
-		product_options_addons_woo_log( "AddonGroupController: Duplicating item ID {$id} (POST /groups/{$id}/duplicate).", 'INFO' );
+		opopw_log( "AddonGroupController: Duplicating item ID {$id} (POST /groups/{$id}/duplicate).", 'INFO' );
 
 		$post = get_post( $id );
 
 		if ( ! $post || AddonGroup::POST_TYPE !== $post->post_type ) {
 			return new WP_Error(
 				'not_found',
-				__( 'Option group not found.', 'product-options-addons-woo' ),
+				__( 'Option group not found.', 'optionbay-product-options-addons-woo' ),
 				array( 'status' => 404 )
 			);
 		}
 
 		// Prepare duplicate data
-		$new_title   = $post->post_title . ' ' . __( '(Copy)', 'product-options-addons-woo' );
+		$new_title   = $post->post_title . ' ' . __( '(Copy)', 'optionbay-product-options-addons-woo' );
 		$schema      = get_post_meta( $id, AddonGroup::META_SCHEMA, true );
 		$settings    = get_post_meta( $id, AddonGroup::META_SETTINGS, true );
 		$assignments = DbManager::get_instance()->get_assignments_for_group( $id );
@@ -654,7 +654,7 @@ class AddonGroupController extends ApiController {
 		if ( is_wp_error( $new_id ) ) {
 			return new WP_Error(
 				'duplicate_failed',
-				__( 'Failed to duplicate option group.', 'product-options-addons-woo' ),
+				__( 'Failed to duplicate option group.', 'optionbay-product-options-addons-woo' ),
 				array( 'status' => 500 )
 			);
 		}
@@ -676,7 +676,7 @@ class AddonGroupController extends ApiController {
 			array(
 				'success' => true,
 				'id'      => $new_id,
-				'message' => __( 'Option group duplicated successfully.', 'product-options-addons-woo' ),
+				'message' => __( 'Option group duplicated successfully.', 'optionbay-product-options-addons-woo' ),
 			),
 			201
 		);
@@ -692,14 +692,14 @@ class AddonGroupController extends ApiController {
 	public function update_status( $request ) {
 		$id     = absint( $request->get_param( 'id' ) );
 		$status = sanitize_text_field( $request->get_param( 'status' ) );
-		product_options_addons_woo_log( "AddonGroupController: Updating status of group ID {$id} to {$status} (PUT /groups/{$id}/status).", 'INFO' );
+		opopw_log( "AddonGroupController: Updating status of group ID {$id} to {$status} (PUT /groups/{$id}/status).", 'INFO' );
 
 		$post = get_post( $id );
 
 		if ( ! $post || AddonGroup::POST_TYPE !== $post->post_type ) {
 			return new WP_Error(
 				'not_found',
-				__( 'Option group not found.', 'product-options-addons-woo' ),
+				__( 'Option group not found.', 'optionbay-product-options-addons-woo' ),
 				array( 'status' => 404 )
 			);
 		}
@@ -715,7 +715,7 @@ class AddonGroupController extends ApiController {
 		if ( is_wp_error( $updated ) ) {
 			return new WP_Error(
 				'status_update_failed',
-				__( 'Failed to update status.', 'product-options-addons-woo' ),
+				__( 'Failed to update status.', 'optionbay-product-options-addons-woo' ),
 				array( 'status' => 500 )
 			);
 		}
@@ -746,7 +746,7 @@ class AddonGroupController extends ApiController {
 		if ( ! is_array( $ids ) || empty( $ids ) ) {
 			return new WP_Error(
 				'invalid_ids',
-				__( 'No option group IDs provided.', 'product-options-addons-woo' ),
+				__( 'No option group IDs provided.', 'optionbay-product-options-addons-woo' ),
 				array( 'status' => 400 )
 			);
 		}
@@ -828,7 +828,7 @@ class AddonGroupController extends ApiController {
 				'failed'    => $failed,
 				'message'   => sprintf(
 					/* translators: 1: action name, 2: processed count, 3: failed count */
-					__( 'Bulk action "%1$s" completed. Success: %2$d, Failed: %3$d.', 'product-options-addons-woo' ),
+					__( 'Bulk action "%1$s" completed. Success: %2$d, Failed: %3$d.', 'optionbay-product-options-addons-woo' ),
 					sanitize_text_field( $action ),
 					$processed,
 					$failed
@@ -1038,7 +1038,7 @@ class AddonGroupController extends ApiController {
 	 * @return void
 	 */
 	private function invalidate_cache( $group_id = null ) {
-		product_options_addons_woo_log( 'AddonGroupController: Invalidating cache' . ( $group_id ? " for group ID {$group_id}" : '' ) . '.', 'DEBUG' );
+		opopw_log( 'AddonGroupController: Invalidating cache' . ( $group_id ? " for group ID {$group_id}" : '' ) . '.', 'DEBUG' );
 
 		// In a future version, we could clear specific product transients here
 		// if we implement front-end caching for the AddonRenderer.
@@ -1098,7 +1098,7 @@ class AddonGroupController extends ApiController {
 			'new_inventories.*.stock_count'               => 'numeric',
 			'new_inventories.*.allow_backorders'          => 'boolean',
 			'assignments'                                 => 'array',
-			'assignments.*.target_type'                   => 'required|in:global,product',
+			'assignments.*.target_type'                   => 'required|in:global,product,category,tag',
 			'assignments.*.target_id'                     => 'required|numeric',
 		);
 	}
@@ -1111,10 +1111,10 @@ class AddonGroupController extends ApiController {
 	 */
 	private function get_validation_messages() {
 		return array(
-			'required' => ':attribute ' . __( 'is required', 'product-options-addons-woo' ),
-			'min'      => ':attribute ' . __( 'minimum is :min', 'product-options-addons-woo' ),
-			'max'      => ':attribute ' . __( 'maximum is :max', 'product-options-addons-woo' ),
-			'numeric'  => ':attribute ' . __( 'must be a number', 'product-options-addons-woo' ),
+			'required' => ':attribute ' . __( 'is required', 'optionbay-product-options-addons-woo' ),
+			'min'      => ':attribute ' . __( 'minimum is :min', 'optionbay-product-options-addons-woo' ),
+			'max'      => ':attribute ' . __( 'maximum is :max', 'optionbay-product-options-addons-woo' ),
+			'numeric'  => ':attribute ' . __( 'must be a number', 'optionbay-product-options-addons-woo' ),
 		);
 	}
 
@@ -1126,11 +1126,11 @@ class AddonGroupController extends ApiController {
 	 */
 	private function get_validation_aliases() {
 		return array(
-			'title'                     => __( 'Title', 'product-options-addons-woo' ),
-			'schema.*.label'            => __( 'Label', 'product-options-addons-woo' ),
-			'schema.*.type'             => __( 'Type', 'product-options-addons-woo' ),
-			'schema.*.options.*.label'  => __( 'Choice Label', 'product-options-addons-woo' ),
-			'assignments.*.target_type' => __( 'Assignment target', 'product-options-addons-woo' ),
+			'title'                     => __( 'Title', 'optionbay-product-options-addons-woo' ),
+			'schema.*.label'            => __( 'Label', 'optionbay-product-options-addons-woo' ),
+			'schema.*.type'             => __( 'Type', 'optionbay-product-options-addons-woo' ),
+			'schema.*.options.*.label'  => __( 'Choice Label', 'optionbay-product-options-addons-woo' ),
+			'assignments.*.target_type' => __( 'Assignment target', 'optionbay-product-options-addons-woo' ),
 		);
 	}
 
@@ -1159,7 +1159,7 @@ class AddonGroupController extends ApiController {
 
 				if ( in_array( $price_type, array( 'flat', 'percentage' ), true ) ) {
 					if ( $price <= 0 ) {
-						$errors[ "schema.{$f_idx}.price" ] = __( 'Price must be greater than 0 when a price type is selected.', 'product-options-addons-woo' );
+						$errors[ "schema.{$f_idx}.price" ] = __( 'Price must be greater than 0 when a price type is selected.', 'optionbay-product-options-addons-woo' );
 					}
 				}
 
@@ -1177,14 +1177,14 @@ class AddonGroupController extends ApiController {
 
 						if ( in_array( $opt_price_type, array( 'flat' ), true ) ) {
 							if ( $opt_price <= 0 ) {
-								$errors[ "schema.{$f_idx}.options.{$o_idx}.price" ] = __( 'Price must be greater than 0 when a price type is selected.', 'product-options-addons-woo' );
+								$errors[ "schema.{$f_idx}.options.{$o_idx}.price" ] = __( 'Price must be greater than 0 when a price type is selected.', 'optionbay-product-options-addons-woo' );
 							}
 						}
 					}
 				}
 
 				if ( $options_have_stock && $field_enable_stock ) {
-					$errors[ "schema.{$f_idx}.enable_stock" ] = __( 'Field stock tracking cannot be enabled when individual choice stock tracking is enabled.', 'product-options-addons-woo' );
+					$errors[ "schema.{$f_idx}.enable_stock" ] = __( 'Field stock tracking cannot be enabled when individual choice stock tracking is enabled.', 'optionbay-product-options-addons-woo' );
 				}
 			}
 		}
@@ -1192,7 +1192,7 @@ class AddonGroupController extends ApiController {
 		if ( ! empty( $errors ) ) {
 			return new WP_Error(
 				'validation_failed',
-				__( 'Invalid data provided.', 'product-options-addons-woo' ),
+				__( 'Invalid data provided.', 'optionbay-product-options-addons-woo' ),
 				array(
 					'status' => 422,
 					'errors' => $errors,
@@ -1200,22 +1200,7 @@ class AddonGroupController extends ApiController {
 			);
 		}
 
-		// Pro gating: filter out disallowed assignments.
-		if ( isset( $validated['assignments'] ) && is_array( $validated['assignments'] ) ) {
-			$allowed_targets          = array( 'global', 'product' );
-			$validated['assignments'] = array_values(
-				array_filter(
-					$validated['assignments'],
-					function ( $a ) use ( $allowed_targets ) {
-						// Filter out disallowed target types.
-						if ( ! in_array( $a['target_type'] ?? '', $allowed_targets, true ) ) {
-							return false;
-						}
-						return true;
-					}
-				)
-			);
-		}
+		// Pro gating removed: all assignment targets (global, product, category, tag) are allowed.
 
 		return $validated;
 	}

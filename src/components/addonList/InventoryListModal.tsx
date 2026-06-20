@@ -36,7 +36,7 @@ const InventoryListModal: React.FC<InventoryListModalProps> = ({
     if (!deletingId) return;
     try {
       await apiFetch({
-        path: `product-options-addons-woo/v1/inventory/${deletingId}`,
+        path: `optionbay-product-options-addons-woo/v1/inventory/${deletingId}`,
         method: "DELETE",
       });
       setItems((prev) => prev.filter((i) => i.id !== deletingId));
@@ -50,7 +50,7 @@ const InventoryListModal: React.FC<InventoryListModalProps> = ({
         });
       } else {
         console.error("Failed to delete inventory:", err);
-        alert(__("Failed to delete inventory item.", "product-options-addons-woo"));
+        alert(__("Failed to delete inventory item.", "optionbay-product-options-addons-woo"));
       }
     }
   };
@@ -60,7 +60,7 @@ const InventoryListModal: React.FC<InventoryListModalProps> = ({
     try {
       const query = search ? `?search=${encodeURIComponent(search)}` : "";
       const data = (await apiFetch({
-        path: `product-options-addons-woo/v1/inventory${query}`,
+        path: `optionbay-product-options-addons-woo/v1/inventory${query}`,
         method: "GET",
       })) as InventoryItem[];
       setItems(data);
@@ -86,7 +86,7 @@ const InventoryListModal: React.FC<InventoryListModalProps> = ({
     setIsSaving(true);
     try {
       await apiFetch({
-        path: `product-options-addons-woo/v1/inventory/${id}`,
+        path: `optionbay-product-options-addons-woo/v1/inventory/${id}`,
         method: "PUT",
         data: { stock_count: newStock },
       });
@@ -116,7 +116,7 @@ const InventoryListModal: React.FC<InventoryListModalProps> = ({
 
     try {
       await apiFetch({
-        path: `product-options-addons-woo/v1/inventory/${item.id}`,
+        path: `optionbay-product-options-addons-woo/v1/inventory/${item.id}`,
         method: "PUT",
         data: { allow_backorders: newValue },
       });
@@ -149,17 +149,17 @@ const InventoryListModal: React.FC<InventoryListModalProps> = ({
       title={
         <div className="wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-gap-2">
           <Package className="wpab-wpoa-w-5 wpab-wpoa-h-5 wpab-wpoa-text-[#2271b1]" />
-          <span>{__("Inventory Management", "product-options-addons-woo")}</span>
+          <span>{__("Inventory Management", "optionbay-product-options-addons-woo")}</span>
         </div>
       }
       maxWidth="wpab-wpoa-max-w-4xl"
       footer={
         <div className="wpab-wpoa-flex wpab-wpoa-justify-between wpab-wpoa-w-full wpab-wpoa-items-center">
           <p className="wpab-wpoa-text-xs wpab-wpoa-text-gray-500 wpab-wpoa-m-0">
-            {__("Total Pools:", "product-options-addons-woo")} {items.length}
+            {__("Total Pools:", "optionbay-product-options-addons-woo")} {items.length}
           </p>
           <ClassicButton variant="secondary" onClick={onClose}>
-            {__("Close", "product-options-addons-woo")}
+            {__("Close", "optionbay-product-options-addons-woo")}
           </ClassicButton>
         </div>
       }
@@ -172,7 +172,7 @@ const InventoryListModal: React.FC<InventoryListModalProps> = ({
             <input
               type="text"
               className="wpab-wpoa-w-full wpab-wpoa-pl-9 wpab-wpoa-pr-4 wpab-wpoa-py-2 wpab-wpoa-text-sm wpab-wpoa-border wpab-wpoa-border-gray-200 wpab-wpoa-rounded-lg focus:wpab-wpoa-outline-none focus:wpab-wpoa-border-[#2271b1] focus:wpab-wpoa-ring-1 focus:wpab-wpoa-ring-[#2271b1]/20 wpab-wpoa-transition-all"
-              placeholder={__("Search inventory...", "product-options-addons-woo")}
+              placeholder={__("Search inventory...", "optionbay-product-options-addons-woo")}
               value={search}
               onChange={(e) => setSearch(e.target.value)}
             />
@@ -188,7 +188,7 @@ const InventoryListModal: React.FC<InventoryListModalProps> = ({
                 loading ? "wpab-wpoa-animate-spin" : ""
               }`}
             />
-            {__("Refresh", "product-options-addons-woo")}
+            {__("Refresh", "optionbay-product-options-addons-woo")}
           </ClassicButton>
         </div>
 
@@ -198,19 +198,19 @@ const InventoryListModal: React.FC<InventoryListModalProps> = ({
             <thead className="wpab-wpoa-bg-gray-50/50">
               <tr>
                 <th className="wpab-wpoa-px-4 wpab-wpoa-py-3 wpab-wpoa-text-xs wpab-wpoa-font-semibold wpab-wpoa-text-gray-500 wpab-wpoa-uppercase wpab-wpoa-tracking-wider">
-                  {__("ID", "product-options-addons-woo")}
+                  {__("ID", "optionbay-product-options-addons-woo")}
                 </th>
                 <th className="wpab-wpoa-px-4 wpab-wpoa-py-3 wpab-wpoa-text-xs wpab-wpoa-font-semibold wpab-wpoa-text-gray-500 wpab-wpoa-uppercase wpab-wpoa-tracking-wider">
-                  {__("Name", "product-options-addons-woo")}
+                  {__("Name", "optionbay-product-options-addons-woo")}
                 </th>
                 <th className="wpab-wpoa-px-4 wpab-wpoa-py-3 wpab-wpoa-text-xs wpab-wpoa-font-semibold wpab-wpoa-text-gray-500 wpab-wpoa-uppercase wpab-wpoa-tracking-wider">
-                  {__("Stock Status", "product-options-addons-woo")}
+                  {__("Stock Status", "optionbay-product-options-addons-woo")}
                 </th>
                 <th className="wpab-wpoa-px-4 wpab-wpoa-py-3 wpab-wpoa-text-xs wpab-wpoa-font-semibold wpab-wpoa-text-gray-500 wpab-wpoa-uppercase wpab-wpoa-tracking-wider">
-                  {__("Backorders", "product-options-addons-woo")}
+                  {__("Backorders", "optionbay-product-options-addons-woo")}
                 </th>
                 <th className="wpab-wpoa-px-4 wpab-wpoa-py-3 wpab-wpoa-text-xs wpab-wpoa-font-semibold wpab-wpoa-text-gray-500 wpab-wpoa-uppercase wpab-wpoa-tracking-wider wpab-wpoa-text-right">
-                  {__("Action", "product-options-addons-woo")}
+                  {__("Action", "optionbay-product-options-addons-woo")}
                 </th>
               </tr>
             </thead>
@@ -224,7 +224,7 @@ const InventoryListModal: React.FC<InventoryListModalProps> = ({
                     <div className="wpab-wpoa-flex wpab-wpoa-flex-col wpab-wpoa-items-center wpab-wpoa-gap-3">
                       <RefreshCw className="wpab-wpoa-w-8 wpab-wpoa-h-8 wpab-wpoa-text-gray-300 wpab-wpoa-animate-spin" />
                       <span className="wpab-wpoa-text-sm wpab-wpoa-text-gray-400">
-                        {__("Loading inventory data...", "product-options-addons-woo")}
+                        {__("Loading inventory data...", "optionbay-product-options-addons-woo")}
                       </span>
                     </div>
                   </td>
@@ -239,8 +239,8 @@ const InventoryListModal: React.FC<InventoryListModalProps> = ({
                       <AlertCircle className="wpab-wpoa-w-8 wpab-wpoa-h-8 wpab-wpoa-text-gray-200" />
                       <span className="wpab-wpoa-text-sm wpab-wpoa-text-gray-400">
                         {search
-                          ? __("No matching inventory found.", "product-options-addons-woo")
-                          : __("No inventory pools created yet.", "product-options-addons-woo")}
+                          ? __("No matching inventory found.", "optionbay-product-options-addons-woo")
+                          : __("No inventory pools created yet.", "optionbay-product-options-addons-woo")}
                       </span>
                     </div>
                   </td>
@@ -306,7 +306,7 @@ const InventoryListModal: React.FC<InventoryListModalProps> = ({
                             {formatStock(item.stock_count)}
                           </span>
                           <span className="wpab-wpoa-text-[10px] wpab-wpoa-text-[#2271b1] wpab-wpoa-opacity-0 group-hover/stock:wpab-wpoa-opacity-100 wpab-wpoa-transition-opacity">
-                            {__("Edit", "product-options-addons-woo")}
+                            {__("Edit", "optionbay-product-options-addons-woo")}
                           </span>
                         </div>
                       )}
@@ -319,11 +319,11 @@ const InventoryListModal: React.FC<InventoryListModalProps> = ({
                             ? "wpab-wpoa-bg-blue-50 wpab-wpoa-text-blue-700"
                             : "wpab-wpoa-bg-gray-100 wpab-wpoa-text-gray-600"
                         }`}
-                        title={__("Click to toggle backorders", "product-options-addons-woo")}
+                        title={__("Click to toggle backorders", "optionbay-product-options-addons-woo")}
                       >
                         {item.allow_backorders
-                          ? __("Allowed", "product-options-addons-woo")
-                          : __("Denied", "product-options-addons-woo")}
+                          ? __("Allowed", "optionbay-product-options-addons-woo")
+                          : __("Denied", "optionbay-product-options-addons-woo")}
                       </span>
                     </td>
                     <td className="wpab-wpoa-px-4 wpab-wpoa-py-4 wpab-wpoa-text-right">
@@ -335,12 +335,12 @@ const InventoryListModal: React.FC<InventoryListModalProps> = ({
                             setEditValue(item.stock_count.toString());
                           }}
                         >
-                          {__("Adjust Stock", "product-options-addons-woo")}
+                          {__("Adjust Stock", "optionbay-product-options-addons-woo")}
                         </button>
                         <button
                           className="wpab-wpoa-text-gray-400 hover:wpab-wpoa-text-red-600 wpab-wpoa-transition-colors wpab-wpoa-bg-transparent wpab-wpoa-border-none wpab-wpoa-cursor-pointer"
                           onClick={() => setDeletingId(item.id)}
-                          title={__("Delete Inventory", "product-options-addons-woo")}
+                          title={__("Delete Inventory", "optionbay-product-options-addons-woo")}
                         >
                           <Trash2 className="wpab-wpoa-w-4 wpab-wpoa-h-4" />
                         </button>
@@ -357,11 +357,11 @@ const InventoryListModal: React.FC<InventoryListModalProps> = ({
 
       <ConfirmationModal
         isOpen={deletingId !== null}
-        title={__("Delete Inventory", "product-options-addons-woo")}
-        message={__("Are you sure you want to delete this inventory item? This action cannot be undone.", "product-options-addons-woo")}
+        title={__("Delete Inventory", "optionbay-product-options-addons-woo")}
+        message={__("Are you sure you want to delete this inventory item? This action cannot be undone.", "optionbay-product-options-addons-woo")}
         onConfirm={handleDelete}
         onCancel={() => setDeletingId(null)}
-        confirmLabel={__("Delete", "product-options-addons-woo")}
+        confirmLabel={__("Delete", "optionbay-product-options-addons-woo")}
         classNames={{
           button: { confirmColor: "danger" }
         }}
@@ -374,14 +374,14 @@ const InventoryListModal: React.FC<InventoryListModalProps> = ({
           title={
             <div className="wpab-wpoa-text-red-600 wpab-wpoa-font-semibold wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-gap-2">
               <AlertCircle className="wpab-wpoa-w-5 wpab-wpoa-h-5" />
-              {__("Cannot Delete Inventory", "product-options-addons-woo")}
+              {__("Cannot Delete Inventory", "optionbay-product-options-addons-woo")}
             </div>
           }
           maxWidth="wpab-wpoa-max-w-md"
           footer={
             <div className="wpab-wpoa-flex wpab-wpoa-justify-end wpab-wpoa-w-full">
               <ClassicButton onClick={() => setDeleteError(null)}>
-                {__("Close", "product-options-addons-woo")}
+                {__("Close", "optionbay-product-options-addons-woo")}
               </ClassicButton>
             </div>
           }
@@ -392,7 +392,7 @@ const InventoryListModal: React.FC<InventoryListModalProps> = ({
             </p>
             <div className="wpab-wpoa-bg-red-50 wpab-wpoa-p-4 wpab-wpoa-rounded-lg wpab-wpoa-border wpab-wpoa-border-red-100">
               <h4 className="wpab-wpoa-text-sm wpab-wpoa-font-semibold wpab-wpoa-text-red-800 wpab-wpoa-mb-2">
-                {__("Used by Option Groups:", "product-options-addons-woo")}
+                {__("Used by Option Groups:", "optionbay-product-options-addons-woo")}
               </h4>
               <ul className="wpab-wpoa-list-disc wpab-wpoa-list-inside wpab-wpoa-text-sm wpab-wpoa-text-red-700 wpab-wpoa-flex wpab-wpoa-flex-col wpab-wpoa-gap-1">
                 {deleteError.groups.map(g => (

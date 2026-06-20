@@ -58,7 +58,7 @@ export const Toast: FC< ToastProps > = ( { toast, onDismiss } ) => {
 						{/* Header row with badges */}
 						<div className="wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-gap-1.5 wpab-wpoa-flex-wrap">
 							<span className="wpab-wpoa-bg-[#fee2e2] wpab-wpoa-text-[#991b1b] wpab-wpoa-text-[11px] wpab-wpoa-font-bold wpab-wpoa-px-2 wpab-wpoa-py-0.5 wpab-wpoa-rounded wpab-wpoa-uppercase wpab-wpoa-tracking-wider">
-								{ toast.meta.fieldName || __( 'Validation Error', 'product-options-addons-woo' ) }
+								{ toast.meta.fieldName || __( 'Validation Error', 'optionbay-product-options-addons-woo' ) }
 							</span>
 							{ toast.meta.section && (
 								<span className="wpab-wpoa-bg-[#eaeaea] wpab-wpoa-text-[#444] wpab-wpoa-text-[10px] wpab-wpoa-font-semibold wpab-wpoa-px-1.5 wpab-wpoa-py-0.5 wpab-wpoa-rounded wpab-wpoa-capitalize">
@@ -105,7 +105,7 @@ export const Toast: FC< ToastProps > = ( { toast, onDismiss } ) => {
 								className="wpab-wpoa-self-start wpab-wpoa-mt-2 wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-gap-1 wpab-wpoa-text-[11px] wpab-wpoa-font-bold wpab-wpoa-text-[#cc0000] hover:wpab-wpoa-text-white wpab-wpoa-bg-transparent hover:wpab-wpoa-bg-[#cc0000] wpab-wpoa-border wpab-wpoa-border-[#cc0000] wpab-wpoa-px-2.5 wpab-wpoa-py-1 wpab-wpoa-rounded wpab-wpoa-transition-all wpab-wpoa-cursor-pointer"
 							>
 								<Eye size={12} />
-								{ __( 'Locate & Edit Field', 'product-options-addons-woo' ) }
+								{ __( 'Locate & Edit Field', 'optionbay-product-options-addons-woo' ) }
 							</button>
 						) }
 					</div>

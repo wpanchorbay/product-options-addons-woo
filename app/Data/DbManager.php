@@ -63,7 +63,7 @@ class DbManager {
 	 * @since 1.0.0
 	 */
 	public function create_tables() {
-		product_options_addons_woo_log( 'DbManager: Running database table creations/updates.', 'INFO' );
+		opopw_log( 'DbManager: Running database table creations/updates.', 'INFO' );
 		$this->create_assignments_table();
 		$this->create_inventory_table();
 	}
@@ -101,7 +101,7 @@ class DbManager {
 	 * @access private
 	 */
 	private function create_assignments_table() {
-		product_options_addons_woo_log( 'DbManager: Creating or updating assignments lookup table.', 'DEBUG' );
+		opopw_log( 'DbManager: Creating or updating assignments lookup table.', 'DEBUG' );
 		global $wpdb;
 		$table_name      = self::get_assignments_table();
 		$charset_collate = $wpdb->get_charset_collate();
@@ -130,7 +130,7 @@ class DbManager {
 	 * @access private
 	 */
 	private function create_inventory_table() {
-		product_options_addons_woo_log( 'DbManager: Creating or updating global inventory table.', 'DEBUG' );
+		opopw_log( 'DbManager: Creating or updating global inventory table.', 'DEBUG' );
 		global $wpdb;
 		$table_name      = self::get_inventory_table();
 		$charset_collate = $wpdb->get_charset_collate();
@@ -211,11 +211,11 @@ class DbManager {
 				++$inserted;
 			} else {
 				// Record error if insertion query fails
-				product_options_addons_woo_log( "Failed to insert assignment for group {$group_id} to {$assignment['target_type']}:{$assignment['target_id']}", 'ERROR' );
+				opopw_log( "Failed to insert assignment for group {$group_id} to {$assignment['target_type']}:{$assignment['target_id']}", 'ERROR' );
 			}
 		}
 
-		product_options_addons_woo_log( "Successfully inserted {$inserted} assignments for group {$group_id}", 'INFO' );
+		opopw_log( "Successfully inserted {$inserted} assignments for group {$group_id}", 'INFO' );
 
 		if ( $inserted > 0 ) {
 			wp_cache_set( 'wpab_wpoa_assignments_version', time(), 'wpab_wpoa_assignments' );
@@ -327,7 +327,7 @@ class DbManager {
 
 		wp_cache_set( $cache_key, $group_ids, 'wpab_wpoa_assignments', 3600 );
 
-		product_options_addons_woo_log( 'Resolved ' . count( $group_ids ) . " group(s) for product {$product_id}", 'DEBUG' );
+		opopw_log( 'Resolved ' . count( $group_ids ) . " group(s) for product {$product_id}", 'DEBUG' );
 
 		return $group_ids;
 	}

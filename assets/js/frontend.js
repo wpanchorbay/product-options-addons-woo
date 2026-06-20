@@ -323,7 +323,7 @@
             if (remaining < reductionAmount) {
               $fieldWrapper.find("input, select, textarea").prop("disabled", true).addClass("ob-out-of-stock");
               if ($fieldWrapper.find(".ob-stock-badge").length === 0) {
-                $fieldWrapper.find(".ob-field__label").append(' <span class="ob-stock-badge out-of-stock">' + (__("Out of stock", "product-options-addons-woo")) + '</span>');
+                $fieldWrapper.find(".ob-field__label").append(' <span class="ob-stock-badge out-of-stock">' + (__("Out of stock", "optionbay-product-options-addons-woo")) + '</span>');
               }
             } else {
               $fieldWrapper.find("input, select, textarea").prop("disabled", false).removeClass("ob-out-of-stock");
@@ -380,10 +380,10 @@
       if (!$el.data("originalText")) {
         $el.data("originalText", $el.text());
       }
-      $el.prop("disabled", true).text($el.data("originalText") + " (" + __("Out of stock", "product-options-addons-woo") + ")");
+      $el.prop("disabled", true).text($el.data("originalText") + " (" + __("Out of stock", "optionbay-product-options-addons-woo") + ")");
     } else {
       $el.prop("disabled", true).addClass("ob-out-of-stock");
-      getOptionLabel($el).addClass('ob-option-disabled').attr('title', __("Out of stock", "product-options-addons-woo"));
+      getOptionLabel($el).addClass('ob-option-disabled').attr('title', __("Out of stock", "optionbay-product-options-addons-woo"));
     }
   }
 

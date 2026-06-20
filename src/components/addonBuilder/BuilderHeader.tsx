@@ -31,7 +31,7 @@ export const BuilderHeader: React.FC<BuilderHeaderProps> = ({
       dispatch({ type: "SET_SAVING", payload: true });
       try {
         await apiFetch({
-          path: `product-options-addons-woo/v1/groups/${state.id}/status`,
+          path: `optionbay-product-options-addons-woo/v1/groups/${state.id}/status`,
           method: "PUT",
           data: {
             status: newStatus,
@@ -39,13 +39,13 @@ export const BuilderHeader: React.FC<BuilderHeaderProps> = ({
         });
         addToast(
           newStatus === "publish"
-            ? __("Option group published.", "product-options-addons-woo")
-            : __("Option group moved to draft.", "product-options-addons-woo"),
+            ? __("Option group published.", "optionbay-product-options-addons-woo")
+            : __("Option group moved to draft.", "optionbay-product-options-addons-woo"),
           "success",
         );
       } catch (err: any) {
         addToast(
-          err.message || __("Failed to update status.", "product-options-addons-woo"),
+          err.message || __("Failed to update status.", "optionbay-product-options-addons-woo"),
           "error",
         );
         // Revert local status if request fails
@@ -63,12 +63,12 @@ export const BuilderHeader: React.FC<BuilderHeaderProps> = ({
         className="button button-secondary !wpab-wpoa-inline-flex wpab-wpoa-items-center wpab-wpoa-gap-1.5 wpab-wpoa-no-underline"
       >
         <ArrowLeft size={14} className="wpab-wpoa-w-3.5 wpab-wpoa-h-3.5" />
-        {__("Back to List", "product-options-addons-woo")}
+        {__("Back to List", "optionbay-product-options-addons-woo")}
       </Link>
       <div className="wpab-wpoa-flex wpab-wpoa-flex-wrap wpab-wpoa-items-center wpab-wpoa-gap-4">
         <div className="wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-gap-2">
           <span className="wpab-wpoa-text-[13px] wpab-wpoa-text-[#646970] wpab-wpoa-mr-1">
-            {__("Status:", "product-options-addons-woo")}
+            {__("Status:", "optionbay-product-options-addons-woo")}
           </span>
           <button
             type="button"
@@ -85,8 +85,8 @@ export const BuilderHeader: React.FC<BuilderHeaderProps> = ({
             }`}
             title={
               state.status === "publish"
-                ? __("Published", "product-options-addons-woo")
-                : __("Draft", "product-options-addons-woo")
+                ? __("Published", "optionbay-product-options-addons-woo")
+                : __("Draft", "optionbay-product-options-addons-woo")
             }
           >
             <span
@@ -105,8 +105,8 @@ export const BuilderHeader: React.FC<BuilderHeaderProps> = ({
             }`}
           >
             {state.status === "publish"
-              ? __("Published", "product-options-addons-woo")
-              : __("Draft", "product-options-addons-woo")}
+              ? __("Published", "optionbay-product-options-addons-woo")
+              : __("Draft", "optionbay-product-options-addons-woo")}
           </span>
         </div>
         <ClassicButton
@@ -115,10 +115,10 @@ export const BuilderHeader: React.FC<BuilderHeaderProps> = ({
           disabled={state.isSaving}
         >
           {state.isSaving
-            ? __("Saving…", "product-options-addons-woo")
+            ? __("Saving…", "optionbay-product-options-addons-woo")
             : isEdit
-            ? __("Update Group", "product-options-addons-woo")
-            : __("Create Group", "product-options-addons-woo")}
+            ? __("Update Group", "optionbay-product-options-addons-woo")
+            : __("Create Group", "optionbay-product-options-addons-woo")}
         </ClassicButton>
       </div>
     </div>

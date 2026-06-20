@@ -11,25 +11,25 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit;
 }
 
-define( 'PRODUCT_OPTIONS_ADDONS_WOO_OPTION_NAME', 'product-options-addons-woo' );
-define( 'PRODUCT_OPTIONS_ADDONS_WOO_TEXT_DOMAIN', 'product-options-addons-woo' );
+define( 'OPOPW_OPTION_NAME', 'optionbay-product-options-addons-woo' );
+define( 'OPOPW_TEXT_DOMAIN', 'optionbay-product-options-addons-woo' );
 
-product_options_addons_woo_run_uninstall();
+opopw_run_uninstall();
 
 /**
  * The main controller function for the uninstallation process.
  *
  * @since 1.0.0
  */
-function product_options_addons_woo_run_uninstall() {
-	$options = get_option( PRODUCT_OPTIONS_ADDONS_WOO_OPTION_NAME );
+function opopw_run_uninstall() {
+	$options = get_option( OPOPW_OPTION_NAME );
 
 	// Only proceed if user opted in to delete all data.
 	if ( ! empty( $options['advanced_deleteAllOnUninstall'] ) && true === $options['advanced_deleteAllOnUninstall'] ) {
-		product_options_addons_woo_drop_custom_tables();
-		product_options_addons_woo_delete_custom_posts();
-		product_options_addons_woo_delete_plugin_options();
-		product_options_addons_woo_remove_capabilities();
+		opopw_drop_custom_tables();
+		opopw_delete_custom_posts();
+		opopw_delete_plugin_options();
+		opopw_remove_capabilities();
 	}
 }
 
@@ -38,7 +38,7 @@ function product_options_addons_woo_run_uninstall() {
  *
  * @since 1.0.0
  */
-function product_options_addons_woo_delete_custom_posts() {
+function opopw_delete_custom_posts() {
 	$posts = get_posts(
 		array(
 			'post_type'   => 'ob_option_group',
@@ -60,7 +60,7 @@ function product_options_addons_woo_delete_custom_posts() {
  *
  * @since 1.0.0
  */
-function product_options_addons_woo_drop_custom_tables() {
+function opopw_drop_custom_tables() {
 	global $wpdb;
 
 	$tables = array(
@@ -78,8 +78,8 @@ function product_options_addons_woo_drop_custom_tables() {
  *
  * @since 1.0.0
  */
-function product_options_addons_woo_delete_plugin_options() {
-	delete_option( PRODUCT_OPTIONS_ADDONS_WOO_OPTION_NAME );
+function opopw_delete_plugin_options() {
+	delete_option( OPOPW_OPTION_NAME );
 }
 
 /**
@@ -87,7 +87,7 @@ function product_options_addons_woo_delete_plugin_options() {
  *
  * @since 1.0.0
  */
-function product_options_addons_woo_remove_capabilities() {
+function opopw_remove_capabilities() {
 	// Remove the legacy custom capability added by older plugin versions (< 1.1.0).
 	// New versions use manage_woocommerce instead of this custom capability.
 	$editable_roles = get_editable_roles();

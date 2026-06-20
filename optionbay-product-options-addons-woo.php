@@ -13,7 +13,7 @@
  * Author URI:        https://wpanchorbay.com
  * License:           GPLv2 or later
  * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
- * Text Domain:       product-options-addons-woo
+ * Text Domain:       optionbay-product-options-addons-woo
  * Domain Path:       /languages
  *
  * @package SmartProductOptionsAddons
@@ -24,40 +24,40 @@ if ( ! defined( 'WPINC' ) ) {
 	die;
 }
 
-define( 'PRODUCT_OPTIONS_ADDONS_WOO_PATH', plugin_dir_path( __FILE__ ) );
-define( 'PRODUCT_OPTIONS_ADDONS_WOO_DIR', plugin_dir_path( __FILE__ ) );
-define( 'PRODUCT_OPTIONS_ADDONS_WOO_URL', plugin_dir_url( __FILE__ ) );
-define( 'PRODUCT_OPTIONS_ADDONS_WOO_VERSION', '1.1.0' );
-define( 'PRODUCT_OPTIONS_ADDONS_WOO_PLUGIN_NAME', 'product-options-addons-woo' );
-define( 'PRODUCT_OPTIONS_ADDONS_WOO_TEXT_DOMAIN', 'product-options-addons-woo' );
-define( 'PRODUCT_OPTIONS_ADDONS_WOO_OPTION_NAME', 'product-options-addons-woo' );
-define( 'PRODUCT_OPTIONS_ADDONS_WOO_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
-define( 'PRODUCT_OPTIONS_ADDONS_WOO_DEV_MODE', true );
+define( 'OPOPW_PATH', plugin_dir_path( __FILE__ ) );
+define( 'OPOPW_DIR', plugin_dir_path( __FILE__ ) );
+define( 'OPOPW_URL', plugin_dir_url( __FILE__ ) );
+define( 'OPOPW_VERSION', '1.1.0' );
+define( 'OPOPW_PLUGIN_NAME', 'optionbay-product-options-addons-woo' );
+define( 'OPOPW_TEXT_DOMAIN', 'optionbay-product-options-addons-woo' );
+define( 'OPOPW_OPTION_NAME', 'optionbay-product-options-addons-woo' );
+define( 'OPOPW_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
+define( 'OPOPW_DEV_MODE', true );
 
 /**
  * Initialize Composer Autoloader.
  */
-if ( file_exists( PRODUCT_OPTIONS_ADDONS_WOO_PATH . 'vendor/autoload.php' ) ) {
-	require_once PRODUCT_OPTIONS_ADDONS_WOO_PATH . 'vendor/autoload.php';
+if ( file_exists( OPOPW_PATH . 'vendor/autoload.php' ) ) {
+	require_once OPOPW_PATH . 'vendor/autoload.php';
 }
 
-require_once PRODUCT_OPTIONS_ADDONS_WOO_PATH . 'app/functions.php';
+require_once OPOPW_PATH . 'app/functions.php';
 
-register_activation_hook( __FILE__, 'product_options_addons_woo_activate' );
-register_deactivation_hook( __FILE__, 'product_options_addons_woo_deactivate' );
-if ( ! function_exists( 'product_options_addons_woo_run' ) ) {
+register_activation_hook( __FILE__, 'opopw_activate' );
+register_deactivation_hook( __FILE__, 'opopw_deactivate' );
+if ( ! function_exists( 'opopw_run' ) ) {
 	/**
 	 * Begins execution of the plugin.
 	 *
 	 * @since    1.0.0
 	 * @return void
 	 */
-	function product_options_addons_woo_run() {
+	function opopw_run() {
 		$plugin = \SmartProductOptionsAddons\Core\Plugin::get_instance();
 		add_action( 'plugins_loaded', array( $plugin, 'run' ) );
 	}
 }
-product_options_addons_woo_run();
+opopw_run();
 
 /**
  * Declare compatibility with WooCommerce High-Performance Order Storage (HPOS).
@@ -79,7 +79,7 @@ add_action(
  * @since 1.0.0
  * @return void
  */
-function product_options_addons_woo_activate() {
+function opopw_activate() {
 	require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 	\SmartProductOptionsAddons\Core\Activator::activate();
 }
@@ -90,6 +90,6 @@ function product_options_addons_woo_activate() {
  * @since 1.0.0
  * @return void
  */
-function product_options_addons_woo_deactivate() {
+function opopw_deactivate() {
 	\SmartProductOptionsAddons\Core\Deactivator::deactivate();
 }

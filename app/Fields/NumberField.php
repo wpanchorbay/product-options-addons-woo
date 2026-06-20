@@ -85,24 +85,24 @@ class NumberField extends BaseField {
 			$max = $this->get( 'max_value' );
 
 			if ( '' !== $min && null !== $min && $num < floatval( $min ) ) {
-				product_options_addons_woo_log( "NumberField Validation: Value {$num} is less than minimum {$min}.", 'WARNING' );
+				opopw_log( "NumberField Validation: Value {$num} is less than minimum {$min}.", 'WARNING' );
 				return new \WP_Error(
 					'min_value',
 					sprintf(
 						/* translators: 1: field label, 2: minimum value */
-						__( '%1$s must be at least %2$s.', 'product-options-addons-woo' ),
+						__( '%1$s must be at least %2$s.', 'optionbay-product-options-addons-woo' ),
 						$this->get( 'label', $this->get( 'id' ) ),
 						$min
 					)
 				);
 			}
 			if ( '' !== $max && null !== $max && $num > floatval( $max ) ) {
-				product_options_addons_woo_log( "NumberField Validation: Value {$num} exceeds maximum {$max}.", 'WARNING' );
+				opopw_log( "NumberField Validation: Value {$num} exceeds maximum {$max}.", 'WARNING' );
 				return new \WP_Error(
 					'max_value',
 					sprintf(
 						/* translators: 1: field label, 2: maximum value */
-						__( '%1$s must be at most %2$s.', 'product-options-addons-woo' ),
+						__( '%1$s must be at most %2$s.', 'optionbay-product-options-addons-woo' ),
 						$this->get( 'label', $this->get( 'id' ) ),
 						$max
 					)

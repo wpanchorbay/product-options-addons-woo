@@ -268,7 +268,7 @@ function addonReducer(
       const newField = {
         ...JSON.parse(JSON.stringify(originalField)), // Deep clone
         id: generateFieldId(),
-        label: (originalField.label || "") + " " + __("(Copy)", "product-options-addons-woo"),
+        label: (originalField.label || "") + " " + __("(Copy)", "optionbay-product-options-addons-woo"),
       };
 
       const newSchema = [...state.schema];

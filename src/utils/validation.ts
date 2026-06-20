@@ -5,7 +5,7 @@ export const conditionRuleSchema = z
 	.object({
 		target_field_id: z
 			.string()
-			.min(1, { message: __('Target field is required', 'product-options-addons-woo') }),
+			.min(1, { message: __('Target field is required', 'optionbay-product-options-addons-woo') }),
 		operator: z.string(),
 		value: z.string().optional().nullable(),
 	})
@@ -14,7 +14,7 @@ export const conditionRuleSchema = z
 			if (!data.value || data.value.trim() === '') {
 				ctx.addIssue({
 					code: z.ZodIssueCode.custom,
-					message: __('Value is required', 'product-options-addons-woo'),
+					message: __('Value is required', 'optionbay-product-options-addons-woo'),
 					path: ['value'],
 				});
 			}
@@ -34,7 +34,7 @@ export const fieldConditionsSchema = z
 				code: z.ZodIssueCode.custom,
 				message: __(
 					'At least one rule is required when logic is active',
-					'product-options-addons-woo'
+					'optionbay-product-options-addons-woo'
 				),
 				path: ['rules'],
 			});
@@ -45,10 +45,10 @@ export const fieldOptionSchema = z
 	.object({
 		label: z
 			.string()
-			.min(1, { message: __("Choice label is required", "product-options-addons-woo") }),
+			.min(1, { message: __("Choice label is required", "optionbay-product-options-addons-woo") }),
 		value: z
 			.string()
-			.min(1, { message: __("Choice value is required", "product-options-addons-woo") }),
+			.min(1, { message: __("Choice value is required", "optionbay-product-options-addons-woo") }),
 		price_type: z.string().optional(),
 		price: z.number().optional(),
 		weight: z.number().optional(),
@@ -63,7 +63,7 @@ export const fieldOptionSchema = z
 			if (data.price === undefined || data.price === null || data.price === 0) {
 				ctx.addIssue({
 					code: z.ZodIssueCode.custom,
-					message: __("Price is required", "product-options-addons-woo"),
+					message: __("Price is required", "optionbay-product-options-addons-woo"),
 					path: ["price"],
 				});
 			}
@@ -72,7 +72,7 @@ export const fieldOptionSchema = z
 		if (data.enable_stock && !data.inventory_id) {
 			ctx.addIssue({
 				code: z.ZodIssueCode.custom,
-				message: __("Inventory pool is required", "product-options-addons-woo"),
+				message: __("Inventory pool is required", "optionbay-product-options-addons-woo"),
 				path: ["inventory_id"],
 			});
 		}
@@ -83,7 +83,7 @@ export const fieldDefinitionSchema = z
 		id: z.string(),
 		type: z.string(),
 		label: z.string().min(1, {
-			message: __("Field label is required", "product-options-addons-woo"),
+			message: __("Field label is required", "optionbay-product-options-addons-woo"),
 		}),
 		description: z.string().optional(),
 		placeholder: z.string().optional(),
@@ -110,7 +110,7 @@ export const fieldDefinitionSchema = z
 			if (!data.options || data.options.length === 0) {
 				ctx.addIssue({
 					code: z.ZodIssueCode.custom,
-					message: __("At least one choice is required", "product-options-addons-woo"),
+					message: __("At least one choice is required", "optionbay-product-options-addons-woo"),
 					path: ["options"],
 				});
 			}
@@ -123,7 +123,7 @@ export const fieldDefinitionSchema = z
 			if (data.price === undefined || data.price === null || data.price === 0) {
 				ctx.addIssue({
 					code: z.ZodIssueCode.custom,
-					message: __("Price is required", "product-options-addons-woo"),
+					message: __("Price is required", "optionbay-product-options-addons-woo"),
 					path: ["price"],
 				});
 			}
@@ -135,7 +135,7 @@ export const fieldDefinitionSchema = z
 				if (!opt.color) {
 					ctx.addIssue({
 						code: z.ZodIssueCode.custom,
-						message: __("Color is required for swatch choices", "product-options-addons-woo"),
+						message: __("Color is required for swatch choices", "optionbay-product-options-addons-woo"),
 						path: ["options", idx, "color"],
 					});
 				}
@@ -147,7 +147,7 @@ export const fieldDefinitionSchema = z
 				if (!opt.image_url) {
 					ctx.addIssue({
 						code: z.ZodIssueCode.custom,
-						message: __("Image is required for swatch choices", "product-options-addons-woo"),
+						message: __("Image is required for swatch choices", "optionbay-product-options-addons-woo"),
 						path: ["options", idx, "image_url"],
 					});
 				}
@@ -158,7 +158,7 @@ export const fieldDefinitionSchema = z
 		if (data.type === "static_content" && !data.content) {
 			ctx.addIssue({
 				code: z.ZodIssueCode.custom,
-				message: __("Content is required for static fields", "product-options-addons-woo"),
+				message: __("Content is required for static fields", "optionbay-product-options-addons-woo"),
 				path: ["content"],
 			});
 		}
@@ -167,7 +167,7 @@ export const fieldDefinitionSchema = z
 		if (data.enable_stock && !data.inventory_id) {
 			ctx.addIssue({
 				code: z.ZodIssueCode.custom,
-				message: __("Inventory pool is required", "product-options-addons-woo"),
+				message: __("Inventory pool is required", "optionbay-product-options-addons-woo"),
 				path: ["inventory_id"],
 			});
 		}
@@ -178,7 +178,7 @@ export const fieldDefinitionSchema = z
 		if (optionsHaveStock && data.enable_stock) {
 			ctx.addIssue({
 				code: z.ZodIssueCode.custom,
-				message: __("Field stock tracking cannot be enabled when individual choice stock tracking is enabled", "product-options-addons-woo"),
+				message: __("Field stock tracking cannot be enabled when individual choice stock tracking is enabled", "optionbay-product-options-addons-woo"),
 				path: ["enable_stock"],
 			});
 		}
@@ -193,7 +193,7 @@ export const addonGroupSchema = z
 	.object({
 		title: z
 			.string()
-			.min(1, { message: __('Group Title is required', 'product-options-addons-woo') }),
+			.min(1, { message: __('Group Title is required', 'optionbay-product-options-addons-woo') }),
 		status: z.enum(['publish', 'draft']),
 		schema: z.array(fieldDefinitionSchema),
 		assignments: z.array(assignmentSchema),
@@ -215,7 +215,7 @@ export const addonGroupSchema = z
 		if (!hasGlobal && !hasProduct) {
 			ctx.addIssue({
 				code: z.ZodIssueCode.custom,
-				message: __('At least one target (global or product) is required for targeted visibility.', 'product-options-addons-woo'),
+				message: __('At least one target (global or product) is required for targeted visibility.', 'optionbay-product-options-addons-woo'),
 				path: ['assignments'],
 			});
 		}

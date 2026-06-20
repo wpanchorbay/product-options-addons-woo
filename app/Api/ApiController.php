@@ -43,7 +43,7 @@ class ApiController extends WP_REST_Controller {
 	 *
 	 * @var string
 	 */
-	public $namespace = PRODUCT_OPTIONS_ADDONS_WOO_TEXT_DOMAIN;
+	public $namespace = OPOPW_TEXT_DOMAIN;
 
 	/**
 	 * Rest route version.
@@ -98,7 +98,7 @@ class ApiController extends WP_REST_Controller {
 	 * @since 1.0.0
 	 */
 	public function __clone() {
-		_doing_it_wrong( __FUNCTION__, esc_html__( 'Cloning is not allowed.', 'product-options-addons-woo' ), '1.0.0' );
+		_doing_it_wrong( __FUNCTION__, esc_html__( 'Cloning is not allowed.', 'optionbay-product-options-addons-woo' ), '1.0.0' );
 	}
 
 	/**
@@ -109,7 +109,7 @@ class ApiController extends WP_REST_Controller {
 	 * @since 1.0.0
 	 */
 	public function __wakeup() {
-		_doing_it_wrong( __FUNCTION__, esc_html__( 'Unserializing is not allowed.', 'product-options-addons-woo' ), '1.0.0' );
+		_doing_it_wrong( __FUNCTION__, esc_html__( 'Unserializing is not allowed.', 'optionbay-product-options-addons-woo' ), '1.0.0' );
 	}
 
 	/**
@@ -123,14 +123,14 @@ class ApiController extends WP_REST_Controller {
 		if ( ! current_user_can( 'manage_woocommerce' ) ) {
 			return new WP_Error(
 				'rest_forbidden',
-				__( 'Sorry, you are not allowed to access this resource.', 'product-options-addons-woo' ),
+				__( 'Sorry, you are not allowed to access this resource.', 'optionbay-product-options-addons-woo' ),
 				array( 'status' => rest_authorization_required_code() )
 			);
 		}
 
 		$nonce = $request->get_header( 'X-WP-Nonce' );
 		if ( ! $nonce || ! wp_verify_nonce( $nonce, 'wp_rest' ) ) {
-			return new WP_Error( 'rest_nonce_invalid', __( 'The security token is invalid.', 'product-options-addons-woo' ), array( 'status' => 403 ) );
+			return new WP_Error( 'rest_nonce_invalid', __( 'The security token is invalid.', 'optionbay-product-options-addons-woo' ), array( 'status' => 403 ) );
 		}
 
 		return true;
@@ -147,7 +147,7 @@ class ApiController extends WP_REST_Controller {
 		if ( ! current_user_can( 'manage_woocommerce' ) ) {
 			return new WP_Error(
 				'rest_forbidden',
-				__( 'Sorry, you are not allowed to access this resource.', 'product-options-addons-woo' ),
+				__( 'Sorry, you are not allowed to access this resource.', 'optionbay-product-options-addons-woo' ),
 				array( 'status' => rest_authorization_required_code() )
 			);
 		}
@@ -161,7 +161,7 @@ class ApiController extends WP_REST_Controller {
 		if ( ! wp_verify_nonce( $nonce, 'wp_rest' ) ) {
 			return new WP_Error(
 				'rest_invalid_nonce',
-				__( 'Invalid or missing nonce.', 'product-options-addons-woo' ),
+				__( 'Invalid or missing nonce.', 'optionbay-product-options-addons-woo' ),
 				array( 'status' => 403 )
 			);
 		}
@@ -198,12 +198,12 @@ class ApiController extends WP_REST_Controller {
 			// Get the first error message for each field
 			$errors = $validation->errors()->firstOfAll();
 
-			product_options_addons_woo_log( 'ApiController: REST validation failed: ' . wp_json_encode( $errors ), 'ERROR' );
+			opopw_log( 'ApiController: REST validation failed: ' . wp_json_encode( $errors ), 'ERROR' );
 
 			// Return a standard WordPress REST error with a 422 Unprocessable Entity status
 			return new WP_Error(
 				'validation_failed',
-				__( 'Invalid data provided.', 'product-options-addons-woo' ),
+				__( 'Invalid data provided.', 'optionbay-product-options-addons-woo' ),
 				array(
 					'status' => 422,
 					'errors' => $errors,

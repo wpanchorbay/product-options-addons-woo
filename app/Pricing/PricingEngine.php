@@ -48,7 +48,7 @@ class PricingEngine {
 		$type = $type ? $type : 'flat';
 
 		if ( ! array_key_exists( $type, self::$strategies ) ) {
-			product_options_addons_woo_log( "Pricing Engine: Unknown strategy '{$type}'. Falling back to 'flat'.", 'WARNING' );
+			opopw_log( "Pricing Engine: Unknown strategy '{$type}'. Falling back to 'flat'.", 'WARNING' );
 			$type = 'flat';
 		}
 
@@ -73,14 +73,14 @@ class PricingEngine {
 	 */
 	public static function calculate( string $type, float $base_price, float $configured_amount, $field_value, int $quantity, array $config = array() ) {
 		if ( 'none' === $type || 0.0 === $configured_amount ) {
-			product_options_addons_woo_log( "Pricing Engine: Type 'none' or amount 0. Price delta is 0.", 'DEBUG' );
+			opopw_log( "Pricing Engine: Type 'none' or amount 0. Price delta is 0.", 'DEBUG' );
 			return 0.0;
 		}
 
 		$strategy = self::get_strategy( $type );
 		$result   = $strategy->calculate( $base_price, $configured_amount, $field_value, $quantity, $config );
 
-		product_options_addons_woo_log( "Pricing Engine: Calculated {$result} via {$type} strategy.", 'DEBUG' );
+		opopw_log( "Pricing Engine: Calculated {$result} via {$type} strategy.", 'DEBUG' );
 
 		return $result;
 	}

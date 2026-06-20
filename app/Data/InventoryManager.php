@@ -196,9 +196,9 @@ class InventoryManager {
 
 		if ( $result ) {
 			wp_cache_delete( "item_{$id}", 'wpab_wpoa_inventory' );
-			product_options_addons_woo_log( sprintf( 'InventoryManager: Deleted inventory ID %d.', $id ), 'INFO' );
+			opopw_log( sprintf( 'InventoryManager: Deleted inventory ID %d.', $id ), 'INFO' );
 		} else {
-			product_options_addons_woo_log( sprintf( 'InventoryManager: Failed to delete inventory ID %d.', $id ), 'ERROR' );
+			opopw_log( sprintf( 'InventoryManager: Failed to delete inventory ID %d.', $id ), 'ERROR' );
 		}
 
 		return false !== $result;
@@ -232,9 +232,9 @@ class InventoryManager {
 
 		if ( $result ) {
 			wp_cache_delete( "item_{$id}", 'wpab_wpoa_inventory' );
-			product_options_addons_woo_log( sprintf( 'InventoryManager: Decrement stock ID %d by amount %f was SUCCESSFUL.', $id, $amount ), 'INFO' );
+			opopw_log( sprintf( 'InventoryManager: Decrement stock ID %d by amount %f was SUCCESSFUL.', $id, $amount ), 'INFO' );
 		} else {
-			product_options_addons_woo_log( sprintf( 'InventoryManager: Decrement stock ID %d by amount %f FAILED (possibly insufficient stock).', $id, $amount ), 'ERROR' );
+			opopw_log( sprintf( 'InventoryManager: Decrement stock ID %d by amount %f FAILED (possibly insufficient stock).', $id, $amount ), 'ERROR' );
 		}
 
 		return (bool) $result;
@@ -267,9 +267,9 @@ class InventoryManager {
 
 		if ( $result ) {
 			wp_cache_delete( "item_{$id}", 'wpab_wpoa_inventory' );
-			product_options_addons_woo_log( sprintf( 'InventoryManager: Increment stock ID %d by amount %f was SUCCESSFUL.', $id, $amount ), 'INFO' );
+			opopw_log( sprintf( 'InventoryManager: Increment stock ID %d by amount %f was SUCCESSFUL.', $id, $amount ), 'INFO' );
 		} else {
-			product_options_addons_woo_log( sprintf( 'InventoryManager: Increment stock ID %d by amount %f FAILED.', $id, $amount ), 'ERROR' );
+			opopw_log( sprintf( 'InventoryManager: Increment stock ID %d by amount %f FAILED.', $id, $amount ), 'ERROR' );
 		}
 
 		return (bool) $result;
@@ -320,8 +320,8 @@ class InventoryManager {
 				continue;
 			}
 
-			if ( isset( $cart_item['product_options_addons_woo_addons']['fields'] ) ) {
-				foreach ( $cart_item['product_options_addons_woo_addons']['fields'] as $field ) {
+			if ( isset( $cart_item['opopw_addons']['fields'] ) ) {
+				foreach ( $cart_item['opopw_addons']['fields'] as $field ) {
 					if ( ! empty( $field['reduction_intents'] ) ) {
 						foreach ( $field['reduction_intents'] as $intent ) {
 							if ( (int) $intent['id'] === (int) $inventory_id ) {

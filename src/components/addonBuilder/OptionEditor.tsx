@@ -40,8 +40,8 @@ export const OptionEditor: React.FC<OptionEditorProps> = ({
     if (!(window as any).wp?.media) return;
 
     const frame = (window as any).wp.media({
-      title: __("Select Image", "product-options-addons-woo"),
-      button: { text: __("Use this image", "product-options-addons-woo") },
+      title: __("Select Image", "optionbay-product-options-addons-woo"),
+      button: { text: __("Use this image", "optionbay-product-options-addons-woo") },
       multiple: false,
       library: { type: "image" },
     });
@@ -83,7 +83,7 @@ export const OptionEditor: React.FC<OptionEditorProps> = ({
     >
       {!hideLabel && (
         <label className="wpab-wpoa-font-semibold wpab-wpoa-block">
-          {__("Choices", "product-options-addons-woo")}
+          {__("Choices", "optionbay-product-options-addons-woo")}
         </label>
       )}
 
@@ -101,28 +101,28 @@ export const OptionEditor: React.FC<OptionEditorProps> = ({
                 {/* Swatch column header */}
                 {isColorSwatch && (
                   <th className="!wpab-wpoa-py-[10px] !wpab-wpoa-px-[12px] wpab-wpoa-font-semibold wpab-wpoa-text-[#1d2327] wpab-wpoa-w-[70px]">
-                    {__("Color", "product-options-addons-woo")}
+                    {__("Color", "optionbay-product-options-addons-woo")}
                   </th>
                 )}
                 {isImageSwatch && (
                   <th className="!wpab-wpoa-py-[10px] !wpab-wpoa-px-[12px] wpab-wpoa-font-semibold wpab-wpoa-text-[#1d2327] wpab-wpoa-w-[90px]">
-                    {__("Image", "product-options-addons-woo")}
+                    {__("Image", "optionbay-product-options-addons-woo")}
                   </th>
                 )}
                 <th className="!wpab-wpoa-py-[10px] !wpab-wpoa-px-[12px] wpab-wpoa-font-semibold wpab-wpoa-text-[#1d2327]">
-                  {__("Label", "product-options-addons-woo")}
+                  {__("Label", "optionbay-product-options-addons-woo")}
                 </th>
                 <th className="!wpab-wpoa-py-[10px] !wpab-wpoa-px-[12px] wpab-wpoa-font-semibold wpab-wpoa-text-[#1d2327] wpab-wpoa-w-[100px]">
-                  {__("Price", "product-options-addons-woo")}
+                  {__("Price", "optionbay-product-options-addons-woo")}
                 </th>
                 <th className="!wpab-wpoa-py-[10px] !wpab-wpoa-px-[12px] wpab-wpoa-font-semibold wpab-wpoa-text-[#1d2327] wpab-wpoa-w-[160px]">
-                  {__("Price Type", "product-options-addons-woo")}
+                  {__("Price Type", "optionbay-product-options-addons-woo")}
                 </th>
                 <th className="!wpab-wpoa-py-[10px] !wpab-wpoa-px-[12px] wpab-wpoa-font-semibold wpab-wpoa-text-[#1d2327] wpab-wpoa-w-[80px]">
-                  {__("Weight", "product-options-addons-woo")}
+                  {__("Weight", "optionbay-product-options-addons-woo")}
                 </th>
                 <th className="!wpab-wpoa-py-[10px] !wpab-wpoa-px-[12px] wpab-wpoa-font-semibold wpab-wpoa-text-[#1d2327] wpab-wpoa-w-[180px]">
-                  {__("Stock", "product-options-addons-woo")}
+                  {__("Stock", "optionbay-product-options-addons-woo")}
                 </th>
                 <th className="!wpab-wpoa-py-[10px] !wpab-wpoa-px-[12px] wpab-wpoa-font-semibold wpab-wpoa-text-[#1d2327] wpab-wpoa-w-[40px]"></th>
               </tr>
@@ -189,7 +189,7 @@ export const OptionEditor: React.FC<OptionEditorProps> = ({
                                   : "wpab-wpoa-border-[#c3c4c7]"
                               } wpab-wpoa-overflow-hidden wpab-wpoa-shrink-0 wpab-wpoa-cursor-pointer hover:wpab-wpoa-border-[#2271b1] wpab-wpoa-transition-colors`}
                               onClick={() => openMediaLibrary(idx)}
-                              title={__("Change image", "product-options-addons-woo")}
+                              title={__("Change image", "optionbay-product-options-addons-woo")}
                             >
                               <img
                                 src={opt.image_url}
@@ -208,7 +208,7 @@ export const OptionEditor: React.FC<OptionEditorProps> = ({
                                   ? "wpab-wpoa-border-red-400"
                                   : "wpab-wpoa-border-[#c3c4c7]"
                               } wpab-wpoa-bg-[#f6f7f7] wpab-wpoa-text-[#646970] hover:wpab-wpoa-border-[#2271b1] hover:wpab-wpoa-text-[#2271b1] wpab-wpoa-transition-colors wpab-wpoa-cursor-pointer wpab-wpoa-shrink-0`}
-                              title={__("Upload image", "product-options-addons-woo")}
+                              title={__("Upload image", "optionbay-product-options-addons-woo")}
                             >
                               <ImagePlus size={16} />
                             </button>
@@ -224,7 +224,7 @@ export const OptionEditor: React.FC<OptionEditorProps> = ({
                     >
                       <ClassicInput
                         size="regular"
-                        placeholder={__("Label", "product-options-addons-woo")}
+                        placeholder={__("Label", "optionbay-product-options-addons-woo")}
                         value={opt.label}
                         isError={
                           !!state.errors?.[
@@ -266,7 +266,7 @@ export const OptionEditor: React.FC<OptionEditorProps> = ({
                           <ClassicInput
                             type="number"
                             size="small"
-                            placeholder={__("Price", "product-options-addons-woo")}
+                            placeholder={__("Price", "optionbay-product-options-addons-woo")}
                             value={opt.price ?? ""}
                             isError={
                               !!state.errors?.[
@@ -346,7 +346,7 @@ export const OptionEditor: React.FC<OptionEditorProps> = ({
                       <ClassicInput
                         type="number"
                         size="small"
-                        placeholder={__("Weight", "product-options-addons-woo")}
+                        placeholder={__("Weight", "optionbay-product-options-addons-woo")}
                         value={opt.weight ?? ""}
                         isError={
                           !!state.errors?.[
@@ -378,7 +378,7 @@ export const OptionEditor: React.FC<OptionEditorProps> = ({
                     >
                       <div className="wpab-wpoa-flex wpab-wpoa-flex-col wpab-wpoa-gap-1.5">
                         <ClassicCheckbox
-                          label={__("Enable Stock", "product-options-addons-woo")}
+                          label={__("Enable Stock", "optionbay-product-options-addons-woo")}
                           checked={opt.enable_stock || false}
                           isError={
                             !!state.errors?.[
@@ -453,7 +453,7 @@ export const OptionEditor: React.FC<OptionEditorProps> = ({
                           })
                         }
                         className="wpab-wpoa-bg-transparent wpab-wpoa-border-none wpab-wpoa-cursor-pointer wpab-wpoa-p-1 wpab-wpoa-text-[#d63638] hover:wpab-wpoa-text-[#b32d2e] wpab-wpoa-transition-colors"
-                        title={__("Remove choice", "product-options-addons-woo")}
+                        title={__("Remove choice", "optionbay-product-options-addons-woo")}
                       >
                         <Trash2 className="wpab-wpoa-size-4" />
                       </button>
@@ -466,7 +466,7 @@ export const OptionEditor: React.FC<OptionEditorProps> = ({
                     colSpan={colCount}
                     className="wpab-wpoa-py-6 wpab-wpoa-text-center wpab-wpoa-text-[#94a3b8] wpab-wpoa-italic"
                   >
-                    {__("No choices added yet.", "product-options-addons-woo")}
+                    {__("No choices added yet.", "optionbay-product-options-addons-woo")}
                   </td>
                 </tr>
               )}
@@ -489,7 +489,7 @@ export const OptionEditor: React.FC<OptionEditorProps> = ({
           }
         >
           <CirclePlus className="wpab-wpoa-size-4" />{" "}
-          {__("Add Choice", "product-options-addons-woo")}
+          {__("Add Choice", "optionbay-product-options-addons-woo")}
         </ClassicButton>
       </div>
 

@@ -7,58 +7,58 @@ import { __ } from '@wordpress/i18n';
 export const FIELD_TOOLTIPS = {
 	label: __(
 		'The name of the field shown to the customer on the product page.',
-		'product-options-addons-woo'
+		'optionbay-product-options-addons-woo'
 	),
 	id: __(
 		'A unique identifier for this field, used for internal tracking and conditional logic.',
-		'product-options-addons-woo'
+		'optionbay-product-options-addons-woo'
 	),
 	type: __(
 		'The input method used to collect data from customers.',
-		'product-options-addons-woo'
+		'optionbay-product-options-addons-woo'
 	),
 	description: __(
 		'Additional instruction text displayed below the field input on the product page.',
-		'product-options-addons-woo'
+		'optionbay-product-options-addons-woo'
 	),
 	placeholder: __(
 		"A short hint displayed inside the input when it is empty.",
-		'product-options-addons-woo'
+		'optionbay-product-options-addons-woo'
 	),
 	required: __(
 		'Whether this field must be completed before the product can be added to the cart.',
-		'product-options-addons-woo'
+		'optionbay-product-options-addons-woo'
 	),
 	class_name: __(
 		'Custom CSS class for advanced styling of the field container.',
-		'product-options-addons-woo'
+		'optionbay-product-options-addons-woo'
 	),
 	price_type: __(
 		'The calculation method used to determine the price impact of this field.',
-		'product-options-addons-woo'
+		'optionbay-product-options-addons-woo'
 	),
 	price: __(
 		'The monetary value added to or subtracted from the product price.',
-		'product-options-addons-woo'
+		'optionbay-product-options-addons-woo'
 	),
 	weight: __(
 		'The weight adjustment for this field, used in shipping calculations.',
-		'product-options-addons-woo'
+		'optionbay-product-options-addons-woo'
 	),
 	restrictions: __(
 		'Validation rules such as character limits or numeric ranges.',
-		'product-options-addons-woo'
+		'optionbay-product-options-addons-woo'
 	),
 	file_restrictions: __(
 		'Allowed file extensions and maximum file size for uploads.',
-		'product-options-addons-woo'
+		'optionbay-product-options-addons-woo'
 	),
 	choices: __(
 		'The list of selectable options available for this field.',
-		'product-options-addons-woo'
+		'optionbay-product-options-addons-woo'
 	),
 	conditional_logic: __(
 		'Rules that determine when this field is shown or hidden based on other field values.',
-		'product-options-addons-woo'
+		'optionbay-product-options-addons-woo'
 	),
 };

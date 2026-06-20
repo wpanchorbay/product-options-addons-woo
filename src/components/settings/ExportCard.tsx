@@ -20,14 +20,14 @@ export const ExportCard: React.FC = () => {
 			if (exportSettings) entities.push('settings');
 
 			if (entities.length === 0) {
-				addToast(__('Please select at least one entity to export.', 'product-options-addons-woo'), 'error');
+				addToast(__('Please select at least one entity to export.', 'optionbay-product-options-addons-woo'), 'error');
 				setIsExporting(false);
 				return;
 			}
 
 			const query = entities.join(',');
 			const response = await apiFetch({
-				path: `product-options-addons-woo/v1/export?entities=${query}`,
+				path: `optionbay-product-options-addons-woo/v1/export?entities=${query}`,
 				method: 'GET',
 			});
 
@@ -43,10 +43,10 @@ export const ExportCard: React.FC = () => {
 			document.body.removeChild(a);
 			URL.revokeObjectURL(url);
 			
-			addToast(__('Export downloaded successfully.', 'product-options-addons-woo'), 'success');
+			addToast(__('Export downloaded successfully.', 'optionbay-product-options-addons-woo'), 'success');
 		} catch (error: any) {
 			console.error('Export failed:', error);
-			addToast(error.message || __('Failed to export data.', 'product-options-addons-woo'), 'error');
+			addToast(error.message || __('Failed to export data.', 'optionbay-product-options-addons-woo'), 'error');
 		} finally {
 			setIsExporting(false);
 		}
@@ -54,31 +54,31 @@ export const ExportCard: React.FC = () => {
 
 	return (
 		<div className="wpab-wpoa-settings-section wpab-wpoa-mt-8">
-			<h2 className="wpab-wpoa-ignore-preflight">{__('Export Data', 'product-options-addons-woo')}</h2>
-			<p className="description">{__('Select which entities you want to export to a JSON file.', 'product-options-addons-woo')}</p>
+			<h2 className="wpab-wpoa-ignore-preflight">{__('Export Data', 'optionbay-product-options-addons-woo')}</h2>
+			<p className="description">{__('Select which entities you want to export to a JSON file.', 'optionbay-product-options-addons-woo')}</p>
 			
 			<table className="form-table">
 				<tbody>
 					<tr>
 						<th scope="row">
-							<label>{__('Entities to Export', 'product-options-addons-woo')}</label>
+							<label>{__('Entities to Export', 'optionbay-product-options-addons-woo')}</label>
 						</th>
 						<td>
 							<div className="wpab-wpoa-flex wpab-wpoa-flex-col wpab-wpoa-gap-3">
 								<ClassicCheckbox
 									checked={exportGroups}
 									onChange={setExportGroups}
-									label={__('Option Groups', 'product-options-addons-woo')}
+									label={__('Option Groups', 'optionbay-product-options-addons-woo')}
 								/>
 								<ClassicCheckbox
 									checked={exportInventory}
 									onChange={setExportInventory}
-									label={__('Inventory Pools', 'product-options-addons-woo')}
+									label={__('Inventory Pools', 'optionbay-product-options-addons-woo')}
 								/>
 								<ClassicCheckbox
 									checked={exportSettings}
 									onChange={setExportSettings}
-									label={__('Plugin Settings', 'product-options-addons-woo')}
+									label={__('Plugin Settings', 'optionbay-product-options-addons-woo')}
 								/>
 							</div>
 							<div className="wpab-wpoa-mt-4">
@@ -87,7 +87,7 @@ export const ExportCard: React.FC = () => {
 									onClick={handleExport}
 									disabled={isExporting || (!exportGroups && !exportInventory && !exportSettings)}
 								>
-									{isExporting ? __('Exporting...', 'product-options-addons-woo') : __('Download JSON Export', 'product-options-addons-woo')}
+									{isExporting ? __('Exporting...', 'optionbay-product-options-addons-woo') : __('Download JSON Export', 'optionbay-product-options-addons-woo')}
 								</ClassicButton>
 							</div>
 						</td>

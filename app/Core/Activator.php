@@ -36,7 +36,7 @@ class Activator {
 	 * @return void
 	 */
 	public static function activate() {
-		product_options_addons_woo_log( 'Activator: Firing OptionBay - Product Options and Addons activation steps.', 'INFO' );
+		opopw_log( 'Activator: Firing OptionBay - Product Options and Addons activation steps.', 'INFO' );
 
 		// Set up the default options if they don't exist.
 		/* Default Settings */
@@ -56,7 +56,7 @@ class Activator {
 		// Preload demo data
 		Preloader::run();
 
-		product_options_addons_woo_log( 'Activator: OptionBay - Product Options and Addons activated successfully.', 'INFO' );
+		opopw_log( 'Activator: OptionBay - Product Options and Addons activated successfully.', 'INFO' );
 	}
 
 	/**

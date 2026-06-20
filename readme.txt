@@ -1,5 +1,5 @@
 === OptionBay - Product Options and Addons ===
-Contributors: optionbay
+Contributors: wpanchorbay, sankarsan
 Tags: woocommerce, product options, addons, extra product options, conditional logic
 Requires at least: 6.0
 Tested up to: 7.0
@@ -40,7 +40,7 @@ Get started instantly with 6 highly practical, pre-built templates covering real
 
 == Installation ==
 
-1. Upload the plugin files to the `/wp-content/plugins/product-options-addons-woo` directory, or install the plugin directly through the WordPress plugins screen.
+1. Upload the plugin files to the `/wp-content/plugins/optionbay-product-options-addons-woo` directory, or install the plugin directly through the WordPress plugins screen.
 2. Activate the plugin through the 'Plugins' screen in WordPress.
 3. Navigate to **Products > Options** in your WordPress dashboard to start building.
 
@@ -50,7 +50,7 @@ Get started instantly with 6 highly practical, pre-built templates covering real
 Yes, OptionBay requires WooCommerce to be active. It integrates deeply with the WooCommerce cart, checkout, order meta, and shipping calculations.
 
 = Can I use this instead of WooCommerce Variations? =
-Yes! OptionBay is often a vastly superior alternative to WooCommerce Variations, especially if you have products with dozens of customizable components (which would result in thousands of messy variations). OptionBay calculates pricing and inventory on the fly.
+Yes! OptionBay is a great alternative to WooCommerce Variations, especially if you have products with dozens of customizable components (which would result in thousands of messy variations). OptionBay calculates pricing and inventory on the fly.
 
 = Does inventory tracking work across multiple products? =
 Yes. This is a standout feature of OptionBay. You can create a single inventory pool (e.g., "Premium Leather Material") and link it to an option field on 50 different products. If someone buys Product A, the material inventory is reduced, and Product B will respect that updated stock level.

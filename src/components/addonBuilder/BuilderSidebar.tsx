@@ -63,7 +63,7 @@ export const BuilderSidebar: React.FC = () => {
 			>
 				<div className="wpab-wpoa-px-[15px] wpab-wpoa-py-[12px] wpab-wpoa-bg-[#f8f9fa] wpab-wpoa-border-b wpab-wpoa-border-[#e5e7eb] wpab-wpoa-font-semibold wpab-wpoa-text-[14px] wpab-wpoa-rounded-t-[8px] wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-gap-2">
 					<CirclePlus className="wpab-wpoa-size-4 wpab-wpoa-text-[#2271b1]" />
-					{ __( 'Add Fields', 'product-options-addons-woo' ) }
+					{ __( 'Add Fields', 'optionbay-product-options-addons-woo' ) }
 				</div>
 				<div className="wpab-wpoa-p-[15px]">
 					<div className="wpab-wpoa-grid wpab-wpoa-grid-cols-2 wpab-wpoa-gap-2">
@@ -114,7 +114,7 @@ export const BuilderSidebar: React.FC = () => {
 							} }
 						>
 							<div className="wpab-wpoa-px-[12px] wpab-wpoa-py-[10px] wpab-wpoa-bg-[#f8f9fa] wpab-wpoa-border-b wpab-wpoa-border-[#e5e7eb] wpab-wpoa-font-semibold wpab-wpoa-text-[13px] wpab-wpoa-rounded-t-[8px] wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-justify-between">
-								<span>{ __( 'Add Field', 'product-options-addons-woo' ) }</span>
+								<span>{ __( 'Add Field', 'optionbay-product-options-addons-woo' ) }</span>
 								<button
 									type="button"
 									onClick={ () => setFabOpen( false ) }
@@ -157,7 +157,7 @@ export const BuilderSidebar: React.FC = () => {
 						id="ob-fab-button"
 						type="button"
 						onClick={ () => setFabOpen( ( prev ) => ! prev ) }
-						title={ __( 'Add Field', 'product-options-addons-woo' ) }
+						title={ __( 'Add Field', 'optionbay-product-options-addons-woo' ) }
 						style={ {
 							width: '48px',
 							height: '48px',

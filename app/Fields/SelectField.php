@@ -45,7 +45,7 @@ class SelectField extends BaseField {
 		if ( ! empty( $placeholder ) ) {
 			$html .= sprintf( '<option value="">%s</option>', esc_html( $placeholder ) );
 		} else {
-			$html .= sprintf( '<option value="">%s</option>', esc_html__( 'Choose an option...', 'product-options-addons-woo' ) );
+			$html .= sprintf( '<option value="">%s</option>', esc_html__( 'Choose an option...', 'optionbay-product-options-addons-woo' ) );
 		}
 
 		foreach ( $options as $option ) {
@@ -94,12 +94,12 @@ class SelectField extends BaseField {
 		if ( ! $this->is_empty_value( $value ) ) {
 			$allowed = array_column( $this->get( 'options', array() ), 'value' );
 			if ( ! in_array( $value, $allowed, true ) ) {
-				product_options_addons_woo_log( "SelectField Validation: Submited value '{$value}' not in allowed options set.", 'WARNING' );
+				opopw_log( "SelectField Validation: Submited value '{$value}' not in allowed options set.", 'WARNING' );
 					return new \WP_Error(
 						'invalid_option',
 						sprintf(
 							/* translators: %s: field label */
-							__( 'Invalid selection for %s.', 'product-options-addons-woo' ),
+							__( 'Invalid selection for %s.', 'optionbay-product-options-addons-woo' ),
 							$this->get( 'label', $this->get( 'id' ) )
 						)
 					);

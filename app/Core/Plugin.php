@@ -85,9 +85,9 @@ class Plugin {
 	 * @return void
 	 */
 	private function define_core_hooks() {
-		product_options_addons_woo_log( 'Plugin: Bootstrapping REST API controllers.', 'DEBUG' );
+		opopw_log( 'Plugin: Bootstrapping REST API controllers.', 'DEBUG' );
 		// Initialize API controllers from config
-		$api_controllers = include PRODUCT_OPTIONS_ADDONS_WOO_PATH . 'config/api.php';
+		$api_controllers = include OPOPW_PATH . 'config/api.php';
 		// phpcs:ignore WordPress.PHP.DevelopmentFunctions.error_log_print_r
 		if ( is_array( $api_controllers ) ) {
 			foreach ( $api_controllers as $controller ) {
@@ -133,7 +133,7 @@ class Plugin {
 	 * @return void
 	 */
 	public function enqueue_public_styles() {
-		wp_enqueue_style( PRODUCT_OPTIONS_ADDONS_WOO_OPTION_NAME . '_public', PRODUCT_OPTIONS_ADDONS_WOO_URL . 'assets/css/public.css', array(), PRODUCT_OPTIONS_ADDONS_WOO_VERSION );
+		wp_enqueue_style( OPOPW_OPTION_NAME . '_public', OPOPW_URL . 'assets/css/public.css', array(), OPOPW_VERSION );
 	}
 
 	/**
@@ -145,9 +145,9 @@ class Plugin {
 	 * @return void
 	 */
 	private function define_admin_hooks() {
-		product_options_addons_woo_log( 'Plugin: Bootstrapping Core classes.', 'DEBUG' );
+		opopw_log( 'Plugin: Bootstrapping Core classes.', 'DEBUG' );
 		// Initialize Core classes from config
-		$core_classes = include PRODUCT_OPTIONS_ADDONS_WOO_PATH . 'config/core.php';
+		$core_classes = include OPOPW_PATH . 'config/core.php';
 		if ( is_array( $core_classes ) ) {
 			foreach ( $core_classes as $class ) {
 				if ( class_exists( $class ) && method_exists( $class, 'get_instance' ) ) {
@@ -172,7 +172,7 @@ class Plugin {
 	 * @return array The modified array of plugin data.
 	 */
 	public function change_plugin_display_name( $plugins ) {
-		$plugin_basename = plugin_basename( PRODUCT_OPTIONS_ADDONS_WOO_PATH . 'product-options-addons-woo.php' );
+		$plugin_basename = plugin_basename( OPOPW_PATH . 'optionbay-product-options-addons-woo.php' );
 
 		if ( isset( $plugins[ $plugin_basename ] ) ) {
 			$plugins[ $plugin_basename ]['Name'] = 'OptionBay - Product Options and Addons';
@@ -189,7 +189,7 @@ class Plugin {
 	 * @return void
 	 */
 	public function run() {
-		product_options_addons_woo_log( 'Plugin: OptionBay - Product Options and Addons is fully loaded and running.', 'INFO' );
+		opopw_log( 'Plugin: OptionBay - Product Options and Addons is fully loaded and running.', 'INFO' );
 		$this->loader->run();
 	}
 

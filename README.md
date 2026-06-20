@@ -35,7 +35,7 @@ OptionBay is designed for real-world eCommerce scenarios. The plugin includes bu
 ## 📁 Directory Structure
 
 ```text
-product-options-addons-woo/
+optionbay-product-options-addons-woo/
 ├── app/                        # PHP Backend Application
 │   ├── Admin/                  # Admin menu & React script enqueuing
 │   ├── Api/                    # Custom REST API endpoints
@@ -48,7 +48,7 @@ product-options-addons-woo/
 │   ├── components/             # React components (OptionBuilder, Modals, etc.)
 │   ├── store/                  # React Context state management
 │   └── utils/                  # Zod validation schemas and API helpers
-├── product-options-addons-woo.php # Main plugin bootstrap file
+├── optionbay-product-options-addons-woo.php # Main plugin bootstrap file
 └── package.json                # NPM build scripts (@wordpress/scripts)
 ```
 
@@ -65,8 +65,8 @@ product-options-addons-woo/
 ### 2. Installation
 Clone the repository into your WordPress plugins folder:
 ```bash
-git clone <repo_url> product-options-addons-woo
-cd product-options-addons-woo
+git clone <repo_url> optionbay-product-options-addons-woo
+cd optionbay-product-options-addons-woo
 ```
 
 ### 3. Build Assets

@@ -66,14 +66,14 @@ abstract class BaseField implements InterfaceField {
 	/**
 	 * Get the HTML input name attribute.
 	 *
-	 * Format: product_options_addons_woo_addons[{group_id}][{field_id}]
+	 * Format: opopw_addons[{group_id}][{field_id}]
 	 *
 	 * @since 1.0.0
 	 * @return string
 	 */
 	protected function get_name() {
 		return sprintf(
-			'product_options_addons_woo_addons[%d][%s]',
+			'opopw_addons[%d][%s]',
 			$this->group_id,
 			esc_attr( $this->get( 'id' ) )
 		);
@@ -167,7 +167,7 @@ abstract class BaseField implements InterfaceField {
 		$label = $this->get( 'label' );
 		if ( ! empty( $label ) && ! in_array( $field_type, array( 'single_checkbox', 'heading', 'static_content' ), true ) ) {
 			$price_label   = $this->format_price_label( $this->get( 'price', 0 ), $this->get( 'price_type', 'none' ) );
-			$required_mark = $this->get( 'required' ) ? ' <abbr class="ob-required" title="' . esc_attr__( 'required', 'product-options-addons-woo' ) . '">*</abbr>' : '';
+			$required_mark = $this->get( 'required' ) ? ' <abbr class="ob-required" title="' . esc_attr__( 'required', 'optionbay-product-options-addons-woo' ) . '">*</abbr>' : '';
 			$html         .= sprintf(
 				'<label class="ob-field__label" for="%s">%s%s%s</label>',
 				$this->get_html_id(),
@@ -214,12 +214,12 @@ abstract class BaseField implements InterfaceField {
 	public function validate( $value ) {
 		if ( $this->get( 'required' ) && $this->is_empty_value( $value ) ) {
 			$label = $this->get( 'label', $this->get( 'id' ) );
-			product_options_addons_woo_log( sprintf( 'BaseField: Validation failed. Required field "%s" is empty.', $label ), 'WARNING' );
+			opopw_log( sprintf( 'BaseField: Validation failed. Required field "%s" is empty.', $label ), 'WARNING' );
 			return new \WP_Error(
 				'required_field',
 				sprintf(
 					/* translators: %s: field label */
-					__( '%s is required.', 'product-options-addons-woo' ),
+					__( '%s is required.', 'optionbay-product-options-addons-woo' ),
 					$label
 				)
 			);

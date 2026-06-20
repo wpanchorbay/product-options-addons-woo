@@ -10,7 +10,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-if ( ! function_exists( 'product_options_addons_woo_log' ) ) {
+if ( ! function_exists( 'opopw_log' ) ) {
 	/**
 	 * Log messages to the debug log file.
 	 *
@@ -18,7 +18,7 @@ if ( ! function_exists( 'product_options_addons_woo_log' ) ) {
 	 * @param string $level    The log level (e.g., 'DEBUG', 'INFO', 'ERROR').
 	 * @return void
 	 */
-	function product_options_addons_woo_log( $message, $level = 'INFO' ) {
+	function opopw_log( $message, $level = 'INFO' ) {
 		$enable_logging = SmartProductOptionsAddons\Core\Settings::get_instance()->get_settings( 'debug_enableMode' );
 		$level_upper    = is_string( $level ) ? strtoupper( $level ) : 'INFO';
 
@@ -39,12 +39,12 @@ if ( ! function_exists( 'product_options_addons_woo_log' ) ) {
 		}
 
 		$logger = wc_get_logger();
-		$logger->log( $wc_level, $formatted_message, array( 'source' => 'product-options-addons-woo' ) );
+		$logger->log( $wc_level, $formatted_message, array( 'source' => 'optionbay-product-options-addons-woo' ) );
 	}
 }
 
 
-if ( ! function_exists( 'product_options_addons_woo_get_value' ) ) {
+if ( ! function_exists( 'opopw_get_value' ) ) {
 	/**
 	 * Safely retrieve a value from a nested array or object using dot notation.
 	 * Returns default if key is missing OR if value is an empty string.
@@ -55,7 +55,7 @@ if ( ! function_exists( 'product_options_addons_woo_get_value' ) ) {
 	 * @param mixed        $default_value The default value if key is not found.
 	 * @return mixed
 	 */
-	function product_options_addons_woo_get_value( $target, $key, $default_value = null ) {
+	function opopw_get_value( $target, $key, $default_value = null ) {
 		if ( is_null( $key ) || '' === trim( $key ) ) {
 			return $target;
 		}

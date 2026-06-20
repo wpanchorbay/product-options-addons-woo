@@ -41,7 +41,7 @@ function BuilderInner() {
       dispatch({ type: "SET_LOADING", payload: true });
       try {
         const data = (await apiFetch({
-          path: `product-options-addons-woo/v1/groups/${params.id}`,
+          path: `optionbay-product-options-addons-woo/v1/groups/${params.id}`,
           method: "GET",
         })) as any;
 
@@ -63,7 +63,7 @@ function BuilderInner() {
       } catch (err) {
         dispatch({
           type: "SET_ERROR",
-          payload: __("Failed to load option group.", "product-options-addons-woo"),
+          payload: __("Failed to load option group.", "optionbay-product-options-addons-woo"),
         });
       } finally {
         dispatch({ type: "SET_LOADING", payload: false });
@@ -107,20 +107,20 @@ function BuilderInner() {
             const parts = path.split(".");
             const fieldIndex = parseInt(parts[1]);
             const field = state.schema[fieldIndex];
-            const fieldDisplayName = field?.label || `${__("Field", "product-options-addons-woo")} #${fieldIndex + 1}`;
+            const fieldDisplayName = field?.label || `${__("Field", "optionbay-product-options-addons-woo")} #${fieldIndex + 1}`;
 
             let section = "";
             if (parts[2] === "options" && parts[3]) {
               const optionIndex = parseInt(parts[3]);
               const option = field?.options?.[optionIndex];
-              const optionDisplayName = option?.label || `${__("Choice", "product-options-addons-woo")} #${optionIndex + 1}`;
+              const optionDisplayName = option?.label || `${__("Choice", "optionbay-product-options-addons-woo")} #${optionIndex + 1}`;
               const propertyName = parts[4] || "";
-              section = `${__("Choices", "product-options-addons-woo")} > ${optionDisplayName} (${propertyName})`;
-              readablePath = `${__("Field", "product-options-addons-woo")} #${fieldIndex + 1} (${fieldDisplayName}) -> ${__("Choice", "product-options-addons-woo")} #${optionIndex + 1} (${optionDisplayName}) ${propertyName} : `.trim();
+              section = `${__("Choices", "optionbay-product-options-addons-woo")} > ${optionDisplayName} (${propertyName})`;
+              readablePath = `${__("Field", "optionbay-product-options-addons-woo")} #${fieldIndex + 1} (${fieldDisplayName}) -> ${__("Choice", "optionbay-product-options-addons-woo")} #${optionIndex + 1} (${optionDisplayName}) ${propertyName} : `.trim();
             } else {
               const propertyName = parts[2] || "";
               section = propertyName.toString();
-              readablePath = `${__("Field", "product-options-addons-woo")} #${fieldIndex + 1} (${fieldDisplayName}) ${propertyName} : `.trim();
+              readablePath = `${__("Field", "optionbay-product-options-addons-woo")} #${fieldIndex + 1} (${fieldDisplayName}) ${propertyName} : `.trim();
             }
 
             meta = {
@@ -135,15 +135,15 @@ function BuilderInner() {
               firstErrorFieldId = field.id;
             }
           } else if (path === "title") {
-            readablePath = __("Group Title : ", "product-options-addons-woo");
+            readablePath = __("Group Title : ", "optionbay-product-options-addons-woo");
             meta = {
-              fieldName: __("Option Group Title", "product-options-addons-woo"),
+              fieldName: __("Option Group Title", "optionbay-product-options-addons-woo"),
               errorText: issue.message,
             };
           } else if (path.startsWith("assignments")) {
-            readablePath = __("Assignment Rules : ", "product-options-addons-woo");
+            readablePath = __("Assignment Rules : ", "optionbay-product-options-addons-woo");
             meta = {
-              fieldName: __("Assignment Rules", "product-options-addons-woo"),
+              fieldName: __("Assignment Rules", "optionbay-product-options-addons-woo"),
               errorText: issue.message,
             };
           }
@@ -162,7 +162,7 @@ function BuilderInner() {
 
         const topMessage = __(
           "Please fix the validation errors below.",
-          "product-options-addons-woo",
+          "optionbay-product-options-addons-woo",
         );
         dispatch({ type: "SET_ERROR", payload: topMessage });
 
@@ -177,21 +177,21 @@ function BuilderInner() {
 
       if (isEdit && state.id) {
         await apiFetch({
-          path: `product-options-addons-woo/v1/groups/${state.id}`,
+          path: `optionbay-product-options-addons-woo/v1/groups/${state.id}`,
           method: "PUT",
           data: payload,
         });
         dispatch({ type: "MARK_CLEAN" });
-        addToast(__("Option group updated.", "product-options-addons-woo"), "success");
+        addToast(__("Option group updated.", "optionbay-product-options-addons-woo"), "success");
       } else {
         const response = (await apiFetch({
-          path: "product-options-addons-woo/v1/groups",
+          path: "optionbay-product-options-addons-woo/v1/groups",
           method: "POST",
           data: payload,
         })) as any;
 
         if (response.id) {
-          addToast(__("Option group created.", "product-options-addons-woo"), "success");
+          addToast(__("Option group created.", "optionbay-product-options-addons-woo"), "success");
           navigate(`/option-groups/${response.id}`, {
             replace: true,
           });
@@ -212,20 +212,20 @@ function BuilderInner() {
             const parts = path.split(".");
             const fieldIndex = parseInt(parts[1]);
             const field = state.schema[fieldIndex];
-            const fieldDisplayName = field?.label || `${__("Field", "product-options-addons-woo")} #${fieldIndex + 1}`;
+            const fieldDisplayName = field?.label || `${__("Field", "optionbay-product-options-addons-woo")} #${fieldIndex + 1}`;
 
             let section = "";
             if (parts[2] === "options" && parts[3]) {
               const optionIndex = parseInt(parts[3]);
               const option = field?.options?.[optionIndex];
-              const optionDisplayName = option?.label || `${__("Choice", "product-options-addons-woo")} #${optionIndex + 1}`;
+              const optionDisplayName = option?.label || `${__("Choice", "optionbay-product-options-addons-woo")} #${optionIndex + 1}`;
               const propertyName = parts[4] || "";
-              section = `${__("Choices", "product-options-addons-woo")} > ${optionDisplayName} (${propertyName})`;
-              readablePath = `${__("Field", "product-options-addons-woo")} #${fieldIndex + 1} (${fieldDisplayName}) -> ${__("Choice", "product-options-addons-woo")} #${optionIndex + 1} (${optionDisplayName}) ${propertyName} : `.trim();
+              section = `${__("Choices", "optionbay-product-options-addons-woo")} > ${optionDisplayName} (${propertyName})`;
+              readablePath = `${__("Field", "optionbay-product-options-addons-woo")} #${fieldIndex + 1} (${fieldDisplayName}) -> ${__("Choice", "optionbay-product-options-addons-woo")} #${optionIndex + 1} (${optionDisplayName}) ${propertyName} : `.trim();
             } else {
               const propertyName = parts[2] || "";
               section = propertyName.toString();
-              readablePath = `${__("Field", "product-options-addons-woo")} #${fieldIndex + 1} (${fieldDisplayName}) ${propertyName} : `.trim();
+              readablePath = `${__("Field", "optionbay-product-options-addons-woo")} #${fieldIndex + 1} (${fieldDisplayName}) ${propertyName} : `.trim();
             }
 
             meta = {
@@ -240,15 +240,15 @@ function BuilderInner() {
               firstErrorFieldId = field.id;
             }
           } else if (path === "title") {
-            readablePath = __("Group Title : ", "product-options-addons-woo");
+            readablePath = __("Group Title : ", "optionbay-product-options-addons-woo");
             meta = {
-              fieldName: __("Option Group Title", "product-options-addons-woo"),
+              fieldName: __("Option Group Title", "optionbay-product-options-addons-woo"),
               errorText: message as string,
             };
           } else if (path.startsWith("assignments")) {
-            readablePath = __("Assignment Rules : ", "product-options-addons-woo");
+            readablePath = __("Assignment Rules : ", "optionbay-product-options-addons-woo");
             meta = {
-              fieldName: __("Assignment Rules", "product-options-addons-woo"),
+              fieldName: __("Assignment Rules", "optionbay-product-options-addons-woo"),
               errorText: message as string,
             };
           }
@@ -267,7 +267,7 @@ function BuilderInner() {
           type: "SET_ERROR",
           payload: __(
             "Please fix the validation errors reported by the server.",
-            "product-options-addons-woo",
+            "optionbay-product-options-addons-woo",
           ),
         });
 
@@ -277,7 +277,7 @@ function BuilderInner() {
         });
       } else {
         const errMsg =
-          err?.message || __("Failed to save option group.", "product-options-addons-woo");
+          err?.message || __("Failed to save option group.", "optionbay-product-options-addons-woo");
         dispatch({
           type: "SET_ERROR",
           payload: errMsg,
@@ -338,7 +338,7 @@ function BuilderInner() {
                     payload: e.target.value,
                   })
                 }
-                placeholder={__("Enter Option Group Title", "product-options-addons-woo")}
+                placeholder={__("Enter Option Group Title", "optionbay-product-options-addons-woo")}
               />
               <FormError message={state.errors?.title} />
             </div>
@@ -349,10 +349,10 @@ function BuilderInner() {
 
           <div>
             <h2 className="wpab-wpoa-ignore-preflight">
-              {__("Fields", "product-options-addons-woo")}
+              {__("Fields", "optionbay-product-options-addons-woo")}
             </h2>
             <p className="description">
-              {__("Drag and drop fields to reorder them.", "product-options-addons-woo")}
+              {__("Drag and drop fields to reorder them.", "optionbay-product-options-addons-woo")}
             </p>
           </div>
 
@@ -363,8 +363,8 @@ function BuilderInner() {
               <div className="wpab-wpoa-w-10">
                 <span className="dashicons dashicons-editor-help wpab-wpoa-text-[#9ca3af] !wpab-wpoa-flex !wpab-wpoa-items-center !wpab-wpoa-w-full !wpab-wpoa-h-full"></span>
               </div>
-              <div className="wpab-wpoa-flex-1">{__("Name", "product-options-addons-woo")}</div>
-              <div className="wpab-wpoa-w-1/3">{__("Type", "product-options-addons-woo")}</div>
+              <div className="wpab-wpoa-flex-1">{__("Name", "optionbay-product-options-addons-woo")}</div>
+              <div className="wpab-wpoa-w-1/3">{__("Type", "optionbay-product-options-addons-woo")}</div>
               <div className="wpab-wpoa-w-32 wpab-wpoa-text-right"></div>
             </div>
 
@@ -379,12 +379,12 @@ function BuilderInner() {
                     {state.schema.length === 0 ? (
                       <div className="wpab-wpoa-text-center wpab-wpoa-px-5 wpab-wpoa-py-[60px] wpab-wpoa-text-[#999] wpab-wpoa-border-dashed wpab-wpoa-border-[#c3c4c7] wpab-wpoa-m-4 wpab-wpoa-rounded-lg">
                         <p className="wpab-wpoa-text-base wpab-wpoa-mb-2">
-                          {__("Your group is empty", "product-options-addons-woo")}
+                          {__("Your group is empty", "optionbay-product-options-addons-woo")}
                         </p>
                         <p className="wpab-wpoa-text-[13px]">
                           {__(
                             "Click the field buttons in the sidebar to start building.",
-                            "product-options-addons-woo",
+                            "optionbay-product-options-addons-woo",
                           )}
                         </p>
                       </div>
@@ -415,7 +415,7 @@ function BuilderInner() {
                   });
                 }}
               >
-                {__("Add field", "product-options-addons-woo")}
+                {__("Add field", "optionbay-product-options-addons-woo")}
               </button>
             </div>
           </div>

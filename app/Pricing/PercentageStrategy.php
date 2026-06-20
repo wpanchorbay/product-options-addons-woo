@@ -35,7 +35,7 @@ class PercentageStrategy implements PricingStrategy {
 	 */
 	public function calculate( float $base_price, float $percent, $value, int $quantity, array $config = array() ) {
 		$delta = $base_price * ( $percent / 100 );
-		product_options_addons_woo_log( "PercentageStrategy: Base price: {$base_price}, percent: {$percent}%. Delta: {$delta}", 'DEBUG' );
+		opopw_log( "PercentageStrategy: Base price: {$base_price}, percent: {$percent}%. Delta: {$delta}", 'DEBUG' );
 		return $delta;
 	}
 }

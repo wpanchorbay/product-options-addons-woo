@@ -36,7 +36,7 @@ class ConditionEvaluator {
 	 *
 	 * @since 1.0.0
 	 * @param array $field_schema   The schema of the field being evaluated.
-	 * @param array $submitted_data The data submitted for this group ($_POST['product_options_addons_woo_addons'][$group_id]).
+	 * @param array $submitted_data The data submitted for this group ($_POST['opopw_addons'][$group_id]).
 	 * @return bool True if visible, false if hidden.
 	 */
 	public static function is_visible( array $field_schema, array $submitted_data ) {
@@ -53,7 +53,7 @@ class ConditionEvaluator {
 			return 'hide' === ( $conditions['action'] ?? 'show' );
 		}
 
-		product_options_addons_woo_log( 'Evaluating conditions for field: ' . ( $field_schema['id'] ?? 'unknown' ), 'DEBUG' );
+		opopw_log( 'Evaluating conditions for field: ' . ( $field_schema['id'] ?? 'unknown' ), 'DEBUG' );
 
 		$results = array();
 		// Map over all rules and assess each one individually
@@ -81,7 +81,7 @@ class ConditionEvaluator {
 			$is_visible = ! $condition_met;
 		}
 
-		product_options_addons_woo_log( "Condition result for field {$field_schema['id']}: Match met? " . ( $condition_met ? 'Yes' : 'No' ) . '. Visible? ' . ( $is_visible ? 'Yes' : 'No' ), 'DEBUG' );
+		opopw_log( "Condition result for field {$field_schema['id']}: Match met? " . ( $condition_met ? 'Yes' : 'No' ) . '. Visible? ' . ( $is_visible ? 'Yes' : 'No' ), 'DEBUG' );
 
 		return $is_visible;
 	}

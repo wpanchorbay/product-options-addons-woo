@@ -1,12 +1,12 @@
 /* This file contains ONLY the styles needed for the admin menu icon. */
 
-#adminmenu #toplevel_page_product-options-addons-woo .wp-menu-image img {
+#adminmenu #toplevel_page_optionbay-product-options-addons-woo .wp-menu-image img {
     width: 20px;
     height: 20px;
     padding: 7px 0 0;
 }
 
-#adminmenu #toplevel_page_product-options-addons-woo .wp-menu-open .wp-menu-image {
+#adminmenu #toplevel_page_optionbay-product-options-addons-woo .wp-menu-open .wp-menu-image {
     display: inline-flex;
     align-items: center;
     justify-content: center;

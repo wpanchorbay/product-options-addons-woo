@@ -11,18 +11,18 @@ const ClassicLayout: FC = () => {
 	const getPageTitle = () => {
 		const path = location.pathname;
 		if (path === '/option-groups/new') {
-			return __('New Option Group', 'product-options-addons-woo');
+			return __('New Option Group', 'optionbay-product-options-addons-woo');
 		}
 		if (path.startsWith('/option-groups/')) {
-			return __('Edit Option Group', 'product-options-addons-woo');
+			return __('Edit Option Group', 'optionbay-product-options-addons-woo');
 		}
 		if (path === '/' || path === '/option-groups') {
-			return __('Option Groups', 'product-options-addons-woo');
+			return __('Option Groups', 'optionbay-product-options-addons-woo');
 		}
 		if (path === '/settings') {
-			return __('Settings', 'product-options-addons-woo');
+			return __('Settings', 'optionbay-product-options-addons-woo');
 		}
-		return store.pluginData?.plugin_name || __('OptionBay - Product Options and Addons', 'product-options-addons-woo');
+		return store.pluginData?.plugin_name || __('OptionBay - Product Options and Addons', 'optionbay-product-options-addons-woo');
 	};
 
 	const context =

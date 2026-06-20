@@ -118,7 +118,7 @@ export default function AddonList() {
     setLoading(true);
     try {
       const data = (await apiFetch({
-        path: `product-options-addons-woo/v1/groups?page=${page}&per_page=20&status=${statusFilter}&search=${encodeURIComponent(searchParam)}`,
+        path: `optionbay-product-options-addons-woo/v1/groups?page=${page}&per_page=20&status=${statusFilter}&search=${encodeURIComponent(searchParam)}`,
         method: "GET",
       })) as ListResponse;
       setGroups(data.items || []);
@@ -167,19 +167,19 @@ export default function AddonList() {
     const actionText =
       bulkAction === "delete"
         ? statusFilter === "trash"
-          ? __("permanently delete", "product-options-addons-woo")
-          : __("move to trash", "product-options-addons-woo")
+          ? __("permanently delete", "optionbay-product-options-addons-woo")
+          : __("move to trash", "optionbay-product-options-addons-woo")
         : bulkAction === "restore"
-        ? __("restore", "product-options-addons-woo")
+        ? __("restore", "optionbay-product-options-addons-woo")
         : bulkAction === "activate"
-        ? __("publish", "product-options-addons-woo")
-        : __("draft", "product-options-addons-woo");
+        ? __("publish", "optionbay-product-options-addons-woo")
+        : __("draft", "optionbay-product-options-addons-woo");
 
     setConfirmModal({
       isOpen: true,
-      title: __("Confirm Action", "product-options-addons-woo"),
+      title: __("Confirm Action", "optionbay-product-options-addons-woo"),
       message: sprintf(
-        __("Are you sure you want to %s %d selected items?", "product-options-addons-woo"),
+        __("Are you sure you want to %s %d selected items?", "optionbay-product-options-addons-woo"),
         actionText,
         selectedGroups.length,
       ),
@@ -190,7 +190,7 @@ export default function AddonList() {
         setIsActioning(true);
         try {
           await apiFetch({
-            path: `product-options-addons-woo/v1/groups/bulk`,
+            path: `optionbay-product-options-addons-woo/v1/groups/bulk`,
             method: "POST",
             data: {
               action: bulkAction,
@@ -200,13 +200,13 @@ export default function AddonList() {
           setSelectedGroups([]);
           setBulkAction("");
           addToast(
-            __("Bulk action applied successfully.", "product-options-addons-woo"),
+            __("Bulk action applied successfully.", "optionbay-product-options-addons-woo"),
             "success",
           );
           fetchGroups();
         } catch (err: any) {
           addToast(
-            err.message || __("Failed to execute bulk action.", "product-options-addons-woo"),
+            err.message || __("Failed to execute bulk action.", "optionbay-product-options-addons-woo"),
             "error",
           );
         } finally {
@@ -221,16 +221,16 @@ export default function AddonList() {
     setConfirmModal({
       isOpen: true,
       title: isTrash
-        ? __("Permanently Delete", "product-options-addons-woo")
-        : __("Move to Trash", "product-options-addons-woo"),
+        ? __("Permanently Delete", "optionbay-product-options-addons-woo")
+        : __("Move to Trash", "optionbay-product-options-addons-woo"),
       message: isTrash
         ? __(
             "Are you sure you want to permanently delete this option group? This action cannot be undone.",
-            "product-options-addons-woo",
+            "optionbay-product-options-addons-woo",
           )
         : __(
             "Are you sure you want to move this option group to trash?",
-            "product-options-addons-woo",
+            "optionbay-product-options-addons-woo",
           ),
       confirmColor: "danger",
       autoFocus: "cancel",
@@ -239,19 +239,19 @@ export default function AddonList() {
         setIsActioning(true);
         try {
           await apiFetch({
-            path: `product-options-addons-woo/v1/groups/${id}`,
+            path: `optionbay-product-options-addons-woo/v1/groups/${id}`,
             method: "DELETE",
           });
           addToast(
             isTrash
-              ? __("Option group permanently deleted.", "product-options-addons-woo")
-              : __("Option group moved to trash.", "product-options-addons-woo"),
+              ? __("Option group permanently deleted.", "optionbay-product-options-addons-woo")
+              : __("Option group moved to trash.", "optionbay-product-options-addons-woo"),
             "success",
           );
           fetchGroups();
         } catch (err: any) {
           addToast(
-            err.message || __("Failed to delete group.", "product-options-addons-woo"),
+            err.message || __("Failed to delete group.", "optionbay-product-options-addons-woo"),
             "error",
           );
         } finally {
@@ -265,14 +265,14 @@ export default function AddonList() {
     setIsActioning(true);
     try {
       await apiFetch({
-        path: `product-options-addons-woo/v1/groups/${id}/duplicate`,
+        path: `optionbay-product-options-addons-woo/v1/groups/${id}/duplicate`,
         method: "POST",
       });
-      addToast(__("Option group duplicated.", "product-options-addons-woo"), "success");
+      addToast(__("Option group duplicated.", "optionbay-product-options-addons-woo"), "success");
       fetchGroups();
     } catch (err: any) {
       addToast(
-        err.message || __("Failed to duplicate group.", "product-options-addons-woo"),
+        err.message || __("Failed to duplicate group.", "optionbay-product-options-addons-woo"),
         "error",
       );
     } finally {
@@ -284,18 +284,18 @@ export default function AddonList() {
     setIsActioning(true);
     try {
       await apiFetch({
-        path: `product-options-addons-woo/v1/groups/bulk`,
+        path: `optionbay-product-options-addons-woo/v1/groups/bulk`,
         method: "POST",
         data: {
           action: "restore",
           ids: [id],
         },
       });
-      addToast(__("Option group restored.", "product-options-addons-woo"), "success");
+      addToast(__("Option group restored.", "optionbay-product-options-addons-woo"), "success");
       fetchGroups();
     } catch (err: any) {
       addToast(
-        err.message || __("Failed to restore group.", "product-options-addons-woo"),
+        err.message || __("Failed to restore group.", "optionbay-product-options-addons-woo"),
         "error",
       );
     } finally {
@@ -308,7 +308,7 @@ export default function AddonList() {
     setIsActioning(true);
     try {
       await apiFetch({
-        path: `product-options-addons-woo/v1/groups/${id}/status`,
+        path: `optionbay-product-options-addons-woo/v1/groups/${id}/status`,
         method: "PUT",
         data: {
           status: newStatus,
@@ -316,8 +316,8 @@ export default function AddonList() {
       });
       addToast(
         newStatus === "publish"
-          ? __("Option group published.", "product-options-addons-woo")
-          : __("Option group moved to draft.", "product-options-addons-woo"),
+          ? __("Option group published.", "optionbay-product-options-addons-woo")
+          : __("Option group moved to draft.", "optionbay-product-options-addons-woo"),
         "success",
       );
       setGroups((prev) =>
@@ -325,7 +325,7 @@ export default function AddonList() {
       );
     } catch (err: any) {
       addToast(
-        err.message || __("Failed to update status.", "product-options-addons-woo"),
+        err.message || __("Failed to update status.", "optionbay-product-options-addons-woo"),
         "error",
       );
     } finally {
@@ -335,12 +335,12 @@ export default function AddonList() {
 
   const getAssignmentSummary = (assignments: GroupListItem["assignments"]) => {
     if (!assignments || assignments.length === 0) {
-      return __("None", "product-options-addons-woo");
+      return __("None", "optionbay-product-options-addons-woo");
     }
 
     const hasGlobal = assignments.some((a) => a.target_type === "global");
     if (hasGlobal) {
-      return __("All Products", "product-options-addons-woo");
+      return __("All Products", "optionbay-product-options-addons-woo");
     }
 
     const cats = assignments.filter(
@@ -351,12 +351,12 @@ export default function AddonList() {
     ).length;
     const parts: string[] = [];
     if (cats > 0) {
-      parts.push(`${cats} ${__("categories", "product-options-addons-woo")}`);
+      parts.push(`${cats} ${__("categories", "optionbay-product-options-addons-woo")}`);
     }
     if (products > 0) {
-      parts.push(`${products} ${__("products", "product-options-addons-woo")}`);
+      parts.push(`${products} ${__("products", "optionbay-product-options-addons-woo")}`);
     }
-    return parts.join(", ") || __("None", "product-options-addons-woo");
+    return parts.join(", ") || __("None", "optionbay-product-options-addons-woo");
   };
 
   const formatDate = (dateString: string) => {
@@ -387,19 +387,19 @@ export default function AddonList() {
         className="wpab-wpoa-h-[30px]"
         disabled={isActioning}
       >
-        <option value="">{__("Bulk actions", "product-options-addons-woo")}</option>
+        <option value="">{__("Bulk actions", "optionbay-product-options-addons-woo")}</option>
         {statusFilter === "trash" ? (
           <>
-            <option value="restore">{__("Restore", "product-options-addons-woo")}</option>
+            <option value="restore">{__("Restore", "optionbay-product-options-addons-woo")}</option>
             <option value="delete">
-              {__("Delete Permanently", "product-options-addons-woo")}
+              {__("Delete Permanently", "optionbay-product-options-addons-woo")}
             </option>
           </>
         ) : (
           <>
-            <option value="activate">{__("Publish", "product-options-addons-woo")}</option>
-            <option value="draft">{__("Draft", "product-options-addons-woo")}</option>
-            <option value="delete">{__("Move to Trash", "product-options-addons-woo")}</option>
+            <option value="activate">{__("Publish", "optionbay-product-options-addons-woo")}</option>
+            <option value="draft">{__("Draft", "optionbay-product-options-addons-woo")}</option>
+            <option value="delete">{__("Move to Trash", "optionbay-product-options-addons-woo")}</option>
           </>
         )}
       </select>
@@ -408,12 +408,12 @@ export default function AddonList() {
         onClick={handleBulkAction}
         disabled={!bulkAction || selectedGroups.length === 0 || isActioning}
       >
-        {__("Apply", "product-options-addons-woo")}
+        {__("Apply", "optionbay-product-options-addons-woo")}
       </ClassicButton>
       {selectedGroups.length > 0 && (
         <span className="wpab-wpoa-text-sm wpab-wpoa-text-gray-500">
           {sprintf(
-            __("%1$d of %2$d selected", "product-options-addons-woo"),
+            __("%1$d of %2$d selected", "optionbay-product-options-addons-woo"),
             selectedGroups.length,
             total,
           )}
@@ -430,24 +430,24 @@ export default function AddonList() {
         }`}
       >
         <span className="displaying-num wpab-wpoa-text-[13px] wpab-wpoa-mr-2">
-          {total} {__("items", "product-options-addons-woo")}
+          {total} {__("items", "optionbay-product-options-addons-woo")}
         </span>
         <ClassicButton
           variant="secondary"
           onClick={() => setPage((p) => Math.max(1, p - 1))}
           disabled={page <= 1}
         >
-          {__("← Previous", "product-options-addons-woo")}
+          {__("← Previous", "optionbay-product-options-addons-woo")}
         </ClassicButton>
         <span className="wpab-wpoa-leading-[30px] wpab-wpoa-px-2">
-          {__("Page", "product-options-addons-woo")} {page} {__("of", "product-options-addons-woo")} {totalPages}
+          {__("Page", "optionbay-product-options-addons-woo")} {page} {__("of", "optionbay-product-options-addons-woo")} {totalPages}
         </span>
         <ClassicButton
           variant="secondary"
           onClick={() => setPage((p) => Math.min(totalPages, p + 1))}
           disabled={page >= totalPages}
         >
-          {__("Next →", "product-options-addons-woo")}
+          {__("Next →", "optionbay-product-options-addons-woo")}
         </ClassicButton>
 
         <div className="wpab-wpoa-ml-2">
@@ -467,36 +467,36 @@ export default function AddonList() {
             content={
               <div className="wpab-wpoa-p-3 wpab-wpoa-flex wpab-wpoa-flex-col wpab-wpoa-gap-2">
                 <p className="wpab-wpoa-font-semibold wpab-wpoa-text-xs wpab-wpoa-uppercase wpab-wpoa-text-gray-400 wpab-wpoa-mb-1">
-                  {__("Display Columns", "product-options-addons-woo")}
+                  {__("Display Columns", "optionbay-product-options-addons-woo")}
                 </p>
                 {[
                   {
                     id: "fields",
-                    label: __("Fields", "product-options-addons-woo"),
+                    label: __("Fields", "optionbay-product-options-addons-woo"),
                   },
                   {
                     id: "assigned",
-                    label: __("Assigned To", "product-options-addons-woo"),
+                    label: __("Assigned To", "optionbay-product-options-addons-woo"),
                   },
                   {
                     id: "status",
-                    label: __("Status", "product-options-addons-woo"),
+                    label: __("Status", "optionbay-product-options-addons-woo"),
                   },
                   {
                     id: "created_by",
-                    label: __("Created By", "product-options-addons-woo"),
+                    label: __("Created By", "optionbay-product-options-addons-woo"),
                   },
                   {
                     id: "created_at",
-                    label: __("Created At", "product-options-addons-woo"),
+                    label: __("Created At", "optionbay-product-options-addons-woo"),
                   },
                   {
                     id: "updated_by",
-                    label: __("Updated By", "product-options-addons-woo"),
+                    label: __("Updated By", "optionbay-product-options-addons-woo"),
                   },
                   {
                     id: "updated_at",
-                    label: __("Updated At", "product-options-addons-woo"),
+                    label: __("Updated At", "optionbay-product-options-addons-woo"),
                   },
                 ].map((col) => (
                   <label
@@ -532,7 +532,7 @@ export default function AddonList() {
           display: "inline-block",
           fontFamily: '-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen-Sans,Ubuntu,Cantarell,"Helvetica Neue",sans-serif'
         }}>
-          {__("Option Groups", "product-options-addons-woo")}
+          {__("Option Groups", "optionbay-product-options-addons-woo")}
         </h1>
         <a
           href="#/option-groups/new"
@@ -556,7 +556,7 @@ export default function AddonList() {
             verticalAlign: "middle"
           }}
         >
-          {__("Add new group", "product-options-addons-woo")}
+          {__("Add new group", "optionbay-product-options-addons-woo")}
         </a>
         <button
           type="button"
@@ -583,7 +583,7 @@ export default function AddonList() {
             setShowExportPanel(false);
           }}
         >
-          {__("Import", "product-options-addons-woo")}
+          {__("Import", "optionbay-product-options-addons-woo")}
         </button>
         <button
           type="button"
@@ -610,7 +610,7 @@ export default function AddonList() {
             setShowImportPanel(false);
           }}
         >
-          {__("Export", "product-options-addons-woo")}
+          {__("Export", "optionbay-product-options-addons-woo")}
         </button>
         <hr className="wp-header-end" style={{ clear: "both", border: 0, margin: 0, padding: 0 }} />
       </div>
@@ -619,7 +619,7 @@ export default function AddonList() {
       {showImportPanel && (
         <div className="wpab-wpoa-bg-white wpab-wpoa-border wpab-wpoa-border-gray-200 wpab-wpoa-rounded-lg wpab-wpoa-p-6 wpab-wpoa-mb-6 wpab-wpoa-shadow-sm wpab-wpoa-animate-fadeIn">
           <div className="wpab-wpoa-flex wpab-wpoa-justify-between wpab-wpoa-items-center wpab-wpoa-border-b wpab-wpoa-border-gray-100 wpab-wpoa-pb-3 wpab-wpoa-mb-4">
-            <h3 className="wpab-wpoa-m-0 wpab-wpoa-text-lg wpab-wpoa-font-medium">{__("Import Option Groups", "product-options-addons-woo")}</h3>
+            <h3 className="wpab-wpoa-m-0 wpab-wpoa-text-lg wpab-wpoa-font-medium">{__("Import Option Groups", "optionbay-product-options-addons-woo")}</h3>
             <button
               onClick={() => setShowImportPanel(false)}
               className="wpab-wpoa-text-gray-400 hover:wpab-wpoa-text-gray-600 wpab-wpoa-border-0 wpab-wpoa-bg-transparent wpab-wpoa-cursor-pointer wpab-wpoa-text-lg"
@@ -635,7 +635,7 @@ export default function AddonList() {
       {showExportPanel && (
         <div className="wpab-wpoa-bg-white wpab-wpoa-border wpab-wpoa-border-gray-200 wpab-wpoa-rounded-lg wpab-wpoa-p-6 wpab-wpoa-mb-6 wpab-wpoa-shadow-sm wpab-wpoa-animate-fadeIn">
           <div className="wpab-wpoa-flex wpab-wpoa-justify-between wpab-wpoa-items-center wpab-wpoa-border-b wpab-wpoa-border-gray-100 wpab-wpoa-pb-3 wpab-wpoa-mb-4">
-            <h3 className="wpab-wpoa-m-0 wpab-wpoa-text-lg wpab-wpoa-font-medium">{__("Export Option Groups", "product-options-addons-woo")}</h3>
+            <h3 className="wpab-wpoa-m-0 wpab-wpoa-text-lg wpab-wpoa-font-medium">{__("Export Option Groups", "optionbay-product-options-addons-woo")}</h3>
             <button
               onClick={() => setShowExportPanel(false)}
               className="wpab-wpoa-text-gray-400 hover:wpab-wpoa-text-gray-600 wpab-wpoa-border-0 wpab-wpoa-bg-transparent wpab-wpoa-cursor-pointer wpab-wpoa-text-lg"
@@ -652,7 +652,7 @@ export default function AddonList() {
         {/* Left side: Subsubsub filters */}
         <p className="wpab-wpoa-text-gray-600 wpab-wpoa-m-0">
           {loading ? (
-            __("Loading…", "product-options-addons-woo")
+            __("Loading…", "optionbay-product-options-addons-woo")
           ) : (
             <ul className="subsubsub wpab-wpoa-w-full wpab-wpoa-list-none wpab-wpoa-p-0 wpab-wpoa-flex wpab-wpoa-gap-2 wpab-wpoa-text-sm wpab-wpoa-m-0">
               <li>
@@ -669,7 +669,7 @@ export default function AddonList() {
                       : "!wpab-wpoa-text-[#50a9e0]"
                   }
                 >
-                  {__("All", "product-options-addons-woo")}{" "}
+                  {__("All", "optionbay-product-options-addons-woo")}{" "}
                   <span className="count">({counts.all})</span>
                 </a>{" "}
                 |
@@ -688,7 +688,7 @@ export default function AddonList() {
                       : "!wpab-wpoa-text-[#50a9e0]"
                   }
                 >
-                  {__("Published", "product-options-addons-woo")}{" "}
+                  {__("Published", "optionbay-product-options-addons-woo")}{" "}
                   <span className="count">({counts.publish})</span>
                 </a>{" "}
                 |
@@ -707,7 +707,7 @@ export default function AddonList() {
                       : "!wpab-wpoa-text-[#50a9e0]"
                   }
                 >
-                  {__("Draft", "product-options-addons-woo")}{" "}
+                  {__("Draft", "optionbay-product-options-addons-woo")}{" "}
                   <span className="count">({counts.draft})</span>
                 </a>{" "}
                 {counts.trash > 0 && "|"}
@@ -727,7 +727,7 @@ export default function AddonList() {
                         : "!wpab-wpoa-text-[#50a9e0]"
                     }
                   >
-                    {__("Trash", "product-options-addons-woo")}{" "}
+                    {__("Trash", "optionbay-product-options-addons-woo")}{" "}
                     <span className="count">({counts.trash})</span>
                   </a>
                 </li>
@@ -744,7 +744,7 @@ export default function AddonList() {
             className="wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-gap-2 wpab-wpoa-h-[30px]"
           >
             <Package size={14} />
-            {__("View Inventory", "product-options-addons-woo")}
+            {__("View Inventory", "optionbay-product-options-addons-woo")}
           </ClassicButton>
 
           {/* WordPress-style Search Box */}
@@ -752,7 +752,7 @@ export default function AddonList() {
             <input
               type="search"
               className="wpab-wpoa-h-[30px] wpab-wpoa-px-3 wpab-wpoa-border wpab-wpoa-border-gray-300 wpab-wpoa-rounded wpab-wpoa-text-sm wpab-wpoa-bg-white"
-              placeholder={__("Search option groups...", "product-options-addons-woo")}
+              placeholder={__("Search option groups...", "optionbay-product-options-addons-woo")}
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
               onKeyDown={(e) => {
@@ -766,7 +766,7 @@ export default function AddonList() {
               className="button wpab-wpoa-h-[30px] wpab-wpoa-px-3 wpab-wpoa-bg-[#f6f7f7] hover:wpab-wpoa-bg-[#f0f0f1] wpab-wpoa-border wpab-wpoa-border-gray-300 wpab-wpoa-rounded wpab-wpoa-text-sm wpab-wpoa-cursor-pointer wpab-wpoa-text-[#2271b1] hover:wpab-wpoa-text-[#0a4b78] wpab-wpoa-font-medium"
               onClick={handleSearch}
             >
-              {__("Search groups", "product-options-addons-woo")}
+              {__("Search groups", "optionbay-product-options-addons-woo")}
             </button>
           </div>
         </div>
@@ -792,27 +792,27 @@ export default function AddonList() {
                   onChange={(e) => toggleSelectAll(e)}
                 />
               </td>
-              <th className="wpab-wpoa-w-[40%]">{__("Title", "product-options-addons-woo")}</th>
+              <th className="wpab-wpoa-w-[40%]">{__("Title", "optionbay-product-options-addons-woo")}</th>
               {visibleColumns.includes("fields") && (
-                <th>{__("Fields", "product-options-addons-woo")}</th>
+                <th>{__("Fields", "optionbay-product-options-addons-woo")}</th>
               )}
               {visibleColumns.includes("assigned") && (
-                <th>{__("Assigned To", "product-options-addons-woo")}</th>
+                <th>{__("Assigned To", "optionbay-product-options-addons-woo")}</th>
               )}
               {visibleColumns.includes("status") && (
-                <th>{__("Status", "product-options-addons-woo")}</th>
+                <th>{__("Status", "optionbay-product-options-addons-woo")}</th>
               )}
               {visibleColumns.includes("created_by") && (
-                <th>{__("Created By", "product-options-addons-woo")}</th>
+                <th>{__("Created By", "optionbay-product-options-addons-woo")}</th>
               )}
               {visibleColumns.includes("created_at") && (
-                <th>{__("Created At", "product-options-addons-woo")}</th>
+                <th>{__("Created At", "optionbay-product-options-addons-woo")}</th>
               )}
               {visibleColumns.includes("updated_by") && (
-                <th>{__("Updated By", "product-options-addons-woo")}</th>
+                <th>{__("Updated By", "optionbay-product-options-addons-woo")}</th>
               )}
               {visibleColumns.includes("updated_at") && (
-                <th>{__("Updated At", "product-options-addons-woo")}</th>
+                <th>{__("Updated At", "optionbay-product-options-addons-woo")}</th>
               )}
             </tr>
           </thead>
@@ -825,13 +825,13 @@ export default function AddonList() {
                   colSpan={5}
                   className="wpab-wpoa-text-center wpab-wpoa-p-10"
                 >
-                  <p>{__("No option groups found.", "product-options-addons-woo")}</p>
+                  <p>{__("No option groups found.", "optionbay-product-options-addons-woo")}</p>
                   <ClassicButton
                     variant="primary"
                     onClick={() => navigate("/option-groups/new")}
                     className="wpab-wpoa-mt-2"
                   >
-                    {__("Create your first option group", "product-options-addons-woo")}
+                    {__("Create your first option group", "optionbay-product-options-addons-woo")}
                   </ClassicButton>
                 </td>
               </tr>
@@ -857,7 +857,7 @@ export default function AddonList() {
                       }}
                       className="wpab-wpoa-font-semibold wpab-wpoa-text-[#2271b1] hover:wpab-wpoa-text-[#135e96]"
                     >
-                      {group.title || __("(Untitled)", "product-options-addons-woo")}
+                      {group.title || __("(Untitled)", "optionbay-product-options-addons-woo")}
                     </a>
 
                     {/* Hover Actions */}
@@ -872,14 +872,14 @@ export default function AddonList() {
                             className="wpab-wpoa-text-[#2271b1] hover:wpab-wpoa-underline wpab-wpoa-cursor-pointer"
                             onClick={() => handleRestore(group.id)}
                           >
-                            {__("Restore", "product-options-addons-woo")}
+                            {__("Restore", "optionbay-product-options-addons-woo")}
                           </span>
                           <span className="wpab-wpoa-text-[#ddd]">|</span>
                           <span
                             className="wpab-wpoa-text-[#d63638] hover:wpab-wpoa-text-[#b32d2e] hover:wpab-wpoa-underline wpab-wpoa-cursor-pointer"
                             onClick={() => handleDelete(group.id)}
                           >
-                            {__("Delete Permanently", "product-options-addons-woo")}
+                            {__("Delete Permanently", "optionbay-product-options-addons-woo")}
                           </span>
                         </>
                       ) : (
@@ -889,21 +889,21 @@ export default function AddonList() {
                             className="wpab-wpoa-text-[#2271b1] hover:wpab-wpoa-underline wpab-wpoa-cursor-pointer"
                             href={`#/option-groups/${group.id}`}
                           >
-                            {__("Edit", "product-options-addons-woo")}
+                            {__("Edit", "optionbay-product-options-addons-woo")}
                           </a>
                           <span className="wpab-wpoa-text-[#ddd]">|</span>
                           <span
                             className="wpab-wpoa-text-[#2271b1] hover:wpab-wpoa-underline wpab-wpoa-cursor-pointer"
                             onClick={() => handleDuplicate(group.id)}
                           >
-                            {__("Duplicate", "product-options-addons-woo")}
+                            {__("Duplicate", "optionbay-product-options-addons-woo")}
                           </span>
                           <span className="wpab-wpoa-text-[#ddd]">|</span>
                           <span
                             className="wpab-wpoa-text-[#d63638] hover:wpab-wpoa-text-[#b32d2e] hover:wpab-wpoa-underline wpab-wpoa-cursor-pointer"
                             onClick={() => handleDelete(group.id)}
                           >
-                            {__("Trash", "product-options-addons-woo")}
+                            {__("Trash", "optionbay-product-options-addons-woo")}
                           </span>
                         </>
                       )}
@@ -920,7 +920,7 @@ export default function AddonList() {
                       <div className="wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-gap-3">
                         {statusFilter === "trash" ? (
                           <span className="wpab-wpoa-inline-block wpab-wpoa-px-2 wpab-wpoa-py-0.5 wpab-wpoa-rounded wpab-wpoa-text-xs wpab-wpoa-bg-gray-100 wpab-wpoa-text-gray-600">
-                            {__("Trash", "product-options-addons-woo")}
+                            {__("Trash", "optionbay-product-options-addons-woo")}
                           </span>
                         ) : (
                           <>
@@ -940,8 +940,8 @@ export default function AddonList() {
                               }`}
                             >
                               {group.status === "publish"
-                                ? __("Published", "product-options-addons-woo")
-                                : __("Draft", "product-options-addons-woo")}
+                                ? __("Published", "optionbay-product-options-addons-woo")
+                                : __("Draft", "optionbay-product-options-addons-woo")}
                             </span>
                           </>
                         )}

@@ -1,5 +1,5 @@
 {
-  "name": "product-options-addons-woo",
+  "name": "optionbay-product-options-addons-woo",
   "version": "1.0.0",
   "description": "OptionBay - Product Options and Addons - WooCommerce product options with advanced pricing, inventory, and conditional logic.",
   "main": "index.js",
@@ -8,7 +8,7 @@
     "start": "wp-scripts start",
     "build:legacy": "cross-env BUILD_TARGET=legacy wp-scripts build",
     "start:legacy": "cross-env BUILD_TARGET=legacy wp-scripts start",
-    "makepot": "wp i18n make-pot . languages/product-options-addons-woo.pot --domain=product-options-addons-woo --slug=product-options-addons-woo --exclude='node_modules,vendor,src'",
+    "makepot": "wp i18n make-pot . languages/optionbay-product-options-addons-woo.pot --domain=optionbay-product-options-addons-woo --slug=optionbay-product-options-addons-woo --exclude='node_modules,vendor,src'",
     "make-json": "wp i18n make-json languages --no-purge",
     "lint": "phpcs --standard=phpcs.xml.dist",
     "lint-stat": "phpcs --standard=phpcs.xml.dist --report=summary",
@@ -53,7 +53,7 @@
     "zod": "^4.3.6"
   },
   "wp-i18n": {
-    "domain": "product-options-addons-woo",
-    "potFile": "languages/product-options-addons-woo.pot"
+    "domain": "optionbay-product-options-addons-woo",
+    "potFile": "languages/optionbay-product-options-addons-woo.pot"
   }
 }
