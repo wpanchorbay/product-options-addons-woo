@@ -44,7 +44,7 @@
     <rule ref="WordPress.WP.I18n">
         <properties>
             <property name="text_domain" type="array">
-                <element value="product-options-addons-woo"/>
+                <element value="optionbay-product-options-addons-woo"/>
             </property>
         </properties>
     </rule>
@@ -52,7 +52,7 @@
     <rule ref="WordPress.WP.Capabilities">
         <properties>
             <property name="custom_capabilities" type="array">
-                <element value="manage_product-options-addons-woo"/>
+                <element value="manage_opopw_options_addons"/>
                 <element value="manage_woocommerce"/>
             </property>
         </properties>
@@ -61,9 +61,9 @@
     <rule ref="WordPress.NamingConventions.PrefixAllGlobals">
         <properties>
             <property name="prefixes" type="array">
-                <element value="product_options_addons_woo"/>
-                <element value="PRODUCT_OPTIONS_ADDONS_WOO"/>
-                <element value="SmartProductOptionsAddons"/>
+                <element value="opopw"/>
+                <element value="Opopw"/>
+                <element value="OPOPW"/>
             </property>
         </properties>
     </rule>
