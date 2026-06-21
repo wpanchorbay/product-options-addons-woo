@@ -2,7 +2,7 @@
 routing.json
 wp-cli.phar
 /.ignores
-/.dist
+/dist
 /build
 all_php_code.txt
 todo.txt
