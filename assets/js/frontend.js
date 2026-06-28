@@ -20,6 +20,7 @@
   var OB = window.opopwSchema;
   var schemas = OB.schemas || {};
   var basePrice = parseFloat(OB.basePrice) || 0;
+  var originalImageAttr = null;
 
 
 
@@ -532,11 +533,183 @@
 
 
 
+  function captureOriginalImage() {
+    var $gallery = $(".woocommerce-product-gallery");
+    if (!$gallery.length) return;
+
+    var $img = $gallery.find(".woocommerce-product-gallery__image img, .woocommerce-product-gallery__image--placeholder img, .woocommerce-product-gallery__wrapper img, .woocommerce-product-gallery img").first();
+    var $link = $img.parent("a");
+    if (!$link.length) {
+      $link = $gallery.find(".woocommerce-product-gallery__image a, .woocommerce-product-gallery__image--placeholder a, .woocommerce-product-gallery__wrapper a").first();
+    }
+
+    if ($img.length) {
+      originalImageAttr = {
+        img: {
+          src: $img.attr("src") || "",
+          srcset: $img.attr("srcset") || "",
+          sizes: $img.attr("sizes") || "",
+          "data-src": $img.attr("data-src") || "",
+          "data-large_image": $img.attr("data-large_image") || "",
+          "data-large_image_width": $img.attr("data-large_image_width") || "",
+          "data-large_image_height": $img.attr("data-large_image_height") || ""
+        },
+        link: $link.length ? {
+          href: $link.attr("href") || "",
+          title: $link.attr("title") || ""
+        } : null
+      };
+    }
+  }
+
+  function handleImageSwap() {
+    if (!originalImageAttr) {
+      captureOriginalImage();
+    }
+    if (!originalImageAttr) return;
+
+    var targetImage = null;
+
+    $.each(schemas, function (groupId, groupData) {
+      if (!groupData.fields) return;
+
+      $.each(groupData.fields, function (_, field) {
+        var $wrapper = $('#opopw-options').find(
+          '.opopw-field[data-group-id="' +
+          groupId +
+          '"][data-field-id="' +
+          field.id +
+          '"]'
+        );
+
+        var isVisible = $wrapper.length && $wrapper.is(":visible");
+        if (!isVisible) return;
+
+        if (field.type === "select") {
+          var $selectedOption = $wrapper.find("select option:selected");
+          var linkedImg = $selectedOption.attr("data-linked-image");
+          if (linkedImg) {
+            var val = $selectedOption.val();
+            var optSchema = findOptionSchema(field, val);
+            if (optSchema) {
+              targetImage = optSchema;
+            }
+          }
+        } else if (field.type === "radio" || field.type === "color_swatch" || field.type === "image_swatch") {
+          var $checkedInput = $wrapper.find('input[type="radio"]:checked');
+          var linkedImg = $checkedInput.attr("data-linked-image");
+          if (linkedImg) {
+            var val = $checkedInput.val();
+            var optSchema = findOptionSchema(field, val);
+            if (optSchema) {
+              targetImage = optSchema;
+            }
+          }
+        } else if (field.type === "checkbox") {
+          if (field.options && field.options.length > 0) {
+            var $checkedInputs = $wrapper.find('input[type="checkbox"]:checked');
+            $checkedInputs.each(function() {
+              var val = $(this).val();
+              var optSchema = findOptionSchema(field, val);
+              if (optSchema && optSchema.linked_image_url) {
+                targetImage = optSchema;
+              }
+            });
+          }
+        }
+      });
+    });
+
+    var $gallery = $(".woocommerce-product-gallery");
+    var $img = $gallery.find(".woocommerce-product-gallery__image img, .woocommerce-product-gallery__image--placeholder img, .woocommerce-product-gallery__wrapper img, .woocommerce-product-gallery img").first();
+    var $link = $img.parent("a");
+    if (!$link.length) {
+      $link = $gallery.find(".woocommerce-product-gallery__image a, .woocommerce-product-gallery__image--placeholder a, .woocommerce-product-gallery__wrapper a").first();
+    }
+
+    if (!$img.length) return;
+
+    if (targetImage) {
+      var newSrc = targetImage.linked_image_single_url || targetImage.linked_image_url;
+      var newSrcset = targetImage.linked_image_srcset || "";
+      var newLargeSrc = targetImage.linked_image_url;
+      var newWidth = targetImage.linked_image_width || "";
+      var newHeight = targetImage.linked_image_height || "";
+
+      $img.addClass("opopw-image-swapping");
+
+      $img.attr("src", newSrc);
+      if (newSrcset) {
+        $img.attr("srcset", newSrcset);
+      } else {
+        $img.removeAttr("srcset");
+      }
+      $img.attr("data-src", newSrc);
+      $img.attr("data-large_image", newLargeSrc);
+      if (newWidth) $img.attr("data-large_image_width", newWidth);
+      if (newHeight) $img.attr("data-large_image_height", newHeight);
+
+      if ($link.length) {
+        $link.attr("href", newLargeSrc);
+      }
+
+      if (typeof $.fn.easyZoom === "function" && $gallery.data("easyZoom")) {
+        var api = $gallery.data("easyZoom");
+        if (api && typeof api.teardown === "function" && typeof api.init === "function") {
+          api.teardown();
+          api.init();
+        }
+      }
+
+      setTimeout(function() {
+        $img.removeClass("opopw-image-swapping");
+      }, 200);
+
+    } else {
+      var orig = originalImageAttr;
+      $img.addClass("opopw-image-swapping");
+
+      $img.attr("src", orig.img.src);
+      if (orig.img.srcset) {
+        $img.attr("srcset", orig.img.srcset);
+      } else {
+        $img.removeAttr("srcset");
+      }
+      if (orig.img.sizes) $img.attr("sizes", orig.img.sizes);
+      $img.attr("data-src", orig.img["data-src"]);
+      $img.attr("data-large_image", orig.img["data-large_image"]);
+      $img.attr("data-large_image_width", orig.img["data-large_image_width"]);
+      $img.attr("data-large_image_height", orig.img["data-large_image_height"]);
+
+      if ($link.length && orig.link) {
+        $link.attr("href", orig.link.href);
+        $link.attr("title", orig.link.title);
+      }
+
+      setTimeout(function() {
+        $img.removeClass("opopw-image-swapping");
+      }, 200);
+    }
+  }
+
+  function findOptionSchema(field, value) {
+    var found = null;
+    $.each(field.options || [], function (_, opt) {
+      if (String(opt.value) === String(value)) {
+        found = opt;
+        return false;
+      }
+    });
+    return found;
+  }
+
   // ─── Event Binding (Delegation) ──────────────────────────────────
 
   $(document).ready(function () {
     var $form = $("form.cart");
     if (!$form.length) return;
+
+    captureOriginalImage();
 
     // Delegated listener for all field changes
     $form.on("change input", ".opopw-field input, .opopw-field select, .opopw-field textarea", function () {
@@ -553,9 +726,10 @@
 
       // 4. Enforce Stock
       evaluateStock();
+
+      // 5. Image swap logic
+      handleImageSwap();
     });
-
-
 
     // Quantity change re-triggers pricing & stock
     $form.on("change input", "input.qty", function () {
@@ -570,5 +744,6 @@
     calculatePricing();
     evaluateStock();
     validateRequiredFields();
+    handleImageSwap();
   });
 })(jQuery);

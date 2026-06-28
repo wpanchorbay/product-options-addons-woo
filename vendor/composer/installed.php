@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
-        'name' => 'wpanchorbay/woo-product-options-addons',
-        'pretty_version' => 'dev-main',
-        'version' => 'dev-main',
-        'reference' => 'ddce6d10faf188a1f88a721c130f2366a56bdcb1',
+        'name' => 'wpanchorbay/optionbay-product-options-addons-woo',
+        'pretty_version' => '1.0.0.x-dev',
+        'version' => '1.0.0.9999999-dev',
+        'reference' => 'eb7a6ec2727e98d1034bda9573647d25b5caf5d7',
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -19,10 +19,10 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
-        'wpanchorbay/woo-product-options-addons' => array(
-            'pretty_version' => 'dev-main',
-            'version' => 'dev-main',
-            'reference' => 'ddce6d10faf188a1f88a721c130f2366a56bdcb1',
+        'wpanchorbay/optionbay-product-options-addons-woo' => array(
+            'pretty_version' => '1.0.0.x-dev',
+            'version' => '1.0.0.9999999-dev',
+            'reference' => 'eb7a6ec2727e98d1034bda9573647d25b5caf5d7',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

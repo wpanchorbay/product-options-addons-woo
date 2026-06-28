@@ -27,6 +27,8 @@ export interface FieldOption {
   enable_stock?: boolean;
   inventory_id?: number | string;
   reduction_mode?: string;
+  linked_image_id?: number;
+  linked_image_url?: string;
 }
 
 export interface FieldDefinition {

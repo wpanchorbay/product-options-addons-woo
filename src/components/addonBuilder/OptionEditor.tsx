@@ -6,7 +6,7 @@ import { PRICE_TYPES, REDUCTION_MODES } from "./constants";
 import { FormError } from "./FormError";
 import { InventoryPicker } from "./InventoryPicker";
 import { ClassicCheckbox } from "../classics";
-import { CirclePlus, Trash2, ImagePlus } from "lucide-react";
+import { CirclePlus, Trash2, ImagePlus, Image, X } from "lucide-react";
 
 interface OptionEditorProps {
   fieldId: string;
@@ -34,7 +34,7 @@ export const OptionEditor: React.FC<OptionEditorProps> = ({
   const isSwatch = isColorSwatch || isImageSwatch;
 
   // Calculate column count for empty state colSpan
-  const colCount = 6 + (isSwatch ? 1 : 0);
+  const colCount = 7 + (isSwatch ? 1 : 0);
 
   const openMediaLibrary = (idx: number) => {
     if (!(window as any).wp?.media) return;
@@ -55,6 +55,34 @@ export const OptionEditor: React.FC<OptionEditorProps> = ({
           fieldId,
           optionIndex: idx,
           updates: { image_url: imageUrl },
+        },
+      });
+    });
+
+    frame.open();
+  };
+
+  const openLinkedImageLibrary = (idx: number) => {
+    if (!(window as any).wp?.media) return;
+
+    const frame = (window as any).wp.media({
+      title: __("Select Product Image", "optionbay-product-options-addons-woo"),
+      button: { text: __("Link this image", "optionbay-product-options-addons-woo") },
+      multiple: false,
+      library: { type: "image" },
+    });
+
+    frame.on("select", () => {
+      const attachment = frame.state().get("selection").first().toJSON();
+      dispatch({
+        type: "UPDATE_OPTION",
+        payload: {
+          fieldId,
+          optionIndex: idx,
+          updates: {
+            linked_image_id: attachment.id,
+            linked_image_url: attachment.sizes?.full?.url || attachment.url || "",
+          },
         },
       });
     });
@@ -124,7 +152,11 @@ export const OptionEditor: React.FC<OptionEditorProps> = ({
                 <th className="!wpab-wpoa-py-[10px] !wpab-wpoa-px-[12px] wpab-wpoa-font-semibold wpab-wpoa-text-[#1d2327] wpab-wpoa-w-[180px]">
                   {__("Stock", "optionbay-product-options-addons-woo")}
                 </th>
-                <th className="!wpab-wpoa-py-[10px] !wpab-wpoa-px-[12px] wpab-wpoa-font-semibold wpab-wpoa-text-[#1d2327] wpab-wpoa-w-[40px]"></th>
+                <th className="!wpab-wpoa-py-[10px] !wpab-wpoa-px-[12px] wpab-wpoa-font-semibold wpab-wpoa-text-[#1d2327] wpab-wpoa-w-[40px]">
+                  </th>
+                <th className="!wpab-wpoa-py-[10px] !wpab-wpoa-px-[12px] wpab-wpoa-font-semibold wpab-wpoa-text-[#1d2327] wpab-wpoa-w-[70px]">
+                    {__("Product Image", "optionbay-product-options-addons-woo")}
+                  </th>
               </tr>
             </thead>
             <tbody>
@@ -457,6 +489,57 @@ export const OptionEditor: React.FC<OptionEditorProps> = ({
                       >
                         <Trash2 className="wpab-wpoa-size-4" />
                       </button>
+                    </td>
+
+                    {/* Product Image */}
+                    <td
+                      className="wpab-wpoa-py-2 wpab-wpoa-px-3"
+                      style={{ verticalAlign: "top" }}
+                    >
+                      {opt.linked_image_url ? (
+                        <div className="wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-gap-1">
+                          <div
+                            className="wpab-wpoa-relative wpab-wpoa-w-8 wpab-wpoa-h-8 wpab-wpoa-rounded-[4px] wpab-wpoa-border wpab-wpoa-border-[#c3c4c7] wpab-wpoa-overflow-hidden wpab-wpoa-cursor-pointer hover:wpab-wpoa-border-[#2271b1] wpab-wpoa-transition-colors wpab-wpoa-shrink-0"
+                            onClick={() => openLinkedImageLibrary(idx)}
+                            title={__("Change linked image", "optionbay-product-options-addons-woo")}
+                          >
+                            <img
+                              src={opt.linked_image_url}
+                              alt={opt.label || "linked"}
+                              className="wpab-wpoa-w-full wpab-wpoa-h-full wpab-wpoa-object-cover"
+                            />
+                          </div>
+                          <button
+                            type="button"
+                            onClick={() =>
+                              dispatch({
+                                type: "UPDATE_OPTION",
+                                payload: {
+                                  fieldId,
+                                  optionIndex: idx,
+                                  updates: {
+                                    linked_image_id: undefined,
+                                    linked_image_url: undefined,
+                                  },
+                                },
+                              })
+                            }
+                            className="wpab-wpoa-bg-transparent wpab-wpoa-border-none wpab-wpoa-cursor-pointer wpab-wpoa-p-0.5 wpab-wpoa-text-[#d63638] hover:wpab-wpoa-text-[#b32d2e] wpab-wpoa-transition-colors"
+                            title={__("Remove linked image", "optionbay-product-options-addons-woo")}
+                          >
+                            <X className="wpab-wpoa-size-3" />
+                          </button>
+                        </div>
+                      ) : (
+                        <button
+                          type="button"
+                          onClick={() => openLinkedImageLibrary(idx)}
+                          className="wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-justify-center wpab-wpoa-w-8 wpab-wpoa-h-8 wpab-wpoa-rounded-[4px] wpab-wpoa-border wpab-wpoa-border-dashed wpab-wpoa-border-[#c3c4c7] wpab-wpoa-bg-[#f6f7f7] wpab-wpoa-text-[#646970] hover:wpab-wpoa-border-[#2271b1] hover:wpab-wpoa-text-[#2271b1] wpab-wpoa-transition-colors wpab-wpoa-cursor-pointer wpab-wpoa-shrink-0"
+                          title={__("Link product image", "optionbay-product-options-addons-woo")}
+                        >
+                          <Image size={14} />
+                        </button>
+                      )}
                     </td>
                   </tr>
                 ))

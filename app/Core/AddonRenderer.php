@@ -217,6 +217,42 @@ class AddonRenderer extends Base {
 		$decimal_sep  = WooCommerce::get_price_decimal_separator();
 		$price_format = WooCommerce::get_price_format();
 
+		// Resolve linked image attributes (full URL, srcset, width, height, single URL)
+		foreach ( $schemas as $group_id => &$group ) {
+			if ( empty( $group['fields'] ) || ! is_array( $group['fields'] ) ) {
+				continue;
+			}
+			foreach ( $group['fields'] as &$field ) {
+				if ( empty( $field['options'] ) || ! is_array( $field['options'] ) ) {
+					continue;
+				}
+				foreach ( $field['options'] as &$opt ) {
+					if ( ! empty( $opt['linked_image_id'] ) ) {
+						$img_id   = intval( $opt['linked_image_id'] );
+						$full_src = wp_get_attachment_image_src( $img_id, 'full' );
+						if ( $full_src ) {
+							$opt['linked_image_url']    = $full_src[0];
+							$opt['linked_image_width']  = $full_src[1];
+							$opt['linked_image_height'] = $full_src[2];
+						}
+						$srcset = wp_get_attachment_image_srcset( $img_id, 'woocommerce_single' );
+						if ( $srcset ) {
+							$opt['linked_image_srcset'] = $srcset;
+						} else {
+							$opt['linked_image_srcset'] = '';
+						}
+						$single_src = wp_get_attachment_image_src( $img_id, 'woocommerce_single' );
+						if ( $single_src ) {
+							$opt['linked_image_single_url'] = $single_src[0];
+						} else {
+							$opt['linked_image_single_url'] = $opt['linked_image_url'] ?? '';
+						}
+					}
+				}
+			}
+		}
+		unset( $group, $field, $opt );
+
 		// Collect all inventory IDs used in the schemas
 		$inventory_ids = array();
 		foreach ( $schemas as $group ) {

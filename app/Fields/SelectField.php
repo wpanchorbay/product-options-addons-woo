@@ -64,6 +64,11 @@ class SelectField extends BaseField {
 				$price_attr .= sprintf( ' data-weight="%s"', esc_attr( $weight ) );
 			}
 
+			$linked_image_url = $option['linked_image_url'] ?? '';
+			if ( ! empty( $linked_image_url ) ) {
+				$price_attr .= sprintf( ' data-linked-image="%s"', esc_url( $linked_image_url ) );
+			}
+
 			$html .= sprintf(
 				'<option value="%s"%s>%s%s</option>',
 				esc_attr( $option['value'] ?? '' ),

@@ -407,3 +407,11 @@
         gap: 8px;
     }
 }
+
+/* ─── Image Swap Transition ────────────────────────────────────────── */
+.woocommerce-product-gallery__image img {
+    transition: opacity 0.2s ease-in-out;
+}
+.woocommerce-product-gallery__image img.opopw-image-swapping {
+    opacity: 0.2;
+}

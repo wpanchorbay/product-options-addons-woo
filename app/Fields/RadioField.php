@@ -50,6 +50,11 @@ class RadioField extends BaseField {
 				$price_attr .= sprintf( ' data-weight="%s"', esc_attr( $weight ) );
 			}
 
+			$linked_image_url = $option['linked_image_url'] ?? '';
+			if ( ! empty( $linked_image_url ) ) {
+				$price_attr .= sprintf( ' data-linked-image="%s"', esc_url( $linked_image_url ) );
+			}
+
 			$html .= sprintf(
 				'<label class="opopw-radio-option" for="%s"><input type="radio" id="%s" name="%s" value="%s" class="opopw-input opopw-input--radio"%s%s /> %s%s</label>',
 				$option_id,

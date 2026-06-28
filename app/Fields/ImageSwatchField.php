@@ -57,6 +57,11 @@ class ImageSwatchField extends RadioField {
 				$price_attr .= sprintf( ' data-weight="%s"', esc_attr( $weight ) );
 			}
 
+			$linked_image_url = $option['linked_image_url'] ?? '';
+			if ( ! empty( $linked_image_url ) ) {
+				$price_attr .= sprintf( ' data-linked-image="%s"', esc_url( $linked_image_url ) );
+			}
+
 			$image_url = esc_url( $option['image_url'] ?? '' );
 			$label     = esc_html( $option['label'] ?? '' );
 

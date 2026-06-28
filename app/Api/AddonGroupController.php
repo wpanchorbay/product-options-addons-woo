@@ -890,18 +890,20 @@ class AddonGroupController extends ApiController {
 						continue;
 					}
 					$clean_option = array(
-						'label'          => sanitize_text_field( $option['label'] ?? '' ),
-						'value'          => sanitize_text_field( $option['value'] ?? '' ),
-						'price_type'     => in_array( $option['price_type'] ?? 'flat', $allowed_price_types, true )
+						'label'            => sanitize_text_field( $option['label'] ?? '' ),
+						'value'            => sanitize_text_field( $option['value'] ?? '' ),
+						'price_type'       => in_array( $option['price_type'] ?? 'flat', $allowed_price_types, true )
 							? ( $option['price_type'] ?? 'flat' )
 							: 'flat',
-						'price'          => floatval( $option['price'] ?? 0 ),
-						'weight'         => floatval( $option['weight'] ?? 0 ),
-						'color'          => sanitize_text_field( $option['color'] ?? '' ),
-						'image_url'      => esc_url_raw( $option['image_url'] ?? '' ),
-						'enable_stock'   => ! empty( $option['enable_stock'] ),
-						'inventory_id'   => $option['inventory_id'] ?? null,
-						'reduction_mode' => $option['reduction_mode'] ?? 'per_item_qty',
+						'price'            => floatval( $option['price'] ?? 0 ),
+						'weight'           => floatval( $option['weight'] ?? 0 ),
+						'color'            => sanitize_text_field( $option['color'] ?? '' ),
+						'image_url'        => esc_url_raw( $option['image_url'] ?? '' ),
+						'enable_stock'     => ! empty( $option['enable_stock'] ),
+						'inventory_id'     => $option['inventory_id'] ?? null,
+						'reduction_mode'   => $option['reduction_mode'] ?? 'per_item_qty',
+						'linked_image_id'  => isset( $option['linked_image_id'] ) ? intval( $option['linked_image_id'] ) : null,
+						'linked_image_url' => isset( $option['linked_image_url'] ) ? esc_url_raw( $option['linked_image_url'] ) : '',
 					);
 					if ( ! empty( $clean_option['enable_stock'] ) ) {
 						$options_have_stock = true;
@@ -1079,6 +1081,8 @@ class AddonGroupController extends ApiController {
 			'schema.*.options.*.weight'                   => 'numeric',
 			'schema.*.options.*.color'                    => 'required_if:schema.*.type,color_swatch',
 			'schema.*.options.*.image_url'                => 'required_if:schema.*.type,image_swatch',
+			'schema.*.options.*.linked_image_id'          => 'nullable|numeric',
+			'schema.*.options.*.linked_image_url'         => 'nullable',
 			'schema.*.conditions'                         => 'array',
 			'schema.*.conditions.status'                  => 'required_with:schema|in:active,inactive',
 			'schema.*.conditions.action'                  => 'required_if:schema.*.conditions.status,active|in:show,hide',
