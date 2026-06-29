@@ -888,31 +888,6 @@
             }
           }
         }
-      } else {
-        // Clicked native gallery image: clear option fields that have linked images
-        isResettingFromThumbnail = true;
-        $.each(schemas, function (groupId, groupData) {
-          if (!groupData.fields) return;
-          $.each(groupData.fields, function (_, field) {
-            var $fieldWrapper = $('#opopw-options').find(
-              '.opopw-field[data-group-id="' + groupId + '"][data-field-id="' + field.id + '"]'
-            );
-            if (!$fieldWrapper.length || !$fieldWrapper.is(":visible")) return;
-
-            if (field.type === "select") {
-              var $select = $fieldWrapper.find("select");
-              if ($select.find("option:selected").attr("data-linked-image")) {
-                $select.val("").trigger("change");
-              }
-            } else if (field.type === "radio" || field.type === "color_swatch" || field.type === "image_swatch") {
-              var $checked = $fieldWrapper.find('input[type="radio"]:checked');
-              if ($checked.attr("data-linked-image")) {
-                $checked.prop("checked", false).trigger("change");
-              }
-            }
-          });
-        });
-        isResettingFromThumbnail = false;
       }
     });
   }
