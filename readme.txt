@@ -20,6 +20,9 @@ Use it for gift wrap, meal builders, swatches, booking choices, custom notes, se
 
 Smart Product Options and Addons gives your store a practical option builder inside the WordPress dashboard. You can create option groups, add fields, set pricing, control visibility, and manage shared add-on inventory from one place.
 
+[youtube https://www.youtube.com/watch?v=3r1VoKZvCl4]
+
+
 [Product Page](https://wpanchorbay.com/plugins/smart-product-options-addons/) | [Official Documentation](https://docs.wpanchorbay.com/smart-product-options-addons/) | [Support](https://wpanchorbay.com/support/) | [Live Demo](https://spoa.wpanchorbay.com/?auto-login=true)
 
 = Key Features =
