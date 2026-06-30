@@ -212,12 +212,12 @@ class CartManager extends Base {
 	/**
 	 * Validate stock when updating cart quantities.
 	 *
-	 * @since 1.1.0
+	 * @since 1.0.0
 	 */
 	/**
 	 * Validate stock when updating cart quantities.
 	 *
-	 * @since 1.1.0
+	 * @since 1.0.0
 	 * @param bool   $passed        Whether validation passed.
 	 * @param string $cart_item_key The cart item key.
 	 * @param array  $values        The cart item values.
@@ -269,7 +269,7 @@ class CartManager extends Base {
 	/**
 	 * Handle quantity updates for Block themes/Store API where filters might be bypassed.
 	 *
-	 * @since 1.1.0
+	 * @since 1.0.0
 	 * @param string   $cart_item_key The cart item key.
 	 * @param int      $quantity      The new quantity.
 	 * @param int      $old_quantity  The old quantity.
@@ -335,12 +335,12 @@ class CartManager extends Base {
 	/**
 	 * Final stock check before checkout processing.
 	 *
-	 * @since 1.1.0
+	 * @since 1.0.0
 	 */
 	/**
 	 * Final stock check before checkout processing.
 	 *
-	 * @since 1.1.0
+	 * @since 1.0.0
 	 * @param array     $data   The checkout data.
 	 * @param \WP_Error $errors The checkout errors.
 	 */
@@ -680,7 +680,7 @@ class CartManager extends Base {
 	/**
 	 * Reduce inventory stock when order is placed.
 	 *
-	 * @since 1.1.0
+	 * @since 1.0.0
 	 * @param \WC_Order $order The order object.
 	 * @throws \Exception When stock is insufficient.
 	 */
@@ -727,7 +727,7 @@ class CartManager extends Base {
 	/**
 	 * Restore stock when order is cancelled or refunded.
 	 *
-	 * @since 1.1.0
+	 * @since 1.0.0
 	 * @param int $order_id The order ID.
 	 */
 	public function restore_order_stock( $order_id ) {

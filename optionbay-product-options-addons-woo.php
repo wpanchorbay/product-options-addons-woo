@@ -3,12 +3,12 @@
  * Plugin Name:       OptionBay - Product Options and Addons
  * Plugin URI:        https://wpanchorbay.com/plugins/smart-product-options-addons/
  * Description:       Add custom product options, add-ons, and extra fields to WooCommerce products with advanced pricing, inventory, and conditional logic.
- * Requires at least: 6.0
+ * Requires at least: 6.8
  * Requires PHP:      7.4
  * Requires Plugins:  woocommerce
  * WC requires at least: 8.0
- * Version:           1.1.0
- * Stable tag:        1.1.0
+ * Version:           1.0.0
+ * Stable tag:        1.0.0
  * Author:            WPAnchorBay
  * Author URI:        https://wpanchorbay.com
  * License:           GPLv2 or later
@@ -27,7 +27,7 @@ if ( ! defined( 'WPINC' ) ) {
 define( 'OPOPW_PATH', plugin_dir_path( __FILE__ ) );
 define( 'OPOPW_DIR', plugin_dir_path( __FILE__ ) );
 define( 'OPOPW_URL', plugin_dir_url( __FILE__ ) );
-define( 'OPOPW_VERSION', '1.1.0' );
+define( 'OPOPW_VERSION', '1.0.0' );
 define( 'OPOPW_PLUGIN_NAME', 'optionbay-product-options-addons-woo' );
 define( 'OPOPW_TEXT_DOMAIN', 'optionbay-product-options-addons-woo' );
 define( 'OPOPW_OPTION_NAME', 'optionbay-product-options-addons-woo' );

@@ -852,7 +852,7 @@ class AddonGroupController extends ApiController {
 			return array();
 		}
 
-		$allowed_types       = array( 'text', 'textarea', 'select', 'radio', 'checkbox', 'color_swatch', 'image_swatch', 'number', 'static_content' );
+		$allowed_types       = array( 'text', 'textarea', 'select', 'radio', 'checkbox', 'color_swatch', 'image_swatch', 'number', 'static_content', 'email', 'single_checkbox', 'date', 'time', 'datetime' );
 		$allowed_price_types = array( 'none', 'flat', 'percentage' );
 
 		$sanitized = array();
@@ -935,6 +935,18 @@ class AddonGroupController extends ApiController {
 			if ( isset( $field['step'] ) ) {
 				$clean_field['step'] = floatval( $field['step'] );
 			}
+			if ( isset( $field['min_date'] ) ) {
+				$clean_field['min_date'] = sanitize_text_field( $field['min_date'] );
+			}
+			if ( isset( $field['max_date'] ) ) {
+				$clean_field['max_date'] = sanitize_text_field( $field['max_date'] );
+			}
+			if ( isset( $field['min_time'] ) ) {
+				$clean_field['min_time'] = sanitize_text_field( $field['min_time'] );
+			}
+			if ( isset( $field['max_time'] ) ) {
+				$clean_field['max_time'] = sanitize_text_field( $field['max_time'] );
+			}
 
 			if ( isset( $field['display_style'] ) ) {
 				$clean_field['display_style'] = sanitize_text_field( $field['display_style'] );
@@ -1003,7 +1015,7 @@ class AddonGroupController extends ApiController {
 	/**
 	 * Swap temporary inventory IDs with real IDs in the schema.
 	 *
-	 * @since 1.1.0
+	 * @since 1.0.0
 	 * @param array $schema The schema array.
 	 * @param array $id_map Map of temporary IDs to real IDs.
 	 * @return array
@@ -1048,7 +1060,7 @@ class AddonGroupController extends ApiController {
 	/**
 	 * Get the validation rules for an option group.
 	 *
-	 * @since 1.1.0
+	 * @since 1.0.0
 	 * @return array
 	 */
 	private function get_validation_rules() {
@@ -1058,7 +1070,7 @@ class AddonGroupController extends ApiController {
 			'status'                                      => 'required|in:publish,draft',
 			'schema'                                      => 'required|array',
 			'schema.*.id'                                 => 'required',
-			'schema.*.type'                               => 'required|in:text,textarea,select,radio,checkbox,color_swatch,image_swatch,number,static_content',
+			'schema.*.type'                               => 'required|in:text,textarea,select,radio,checkbox,color_swatch,image_swatch,number,static_content,email,single_checkbox,date,time,datetime',
 			'schema.*.content'                            => 'nullable',
 			'schema.*.label'                              => 'required',
 			'schema.*.description'                        => 'nullable',
@@ -1073,6 +1085,10 @@ class AddonGroupController extends ApiController {
 			'schema.*.min_value'                          => 'numeric',
 			'schema.*.max_value'                          => 'numeric',
 			'schema.*.step'                               => 'numeric',
+			'schema.*.min_date'                           => 'nullable',
+			'schema.*.max_date'                           => 'nullable',
+			'schema.*.min_time'                           => 'nullable',
+			'schema.*.max_time'                           => 'nullable',
 			'schema.*.options'                            => 'array',
 			'schema.*.options.*.label'                    => 'required_with:schema.*.options',
 			'schema.*.options.*.value'                    => 'required_with:schema.*.options',
@@ -1110,7 +1126,7 @@ class AddonGroupController extends ApiController {
 	/**
 	 * Get the custom validation error messages.
 	 *
-	 * @since 1.1.0
+	 * @since 1.0.0
 	 * @return array
 	 */
 	private function get_validation_messages() {
@@ -1125,7 +1141,7 @@ class AddonGroupController extends ApiController {
 	/**
 	 * Get the custom validation attribute aliases.
 	 *
-	 * @since 1.1.0
+	 * @since 1.0.0
 	 * @return array
 	 */
 	private function get_validation_aliases() {

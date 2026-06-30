@@ -282,6 +282,10 @@ export const FieldRow: React.FC<FieldRowProps> = ({ field, index }) => {
                             min_value: defaults.min_value,
                             max_value: defaults.max_value,
                             step: defaults.step,
+                            min_date: defaults.min_date,
+                            max_date: defaults.max_date,
+                            min_time: defaults.min_time,
+                            max_time: defaults.max_time,
                             display_style: defaults.display_style,
                             content: defaults.content,
                           });
@@ -510,7 +514,7 @@ export const FieldRow: React.FC<FieldRowProps> = ({ field, index }) => {
                           : []),
                       ]
                     : []),
-                  ...(["text", "textarea", "number", "email"].includes(field.type)
+                  ...(["text", "textarea", "number", "email", "date", "time", "datetime"].includes(field.type)
 
                     ? [
                         {
@@ -686,6 +690,88 @@ export const FieldRow: React.FC<FieldRowProps> = ({ field, index }) => {
                               />
                               <FormError
                                 message={state.errors?.[`schema.${index}.step`]}
+                              />
+                            </div>
+                          ),
+                        },
+                      ]
+                    : []),
+                  ...(["date", "time", "datetime"].includes(field.type)
+                    ? [
+                        {
+                          label: __("Restrictions", "optionbay-product-options-addons-woo"),
+                          tooltip: FIELD_TOOLTIPS.restrictions,
+                          render: () => (
+                            <div className="wpab-wpoa-flex wpab-wpoa-flex-col wpab-wpoa-gap-2">
+                              <div className="wpab-wpoa-flex wpab-wpoa-flex-wrap wpab-wpoa-gap-3 wpab-wpoa-items-center">
+                                {["date", "datetime"].includes(field.type) && (
+                                  <>
+                                    <label className="wpab-wpoa-text-xs wpab-wpoa-flex wpab-wpoa-flex-col wpab-wpoa-gap-1">
+                                      {__("Min Date:", "optionbay-product-options-addons-woo")}
+                                      <input
+                                        type="date"
+                                        className="wpab-wpoa-px-3 wpab-wpoa-py-1.5 wpab-wpoa-rounded-[8px] wpab-wpoa-border wpab-wpoa-border-[#c3c4c7] wpab-wpoa-text-[13px] wpab-wpoa-text-slate-800 focus:wpab-wpoa-border-[#2271b1] focus:wpab-wpoa-outline-none"
+                                        value={field.min_date || ""}
+                                        onChange={(e) =>
+                                          update({
+                                            min_date: e.target.value || undefined,
+                                          })
+                                        }
+                                      />
+                                    </label>
+                                    <label className="wpab-wpoa-text-xs wpab-wpoa-flex wpab-wpoa-flex-col wpab-wpoa-gap-1">
+                                      {__("Max Date:", "optionbay-product-options-addons-woo")}
+                                      <input
+                                        type="date"
+                                        className="wpab-wpoa-px-3 wpab-wpoa-py-1.5 wpab-wpoa-rounded-[8px] wpab-wpoa-border wpab-wpoa-border-[#c3c4c7] wpab-wpoa-text-[13px] wpab-wpoa-text-slate-800 focus:wpab-wpoa-border-[#2271b1] focus:wpab-wpoa-outline-none"
+                                        value={field.max_date || ""}
+                                        onChange={(e) =>
+                                          update({
+                                            max_date: e.target.value || undefined,
+                                          })
+                                        }
+                                      />
+                                    </label>
+                                  </>
+                                )}
+                                {["time", "datetime"].includes(field.type) && (
+                                  <>
+                                    <label className="wpab-wpoa-text-xs wpab-wpoa-flex wpab-wpoa-flex-col wpab-wpoa-gap-1">
+                                      {__("Min Time:", "optionbay-product-options-addons-woo")}
+                                      <input
+                                        type="time"
+                                        className="wpab-wpoa-px-3 wpab-wpoa-py-1.5 wpab-wpoa-rounded-[8px] wpab-wpoa-border wpab-wpoa-border-[#c3c4c7] wpab-wpoa-text-[13px] wpab-wpoa-text-slate-800 focus:wpab-wpoa-border-[#2271b1] focus:wpab-wpoa-outline-none"
+                                        value={field.min_time || ""}
+                                        onChange={(e) =>
+                                          update({
+                                            min_time: e.target.value || undefined,
+                                          })
+                                        }
+                                      />
+                                    </label>
+                                    <label className="wpab-wpoa-text-xs wpab-wpoa-flex wpab-wpoa-flex-col wpab-wpoa-gap-1">
+                                      {__("Max Time:", "optionbay-product-options-addons-woo")}
+                                      <input
+                                        type="time"
+                                        className="wpab-wpoa-px-3 wpab-wpoa-py-1.5 wpab-wpoa-rounded-[8px] wpab-wpoa-border wpab-wpoa-border-[#c3c4c7] wpab-wpoa-text-[13px] wpab-wpoa-text-slate-800 focus:wpab-wpoa-border-[#2271b1] focus:wpab-wpoa-outline-none"
+                                        value={field.max_time || ""}
+                                        onChange={(e) =>
+                                          update({
+                                            max_time: e.target.value || undefined,
+                                          })
+                                        }
+                                      />
+                                    </label>
+                                  </>
+                                )}
+                              </div>
+                              <FormError
+                                message={
+                                  state.errors?.[`schema.${index}.min_date`] ||
+                                  state.errors?.[`schema.${index}.max_date`] ||
+                                  state.errors?.[`schema.${index}.min_time`] ||
+                                  state.errors?.[`schema.${index}.max_time`]
+                                }
                               />
                             </div>
                           ),

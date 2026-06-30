@@ -111,6 +111,21 @@ class CheckboxField extends BaseField {
 			return $result;
 		}
 
+		// Filter out any empty elements from the submitted values
+		if ( is_array( $value ) ) {
+			$value = array_filter(
+				$value,
+				function ( $v ) {
+					return ! $this->is_empty_value( $v );
+				}
+			);
+		}
+
+		// If the selection is empty/cleared, bypass choice validation (parent validation handles required checks)
+		if ( $this->is_empty_value( $value ) ) {
+			return true;
+		}
+
 		// Validate multi-checkbox against allowed options
 		$options = $this->get( 'options', array() );
 		if ( ! empty( $options ) ) {
@@ -121,6 +136,7 @@ class CheckboxField extends BaseField {
 			foreach ( $value as $v ) {
 				if ( ! in_array( $v, $allowed, true ) ) {
 					opopw_log( "CheckboxField Validation: Submited value '{$v}' not in allowed set.", 'WARNING' );
+
 					return new \WP_Error(
 						'invalid_option',
 						sprintf(

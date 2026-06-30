@@ -1,5 +1,7 @@
 // @tailwind base;
-*, ::before, ::after {
+*,
+::before,
+::after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
   --tw-translate-x: 0;
@@ -9,19 +11,19 @@
   --tw-skew-y: 0;
   --tw-scale-x: 1;
   --tw-scale-y: 1;
-  --tw-pan-x:  ;
-  --tw-pan-y:  ;
-  --tw-pinch-zoom:  ;
+  --tw-pan-x: ;
+  --tw-pan-y: ;
+  --tw-pinch-zoom: ;
   --tw-scroll-snap-strictness: proximity;
-  --tw-gradient-from-position:  ;
-  --tw-gradient-via-position:  ;
-  --tw-gradient-to-position:  ;
-  --tw-ordinal:  ;
-  --tw-slashed-zero:  ;
-  --tw-numeric-figure:  ;
-  --tw-numeric-spacing:  ;
-  --tw-numeric-fraction:  ;
-  --tw-ring-inset:  ;
+  --tw-gradient-from-position: ;
+  --tw-gradient-via-position: ;
+  --tw-gradient-to-position: ;
+  --tw-ordinal: ;
+  --tw-slashed-zero: ;
+  --tw-numeric-figure: ;
+  --tw-numeric-spacing: ;
+  --tw-numeric-fraction: ;
+  --tw-ring-inset: ;
   --tw-ring-offset-width: 0px;
   --tw-ring-offset-color: #fff;
   --tw-ring-color: rgb(59 130 246 / 0.5);
@@ -29,28 +31,28 @@
   --tw-ring-shadow: 0 0 #0000;
   --tw-shadow: 0 0 #0000;
   --tw-shadow-colored: 0 0 #0000;
-  --tw-blur:  ;
-  --tw-brightness:  ;
-  --tw-contrast:  ;
-  --tw-grayscale:  ;
-  --tw-hue-rotate:  ;
-  --tw-invert:  ;
-  --tw-saturate:  ;
-  --tw-sepia:  ;
-  --tw-drop-shadow:  ;
-  --tw-backdrop-blur:  ;
-  --tw-backdrop-brightness:  ;
-  --tw-backdrop-contrast:  ;
-  --tw-backdrop-grayscale:  ;
-  --tw-backdrop-hue-rotate:  ;
-  --tw-backdrop-invert:  ;
-  --tw-backdrop-opacity:  ;
-  --tw-backdrop-saturate:  ;
-  --tw-backdrop-sepia:  ;
-  --tw-contain-size:  ;
-  --tw-contain-layout:  ;
-  --tw-contain-paint:  ;
-  --tw-contain-style:  ;
+  --tw-blur: ;
+  --tw-brightness: ;
+  --tw-contrast: ;
+  --tw-grayscale: ;
+  --tw-hue-rotate: ;
+  --tw-invert: ;
+  --tw-saturate: ;
+  --tw-sepia: ;
+  --tw-drop-shadow: ;
+  --tw-backdrop-blur: ;
+  --tw-backdrop-brightness: ;
+  --tw-backdrop-contrast: ;
+  --tw-backdrop-grayscale: ;
+  --tw-backdrop-hue-rotate: ;
+  --tw-backdrop-invert: ;
+  --tw-backdrop-opacity: ;
+  --tw-backdrop-saturate: ;
+  --tw-backdrop-sepia: ;
+  --tw-contain-size: ;
+  --tw-contain-layout: ;
+  --tw-contain-paint: ;
+  --tw-contain-style: ;
 }
 
 ::backdrop {
@@ -63,19 +65,19 @@
   --tw-skew-y: 0;
   --tw-scale-x: 1;
   --tw-scale-y: 1;
-  --tw-pan-x:  ;
-  --tw-pan-y:  ;
-  --tw-pinch-zoom:  ;
+  --tw-pan-x: ;
+  --tw-pan-y: ;
+  --tw-pinch-zoom: ;
   --tw-scroll-snap-strictness: proximity;
-  --tw-gradient-from-position:  ;
-  --tw-gradient-via-position:  ;
-  --tw-gradient-to-position:  ;
-  --tw-ordinal:  ;
-  --tw-slashed-zero:  ;
-  --tw-numeric-figure:  ;
-  --tw-numeric-spacing:  ;
-  --tw-numeric-fraction:  ;
-  --tw-ring-inset:  ;
+  --tw-gradient-from-position: ;
+  --tw-gradient-via-position: ;
+  --tw-gradient-to-position: ;
+  --tw-ordinal: ;
+  --tw-slashed-zero: ;
+  --tw-numeric-figure: ;
+  --tw-numeric-spacing: ;
+  --tw-numeric-fraction: ;
+  --tw-ring-inset: ;
   --tw-ring-offset-width: 0px;
   --tw-ring-offset-color: #fff;
   --tw-ring-color: rgb(59 130 246 / 0.5);
@@ -83,31 +85,34 @@
   --tw-ring-shadow: 0 0 #0000;
   --tw-shadow: 0 0 #0000;
   --tw-shadow-colored: 0 0 #0000;
-  --tw-blur:  ;
-  --tw-brightness:  ;
-  --tw-contrast:  ;
-  --tw-grayscale:  ;
-  --tw-hue-rotate:  ;
-  --tw-invert:  ;
-  --tw-saturate:  ;
-  --tw-sepia:  ;
-  --tw-drop-shadow:  ;
-  --tw-backdrop-blur:  ;
-  --tw-backdrop-brightness:  ;
-  --tw-backdrop-contrast:  ;
-  --tw-backdrop-grayscale:  ;
-  --tw-backdrop-hue-rotate:  ;
-  --tw-backdrop-invert:  ;
-  --tw-backdrop-opacity:  ;
-  --tw-backdrop-saturate:  ;
-  --tw-backdrop-sepia:  ;
-  --tw-contain-size:  ;
-  --tw-contain-layout:  ;
-  --tw-contain-paint:  ;
-  --tw-contain-style:  ;
-}/*
+  --tw-blur: ;
+  --tw-brightness: ;
+  --tw-contrast: ;
+  --tw-grayscale: ;
+  --tw-hue-rotate: ;
+  --tw-invert: ;
+  --tw-saturate: ;
+  --tw-sepia: ;
+  --tw-drop-shadow: ;
+  --tw-backdrop-blur: ;
+  --tw-backdrop-brightness: ;
+  --tw-backdrop-contrast: ;
+  --tw-backdrop-grayscale: ;
+  --tw-backdrop-hue-rotate: ;
+  --tw-backdrop-invert: ;
+  --tw-backdrop-opacity: ;
+  --tw-backdrop-saturate: ;
+  --tw-backdrop-sepia: ;
+  --tw-contain-size: ;
+  --tw-contain-layout: ;
+  --tw-contain-paint: ;
+  --tw-contain-style: ;
+}
+
+/*
 ! tailwindcss v3.4.18 | MIT License | https://tailwindcss.com
-*//*
+*/
+/*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
 2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
 */
@@ -115,10 +120,14 @@
 *,
 *:not(.wpab-wpoa-ignore-preflight)::before,
 *:not(.wpab-wpoa-ignore-preflight)::after {
-  box-sizing: border-box; /* 1 */
-  border-width: 0; /* 2 */
-  border-style: solid; /* 2 */
-  border-color: #e5e7eb; /* 2 */
+  box-sizing: border-box;
+  /* 1 */
+  border-width: 0;
+  /* 2 */
+  border-style: solid;
+  /* 2 */
+  border-color: #e5e7eb;
+  /* 2 */
 }
 
 ::before,
@@ -138,15 +147,23 @@
 
 html,
 :host {
-  line-height: 1.5; /* 1 */
-  -webkit-text-size-adjust: 100%; /* 2 */
-  -moz-tab-size: 4; /* 3 */
+  line-height: 1.5;
+  /* 1 */
+  -webkit-text-size-adjust: 100%;
+  /* 2 */
+  -moz-tab-size: 4;
+  /* 3 */
   -o-tab-size: 4;
-     tab-size: 4; /* 3 */
-  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; /* 4 */
-  font-feature-settings: normal; /* 5 */
-  font-variation-settings: normal; /* 6 */
-  -webkit-tap-highlight-color: transparent; /* 7 */
+  tab-size: 4;
+  /* 3 */
+  font-family: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  /* 4 */
+  font-feature-settings: normal;
+  /* 5 */
+  font-variation-settings: normal;
+  /* 6 */
+  -webkit-tap-highlight-color: transparent;
+  /* 7 */
 }
 
 /*
@@ -155,8 +172,10 @@ html,
 */
 
 body {
-  margin: 0; /* 1 */
-  line-height: inherit; /* 2 */
+  margin: 0;
+  /* 1 */
+  line-height: inherit;
+  /* 2 */
 }
 
 /*
@@ -166,9 +185,12 @@ body {
 */
 
 hr {
-  height: 0; /* 1 */
-  color: inherit; /* 2 */
-  border-top-width: 1px; /* 3 */
+  height: 0;
+  /* 1 */
+  color: inherit;
+  /* 2 */
+  border-top-width: 1px;
+  /* 3 */
 }
 
 /*
@@ -177,7 +199,7 @@ Add the correct text decoration in Chrome, Edge, and Safari.
 
 abbr:where([title]) {
   -webkit-text-decoration: underline dotted;
-          text-decoration: underline dotted;
+  text-decoration: underline dotted;
 }
 
 /*
@@ -223,10 +245,14 @@ code,
 kbd,
 samp,
 pre {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; /* 1 */
-  font-feature-settings: normal; /* 2 */
-  font-variation-settings: normal; /* 3 */
-  font-size: 1em; /* 4 */
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  /* 1 */
+  font-feature-settings: normal;
+  /* 2 */
+  font-variation-settings: normal;
+  /* 3 */
+  font-size: 1em;
+  /* 4 */
 }
 
 /*
@@ -264,9 +290,12 @@ sup:not(.wpab-wpoa-ignore-preflight) {
 */
 
 table:not(.wpab-wpoa-ignore-preflight) {
-  text-indent: 0; /* 1 */
-  border-color: inherit; /* 2 */
-  border-collapse: collapse; /* 3 */
+  text-indent: 0;
+  /* 1 */
+  border-color: inherit;
+  /* 2 */
+  border-collapse: collapse;
+  /* 3 */
 }
 
 /*
@@ -280,16 +309,26 @@ input,
 optgroup,
 select,
 textarea {
-  font-family: inherit; /* 1 */
-  font-feature-settings: inherit; /* 1 */
-  font-variation-settings: inherit; /* 1 */
-  font-size: 100%; /* 1 */
-  font-weight: inherit; /* 1 */
-  line-height: inherit; /* 1 */
-  letter-spacing: inherit; /* 1 */
-  color: inherit; /* 1 */
-  margin: 0; /* 2 */
-  padding: 0; /* 3 */
+  font-family: inherit;
+  /* 1 */
+  font-feature-settings: inherit;
+  /* 1 */
+  font-variation-settings: inherit;
+  /* 1 */
+  font-size: 100%;
+  /* 1 */
+  font-weight: inherit;
+  /* 1 */
+  line-height: inherit;
+  /* 1 */
+  letter-spacing: inherit;
+  /* 1 */
+  color: inherit;
+  /* 1 */
+  margin: 0;
+  /* 2 */
+  padding: 0;
+  /* 3 */
 }
 
 /*
@@ -310,9 +349,12 @@ button,
 input:where([type='button']),
 input:where([type='reset']),
 input:where([type='submit']) {
-  -webkit-appearance: button; /* 1 */
-  background-color: transparent; /* 2 */
-  background-image: none; /* 2 */
+  -webkit-appearance: button;
+  /* 1 */
+  background-color: transparent;
+  /* 2 */
+  background-image: none;
+  /* 2 */
 }
 
 /*
@@ -354,8 +396,10 @@ Correct the cursor style of increment and decrement buttons in Safari.
 */
 
 [type='search'] {
-  -webkit-appearance: textfield; /* 1 */
-  outline-offset: -2px; /* 2 */
+  -webkit-appearance: textfield;
+  /* 1 */
+  outline-offset: -2px;
+  /* 2 */
 }
 
 /*
@@ -372,8 +416,10 @@ Remove the inner padding in Chrome and Safari on macOS.
 */
 
 ::-webkit-file-upload-button {
-  -webkit-appearance: button; /* 1 */
-  font: inherit; /* 2 */
+  -webkit-appearance: button;
+  /* 1 */
+  font: inherit;
+  /* 2 */
 }
 
 /*
@@ -391,12 +437,18 @@ Removes the default spacing and border for appropriate elements.
 blockquote:not(.wpab-wpoa-ignore-preflight),
 dl:not(.wpab-wpoa-ignore-preflight),
 dd:not(.wpab-wpoa-ignore-preflight),
-h1:not(.wpab-wpoa-ignore-preflight), // use only on classic mode
-h2:not(.wpab-wpoa-ignore-preflight), // use only on classic mode
-h3:not(.wpab-wpoa-ignore-preflight), // use only on classic mode
-h4:not(.wpab-wpoa-ignore-preflight), // use only on classic mode
-h5:not(.wpab-wpoa-ignore-preflight), // use only on classic mode
-h6:not(.wpab-wpoa-ignore-preflight), // use only on classic mode
+h1:not(.wpab-wpoa-ignore-preflight),
+// use only on classic mode
+h2:not(.wpab-wpoa-ignore-preflight),
+// use only on classic mode
+h3:not(.wpab-wpoa-ignore-preflight),
+// use only on classic mode
+h4:not(.wpab-wpoa-ignore-preflight),
+// use only on classic mode
+h5:not(.wpab-wpoa-ignore-preflight),
+// use only on classic mode
+h6:not(.wpab-wpoa-ignore-preflight),
+// use only on classic mode
 hr:not(.wpab-wpoa-ignore-preflight),
 figure:not(.wpab-wpoa-ignore-preflight),
 p:not(.wpab-wpoa-ignore-preflight),
@@ -441,15 +493,20 @@ textarea {
 2. Set the default placeholder color to the user's configured gray 400 color.
 */
 
-input::-moz-placeholder, textarea::-moz-placeholder {
-  opacity: 1; /* 1 */
-  color: #9ca3af; /* 2 */
+input::-moz-placeholder,
+textarea::-moz-placeholder {
+  opacity: 1;
+  /* 1 */
+  color: #9ca3af;
+  /* 2 */
 }
 
 input::placeholder,
 textarea::placeholder {
-  opacity: 1; /* 1 */
-  color: #9ca3af; /* 2 */
+  opacity: 1;
+  /* 1 */
+  color: #9ca3af;
+  /* 2 */
 }
 
 /*
@@ -482,8 +539,10 @@ audio,
 iframe,
 embed,
 object {
-  display: block; /* 1 */
-  vertical-align: middle; /* 2 */
+  display: block;
+  /* 1 */
+  vertical-align: middle;
+  /* 2 */
 }
 
 /*
@@ -500,6 +559,7 @@ video {
 [hidden]:where(:not([hidden="until-found"])) {
   display: none;
 }
+
 // base end here
 @tailwind components;
 @tailwind utilities;
@@ -508,7 +568,7 @@ video {
 
 
 
-.product_page_wpab-wpoa-options #wpcontent,
+#wpcontent:has(#optionbay-product-options-addons-woo),
 .woocommerce_page_wc-settings #wpcontent {
   padding-left: 0;
 }
@@ -516,10 +576,12 @@ video {
 .product_page_wpab-wpoa-options #wpfooter {
   display: none !important;
 }
+
 #product-options-addons-woo {
   font-family: 'SF Pro', 'Segoe UI', Tahoma, Verdana, sans-serif;
   color: #000;
 }
+
 #product-options-addons-woo *,
 #product-options-addons-woo *::before,
 #product-options-addons-woo *::after {
@@ -535,15 +597,16 @@ video {
 
 
 
-.wpab-wpoa-add-campaigns-modal{
+.wpab-wpoa-add-campaigns-modal {
   min-height: 90vh;
 }
-.wpab-wpoa-add-campaigns-modal-example{
+
+.wpab-wpoa-add-campaigns-modal-example {
   width: 50%;
   display: none; // Hide on small devices
 }
 
-.wpab-wpoa-add-campaigns-modal-grid-cols{
+.wpab-wpoa-add-campaigns-modal-grid-cols {
   overflow-y: auto;
   // scrollbar-width: none;
 }
@@ -552,54 +615,58 @@ video {
   display: block; // Show overlay on small devices
 }
 
-.wpab-wpoa-add-campaigns-modal-grid-item{
-    min-height: 170px;
-    width: 250px;
-    padding-top: 40px;
-    border: 1px solid #bdc4d1;
-    &:hover{
-      transform: translateY(-1px);
-    }
+.wpab-wpoa-add-campaigns-modal-grid-item {
+  min-height: 170px;
+  width: 250px;
+  padding-top: 40px;
+  border: 1px solid #bdc4d1;
+
+  &:hover {
+    transform: translateY(-1px);
   }
+}
 
 
 @media (min-width: 600px) {
-  .wpab-wpoa-add-campaigns-modal{
+  .wpab-wpoa-add-campaigns-modal {
     min-width: 560px;
     min-height: 400px;
   }
-  
+
   .wpab-wpoa-add-campaigns-modal-grid-cols {
     grid-template-columns: repeat(2, 1fr);
   }
 }
+
 @media (min-width: 850px) {
-  .wpab-wpoa-add-campaigns-modal{
+  .wpab-wpoa-add-campaigns-modal {
     min-width: 835px;
   }
-  
-  .wpab-wpoa-add-campaigns-modal-example{
+
+  .wpab-wpoa-add-campaigns-modal-example {
     display: block; // Show example panel on larger devices
     width: 270px;
   }
-  
+
   .wpab-wpoa-add-campaigns-modal-overlay {
     display: none !important; // Hide overlay on larger devices
   }
-  
+
   .wpab-wpoa-add-campaigns-modal-grid-cols {
     grid-template-columns: repeat(2, 1fr);
   }
-  .wpab-wpoa-add-campaigns-modal-grid-item{
+
+  .wpab-wpoa-add-campaigns-modal-grid-item {
     min-height: 136px;
     padding-top: 28px;
   }
 }
+
 @media (min-width: 1100px) {
-  .wpab-wpoa-add-campaigns-modal{
+  .wpab-wpoa-add-campaigns-modal {
     min-width: 1080px;
   }
-  
+
   .wpab-wpoa-add-campaigns-modal-grid-cols {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -610,10 +677,12 @@ video {
     box-shadow: 0 0 0 0 rgba(220, 54, 56, 0.4);
     background-color: rgba(220, 54, 56, 0.05);
   }
+
   50% {
     box-shadow: 0 0 0 8px rgba(220, 54, 56, 0);
     background-color: rgba(220, 54, 56, 0.15);
   }
+
   100% {
     box-shadow: 0 0 0 0 rgba(220, 54, 56, 0);
     background-color: transparent;
@@ -631,23 +700,23 @@ video {
     margin: 0 !important;
     width: 100% !important;
     display: table !important;
-    
+
     tr {
       border-bottom: 1px solid #f1f5f9 !important;
       display: table-row !important;
-      
+
       &:last-child {
         border-bottom: none !important;
       }
     }
-    
+
     th {
       width: 180px !important;
       min-width: 180px !important;
       padding: 12px 12px 12px 0 !important;
       vertical-align: top !important;
       font-weight: 500 !important;
-      
+
       label {
         margin: 0 !important;
         padding: 0 !important;
@@ -657,11 +726,11 @@ video {
         min-height: 36px !important;
       }
     }
-    
+
     td {
       padding: 12px 0 !important;
       vertical-align: top !important;
-      
+
       input[type="text"],
       input[type="number"],
       select {
@@ -676,32 +745,38 @@ video {
   max-width: 320px !important;
   width: 100% !important;
 }
+
 .wpab-wpoa-max-w-sm {
   max-width: 384px !important;
   width: 100% !important;
 }
+
 .wpab-wpoa-max-w-md {
   max-width: 448px !important;
   width: 100% !important;
 }
+
 .wpab-wpoa-max-w-lg {
   max-width: 512px !important;
   width: 100% !important;
 }
+
 .wpab-wpoa-max-w-xl {
   max-width: 576px !important;
   width: 100% !important;
 }
+
 .wpab-wpoa-max-w-2xl {
   max-width: 672px !important;
   width: 100% !important;
 }
+
 .wpab-wpoa-max-w-3xl {
   max-width: 768px !important;
   width: 100% !important;
 }
+
 .wpab-wpoa-max-w-4xl {
   max-width: 896px !important;
   width: 100% !important;
 }
-

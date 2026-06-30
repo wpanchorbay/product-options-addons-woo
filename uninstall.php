@@ -88,7 +88,7 @@ function opopw_delete_plugin_options() {
  * @since 1.0.0
  */
 function opopw_remove_capabilities() {
-	// Remove the legacy custom capability added by older plugin versions (< 1.1.0).
+	// Remove the legacy custom capability added by older plugin versions (< 1.0.0).
 	// New versions use manage_woocommerce instead of this custom capability.
 	$editable_roles = get_editable_roles();
 

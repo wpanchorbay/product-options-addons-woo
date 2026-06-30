@@ -48,6 +48,10 @@ export interface FieldDefinition {
   min_value?: number;
   max_value?: number;
   step?: number;
+  min_date?: string;
+  max_date?: string;
+  min_time?: string;
+  max_time?: string;
   content?: string;
   conditions: FieldConditions;
   display_style?: "swatch_only" | "swatch_label";
@@ -193,6 +197,20 @@ export function getDefaultField(type: string): FieldDefinition {
       base.min_value = undefined;
       base.max_value = undefined;
       base.step = 1;
+      break;
+    case "date":
+      base.min_date = undefined;
+      base.max_date = undefined;
+      break;
+    case "time":
+      base.min_time = undefined;
+      base.max_time = undefined;
+      break;
+    case "datetime":
+      base.min_date = undefined;
+      base.max_date = undefined;
+      base.min_time = undefined;
+      base.max_time = undefined;
       break;
 
     case "static_content":

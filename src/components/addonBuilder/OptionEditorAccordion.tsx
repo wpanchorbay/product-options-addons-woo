@@ -589,7 +589,7 @@ export const OptionEditorAccordion: React.FC<OptionEditorAccordionProps> = ({
 
                               {/* Inline Editable Label */}
                               <div
-                                className="wpab-wpoa-w-44 md:wpab-wpoa-w-64"
+                                className=""
                                 onClick={(e) => e.stopPropagation()}
                               >
                                 <ClassicInput

@@ -2,7 +2,7 @@
 /**
  * Inventory Manager — Handles global stock logic and database persistence.
  *
- * @since      1.1.0
+ * @since      1.0.0
  * @package    Opopw
  * @subpackage Opopw/Data
  */
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Handles inventory-related database operations.
  *
- * @since 1.1.0
+ * @since 1.0.0
  */
 class InventoryManager {
 
@@ -25,7 +25,7 @@ class InventoryManager {
 	/**
 	 * The single instance of the class.
 	 *
-	 * @since 1.1.0
+	 * @since 1.0.0
 	 * @var   InventoryManager
 	 * @access private
 	 */
@@ -36,7 +36,7 @@ class InventoryManager {
 	 *
 	 * @static
 	 * @access public
-	 * @since 1.1.0
+	 * @since 1.0.0
 	 * @return InventoryManager
 	 */
 	public static function get_instance() {
@@ -49,7 +49,7 @@ class InventoryManager {
 	/**
 	 * Private constructor.
 	 *
-	 * @since 1.1.0
+	 * @since 1.0.0
 	 * @access private
 	 */
 	private function __construct() {
@@ -58,7 +58,7 @@ class InventoryManager {
 	/**
 	 * Get an inventory item by ID.
 	 *
-	 * @since 1.1.0
+	 * @since 1.0.0
 	 * @param int $id Inventory ID.
 	 * @return array|null
 	 */
@@ -94,7 +94,7 @@ class InventoryManager {
 	/**
 	 * Create a new inventory item.
 	 *
-	 * @since 1.1.0
+	 * @since 1.0.0
 	 * @param array $data Item data (name, stock_count, allow_backorders).
 	 * @return int|false ID of the new item, or false on error.
 	 */
@@ -124,7 +124,7 @@ class InventoryManager {
 	/**
 	 * Update an inventory item.
 	 *
-	 * @since 1.1.0
+	 * @since 1.0.0
 	 * @param int   $id   Inventory ID.
 	 * @param array $data Data to update.
 	 * @return int|false
@@ -207,7 +207,7 @@ class InventoryManager {
 	/**
 	 * Decrement stock atomically.
 	 *
-	 * @since 1.1.0
+	 * @since 1.0.0
 	 * @param int   $id     Inventory ID.
 	 * @param float $amount Amount to decrement.
 	 * @return bool True on success, false if stock is insufficient and backorders are disabled.
@@ -243,7 +243,7 @@ class InventoryManager {
 	/**
 	 * Increment stock atomically.
 	 *
-	 * @since 1.1.0
+	 * @since 1.0.0
 	 * @param int   $id     Inventory ID.
 	 * @param float $amount Amount to increment.
 	 * @return bool
@@ -278,7 +278,7 @@ class InventoryManager {
 	/**
 	 * Search inventory items by name.
 	 *
-	 * @since 1.1.0
+	 * @since 1.0.0
 	 * @param string $search Search term.
 	 * @param int    $limit  Max results.
 	 * @return array
@@ -304,7 +304,7 @@ class InventoryManager {
 	/**
 	 * Get stock already reserved in the current user's cart.
 	 *
-	 * @since 1.1.0
+	 * @since 1.0.0
 	 * @param int    $inventory_id          The inventory ID.
 	 * @param string $exclude_cart_item_key Optional. Cart item key to exclude.
 	 * @return float

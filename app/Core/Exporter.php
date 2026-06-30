@@ -61,7 +61,7 @@ class Exporter {
 	 *
 	 * Queries and converts all real-time inventory records to an array format.
 	 *
-	 * @since 1.1.0
+	 * @since 1.0.0
 	 * @return array
 	 */
 	public static function export_inventory() {

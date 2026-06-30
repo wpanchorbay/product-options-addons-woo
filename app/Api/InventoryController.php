@@ -2,7 +2,7 @@
 /**
  * Inventory Controller — REST API handling for inventory items.
  *
- * @since      1.1.0
+ * @since      1.0.0
  * @package    Opopw
  * @subpackage Opopw/Api
  */
@@ -27,7 +27,7 @@ use Opopw\Data\InventoryManager;
  *   POST   /optionbay-product-options-addons-woo/v1/inventory         - Create inventory item
  *   PUT    /optionbay-product-options-addons-woo/v1/inventory/{id}    - Update inventory item
  *
- * @since      1.1.0
+ * @since      1.0.0
  * @package    Opopw
  * @subpackage Opopw/Api
  */
@@ -37,7 +37,7 @@ class InventoryController extends ApiController {
 	/**
 	 * The single instance of the class.
 	 *
-	 * @since 1.1.0
+	 * @since 1.0.0
 	 * @var   InventoryController
 	 * @access private
 	 */
@@ -49,7 +49,7 @@ class InventoryController extends ApiController {
 	 * @static
 	 * @access public
 	 * @return InventoryController
-	 * @since 1.1.0
+	 * @since 1.0.0
 	 */
 	public static function get_instance() {
 		if ( null === self::$instance ) {
@@ -61,7 +61,7 @@ class InventoryController extends ApiController {
 	/**
 	 * Register REST routes for inventory.
 	 *
-	 * @since 1.1.0
+	 * @since 1.0.0
 	 * @return void
 	 */
 	public function register_routes() {
@@ -143,7 +143,7 @@ class InventoryController extends ApiController {
 	/**
 	 * Get a single inventory item.
 	 *
-	 * @since 1.1.0
+	 * @since 1.0.0
 	 * @param WP_REST_Request $request REST request.
 	 * @return WP_REST_Response|WP_Error
 	 */
@@ -162,7 +162,7 @@ class InventoryController extends ApiController {
 	/**
 	 * Search inventory items.
 	 *
-	 * @since 1.1.0
+	 * @since 1.0.0
 	 * @param WP_REST_Request $request REST request.
 	 * @return WP_REST_Response|WP_Error
 	 */
@@ -179,7 +179,7 @@ class InventoryController extends ApiController {
 	/**
 	 * Create an inventory item.
 	 *
-	 * @since 1.1.0
+	 * @since 1.0.0
 	 * @param WP_REST_Request $request REST request.
 	 * @return WP_REST_Response|WP_Error
 	 */
@@ -212,7 +212,7 @@ class InventoryController extends ApiController {
 	/**
 	 * Update an inventory item.
 	 *
-	 * @since 1.1.0
+	 * @since 1.0.0
 	 * @param WP_REST_Request $request REST request.
 	 * @return WP_REST_Response|WP_Error
 	 */

@@ -10,6 +10,9 @@ import {
 	AtSign,
 	Palette,
 	ImagePlus,
+	Calendar,
+	Clock,
+	CalendarClock,
 	LucideIcon,
 } from 'lucide-react';
 
@@ -26,6 +29,9 @@ export const FIELD_TYPE_ICONS: Record< string, LucideIcon > = {
 	email: AtSign,
 	color_swatch: Palette,
 	image_swatch: ImagePlus,
+	date: Calendar,
+	time: Clock,
+	datetime: CalendarClock,
 };
 
 export const FIELD_TYPES = [
@@ -37,6 +43,9 @@ export const FIELD_TYPES = [
 	{ value: 'single_checkbox', label: __('Checkbox', 'optionbay-product-options-addons-woo') },
 	{ value: 'number', label: __('Number', 'optionbay-product-options-addons-woo') },
 	{ value: 'email', label: __('Email', 'optionbay-product-options-addons-woo') },
+	{ value: 'date', label: __('Date Picker', 'optionbay-product-options-addons-woo') },
+	{ value: 'time', label: __('Time Picker', 'optionbay-product-options-addons-woo') },
+	{ value: 'datetime', label: __('Date & Time', 'optionbay-product-options-addons-woo') },
 	{ value: 'color_swatch', label: __('Color Swatch', 'optionbay-product-options-addons-woo') },
 	{ value: 'image_swatch', label: __('Image Swatch', 'optionbay-product-options-addons-woo') },
 	{ value: 'static_content', label: __('Static Content', 'optionbay-product-options-addons-woo') },

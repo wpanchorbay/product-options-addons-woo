@@ -82,7 +82,7 @@ class DbManager {
 	/**
 	 * Get the inventory table name (with WP prefix).
 	 *
-	 * @since 1.1.0
+	 * @since 1.0.0
 	 * @return string
 	 */
 	public static function get_inventory_table() {
@@ -126,7 +126,7 @@ class DbManager {
 	 *
 	 * This table stores real-time stock counts for global inventory items.
 	 *
-	 * @since 1.1.0
+	 * @since 1.0.0
 	 * @access private
 	 */
 	private function create_inventory_table() {
