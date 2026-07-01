@@ -56,71 +56,74 @@ function opopw_run() {
 	add_action( 'plugins_loaded', array( $plugin, 'run' ) );
 
 	// Initialize Deactivation Feedback on init to avoid early translation loading
-	add_action( 'init', function() {
-		if ( is_admin() && class_exists( '\WPAB\DeactivationFeedback\DeactivationFeedback' ) ) {
-			new \WPAB\DeactivationFeedback\DeactivationFeedback(
-				array(
-					'plugin_file'     => OPOPW_PLUGIN_BASENAME,
-					'plugin_slug'     => OPOPW_PLUGIN_NAME,
-					'remote_endpoint' => 'https://wpanchorbay.com/wp-json/wpab/v1/feedback',
-					'reasons'         => array(
-						array(
-							'id'          => 'couldnt_get_working',
-							'label'       => __( "I couldn't get it working", 'optionbay-product-options-addons-woo' ),
-							'has_input'   => true,
-							'placeholder' => __( 'What were you trying to configure?', 'optionbay-product-options-addons-woo' ),
+	add_action(
+		'init',
+		function () {
+			if ( is_admin() && class_exists( '\WPAB\DeactivationFeedback\DeactivationFeedback' ) ) {
+				new \WPAB\DeactivationFeedback\DeactivationFeedback(
+					array(
+						'plugin_file'     => OPOPW_PLUGIN_BASENAME,
+						'plugin_slug'     => OPOPW_PLUGIN_NAME,
+						'remote_endpoint' => 'https://wpanchorbay.com/wp-json/wpab/v1/feedback',
+						'reasons'         => array(
+							array(
+								'id'          => 'couldnt_get_working',
+								'label'       => __( "I couldn't get it working", 'optionbay-product-options-addons-woo' ),
+								'has_input'   => true,
+								'placeholder' => __( 'What were you trying to configure?', 'optionbay-product-options-addons-woo' ),
+							),
+							array(
+								'id'          => 'missing_feature',
+								'label'       => __( "It's missing a feature I need", 'optionbay-product-options-addons-woo' ),
+								'has_input'   => true,
+								'placeholder' => __( 'What feature?', 'optionbay-product-options-addons-woo' ),
+							),
+							array(
+								'id'          => 'conflict',
+								'label'       => __( 'It conflicted with my theme or another plugin', 'optionbay-product-options-addons-woo' ),
+								'has_input'   => true,
+								'placeholder' => __( 'Which theme/plugin?', 'optionbay-product-options-addons-woo' ),
+							),
+							array(
+								'id'          => 'slowed_site',
+								'label'       => __( 'It slowed down my site', 'optionbay-product-options-addons-woo' ),
+								'has_input'   => true,
+								'placeholder' => __( 'Please describe (we will investigate your site automatically)', 'optionbay-product-options-addons-woo' ),
+							),
+							array(
+								'id'          => 'better_alternative',
+								'label'       => __( 'I found a better alternative', 'optionbay-product-options-addons-woo' ),
+								'has_input'   => true,
+								'placeholder' => __( 'Which plugin?', 'optionbay-product-options-addons-woo' ),
+							),
+							array(
+								'id'          => 'too_complicated',
+								'label'       => __( "It's too complicated to set up", 'optionbay-product-options-addons-woo' ),
+								'has_input'   => true,
+								'placeholder' => __( 'What part was confusing?', 'optionbay-product-options-addons-woo' ),
+							),
+							array(
+								'id'        => 'no_longer_needed',
+								'label'     => __( 'I no longer need product options on my store', 'optionbay-product-options-addons-woo' ),
+								'has_input' => false,
+							),
+							array(
+								'id'        => 'temporary',
+								'label'     => __( "It's temporary — I'm troubleshooting/debugging", 'optionbay-product-options-addons-woo' ),
+								'has_input' => false,
+							),
+							array(
+								'id'          => 'other',
+								'label'       => __( 'Other', 'optionbay-product-options-addons-woo' ),
+								'has_input'   => true,
+								'placeholder' => __( 'Please share the reason', 'optionbay-product-options-addons-woo' ),
+							),
 						),
-						array(
-							'id'          => 'missing_feature',
-							'label'       => __( "It's missing a feature I need", 'optionbay-product-options-addons-woo' ),
-							'has_input'   => true,
-							'placeholder' => __( 'What feature?', 'optionbay-product-options-addons-woo' ),
-						),
-						array(
-							'id'          => 'conflict',
-							'label'       => __( 'It conflicted with my theme or another plugin', 'optionbay-product-options-addons-woo' ),
-							'has_input'   => true,
-							'placeholder' => __( 'Which theme/plugin?', 'optionbay-product-options-addons-woo' ),
-						),
-						array(
-							'id'          => 'slowed_site',
-							'label'       => __( 'It slowed down my site', 'optionbay-product-options-addons-woo' ),
-							'has_input'   => true,
-							'placeholder' => __( 'Please describe (we will investigate your site automatically)', 'optionbay-product-options-addons-woo' ),
-						),
-						array(
-							'id'          => 'better_alternative',
-							'label'       => __( 'I found a better alternative', 'optionbay-product-options-addons-woo' ),
-							'has_input'   => true,
-							'placeholder' => __( 'Which plugin?', 'optionbay-product-options-addons-woo' ),
-						),
-						array(
-							'id'          => 'too_complicated',
-							'label'       => __( "It's too complicated to set up", 'optionbay-product-options-addons-woo' ),
-							'has_input'   => true,
-							'placeholder' => __( 'What part was confusing?', 'optionbay-product-options-addons-woo' ),
-						),
-						array(
-							'id'        => 'no_longer_needed',
-							'label'     => __( 'I no longer need product options on my store', 'optionbay-product-options-addons-woo' ),
-							'has_input' => false,
-						),
-						array(
-							'id'        => 'temporary',
-							'label'     => __( "It's temporary — I'm troubleshooting/debugging", 'optionbay-product-options-addons-woo' ),
-							'has_input' => false,
-						),
-						array(
-							'id'          => 'other',
-							'label'       => __( 'Other', 'optionbay-product-options-addons-woo' ),
-							'has_input'   => true,
-							'placeholder' => __( 'Please share the reason', 'optionbay-product-options-addons-woo' ),
-						),
-					),
-				)
-			);
+					)
+				);
+			}
 		}
-	} );
+	);
 }
 opopw_run();
 
