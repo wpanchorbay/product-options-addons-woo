@@ -127,7 +127,12 @@ No. Starter templates are created as drafts. You can review, edit, and publish t
 4. Color swatches and image swatches on a product page.
 5. Shared inventory management for add-on stock.
 6. Cart, checkout, and order details with selected options.
+7. Show shared inventory pools or linked stock controls if the plugin has a dedicated screen or modal.
+8. Show the order line item with selected OptionBay options saved.
 
 == Changelog ==
 = 1.0.0 =
 * Initial release.
+== Upgrade Notice == 
+= 1.0.0 =
+Initial release. Welcome to CampaignBay!
