@@ -37,6 +37,10 @@ class DeactivationFeedback {
         add_action( 'admin_footer', [ $this, 'maybe_render_modal' ] );
 
         ( new Ajax( $this->config ) )->register();
+
+        if ( ! empty( $this->config['review_notice_enabled'] ) ) {
+            ( new ReviewNotice( $this->config ) )->register();
+        }
     }
 
     protected function defaults() {
@@ -78,6 +82,15 @@ class DeactivationFeedback {
 
             // array of ['id'=>string, 'label'=>string, 'has_input'=>bool, 'placeholder'=>string]
             'reasons'         => [],
+
+            // Review/Report Notice Config
+            'review_notice_enabled' => false,
+            'review_delay_days'     => 3,
+            'review_snooze_days'    => 7,
+            'review_url'            => '',
+            'support_url'           => '',
+            'review_notice_title'   => 'Enjoying {plugin_name}?',
+            'review_notice_message' => "You've been using {plugin_name} for a few days. If it's been helpful, we'd love a review!",
         ];
     }
 

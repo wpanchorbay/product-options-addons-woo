@@ -119,6 +119,13 @@ function opopw_run() {
 								'placeholder' => __( 'Please share the reason', 'optionbay-product-options-addons-woo' ),
 							),
 						),
+						'review_notice_enabled' => true,
+						'review_delay_days'     => 3,
+						'review_snooze_days'    => 7,
+						'review_url'            => 'https://wordpress.org/support/plugin/optionbay-product-options-addons-woo/reviews/#new-post',
+						'support_url'           => 'https://wordpress.org/support/plugin/optionbay-product-options-addons-woo/',
+						'review_notice_title'   => __( 'Enjoying OptionBay?', 'optionbay-product-options-addons-woo' ),
+						'review_notice_message' => __( "You've been using OptionBay for a few days now. If it's been helpful, would you mind leaving a quick review? It really helps!", 'optionbay-product-options-addons-woo' ),
 					)
 				);
 			}
@@ -150,6 +157,11 @@ add_action(
 function opopw_activate() {
 	require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 	\Opopw\Core\Activator::activate();
+
+	// Record activation time for the review notice logic.
+	if ( ! get_option( 'wpab_activated_at_optionbay-product-options-addons-woo' ) ) {
+		update_option( 'wpab_activated_at_optionbay-product-options-addons-woo', time(), false );
+	}
 }
 
 /**

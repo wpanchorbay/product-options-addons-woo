@@ -92,6 +92,50 @@ modal — rather than silently guessing.
 
 ## Config reference
 
+## Configuration Options
+
+Here's an example of a fully configured setup, including the optional review notice feature:
+
+```php
+new \WPAB\DeactivationFeedback\DeactivationFeedback([
+    'plugin_file'     => 'my-plugin/my-plugin.php',
+    'plugin_slug'     => 'my-plugin',
+    'remote_endpoint' => 'https://example.com/wp-json/wpab/v1/feedback',
+    
+    // The options shown in the deactivation modal
+    'reasons' => [
+        [
+            'id'        => 'no_longer_needed',
+            'label'     => 'I no longer need the plugin',
+            'has_input' => false,
+        ],
+        [
+            'id'          => 'missing_feature',
+            'label'       => 'It is missing a feature I need',
+            'has_input'   => true,
+            'placeholder' => 'What feature is missing?',
+        ],
+    ],
+
+    // Review & Report Notice Config (Optional)
+    // Asks active users for a review after they've used the plugin for a while.
+    'review_notice_enabled' => true,
+    'review_delay_days'     => 3,
+    'review_snooze_days'    => 7,
+    'review_url'            => 'https://wordpress.org/support/plugin/my-plugin/reviews/#new-post',
+    'support_url'           => 'https://wordpress.org/support/plugin/my-plugin/',
+    'review_notice_title'   => 'Enjoying {plugin_name}?',
+    'review_notice_message' => "You've been using {plugin_name} for a few days now. If it's been helpful, would you mind leaving a quick review? It really helps!",
+]);
+```
+
+*Note: For the review notice to calculate the delay correctly, you must save the activation timestamp when your plugin is activated. Add this to your plugin's activation hook:*
+```php
+if ( ! get_option( 'wpab_activated_at_my-plugin' ) ) {
+    update_option( 'wpab_activated_at_my-plugin', time(), false );
+}
+```
+
 | Key | Required | Description |
 |---|---|---|
 | `plugin_file` | yes | `plugin_basename( __FILE__ )` of your main plugin file |
