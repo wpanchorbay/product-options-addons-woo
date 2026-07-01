@@ -55,49 +55,48 @@ function opopw_run() {
 	$plugin = \Opopw\Core\Plugin::get_instance();
 	add_action( 'plugins_loaded', array( $plugin, 'run' ) );
 
-	// Initialize Deactivation Feedback
-	error_log('opopw_run called. is_admin(): ' . (is_admin() ? 'true' : 'false') . ', class_exists: ' . (class_exists( '\WPAB\DeactivationFeedback\DeactivationFeedback' ) ? 'true' : 'false'));
-	
-	if ( is_admin() && class_exists( '\WPAB\DeactivationFeedback\DeactivationFeedback' ) ) {
-		error_log('DeactivationFeedback class exists and is_admin is true. Initializing modal.');
-		new \WPAB\DeactivationFeedback\DeactivationFeedback(
-			array(
-				'plugin_file'     => OPOPW_PLUGIN_BASENAME,
-				'plugin_slug'     => OPOPW_PLUGIN_NAME,
-				'remote_endpoint' => 'http://localhost/wp-json/wpab/v1/feedback',
-				'reasons'         => array(
-					array(
-						'id'        => 'no_longer_needed',
-						'label'     => __( 'I no longer need the plugin', 'optionbay-product-options-addons-woo' ),
-						'has_input' => false,
+	// Initialize Deactivation Feedback on init to avoid early translation loading
+	add_action( 'init', function() {
+		if ( is_admin() && class_exists( '\WPAB\DeactivationFeedback\DeactivationFeedback' ) ) {
+			new \WPAB\DeactivationFeedback\DeactivationFeedback(
+				array(
+					'plugin_file'     => OPOPW_PLUGIN_BASENAME,
+					'plugin_slug'     => OPOPW_PLUGIN_NAME,
+					'remote_endpoint' => 'http://localhost/wp-json/wpab/v1/feedback',
+					'reasons'         => array(
+						array(
+							'id'        => 'no_longer_needed',
+							'label'     => __( 'I no longer need the plugin', 'optionbay-product-options-addons-woo' ),
+							'has_input' => false,
+						),
+						array(
+							'id'          => 'found_better_plugin',
+							'label'       => __( 'I found a better plugin', 'optionbay-product-options-addons-woo' ),
+							'has_input'   => true,
+							'placeholder' => __( 'Please share which plugin', 'optionbay-product-options-addons-woo' ),
+						),
+						array(
+							'id'          => 'missing_feature',
+							'label'       => __( 'It is missing a feature I need', 'optionbay-product-options-addons-woo' ),
+							'has_input'   => true,
+							'placeholder' => __( 'What feature is missing?', 'optionbay-product-options-addons-woo' ),
+						),
+						array(
+							'id'        => 'temporary_deactivation',
+							'label'       => __( "It's a temporary deactivation", 'optionbay-product-options-addons-woo' ),
+							'has_input' => false,
+						),
+						array(
+							'id'          => 'other',
+							'label'       => __( 'Other', 'optionbay-product-options-addons-woo' ),
+							'has_input'   => true,
+							'placeholder' => __( 'Please share the reason', 'optionbay-product-options-addons-woo' ),
+						),
 					),
-					array(
-						'id'          => 'found_better_plugin',
-						'label'       => __( 'I found a better plugin', 'optionbay-product-options-addons-woo' ),
-						'has_input'   => true,
-						'placeholder' => __( 'Please share which plugin', 'optionbay-product-options-addons-woo' ),
-					),
-					array(
-						'id'          => 'missing_feature',
-						'label'       => __( 'It is missing a feature I need', 'optionbay-product-options-addons-woo' ),
-						'has_input'   => true,
-						'placeholder' => __( 'What feature is missing?', 'optionbay-product-options-addons-woo' ),
-					),
-					array(
-						'id'        => 'temporary_deactivation',
-						'label'       => __( "It's a temporary deactivation", 'optionbay-product-options-addons-woo' ),
-						'has_input' => false,
-					),
-					array(
-						'id'          => 'other',
-						'label'       => __( 'Other', 'optionbay-product-options-addons-woo' ),
-						'has_input'   => true,
-						'placeholder' => __( 'Please share the reason', 'optionbay-product-options-addons-woo' ),
-					),
-				),
-			)
-		);
-	}
+				)
+			);
+		}
+	} );
 }
 opopw_run();
 

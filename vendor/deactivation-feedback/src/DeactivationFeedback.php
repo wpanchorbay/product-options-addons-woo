@@ -198,8 +198,8 @@ class DeactivationFeedback {
                     <?php endforeach; ?>
 
                     <div class="df-modal-actions">
-                        <button type="submit" class="button button-primary df-submit"><?php echo esc_html( $this->config['submit_label'] ); ?></button>
                         <button type="button" class="button df-skip"><?php echo esc_html( $this->config['skip_label'] ); ?></button>
+                        <button type="submit" class="button button-primary df-submit"><?php echo esc_html( $this->config['submit_label'] ); ?></button>
                     </div>
                 </form>
             </div>
