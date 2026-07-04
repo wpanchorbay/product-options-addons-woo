@@ -7,8 +7,8 @@
  * Requires PHP:      7.4
  * Requires Plugins:  woocommerce
  * WC requires at least: 8.0
- * Version:           1.0.0
- * Stable tag:        1.0.0
+ * Version:           1.0.1
+ * Stable tag:        1.0.1
  * Author:            WPAnchorBay
  * Author URI:        https://wpanchorbay.com
  * License:           GPLv2 or later
@@ -27,7 +27,7 @@ if ( ! defined( 'WPINC' ) ) {
 define( 'OPOPW_PATH', plugin_dir_path( __FILE__ ) );
 define( 'OPOPW_DIR', plugin_dir_path( __FILE__ ) );
 define( 'OPOPW_URL', plugin_dir_url( __FILE__ ) );
-define( 'OPOPW_VERSION', '1.0.0' );
+define( 'OPOPW_VERSION', '1.0.1' );
 define( 'OPOPW_PLUGIN_NAME', 'optionbay-product-options-addons-woo' );
 define( 'OPOPW_TEXT_DOMAIN', 'optionbay-product-options-addons-woo' );
 define( 'OPOPW_OPTION_NAME', 'optionbay-product-options-addons-woo' );
@@ -62,10 +62,10 @@ function opopw_run() {
 			if ( is_admin() && class_exists( '\WPAB\DeactivationFeedback\DeactivationFeedback' ) ) {
 				new \WPAB\DeactivationFeedback\DeactivationFeedback(
 					array(
-						'plugin_file'     => OPOPW_PLUGIN_BASENAME,
-						'plugin_slug'     => OPOPW_PLUGIN_NAME,
-						'remote_endpoint' => 'https://dfs.wpanchorbay.com',
-						'reasons'         => array(
+						'plugin_file'           => OPOPW_PLUGIN_BASENAME,
+						'plugin_slug'           => OPOPW_PLUGIN_NAME,
+						'remote_endpoint'       => 'https://dfs.wpanchorbay.com',
+						'reasons'               => array(
 							array(
 								'id'          => 'couldnt_get_working',
 								'label'       => __( "I couldn't get it working", 'optionbay-product-options-addons-woo' ),

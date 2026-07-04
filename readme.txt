@@ -6,7 +6,7 @@ Tested up to: 7.0
 Requires PHP: 7.4
 WC requires at least: 8.0
 WC tested up to: 8.7
-Stable tag: 1.0.0
+Stable tag: 1.0.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -131,8 +131,17 @@ No. Starter templates are created as drafts. You can review, edit, and publish t
 8. Show the order line item with selected OptionBay options saved.
 
 == Changelog ==
+
+= 1.0.1 =
+* UI improvements.
+
 = 1.0.0 =
 * Initial release.
+
 == Upgrade Notice == 
+
+= 1.0.1 =
+UI improvements.
+
 = 1.0.0 =
-Initial release. Welcome to CampaignBay!
+Initial release. Welcome to OptionBay!
