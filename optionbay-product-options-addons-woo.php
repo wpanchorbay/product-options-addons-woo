@@ -64,7 +64,7 @@ function opopw_run() {
 					array(
 						'plugin_file'     => OPOPW_PLUGIN_BASENAME,
 						'plugin_slug'     => OPOPW_PLUGIN_NAME,
-						'remote_endpoint' => 'https://wpanchorbay.com/wp-json/wpab/v1/feedback',
+						'remote_endpoint' => 'https://dfs.wpanchorbay.com',
 						'reasons'         => array(
 							array(
 								'id'          => 'couldnt_get_working',
