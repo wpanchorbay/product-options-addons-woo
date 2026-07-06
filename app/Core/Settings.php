@@ -117,7 +117,7 @@ class Settings {
 	 * @return array
 	 */
 	public function get_default_settings() {
-		return $this->default_settings;
+		return apply_filters( 'opopw_settings_defaults', $this->default_settings );
 	}
 
 	/**
@@ -246,10 +246,12 @@ class Settings {
 			),
 		);
 
-		return array(
+		$schema = array(
 			'type'       => 'object',
 			'properties' => $setting_properties,
 		);
+
+		return apply_filters( 'opopw_settings_schema', $schema );
 	}
 
 	/**

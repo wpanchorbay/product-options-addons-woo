@@ -1,5 +1,6 @@
 import { useEffect, useCallback } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import { applyFilters } from "@wordpress/hooks";
 import { __ } from "@wordpress/i18n";
 import { DragDropContext, Droppable, DropResult } from "@hello-pangea/dnd";
 import { ClassicInput } from "../components/classics";
@@ -27,6 +28,7 @@ import { TopProgressBar } from "../components/loading/TopProgressBar";
 function BuilderInner() {
   const { state, dispatch } = useAddonContext();
   const { addToast } = useToast();
+  const RulesComponent = applyFilters('opopw_assignment_rules_component', AssignmentRules);
   const navigate = useNavigate();
   const params = useParams<{ id: string }>();
   const isEdit = !!params.id;
@@ -345,7 +347,7 @@ function BuilderInner() {
           </div>
 
           {/* Assignment Rules */}
-          <AssignmentRules />
+          <RulesComponent />
 
           <div>
             <h2 className="wpab-wpoa-ignore-preflight">

@@ -34,7 +34,9 @@ export const FIELD_TYPE_ICONS: Record< string, LucideIcon > = {
 	datetime: CalendarClock,
 };
 
-export const FIELD_TYPES = [
+import { applyFilters } from '@wordpress/hooks';
+
+export const FIELD_TYPES = applyFilters( 'opopw_field_types', [
 	{ value: 'text', label: __('Text Input', 'optionbay-product-options-addons-woo') },
 	{ value: 'textarea', label: __('Textarea', 'optionbay-product-options-addons-woo') },
 	{ value: 'select', label: __('Dropdown', 'optionbay-product-options-addons-woo') },
@@ -49,7 +51,7 @@ export const FIELD_TYPES = [
 	{ value: 'color_swatch', label: __('Color Swatch', 'optionbay-product-options-addons-woo') },
 	{ value: 'image_swatch', label: __('Image Swatch', 'optionbay-product-options-addons-woo') },
 	{ value: 'static_content', label: __('Static Content', 'optionbay-product-options-addons-woo') },
-];
+] ) as { value: string; label: string }[];
 
 export const PRICE_TYPES = [
 	{ value: 'none', label: __( 'No Price', 'optionbay-product-options-addons-woo' ) },

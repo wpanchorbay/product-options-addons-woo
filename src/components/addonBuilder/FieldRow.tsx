@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { ConfirmationModal } from "../common/ConfirmationModal";
 import { __ } from "@wordpress/i18n";
+import { applyFilters } from "@wordpress/hooks";
 import { Draggable } from "@hello-pangea/dnd";
 import {
   ChevronDown,
@@ -259,7 +260,7 @@ export const FieldRow: React.FC<FieldRowProps> = ({ field, index }) => {
             <div className="wpab-wpoa-pl-4 wpab-wpoa-bg-[#f0f0f1] wpab-wpoa-border-t wpab-wpoa-border-[#e2e8f0] wpab-wpoa-pb-2">
               <ClassicSettingsTable
                 className=""
-                fields={[
+                fields={applyFilters('opopw_field_settings', [
                   {
                     label: __("Field Type", "optionbay-product-options-addons-woo"),
                     tooltip: FIELD_TOOLTIPS.type,
@@ -937,7 +938,7 @@ export const FieldRow: React.FC<FieldRowProps> = ({ field, index }) => {
                       </div>
                     ),
                   },
-                ]}
+                ], field, index, state, update) as any}
               />
             </div>
           )}

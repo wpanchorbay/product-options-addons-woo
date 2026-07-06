@@ -9,6 +9,7 @@ import {
 import { useToast } from '../store/toast/use-toast';
 import { __ } from '@wordpress/i18n';
 import apiFetch from '@wordpress/api-fetch';
+import { applyFilters } from '@wordpress/hooks';
 import { SkeletonSettings } from '../components/loading/SkeletonSettings';
 import { TopProgressBar } from '../components/loading/TopProgressBar';
 
@@ -407,6 +408,8 @@ const Settings: React.FC = () => {
 				]}
 			/>
 
+
+			{applyFilters('opopw_settings_sections', null, settings, setSettings) as React.ReactNode}
 
 			<div className="wpab-wpoa-mt-8">
 				{ /* Native WooCommerce save button is used instead */}

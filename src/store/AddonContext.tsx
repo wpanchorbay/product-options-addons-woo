@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useReducer, ReactNode } from "react";
 import { __ } from "@wordpress/i18n";
+import { applyFilters } from "@wordpress/hooks";
 
 // ─── Types ───────────────────────────────────────────────────────────────
 
@@ -218,7 +219,7 @@ export function getDefaultField(type: string): FieldDefinition {
       break;
   }
 
-  return base;
+  return applyFilters('opopw_field_defaults', base, type) as FieldDefinition;
 }
 
 // ─── Reducer ─────────────────────────────────────────────────────────────

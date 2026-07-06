@@ -852,7 +852,7 @@ class AddonGroupController extends ApiController {
 			return array();
 		}
 
-		$allowed_types       = array( 'text', 'textarea', 'select', 'radio', 'checkbox', 'color_swatch', 'image_swatch', 'number', 'static_content', 'email', 'single_checkbox', 'date', 'time', 'datetime' );
+		$allowed_types       = apply_filters( 'opopw_allowed_field_types', array( 'text', 'textarea', 'select', 'radio', 'checkbox', 'color_swatch', 'image_swatch', 'number', 'static_content', 'email', 'single_checkbox', 'date', 'time', 'datetime' ) );
 		$allowed_price_types = array( 'none', 'flat', 'percentage' );
 
 		$sanitized = array();
@@ -1065,12 +1065,13 @@ class AddonGroupController extends ApiController {
 	 */
 	private function get_validation_rules() {
 
+		$allowed_types = apply_filters( 'opopw_allowed_field_types', array( 'text', 'textarea', 'select', 'radio', 'checkbox', 'color_swatch', 'image_swatch', 'number', 'static_content', 'email', 'single_checkbox', 'date', 'time', 'datetime' ) );
 		return array(
 			'title'                                       => 'required|min:3|max:255',
 			'status'                                      => 'required|in:publish,draft',
 			'schema'                                      => 'required|array',
 			'schema.*.id'                                 => 'required',
-			'schema.*.type'                               => 'required|in:text,textarea,select,radio,checkbox,color_swatch,image_swatch,number,static_content,email,single_checkbox,date,time,datetime',
+			'schema.*.type'                               => 'required|in:' . implode( ',', $allowed_types ),
 			'schema.*.content'                            => 'nullable',
 			'schema.*.label'                              => 'required',
 			'schema.*.description'                        => 'nullable',
