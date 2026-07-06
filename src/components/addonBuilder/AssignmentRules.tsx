@@ -117,7 +117,7 @@ export const AssignmentRules: React.FC = () => {
               <label className="wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-gap-2 wpab-wpoa-cursor-pointer">
                 <input
                   type="radio"
-                  name="ob-visibility"
+                  name="opopw-visibility"
                   checked={isGlobal}
                   onChange={() => setGlobal()}
                 />
@@ -126,7 +126,7 @@ export const AssignmentRules: React.FC = () => {
               <label className="wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-gap-2 wpab-wpoa-cursor-pointer">
                 <input
                   type="radio"
-                  name="ob-visibility"
+                  name="opopw-visibility"
                   checked={!isGlobal}
                   onChange={() => setTargeted()}
                 />

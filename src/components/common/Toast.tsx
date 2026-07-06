@@ -80,7 +80,7 @@ export const Toast: FC< ToastProps > = ( { toast, onDismiss } ) => {
 							<button
 								onClick={ () => {
 									const fieldId = toast.meta!.fieldId!;
-									const el = document.getElementById( `ob-field-row-${ fieldId }` );
+									const el = document.getElementById( `opopw-field-row-${ fieldId }` );
 									if ( el ) {
 										// Scroll perfectly to middle of viewport
 										el.scrollIntoView( { behavior: 'smooth', block: 'center' } );

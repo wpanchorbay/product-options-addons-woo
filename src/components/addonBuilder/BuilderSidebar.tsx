@@ -44,8 +44,8 @@ export const BuilderSidebar: React.FC = () => {
 		const handleClick = ( e: MouseEvent ) => {
 			const target = e.target as HTMLElement;
 			if (
-				! target.closest( '#ob-fab-popover' ) &&
-				! target.closest( '#ob-fab-button' )
+				! target.closest( '#opopw-fab-popover' ) &&
+				! target.closest( '#opopw-fab-button' )
 			) {
 				setFabOpen( false );
 			}
@@ -105,12 +105,12 @@ export const BuilderSidebar: React.FC = () => {
 					{ /* Popover */ }
 					{ fabOpen && (
 						<div
-							id="ob-fab-popover"
+							id="opopw-fab-popover"
 							className="wpab-wpoa-bg-white wpab-wpoa-border wpab-wpoa-border-[#c3c4c7] wpab-wpoa-rounded-[8px] wpab-wpoa-mb-3"
 							style={ {
 								boxShadow: '0 8px 32px rgba(0,0,0,0.18)',
 								width: '450px',
-								animation: 'ob-fab-slide-up 0.2s ease-out',
+								animation: 'opopw-fab-slide-up 0.2s ease-out',
 							} }
 						>
 							<div className="wpab-wpoa-px-[12px] wpab-wpoa-py-[10px] wpab-wpoa-bg-[#f8f9fa] wpab-wpoa-border-b wpab-wpoa-border-[#e5e7eb] wpab-wpoa-font-semibold wpab-wpoa-text-[13px] wpab-wpoa-rounded-t-[8px] wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-justify-between">
@@ -154,7 +154,7 @@ export const BuilderSidebar: React.FC = () => {
 
 					{ /* FAB Button */ }
 					<button
-						id="ob-fab-button"
+						id="opopw-fab-button"
 						type="button"
 						onClick={ () => setFabOpen( ( prev ) => ! prev ) }
 						title={ __( 'Add Field', 'optionbay-product-options-addons-woo' ) }
@@ -191,7 +191,7 @@ export const BuilderSidebar: React.FC = () => {
 
 			{ /* Keyframe animation for the popover slide-up */ }
 			<style>{ `
-        @keyframes ob-fab-slide-up {
+        @keyframes opopw-fab-slide-up {
           from {
             opacity: 0;
             transform: translateY(8px);

@@ -148,13 +148,13 @@ export const InventoryPicker: React.FC<InventoryPickerProps> = ({
 
             <div>
               <label
-                htmlFor="ob-new-inventory-name"
+                htmlFor="opopw-new-inventory-name"
                 className="wpab-wpoa-text-xs wpab-wpoa-font-medium wpab-wpoa-mb-1 wpab-wpoa-block"
               >
                 {__("Pool Name", "optionbay-product-options-addons-woo")}
               </label>
               <ClassicInput
-                id="ob-new-inventory-name"
+                id="opopw-new-inventory-name"
                 size="regular"
                 value={newName}
                 onChange={(e) => setNewName(e.target.value)}
@@ -165,13 +165,13 @@ export const InventoryPicker: React.FC<InventoryPickerProps> = ({
             <div className="wpab-wpoa-flex wpab-wpoa-gap-4">
               <div className="wpab-wpoa-flex-1">
                 <label
-                  htmlFor="ob-new-inventory-stock"
+                  htmlFor="opopw-new-inventory-stock"
                   className="wpab-wpoa-text-xs wpab-wpoa-font-medium wpab-wpoa-mb-1 wpab-wpoa-block"
                 >
                   {__("Initial Stock", "optionbay-product-options-addons-woo")}
                 </label>
                 <ClassicInput
-                  id="ob-new-inventory-stock"
+                  id="opopw-new-inventory-stock"
                   type="number"
                   step="any"
                   size="small"

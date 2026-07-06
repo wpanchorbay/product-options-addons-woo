@@ -72,7 +72,7 @@ export const FieldRow: React.FC<FieldRowProps> = ({ field, index }) => {
         <div
           ref={provided.innerRef}
           {...provided.draggableProps}
-          id={`ob-field-row-${field.id}`}
+          id={`opopw-field-row-${field.id}`}
           data-expanded={isExpanded}
           className={`wpab-wpoa-w-full wpab-wpoa-border-b wpab-wpoa-border-[#c3c4c7] wpab-wpoa-transition-all ${
             isExpanded
@@ -341,7 +341,7 @@ export const FieldRow: React.FC<FieldRowProps> = ({ field, index }) => {
                           ),
                           render: () => (
                             <WPEditor
-                              id={`ob-editor-${field.id}`}
+                              id={`opopw-editor-${field.id}`}
                               description={__(
                                 "Enter text, images, or other static content using the visual editor.",
                                 "optionbay-product-options-addons-woo",
