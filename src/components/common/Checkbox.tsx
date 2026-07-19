@@ -22,27 +22,27 @@ export const Checkbox: React.FC< CheckboxProps > = ( {
 } ) => {
 	return (
 		<label
-			className={ `wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-gap-3 wpab-wpoa-cursor-pointer ${
+			className={ `opopw-flex opopw-items-center opopw-gap-3 opopw-cursor-pointer ${
 				disabled
-					? 'wpab-wpoa-opacity-50 wpab-wpoa-cursor-not-allowed'
+					? 'opopw-opacity-50 opopw-cursor-not-allowed'
 					: ''
 			} ${ classNames?.root || '' }` }
 		>
 			<div
 				className={ `
-        wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-justify-center
-        wpab-wpoa-w-4 wpab-wpoa-h-4 wpab-wpoa-rounded wpab-wpoa-border-2 wpab-wpoa-transition-all wpab-wpoa-duration-200
+        opopw-flex opopw-items-center opopw-justify-center
+        opopw-w-4 opopw-h-4 opopw-rounded opopw-border-2 opopw-transition-all opopw-duration-200
         ${
 			checked
-				? 'wpab-wpoa-border-primary wpab-wpoa-bg-primary'
-				: 'wpab-wpoa-border-[#949494] wpab-wpoa-bg-transparent hover:wpab-wpoa-border-primary'
+				? 'opopw-border-primary opopw-bg-primary'
+				: 'opopw-border-[#949494] opopw-bg-transparent hover:opopw-border-primary'
 		}
         ${ classNames?.box || '' }
       ` }
 			>
 				<svg
-					className={ `wpab-wpoa-w-3.5 wpab-wpoa-h-3.5 wpab-wpoa-text-white wpab-wpoa-transform wpab-wpoa-transition-transform wpab-wpoa-duration-200 ${
-						checked ? 'wpab-wpoa-scale-100' : 'wpab-wpoa-scale-0'
+					className={ `opopw-w-3.5 opopw-h-3.5 opopw-text-white opopw-transform opopw-transition-transform opopw-duration-200 ${
+						checked ? 'opopw-scale-100' : 'opopw-scale-0'
 					} ${ classNames?.icon || '' }` }
 					viewBox="0 0 24 24"
 					fill="none"
@@ -55,7 +55,7 @@ export const Checkbox: React.FC< CheckboxProps > = ( {
 				</svg>
 				<input
 					type="checkbox"
-					className="!wpab-wpoa-hidden"
+					className="!opopw-hidden"
 					checked={ checked }
 					onChange={ ( e ) => onChange( e.target.checked ) }
 					disabled={ disabled }
@@ -63,7 +63,7 @@ export const Checkbox: React.FC< CheckboxProps > = ( {
 			</div>
 			{ label && (
 				<span
-					className={ `wpab-wpoa-text-[13px] wpab-wpoa-font-[400] wpab-wpoa-leading-[20px] wpab-wpoa-text-[#1e1e1e] ${
+					className={ `opopw-text-[13px] opopw-font-[400] opopw-leading-[20px] opopw-text-[#1e1e1e] ${
 						classNames?.label || ''
 					}` }
 				>

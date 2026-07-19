@@ -304,18 +304,18 @@ function BuilderInner() {
 
   if (state.isLoading) {
     return (
-      <div className="wpab-wpoa-p-6">
+      <div className="opopw-p-6">
         <SkeletonBuilder />
       </div>
     );
   }
 
   return (
-    <div className="wpab-wpoa-ignore-preflight ">
+    <div className="opopw-ignore-preflight ">
       <TopProgressBar isSaving={state.isSaving} />
       {/* Error notice */}
       {state.error && (
-        <div className="notice notice-error is-dismissible wpab-wpoa-mb-5">
+        <div className="notice notice-error is-dismissible opopw-mb-5">
           <p>{state.error}</p>
         </div>
       )}
@@ -324,14 +324,14 @@ function BuilderInner() {
       <BuilderHeader handleSave={handleSave} isEdit={isEdit} />
 
       {/* Main content: 2-column layout */}
-      <div className="wpab-wpoa-flex wpab-wpoa-flex-col 2xl:wpab-wpoa-flex-row wpab-wpoa-gap-6 wpab-wpoa-items-start">
+      <div className="opopw-flex opopw-flex-col 2xl:opopw-flex-row opopw-gap-6 opopw-items-start">
         {/* Left: Title + Fields */}
-        <div className="wpab-wpoa-w-full wpab-wpoa-min-w-0 wpab-wpoa-flex wpab-wpoa-flex-col wpab-wpoa-gap-6">
+        <div className="opopw-w-full opopw-min-w-0 opopw-flex opopw-flex-col opopw-gap-6">
           {/* Group Title */}
           <div>
-            <div className="inside !wpab-wpoa-p-0">
+            <div className="inside !opopw-p-0">
               <ClassicInput
-                className="wpab-wpoa-w-full !wpab-wpoa-text-[20px] !wpab-wpoa-font-semibold !wpab-wpoa-py-3 !wpab-wpoa-px-4 !wpab-wpoa-border !wpab-wpoa-border-[#ddd] !wpab-wpoa-rounded-md focus:!wpab-wpoa-border-[#2271b1] focus:!wpab-wpoa-shadow-[0_0_0_1px_#2271b1] focus:!wpab-wpoa-outline-none"
+                className="opopw-w-full !opopw-text-[20px] !opopw-font-semibold !opopw-py-3 !opopw-px-4 !opopw-border !opopw-border-[#ddd] !opopw-rounded-md focus:!opopw-border-[#2271b1] focus:!opopw-shadow-[0_0_0_1px_#2271b1] focus:!opopw-outline-none"
                 size="large"
                 value={state.title}
                 onChange={(e) =>
@@ -350,7 +350,7 @@ function BuilderInner() {
           <RulesComponent />
 
           <div>
-            <h2 className="wpab-wpoa-ignore-preflight">
+            <h2 className="opopw-ignore-preflight">
               {__("Fields", "optionbay-product-options-addons-woo")}
             </h2>
             <p className="description">
@@ -359,15 +359,15 @@ function BuilderInner() {
           </div>
 
           {/* Fields list mit header and table layout */}
-          <div className="wpab-wpoa-border wpab-wpoa-border-[#c3c4c7] !wpab-wpoa-m-0 wpab-wpoa-rounded-[12px] wpab-wpoa-overflow-x-hidden wpab-wpoa-overflow-y-visible">
+          <div className="opopw-border opopw-border-[#c3c4c7] !opopw-m-0 opopw-rounded-[12px] opopw-overflow-x-hidden opopw-overflow-y-visible">
             {/* Table Header */}
-            <div className="wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-bg-[#f6f7f7] wpab-wpoa-border-b wpab-wpoa-border-[#c3c4c7] wpab-wpoa-px-4 wpab-wpoa-py-2 wpab-wpoa-font-semibold wpab-wpoa-text-[#1d2327]">
-              <div className="wpab-wpoa-w-10">
-                <span className="dashicons dashicons-editor-help wpab-wpoa-text-[#9ca3af] !wpab-wpoa-flex !wpab-wpoa-items-center !wpab-wpoa-w-full !wpab-wpoa-h-full"></span>
+            <div className="opopw-flex opopw-items-center opopw-bg-[#f6f7f7] opopw-border-b opopw-border-[#c3c4c7] opopw-px-4 opopw-py-2 opopw-font-semibold opopw-text-[#1d2327]">
+              <div className="opopw-w-10">
+                <span className="dashicons dashicons-editor-help opopw-text-[#9ca3af] !opopw-flex !opopw-items-center !opopw-w-full !opopw-h-full"></span>
               </div>
-              <div className="wpab-wpoa-flex-1">{__("Name", "optionbay-product-options-addons-woo")}</div>
-              <div className="wpab-wpoa-w-1/3">{__("Type", "optionbay-product-options-addons-woo")}</div>
-              <div className="wpab-wpoa-w-32 wpab-wpoa-text-right"></div>
+              <div className="opopw-flex-1">{__("Name", "optionbay-product-options-addons-woo")}</div>
+              <div className="opopw-w-1/3">{__("Type", "optionbay-product-options-addons-woo")}</div>
+              <div className="opopw-w-32 opopw-text-right"></div>
             </div>
 
             <DragDropContext onDragEnd={handleDragEnd}>
@@ -376,14 +376,14 @@ function BuilderInner() {
                   <div
                     ref={provided.innerRef}
                     {...provided.droppableProps}
-                    className="wpab-wpoa-flex wpab-wpoa-flex-col wpab-wpoa-min-h-[50px]"
+                    className="opopw-flex opopw-flex-col opopw-min-h-[50px]"
                   >
                     {state.schema.length === 0 ? (
-                      <div className="wpab-wpoa-text-center wpab-wpoa-px-5 wpab-wpoa-py-[60px] wpab-wpoa-text-[#999] wpab-wpoa-border-dashed wpab-wpoa-border-[#c3c4c7] wpab-wpoa-m-4 wpab-wpoa-rounded-lg">
-                        <p className="wpab-wpoa-text-base wpab-wpoa-mb-2">
+                      <div className="opopw-text-center opopw-px-5 opopw-py-[60px] opopw-text-[#999] opopw-border-dashed opopw-border-[#c3c4c7] opopw-m-4 opopw-rounded-lg">
+                        <p className="opopw-text-base opopw-mb-2">
                           {__("Your group is empty", "optionbay-product-options-addons-woo")}
                         </p>
-                        <p className="wpab-wpoa-text-[13px]">
+                        <p className="opopw-text-[13px]">
                           {__(
                             "Click the field buttons in the sidebar to start building.",
                             "optionbay-product-options-addons-woo",
@@ -402,7 +402,7 @@ function BuilderInner() {
             </DragDropContext>
 
             {/* Table Footer */}
-            <div className="wpab-wpoa-p-3 wpab-wpoa-bg-[#f6f7f7]">
+            <div className="opopw-p-3 opopw-bg-[#f6f7f7]">
               <button
                 type="button"
                 className="button button-secondary"

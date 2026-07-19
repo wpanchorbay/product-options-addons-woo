@@ -77,10 +77,10 @@ export const AssignmentRules: React.FC = () => {
   // ─── Shared multi-select row renderer ───
 
   const renderSearchFields = () => (
-    <div className="wpab-wpoa-grid wpab-wpoa-grid-cols-1 lg:wpab-wpoa-grid-cols-3 wpab-wpoa-gap-x-4 wpab-wpoa-gap-y-3">
+    <div className="opopw-grid opopw-grid-cols-1 lg:opopw-grid-cols-3 opopw-gap-x-4 opopw-gap-y-3">
       {/* Products */}
       <div>
-        <label className="wpab-wpoa-block wpab-wpoa-text-[12px] wpab-wpoa-font-semibold wpab-wpoa-mb-0.5">
+        <label className="opopw-block opopw-text-[12px] opopw-font-semibold opopw-mb-0.5">
           {__("Products", "optionbay-product-options-addons-woo")}
         </label>
         <ClassicMultiSelect
@@ -113,8 +113,8 @@ export const AssignmentRules: React.FC = () => {
             "optionbay-product-options-addons-woo",
           ),
           render: () => (
-            <div className="wpab-wpoa-flex wpab-wpoa-flex-col wpab-wpoa-gap-1.5">
-              <label className="wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-gap-2 wpab-wpoa-cursor-pointer">
+            <div className="opopw-flex opopw-flex-col opopw-gap-1.5">
+              <label className="opopw-flex opopw-items-center opopw-gap-2 opopw-cursor-pointer">
                 <input
                   type="radio"
                   name="opopw-visibility"
@@ -123,7 +123,7 @@ export const AssignmentRules: React.FC = () => {
                 />
                 <span>{__("Apply to all products", "optionbay-product-options-addons-woo")}</span>
               </label>
-              <label className="wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-gap-2 wpab-wpoa-cursor-pointer">
+              <label className="opopw-flex opopw-items-center opopw-gap-2 opopw-cursor-pointer">
                 <input
                   type="radio"
                   name="opopw-visibility"

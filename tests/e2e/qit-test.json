@@ -1,0 +1,19 @@
+{
+  "package": "optionbay-product-options-addons-woo/e2e",
+  "package_type": "test",
+  "test": {
+    "phases": {
+      "setup": [
+        "npm install",
+        "npx playwright install chromium"
+      ],
+      "run": [
+        "npx playwright test"
+      ]
+    },
+    "results": {
+      "ctrf-json": "./test-results/ctrf.json",
+      "blob-dir": "./test-results"
+    }
+  }
+}

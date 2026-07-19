@@ -5,7 +5,7 @@ export const FormError = ( { message }: { message?: string } ) => {
 		return null;
 	}
 	return (
-		<div className="wpab-wpoa-text-[#d63638] wpab-wpoa-text-xs wpab-wpoa-mt-1">
+		<div className="opopw-text-[#d63638] opopw-text-xs opopw-mt-1">
 			{ message }
 		</div>
 	);

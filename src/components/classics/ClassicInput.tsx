@@ -34,7 +34,7 @@ export const ClassicInput: React.FC< ClassicInputProps > = ( {
 	}[ inputType ];
 
 	const errorClass = isError
-		? '!wpab-wpoa-border-red-400 !wpab-wpoa-shadow-none'
+		? '!opopw-border-red-400 !opopw-shadow-none'
 		: '';
 
 	const inputId = useMemo(
@@ -52,7 +52,7 @@ export const ClassicInput: React.FC< ClassicInputProps > = ( {
 				{ ...props }
 			/>
 			{ description && (
-				<p className="description wpab-wpoa-block wpab-wpoa-mt-1">
+				<p className="description opopw-block opopw-mt-1">
 					{ description }
 				</p>
 			) }

@@ -44,9 +44,9 @@ export const TopProgressBar: React.FC< TopProgressBarProps > = ( {
 	}
 
 	return (
-		<div className="wpab-wpoa-fixed wpab-wpoa-top-0 wpab-wpoa-left-0 wpab-wpoa-w-full wpab-wpoa-h-[3px] wpab-wpoa-z-[99999] wpab-wpoa-pointer-events-none">
+		<div className="opopw-fixed opopw-top-0 opopw-left-0 opopw-w-full opopw-h-[3px] opopw-z-[99999] opopw-pointer-events-none">
 			<div
-				className="wpab-wpoa-h-full wpab-wpoa-bg-[#2271b1] wpab-wpoa-transition-all wpab-wpoa-duration-300 wpab-wpoa-ease-out"
+				className="opopw-h-full opopw-bg-[#2271b1] opopw-transition-all opopw-duration-300 opopw-ease-out"
 				style={ {
 					width: `${ progress }%`,
 					opacity: progress === 100 ? 0 : 1,

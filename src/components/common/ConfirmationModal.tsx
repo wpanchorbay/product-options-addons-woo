@@ -56,31 +56,31 @@ export const ConfirmationModal: React.FC<ConfirmationModalProps> = ({
 
   return (
     <div
-      className={`wpab-wpoa-fixed wpab-wpoa-inset-0 wpab-wpoa-z-[60000] wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-justify-center wpab-wpoa-bg-black/50 wpab-wpoa-backdrop-blur-sm wpab-wpoa-transition-opacity ${
+      className={`opopw-fixed opopw-inset-0 opopw-z-[60000] opopw-flex opopw-items-center opopw-justify-center opopw-bg-black/50 opopw-backdrop-blur-sm opopw-transition-opacity ${
         classNames.overlay || ""
       }`}
     >
       <div
-        className={`wpab-wpoa-bg-white wpab-wpoa-rounded-lg wpab-wpoa-shadow-xl wpab-wpoa-py-2 wpab-wpoa-px-4 wpab-wpoa-max-w-sm wpab-wpoa-w-full wpab-wpoa-mx-4 wpab-wpoa-transform wpab-wpoa-transition-all wpab-wpoa-scale-100 ${
+        className={`opopw-bg-white opopw-rounded-lg opopw-shadow-xl opopw-py-2 opopw-px-4 opopw-max-w-sm opopw-w-full opopw-mx-4 opopw-transform opopw-transition-all opopw-scale-100 ${
           classNames.content || ""
         }`}
       >
         <h3
-          className={`wpab-wpoa-ignore-preflight wpab-wpoa-mb-2 wpab-wpoa-mt-0 wpab-wpoa-text-nowrap ${
+          className={`opopw-ignore-preflight opopw-mb-2 opopw-mt-0 opopw-text-nowrap ${
             classNames.title || ""
           }`}
         >
           {title}
         </h3>
         <p
-          className={`wpab-wpoa-text-gray-600 wpab-wpoa-mb-6 wpab-wpoa-text-sm wpab-wpoa-leading-relaxed ${
+          className={`opopw-text-gray-600 opopw-mb-6 opopw-text-sm opopw-leading-relaxed ${
             classNames.message || ""
           }`}
         >
           {message}
         </p>
         <div
-          className={`wpab-wpoa-flex wpab-wpoa-justify-end wpab-wpoa-gap-3 wpab-wpoa-mt-3 ${
+          className={`opopw-flex opopw-justify-end opopw-gap-3 opopw-mt-3 ${
             classNames.footer || ""
           }`}
         >

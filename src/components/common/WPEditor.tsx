@@ -80,11 +80,11 @@ export const WPEditor = ( { id, value, description, onChange }: WPEditorProps ) 
 				ref={ textareaRef }
 				defaultValue={ value }
 				onChange={ ( e ) => onChange( e.target.value ) }
-				className="wpab-wpoa-w-full wpab-wpoa-border wpab-wpoa-border-gray-300 wpab-wpoa-p-2"
+				className="opopw-w-full opopw-border opopw-border-gray-300 opopw-p-2"
 				rows={ 5 }
 			/>
 			{ description && (
-				<p className="description wpab-wpoa-mt-1">
+				<p className="description opopw-mt-1">
 					{ description }
 				</p>
 			) }

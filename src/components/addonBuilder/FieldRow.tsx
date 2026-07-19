@@ -74,11 +74,11 @@ export const FieldRow: React.FC<FieldRowProps> = ({ field, index }) => {
           {...provided.draggableProps}
           id={`opopw-field-row-${field.id}`}
           data-expanded={isExpanded}
-          className={`wpab-wpoa-w-full wpab-wpoa-border-b wpab-wpoa-border-[#c3c4c7] wpab-wpoa-transition-all ${
+          className={`opopw-w-full opopw-border-b opopw-border-[#c3c4c7] opopw-transition-all ${
             isExpanded
-              ? "wpab-wpoa-border-l-[1px] wpab-wpoa-border-l-[#2271b1] wpab-wpoa-bg-[#f0f6fc]"
+              ? "opopw-border-l-[1px] opopw-border-l-[#2271b1] opopw-bg-[#f0f6fc]"
               : hasError
-              ? "!wpab-wpoa-border-b-[#d63638]"
+              ? "!opopw-border-b-[#d63638]"
               : ""
           }`}
           style={{ ...provided.draggableProps.style }}
@@ -90,25 +90,25 @@ export const FieldRow: React.FC<FieldRowProps> = ({ field, index }) => {
                 payload: field.id,
               })
             }
-            className={`wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-py-3 wpab-wpoa-px-4 wpab-wpoa-transition-colors wpab-wpoa-cursor-pointer wpab-wpoa-group ${
-              snapshot.isDragging ? "wpab-wpoa-shadow-md" : ""
+            className={`opopw-flex opopw-items-center opopw-py-3 opopw-px-4 opopw-transition-colors opopw-cursor-pointer opopw-group ${
+              snapshot.isDragging ? "opopw-shadow-md" : ""
             } ${
               isExpanded
-                ? "wpab-wpoa-bg-[#f0f6fc]"
-                : "wpab-wpoa-bg-white hover:wpab-wpoa-bg-[#f9f9f9]"
+                ? "opopw-bg-[#f0f6fc]"
+                : "opopw-bg-white hover:opopw-bg-[#f9f9f9]"
             }`}
           >
             {/* Col 1: Drag Handle */}
             <div
-              className="wpab-wpoa-w-10"
+              className="opopw-w-10"
               onClick={(e) => e.stopPropagation()}
             >
               <span
                 {...provided.dragHandleProps}
-                className={`wpab-wpoa-cursor-grab active:wpab-wpoa-cursor-grabbing wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-justify-center wpab-wpoa-w-8 wpab-wpoa-h-8 wpab-wpoa-rounded-[6px] wpab-wpoa-border wpab-wpoa-transition-colors ${
+                className={`opopw-cursor-grab active:opopw-cursor-grabbing opopw-flex opopw-items-center opopw-justify-center opopw-w-8 opopw-h-8 opopw-rounded-[6px] opopw-border opopw-transition-colors ${
                   hasError && !isExpanded
-                    ? "wpab-wpoa-bg-[#fcf0f1] wpab-wpoa-border-[#f8c1c2] wpab-wpoa-text-[#d63638]"
-                    : "wpab-wpoa-bg-[#f6f7f7] wpab-wpoa-border-[#dcdcde] wpab-wpoa-text-[#646970] hover:wpab-wpoa-bg-white hover:wpab-wpoa-border-[#c3c4c7] hover:wpab-wpoa-text-[#2271b1]"
+                    ? "opopw-bg-[#fcf0f1] opopw-border-[#f8c1c2] opopw-text-[#d63638]"
+                    : "opopw-bg-[#f6f7f7] opopw-border-[#dcdcde] opopw-text-[#646970] hover:opopw-bg-white hover:opopw-border-[#c3c4c7] hover:opopw-text-[#2271b1]"
                 }`}
                 title={
                   hasError && !isExpanded
@@ -129,20 +129,20 @@ export const FieldRow: React.FC<FieldRowProps> = ({ field, index }) => {
             </div>
 
             {/* Col 2: Name (Label) */}
-            <div className="wpab-wpoa-flex-1">
-              <span className="wpab-wpoa-text-[#2271b1] hover:wpab-wpoa-text-[#135e96] wpab-wpoa-font-semibold wpab-wpoa-text-[14px]">
+            <div className="opopw-flex-1">
+              <span className="opopw-text-[#2271b1] hover:opopw-text-[#135e96] opopw-font-semibold opopw-text-[14px]">
                 {field.label || __("(No name)", "optionbay-product-options-addons-woo")}
                 {field.required && (
-                  <span className="wpab-wpoa-text-[#c00] wpab-wpoa-ml-1">
+                  <span className="opopw-text-[#c00] opopw-ml-1">
                     *
                   </span>
                 )}
               </span>
 
               {/* Hover Actions (WordPress style) */}
-              <div className="wpab-wpoa-row-actions wpab-wpoa-text-[12px] wpab-wpoa-flex wpab-wpoa-gap-1 wpab-wpoa-opacity-0 group-hover:wpab-wpoa-opacity-100 wpab-wpoa-transition-opacity">
+              <div className="opopw-row-actions opopw-text-[12px] opopw-flex opopw-gap-1 opopw-opacity-0 group-hover:opopw-opacity-100 opopw-transition-opacity">
                 <span
-                  className="wpab-wpoa-text-[#2271b1] hover:wpab-wpoa-underline"
+                  className="opopw-text-[#2271b1] hover:opopw-underline"
                   onClick={(e) => {
                     e.stopPropagation();
                     dispatch({
@@ -153,9 +153,9 @@ export const FieldRow: React.FC<FieldRowProps> = ({ field, index }) => {
                 >
                   {__("Edit field", "optionbay-product-options-addons-woo")}
                 </span>
-                <span className="wpab-wpoa-text-[#ddd]">|</span>
+                <span className="opopw-text-[#ddd]">|</span>
                 <span
-                  className="wpab-wpoa-text-[#2271b1] hover:wpab-wpoa-underline"
+                  className="opopw-text-[#2271b1] hover:opopw-underline"
                   onClick={(e) => {
                     e.stopPropagation();
                     dispatch({
@@ -166,9 +166,9 @@ export const FieldRow: React.FC<FieldRowProps> = ({ field, index }) => {
                 >
                   {__("Duplicate", "optionbay-product-options-addons-woo")}
                 </span>
-                <span className="wpab-wpoa-text-[#ddd]">|</span>
+                <span className="opopw-text-[#ddd]">|</span>
                 <span
-                  className="wpab-wpoa-text-[#d63638] hover:wpab-wpoa-text-[#b32d2e] hover:wpab-wpoa-underline"
+                  className="opopw-text-[#d63638] hover:opopw-text-[#b32d2e] hover:opopw-underline"
                   onClick={(e) => {
                     e.stopPropagation();
                     setIsDeleteModalOpen(true);
@@ -180,15 +180,15 @@ export const FieldRow: React.FC<FieldRowProps> = ({ field, index }) => {
             </div>
 
             {/* Col 3: Type */}
-            <div className="wpab-wpoa-w-1/3">
-              <span className="wpab-wpoa-text-[#646970] wpab-wpoa-text-[13px]">
+            <div className="opopw-w-1/3">
+              <span className="opopw-text-[#646970] opopw-text-[13px]">
                 {FIELD_TYPES.find((t) => t.value === field.type)?.label ||
                   field.type}
               </span>
             </div>
 
             {/* Col 4: Actions */}
-            <div className="wpab-wpoa-w-32 wpab-wpoa-flex wpab-wpoa-justify-end wpab-wpoa-gap-1 wpab-wpoa-items-center">
+            <div className="opopw-w-32 opopw-flex opopw-justify-end opopw-gap-1 opopw-items-center">
               {/* Move Up */}
               <Tooltip
                 content={__("Move up", "optionbay-product-options-addons-woo")}
@@ -204,10 +204,10 @@ export const FieldRow: React.FC<FieldRowProps> = ({ field, index }) => {
                       payload: index,
                     });
                   }}
-                  className={`wpab-wpoa-bg-transparent wpab-wpoa-border-none wpab-wpoa-cursor-pointer wpab-wpoa-p-1 wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-transition-colors ${
+                  className={`opopw-bg-transparent opopw-border-none opopw-cursor-pointer opopw-p-1 opopw-flex opopw-items-center opopw-transition-colors ${
                     index === 0
-                      ? "wpab-wpoa-text-[#ccd0d4] wpab-wpoa-cursor-not-allowed"
-                      : "wpab-wpoa-text-[#646970] hover:wpab-wpoa-text-[#2271b1]"
+                      ? "opopw-text-[#ccd0d4] opopw-cursor-not-allowed"
+                      : "opopw-text-[#646970] hover:opopw-text-[#2271b1]"
                   }`}
                 >
                   <ChevronUp size={16} />
@@ -229,10 +229,10 @@ export const FieldRow: React.FC<FieldRowProps> = ({ field, index }) => {
                       payload: index,
                     });
                   }}
-                  className={`wpab-wpoa-bg-transparent wpab-wpoa-border-none wpab-wpoa-cursor-pointer wpab-wpoa-p-1 wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-transition-colors ${
+                  className={`opopw-bg-transparent opopw-border-none opopw-cursor-pointer opopw-p-1 opopw-flex opopw-items-center opopw-transition-colors ${
                     index === state.schema.length - 1
-                      ? "wpab-wpoa-text-[#ccd0d4] wpab-wpoa-cursor-not-allowed"
-                      : "wpab-wpoa-text-[#646970] hover:wpab-wpoa-text-[#2271b1]"
+                      ? "opopw-text-[#ccd0d4] opopw-cursor-not-allowed"
+                      : "opopw-text-[#646970] hover:opopw-text-[#2271b1]"
                   }`}
                 >
                   <ChevronDown size={16} />
@@ -247,7 +247,7 @@ export const FieldRow: React.FC<FieldRowProps> = ({ field, index }) => {
                     e.stopPropagation();
                     setIsDeleteModalOpen(true);
                   }}
-                  className="wpab-wpoa-bg-transparent wpab-wpoa-border-none wpab-wpoa-cursor-pointer wpab-wpoa-p-1 wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-text-[#d63638] hover:wpab-wpoa-text-[#b32d2e] wpab-wpoa-transition-colors"
+                  className="opopw-bg-transparent opopw-border-none opopw-cursor-pointer opopw-p-1 opopw-flex opopw-items-center opopw-text-[#d63638] hover:opopw-text-[#b32d2e] opopw-transition-colors"
                 >
                   <Trash2 size={16} />
                 </button>
@@ -257,7 +257,7 @@ export const FieldRow: React.FC<FieldRowProps> = ({ field, index }) => {
 
           {/* Body */}
           {isExpanded && (
-            <div className="wpab-wpoa-pl-4 wpab-wpoa-bg-[#f0f0f1] wpab-wpoa-border-t wpab-wpoa-border-[#e2e8f0] wpab-wpoa-pb-2">
+            <div className="opopw-pl-4 opopw-bg-[#f0f0f1] opopw-border-t opopw-border-[#e2e8f0] opopw-pb-2">
               <ClassicSettingsTable
                 className=""
                 fields={applyFilters('opopw_field_settings', [
@@ -270,7 +270,7 @@ export const FieldRow: React.FC<FieldRowProps> = ({ field, index }) => {
                         value={field.type}
                         isError={!!state.errors?.[`schema.${index}.type`]}
                         classNames={{
-                          innerContainer: "!wpab-wpoa-w-[120px]",
+                          innerContainer: "!opopw-w-[120px]",
                         }}
                         onChange={(val) => {
                           const newType = String(val);
@@ -392,7 +392,7 @@ export const FieldRow: React.FC<FieldRowProps> = ({ field, index }) => {
                           render: () => (
                             <>
                               <textarea
-                                className="large-text wpab-wpoa-p-1.5"
+                                className="large-text opopw-p-1.5"
                                 rows={2}
                                 value={field.description}
                                 onChange={(e) =>
@@ -557,9 +557,9 @@ export const FieldRow: React.FC<FieldRowProps> = ({ field, index }) => {
                           label: __("Restrictions", "optionbay-product-options-addons-woo"),
                           tooltip: FIELD_TOOLTIPS.restrictions,
                           render: () => (
-                            <div className="wpab-wpoa-flex wpab-wpoa-flex-col wpab-wpoa-gap-1">
-                              <div className="wpab-wpoa-flex wpab-wpoa-gap-2.5 wpab-wpoa-items-center">
-                                <label className="wpab-wpoa-text-xs">
+                            <div className="opopw-flex opopw-flex-col opopw-gap-1">
+                              <div className="opopw-flex opopw-gap-2.5 opopw-items-center">
+                                <label className="opopw-text-xs">
                                   {__("Min Length:", "optionbay-product-options-addons-woo")}{" "}
                                   <ClassicInput
                                     type="number"
@@ -579,7 +579,7 @@ export const FieldRow: React.FC<FieldRowProps> = ({ field, index }) => {
                                     min={0}
                                   />
                                 </label>
-                                <label className="wpab-wpoa-text-xs">
+                                <label className="opopw-text-xs">
                                   {__("Max Length:", "optionbay-product-options-addons-woo")}{" "}
                                   <ClassicInput
                                     type="number"
@@ -621,9 +621,9 @@ export const FieldRow: React.FC<FieldRowProps> = ({ field, index }) => {
                           label: __("Restrictions", "optionbay-product-options-addons-woo"),
                           tooltip: FIELD_TOOLTIPS.restrictions,
                           render: () => (
-                            <div className="wpab-wpoa-flex wpab-wpoa-flex-col wpab-wpoa-gap-1">
-                              <div className="wpab-wpoa-flex wpab-wpoa-gap-2.5 wpab-wpoa-items-center wpab-wpoa-mb-2">
-                                <label className="wpab-wpoa-text-xs">
+                            <div className="opopw-flex opopw-flex-col opopw-gap-1">
+                              <div className="opopw-flex opopw-gap-2.5 opopw-items-center opopw-mb-2">
+                                <label className="opopw-text-xs">
                                   {__("Min:", "optionbay-product-options-addons-woo")}{" "}
                                   <ClassicInput
                                     type="number"
@@ -642,7 +642,7 @@ export const FieldRow: React.FC<FieldRowProps> = ({ field, index }) => {
                                     }
                                   />
                                 </label>
-                                <label className="wpab-wpoa-text-xs">
+                                <label className="opopw-text-xs">
                                   {__("Max:", "optionbay-product-options-addons-woo")}{" "}
                                   <ClassicInput
                                     type="number"
@@ -662,7 +662,7 @@ export const FieldRow: React.FC<FieldRowProps> = ({ field, index }) => {
                                   />
                                 </label>
                               </div>
-                              <label className="wpab-wpoa-text-xs">
+                              <label className="opopw-text-xs">
                                 {__("Step Value:", "optionbay-product-options-addons-woo")}{" "}
                                 <ClassicInput
                                   type="number"
@@ -703,15 +703,15 @@ export const FieldRow: React.FC<FieldRowProps> = ({ field, index }) => {
                           label: __("Restrictions", "optionbay-product-options-addons-woo"),
                           tooltip: FIELD_TOOLTIPS.restrictions,
                           render: () => (
-                            <div className="wpab-wpoa-flex wpab-wpoa-flex-col wpab-wpoa-gap-2">
-                              <div className="wpab-wpoa-flex wpab-wpoa-flex-wrap wpab-wpoa-gap-3 wpab-wpoa-items-center">
+                            <div className="opopw-flex opopw-flex-col opopw-gap-2">
+                              <div className="opopw-flex opopw-flex-wrap opopw-gap-3 opopw-items-center">
                                 {["date", "datetime"].includes(field.type) && (
                                   <>
-                                    <label className="wpab-wpoa-text-xs wpab-wpoa-flex wpab-wpoa-flex-col wpab-wpoa-gap-1">
+                                    <label className="opopw-text-xs opopw-flex opopw-flex-col opopw-gap-1">
                                       {__("Min Date:", "optionbay-product-options-addons-woo")}
                                       <input
                                         type="date"
-                                        className="wpab-wpoa-px-3 wpab-wpoa-py-1.5 wpab-wpoa-rounded-[8px] wpab-wpoa-border wpab-wpoa-border-[#c3c4c7] wpab-wpoa-text-[13px] wpab-wpoa-text-slate-800 focus:wpab-wpoa-border-[#2271b1] focus:wpab-wpoa-outline-none"
+                                        className="opopw-px-3 opopw-py-1.5 opopw-rounded-[8px] opopw-border opopw-border-[#c3c4c7] opopw-text-[13px] opopw-text-slate-800 focus:opopw-border-[#2271b1] focus:opopw-outline-none"
                                         value={field.min_date || ""}
                                         onChange={(e) =>
                                           update({
@@ -720,11 +720,11 @@ export const FieldRow: React.FC<FieldRowProps> = ({ field, index }) => {
                                         }
                                       />
                                     </label>
-                                    <label className="wpab-wpoa-text-xs wpab-wpoa-flex wpab-wpoa-flex-col wpab-wpoa-gap-1">
+                                    <label className="opopw-text-xs opopw-flex opopw-flex-col opopw-gap-1">
                                       {__("Max Date:", "optionbay-product-options-addons-woo")}
                                       <input
                                         type="date"
-                                        className="wpab-wpoa-px-3 wpab-wpoa-py-1.5 wpab-wpoa-rounded-[8px] wpab-wpoa-border wpab-wpoa-border-[#c3c4c7] wpab-wpoa-text-[13px] wpab-wpoa-text-slate-800 focus:wpab-wpoa-border-[#2271b1] focus:wpab-wpoa-outline-none"
+                                        className="opopw-px-3 opopw-py-1.5 opopw-rounded-[8px] opopw-border opopw-border-[#c3c4c7] opopw-text-[13px] opopw-text-slate-800 focus:opopw-border-[#2271b1] focus:opopw-outline-none"
                                         value={field.max_date || ""}
                                         onChange={(e) =>
                                           update({
@@ -737,11 +737,11 @@ export const FieldRow: React.FC<FieldRowProps> = ({ field, index }) => {
                                 )}
                                 {["time", "datetime"].includes(field.type) && (
                                   <>
-                                    <label className="wpab-wpoa-text-xs wpab-wpoa-flex wpab-wpoa-flex-col wpab-wpoa-gap-1">
+                                    <label className="opopw-text-xs opopw-flex opopw-flex-col opopw-gap-1">
                                       {__("Min Time:", "optionbay-product-options-addons-woo")}
                                       <input
                                         type="time"
-                                        className="wpab-wpoa-px-3 wpab-wpoa-py-1.5 wpab-wpoa-rounded-[8px] wpab-wpoa-border wpab-wpoa-border-[#c3c4c7] wpab-wpoa-text-[13px] wpab-wpoa-text-slate-800 focus:wpab-wpoa-border-[#2271b1] focus:wpab-wpoa-outline-none"
+                                        className="opopw-px-3 opopw-py-1.5 opopw-rounded-[8px] opopw-border opopw-border-[#c3c4c7] opopw-text-[13px] opopw-text-slate-800 focus:opopw-border-[#2271b1] focus:opopw-outline-none"
                                         value={field.min_time || ""}
                                         onChange={(e) =>
                                           update({
@@ -750,11 +750,11 @@ export const FieldRow: React.FC<FieldRowProps> = ({ field, index }) => {
                                         }
                                       />
                                     </label>
-                                    <label className="wpab-wpoa-text-xs wpab-wpoa-flex wpab-wpoa-flex-col wpab-wpoa-gap-1">
+                                    <label className="opopw-text-xs opopw-flex opopw-flex-col opopw-gap-1">
                                       {__("Max Time:", "optionbay-product-options-addons-woo")}
                                       <input
                                         type="time"
-                                        className="wpab-wpoa-px-3 wpab-wpoa-py-1.5 wpab-wpoa-rounded-[8px] wpab-wpoa-border wpab-wpoa-border-[#c3c4c7] wpab-wpoa-text-[13px] wpab-wpoa-text-slate-800 focus:wpab-wpoa-border-[#2271b1] focus:wpab-wpoa-outline-none"
+                                        className="opopw-px-3 opopw-py-1.5 opopw-rounded-[8px] opopw-border opopw-border-[#c3c4c7] opopw-text-[13px] opopw-text-slate-800 focus:opopw-border-[#2271b1] focus:opopw-outline-none"
                                         value={field.max_time || ""}
                                         onChange={(e) =>
                                           update({
@@ -853,7 +853,7 @@ export const FieldRow: React.FC<FieldRowProps> = ({ field, index }) => {
                             "optionbay-product-options-addons-woo",
                           ),
                           render: () => (
-                            <div className="wpab-wpoa-flex wpab-wpoa-flex-col wpab-wpoa-gap-3">
+                            <div className="opopw-flex opopw-flex-col opopw-gap-3">
                               <ClassicCheckbox
                                 label={__("Enable Stock Tracking", "optionbay-product-options-addons-woo")}
                                 description={__(
@@ -874,9 +874,9 @@ export const FieldRow: React.FC<FieldRowProps> = ({ field, index }) => {
                               />
 
                               {field.enable_stock && (
-                                <div className="wpab-wpoa-ml-6 wpab-wpoa-flex wpab-wpoa-flex-col wpab-wpoa-gap-3 wpab-wpoa-p-3 wpab-wpoa-bg-white wpab-wpoa-rounded-md wpab-wpoa-border wpab-wpoa-border-[#ddd]">
+                                <div className="opopw-ml-6 opopw-flex opopw-flex-col opopw-gap-3 opopw-p-3 opopw-bg-white opopw-rounded-md opopw-border opopw-border-[#ddd]">
                                   <div>
-                                    <label className="wpab-wpoa-text-xs wpab-wpoa-font-medium wpab-wpoa-mb-1 wpab-wpoa-block">
+                                    <label className="opopw-text-xs opopw-font-medium opopw-mb-1 opopw-block">
                                       {__("Select Pool", "optionbay-product-options-addons-woo")}
                                     </label>
                                     <InventoryPicker
@@ -894,9 +894,9 @@ export const FieldRow: React.FC<FieldRowProps> = ({ field, index }) => {
                                     />
                                   </div>
 
-                                  <div className="wpab-wpoa-flex wpab-wpoa-gap-4">
-                                    <div className="wpab-wpoa-flex-1">
-                                      <label className="wpab-wpoa-text-xs wpab-wpoa-font-medium wpab-wpoa-mb-1 wpab-wpoa-block">
+                                  <div className="opopw-flex opopw-gap-4">
+                                    <div className="opopw-flex-1">
+                                      <label className="opopw-text-xs opopw-font-medium opopw-mb-1 opopw-block">
                                         {__("Reduction Mode", "optionbay-product-options-addons-woo")}
                                       </label>
                                       <ClassicSelect

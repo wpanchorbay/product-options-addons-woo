@@ -1,10 +1,18 @@
 {
+    "$schema": "https://raw.githubusercontent.com/woocommerce/qit-cli/trunk/src/src/PreCommand/Schemas/qit-schema.json",
     "sut": {
         "slug": "optionbay-product-options-addons-woo",
         "type": "plugin",
         "source": {
             "type": "local",
             "path": "."
+        }
+    },
+    "environments": {
+        "default": {
+            "plugins": [
+                "woocommerce"
+            ]
         }
     }
 }
