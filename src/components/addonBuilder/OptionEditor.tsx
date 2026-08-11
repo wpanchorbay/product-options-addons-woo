@@ -105,56 +105,56 @@ export const OptionEditor: React.FC<OptionEditorProps> = ({
 
   return (
     <div
-      className={`wpab-wpoa-flex wpab-wpoa-flex-col wpab-wpoa-gap-2.5 ${
-        !hideLabel ? "wpab-wpoa-mt-4" : ""
+      className={`opopw-flex opopw-flex-col opopw-gap-2.5 ${
+        !hideLabel ? "opopw-mt-4" : ""
       }`}
     >
       {!hideLabel && (
-        <label className="wpab-wpoa-font-semibold wpab-wpoa-block">
+        <label className="opopw-font-semibold opopw-block">
           {__("Choices", "optionbay-product-options-addons-woo")}
         </label>
       )}
 
-      <div className="wpab-wpoa-border wpab-wpoa-border-[#c3c4c7] wpab-wpoa-rounded-[12px] wpab-wpoa-overflow-hidden wpab-wpoa-bg-white">
+      <div className="opopw-border opopw-border-[#c3c4c7] opopw-rounded-[12px] opopw-overflow-hidden opopw-bg-white">
         <div
-          className="wpab-wpoa-w-0 wpab-wpoa-min-w-full wpab-wpoa-overflow-x-auto"
+          className="opopw-w-0 opopw-min-w-full opopw-overflow-x-auto"
           style={{ overflowY: "auto" }}
         >
           <table
-            className="wpab-wpoa-w-full wpab-wpoa-text-left wpab-wpoa-text-[13px]"
+            className="opopw-w-full opopw-text-left opopw-text-[13px]"
             style={{ minWidth: isSwatch ? "700px" : "600px" }}
           >
             <thead>
-              <tr className="wpab-wpoa-border-b wpab-wpoa-border-[#c3c4c7]">
+              <tr className="opopw-border-b opopw-border-[#c3c4c7]">
                 {/* Swatch column header */}
                 {isColorSwatch && (
-                  <th className="!wpab-wpoa-py-[10px] !wpab-wpoa-px-[12px] wpab-wpoa-font-semibold wpab-wpoa-text-[#1d2327] wpab-wpoa-w-[70px]">
+                  <th className="!opopw-py-[10px] !opopw-px-[12px] opopw-font-semibold opopw-text-[#1d2327] opopw-w-[70px]">
                     {__("Color", "optionbay-product-options-addons-woo")}
                   </th>
                 )}
                 {isImageSwatch && (
-                  <th className="!wpab-wpoa-py-[10px] !wpab-wpoa-px-[12px] wpab-wpoa-font-semibold wpab-wpoa-text-[#1d2327] wpab-wpoa-w-[90px]">
+                  <th className="!opopw-py-[10px] !opopw-px-[12px] opopw-font-semibold opopw-text-[#1d2327] opopw-w-[90px]">
                     {__("Image", "optionbay-product-options-addons-woo")}
                   </th>
                 )}
-                <th className="!wpab-wpoa-py-[10px] !wpab-wpoa-px-[12px] wpab-wpoa-font-semibold wpab-wpoa-text-[#1d2327]">
+                <th className="!opopw-py-[10px] !opopw-px-[12px] opopw-font-semibold opopw-text-[#1d2327]">
                   {__("Label", "optionbay-product-options-addons-woo")}
                 </th>
-                <th className="!wpab-wpoa-py-[10px] !wpab-wpoa-px-[12px] wpab-wpoa-font-semibold wpab-wpoa-text-[#1d2327] wpab-wpoa-w-[100px]">
+                <th className="!opopw-py-[10px] !opopw-px-[12px] opopw-font-semibold opopw-text-[#1d2327] opopw-w-[100px]">
                   {__("Price", "optionbay-product-options-addons-woo")}
                 </th>
-                <th className="!wpab-wpoa-py-[10px] !wpab-wpoa-px-[12px] wpab-wpoa-font-semibold wpab-wpoa-text-[#1d2327] wpab-wpoa-w-[160px]">
+                <th className="!opopw-py-[10px] !opopw-px-[12px] opopw-font-semibold opopw-text-[#1d2327] opopw-w-[160px]">
                   {__("Price Type", "optionbay-product-options-addons-woo")}
                 </th>
-                <th className="!wpab-wpoa-py-[10px] !wpab-wpoa-px-[12px] wpab-wpoa-font-semibold wpab-wpoa-text-[#1d2327] wpab-wpoa-w-[80px]">
+                <th className="!opopw-py-[10px] !opopw-px-[12px] opopw-font-semibold opopw-text-[#1d2327] opopw-w-[80px]">
                   {__("Weight", "optionbay-product-options-addons-woo")}
                 </th>
-                <th className="!wpab-wpoa-py-[10px] !wpab-wpoa-px-[12px] wpab-wpoa-font-semibold wpab-wpoa-text-[#1d2327] wpab-wpoa-w-[180px]">
+                <th className="!opopw-py-[10px] !opopw-px-[12px] opopw-font-semibold opopw-text-[#1d2327] opopw-w-[180px]">
                   {__("Stock", "optionbay-product-options-addons-woo")}
                 </th>
-                <th className="!wpab-wpoa-py-[10px] !wpab-wpoa-px-[12px] wpab-wpoa-font-semibold wpab-wpoa-text-[#1d2327] wpab-wpoa-w-[40px]">
+                <th className="!opopw-py-[10px] !opopw-px-[12px] opopw-font-semibold opopw-text-[#1d2327] opopw-w-[40px]">
                   </th>
-                <th className="!wpab-wpoa-py-[10px] !wpab-wpoa-px-[12px] wpab-wpoa-font-semibold wpab-wpoa-text-[#1d2327] wpab-wpoa-w-[70px]">
+                <th className="!opopw-py-[10px] !opopw-px-[12px] opopw-font-semibold opopw-text-[#1d2327] opopw-w-[70px]">
                     {__("Product Image", "optionbay-product-options-addons-woo")}
                   </th>
               </tr>
@@ -164,23 +164,23 @@ export const OptionEditor: React.FC<OptionEditorProps> = ({
                 options.map((opt, idx) => (
                   <tr
                     key={idx}
-                    className="wpab-wpoa-border-b wpab-wpoa-border-[#c3c4c7] last:wpab-wpoa-border-none"
+                    className="opopw-border-b opopw-border-[#c3c4c7] last:opopw-border-none"
                   >
                     {/* Color swatch picker */}
                     {isColorSwatch && (
                       <td
-                        className="wpab-wpoa-py-2 wpab-wpoa-px-3"
+                        className="opopw-py-2 opopw-px-3"
                         style={{ verticalAlign: "top" }}
                       >
-                        <div className="wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-gap-2">
+                        <div className="opopw-flex opopw-items-center opopw-gap-2">
                           <label
-                            className={`wpab-wpoa-block wpab-wpoa-w-7 wpab-wpoa-h-7 wpab-wpoa-rounded-[6px] wpab-wpoa-border ${
+                            className={`opopw-block opopw-w-7 opopw-h-7 opopw-rounded-[6px] opopw-border ${
                               state.errors?.[
                                 `schema.${fieldIndex}.options.${idx}.color`
                               ]
-                                ? "wpab-wpoa-border-red-400"
-                                : "wpab-wpoa-border-[#c3c4c7]"
-                            } wpab-wpoa-cursor-pointer wpab-wpoa-overflow-hidden wpab-wpoa-shrink-0 hover:wpab-wpoa-border-[#2271b1] wpab-wpoa-transition-colors`}
+                                ? "opopw-border-red-400"
+                                : "opopw-border-[#c3c4c7]"
+                            } opopw-cursor-pointer opopw-overflow-hidden opopw-shrink-0 hover:opopw-border-[#2271b1] opopw-transition-colors`}
                             style={{ backgroundColor: opt.color || "#ffffff" }}
                             title={opt.color || "#ffffff"}
                           >
@@ -197,7 +197,7 @@ export const OptionEditor: React.FC<OptionEditorProps> = ({
                                   },
                                 })
                               }
-                              className="wpab-wpoa-opacity-0 wpab-wpoa-w-0 wpab-wpoa-h-0 wpab-wpoa-absolute"
+                              className="opopw-opacity-0 opopw-w-0 opopw-h-0 opopw-absolute"
                             />
                           </label>
                         </div>
@@ -207,39 +207,39 @@ export const OptionEditor: React.FC<OptionEditorProps> = ({
                     {/* Image swatch picker */}
                     {isImageSwatch && (
                       <td
-                        className="wpab-wpoa-py-2 wpab-wpoa-px-3"
+                        className="opopw-py-2 opopw-px-3"
                         style={{ verticalAlign: "top" }}
                       >
-                        <div className="wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-gap-2">
+                        <div className="opopw-flex opopw-items-center opopw-gap-2">
                           {opt.image_url ? (
                             <div
-                              className={`wpab-wpoa-relative wpab-wpoa-group/img wpab-wpoa-w-10 wpab-wpoa-h-10 wpab-wpoa-rounded-[6px] wpab-wpoa-border ${
+                              className={`opopw-relative opopw-group/img opopw-w-10 opopw-h-10 opopw-rounded-[6px] opopw-border ${
                                 state.errors?.[
                                   `schema.${fieldIndex}.options.${idx}.image_url`
                                 ]
-                                  ? "wpab-wpoa-border-red-400"
-                                  : "wpab-wpoa-border-[#c3c4c7]"
-                              } wpab-wpoa-overflow-hidden wpab-wpoa-shrink-0 wpab-wpoa-cursor-pointer hover:wpab-wpoa-border-[#2271b1] wpab-wpoa-transition-colors`}
+                                  ? "opopw-border-red-400"
+                                  : "opopw-border-[#c3c4c7]"
+                              } opopw-overflow-hidden opopw-shrink-0 opopw-cursor-pointer hover:opopw-border-[#2271b1] opopw-transition-colors`}
                               onClick={() => openMediaLibrary(idx)}
                               title={__("Change image", "optionbay-product-options-addons-woo")}
                             >
                               <img
                                 src={opt.image_url}
                                 alt={opt.label || "swatch"}
-                                className="wpab-wpoa-w-full wpab-wpoa-h-full wpab-wpoa-object-cover"
+                                className="opopw-w-full opopw-h-full opopw-object-cover"
                               />
                             </div>
                           ) : (
                             <button
                               type="button"
                               onClick={() => openMediaLibrary(idx)}
-                              className={`wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-justify-center wpab-wpoa-w-10 wpab-wpoa-h-10 wpab-wpoa-rounded-[6px] wpab-wpoa-border wpab-wpoa-border-dashed ${
+                              className={`opopw-flex opopw-items-center opopw-justify-center opopw-w-10 opopw-h-10 opopw-rounded-[6px] opopw-border opopw-border-dashed ${
                                 state.errors?.[
                                   `schema.${fieldIndex}.options.${idx}.image_url`
                                 ]
-                                  ? "wpab-wpoa-border-red-400"
-                                  : "wpab-wpoa-border-[#c3c4c7]"
-                              } wpab-wpoa-bg-[#f6f7f7] wpab-wpoa-text-[#646970] hover:wpab-wpoa-border-[#2271b1] hover:wpab-wpoa-text-[#2271b1] wpab-wpoa-transition-colors wpab-wpoa-cursor-pointer wpab-wpoa-shrink-0`}
+                                  ? "opopw-border-red-400"
+                                  : "opopw-border-[#c3c4c7]"
+                              } opopw-bg-[#f6f7f7] opopw-text-[#646970] hover:opopw-border-[#2271b1] hover:opopw-text-[#2271b1] opopw-transition-colors opopw-cursor-pointer opopw-shrink-0`}
                               title={__("Upload image", "optionbay-product-options-addons-woo")}
                             >
                               <ImagePlus size={16} />
@@ -251,7 +251,7 @@ export const OptionEditor: React.FC<OptionEditorProps> = ({
 
                     {/* Label */}
                     <td
-                      className="wpab-wpoa-py-2 wpab-wpoa-px-3"
+                      className="opopw-py-2 opopw-px-3"
                       style={{ verticalAlign: "top" }}
                     >
                       <ClassicInput
@@ -290,7 +290,7 @@ export const OptionEditor: React.FC<OptionEditorProps> = ({
 
                     {/* Price */}
                     <td
-                      className="wpab-wpoa-py-2 wpab-wpoa-px-3"
+                      className="opopw-py-2 opopw-px-3"
                       style={{ verticalAlign: "top" }}
                     >
                       {opt.price_type !== "none" && (
@@ -334,7 +334,7 @@ export const OptionEditor: React.FC<OptionEditorProps> = ({
 
                     {/* Price Type */}
                     <td
-                      className="wpab-wpoa-py-2 wpab-wpoa-px-3"
+                      className="opopw-py-2 opopw-px-3"
                       style={{ verticalAlign: "top" }}
                     >
                       <ClassicSelect
@@ -372,7 +372,7 @@ export const OptionEditor: React.FC<OptionEditorProps> = ({
 
                     {/* Weight */}
                     <td
-                      className="wpab-wpoa-py-2 wpab-wpoa-px-3"
+                      className="opopw-py-2 opopw-px-3"
                       style={{ verticalAlign: "top" }}
                     >
                       <ClassicInput
@@ -405,10 +405,10 @@ export const OptionEditor: React.FC<OptionEditorProps> = ({
 
                     {/* Stock */}
                     <td
-                      className="wpab-wpoa-py-2 wpab-wpoa-px-3"
+                      className="opopw-py-2 opopw-px-3"
                       style={{ verticalAlign: "top" }}
                     >
-                      <div className="wpab-wpoa-flex wpab-wpoa-flex-col wpab-wpoa-gap-1.5">
+                      <div className="opopw-flex opopw-flex-col opopw-gap-1.5">
                         <ClassicCheckbox
                           label={__("Enable Stock", "optionbay-product-options-addons-woo")}
                           checked={opt.enable_stock || false}
@@ -475,7 +475,7 @@ export const OptionEditor: React.FC<OptionEditorProps> = ({
                     </td>
 
                     {/* Delete */}
-                    <td className="wpab-wpoa-py-2">
+                    <td className="opopw-py-2">
                       <button
                         type="button"
                         onClick={() =>
@@ -484,29 +484,29 @@ export const OptionEditor: React.FC<OptionEditorProps> = ({
                             payload: { fieldId, optionIndex: idx },
                           })
                         }
-                        className="wpab-wpoa-bg-transparent wpab-wpoa-border-none wpab-wpoa-cursor-pointer wpab-wpoa-p-1 wpab-wpoa-text-[#d63638] hover:wpab-wpoa-text-[#b32d2e] wpab-wpoa-transition-colors"
+                        className="opopw-bg-transparent opopw-border-none opopw-cursor-pointer opopw-p-1 opopw-text-[#d63638] hover:opopw-text-[#b32d2e] opopw-transition-colors"
                         title={__("Remove choice", "optionbay-product-options-addons-woo")}
                       >
-                        <Trash2 className="wpab-wpoa-size-4" />
+                        <Trash2 className="opopw-size-4" />
                       </button>
                     </td>
 
                     {/* Product Image */}
                     <td
-                      className="wpab-wpoa-py-2 wpab-wpoa-px-3"
+                      className="opopw-py-2 opopw-px-3"
                       style={{ verticalAlign: "top" }}
                     >
                       {opt.linked_image_url ? (
-                        <div className="wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-gap-1">
+                        <div className="opopw-flex opopw-items-center opopw-gap-1">
                           <div
-                            className="wpab-wpoa-relative wpab-wpoa-w-8 wpab-wpoa-h-8 wpab-wpoa-rounded-[4px] wpab-wpoa-border wpab-wpoa-border-[#c3c4c7] wpab-wpoa-overflow-hidden wpab-wpoa-cursor-pointer hover:wpab-wpoa-border-[#2271b1] wpab-wpoa-transition-colors wpab-wpoa-shrink-0"
+                            className="opopw-relative opopw-w-8 opopw-h-8 opopw-rounded-[4px] opopw-border opopw-border-[#c3c4c7] opopw-overflow-hidden opopw-cursor-pointer hover:opopw-border-[#2271b1] opopw-transition-colors opopw-shrink-0"
                             onClick={() => openLinkedImageLibrary(idx)}
                             title={__("Change linked image", "optionbay-product-options-addons-woo")}
                           >
                             <img
                               src={opt.linked_image_url}
                               alt={opt.label || "linked"}
-                              className="wpab-wpoa-w-full wpab-wpoa-h-full wpab-wpoa-object-cover"
+                              className="opopw-w-full opopw-h-full opopw-object-cover"
                             />
                           </div>
                           <button
@@ -524,17 +524,17 @@ export const OptionEditor: React.FC<OptionEditorProps> = ({
                                 },
                               })
                             }
-                            className="wpab-wpoa-bg-transparent wpab-wpoa-border-none wpab-wpoa-cursor-pointer wpab-wpoa-p-0.5 wpab-wpoa-text-[#d63638] hover:wpab-wpoa-text-[#b32d2e] wpab-wpoa-transition-colors"
+                            className="opopw-bg-transparent opopw-border-none opopw-cursor-pointer opopw-p-0.5 opopw-text-[#d63638] hover:opopw-text-[#b32d2e] opopw-transition-colors"
                             title={__("Remove linked image", "optionbay-product-options-addons-woo")}
                           >
-                            <X className="wpab-wpoa-size-3" />
+                            <X className="opopw-size-3" />
                           </button>
                         </div>
                       ) : (
                         <button
                           type="button"
                           onClick={() => openLinkedImageLibrary(idx)}
-                          className="wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-justify-center wpab-wpoa-w-8 wpab-wpoa-h-8 wpab-wpoa-rounded-[4px] wpab-wpoa-border wpab-wpoa-border-dashed wpab-wpoa-border-[#c3c4c7] wpab-wpoa-bg-[#f6f7f7] wpab-wpoa-text-[#646970] hover:wpab-wpoa-border-[#2271b1] hover:wpab-wpoa-text-[#2271b1] wpab-wpoa-transition-colors wpab-wpoa-cursor-pointer wpab-wpoa-shrink-0"
+                          className="opopw-flex opopw-items-center opopw-justify-center opopw-w-8 opopw-h-8 opopw-rounded-[4px] opopw-border opopw-border-dashed opopw-border-[#c3c4c7] opopw-bg-[#f6f7f7] opopw-text-[#646970] hover:opopw-border-[#2271b1] hover:opopw-text-[#2271b1] opopw-transition-colors opopw-cursor-pointer opopw-shrink-0"
                           title={__("Link product image", "optionbay-product-options-addons-woo")}
                         >
                           <Image size={14} />
@@ -547,7 +547,7 @@ export const OptionEditor: React.FC<OptionEditorProps> = ({
                 <tr>
                   <td
                     colSpan={colCount}
-                    className="wpab-wpoa-py-6 wpab-wpoa-text-center wpab-wpoa-text-[#94a3b8] wpab-wpoa-italic"
+                    className="opopw-py-6 opopw-text-center opopw-text-[#94a3b8] opopw-italic"
                   >
                     {__("No choices added yet.", "optionbay-product-options-addons-woo")}
                   </td>
@@ -558,7 +558,7 @@ export const OptionEditor: React.FC<OptionEditorProps> = ({
         </div>
       </div>
 
-      <div className="wpab-wpoa-flex wpab-wpoa-justify-start">
+      <div className="opopw-flex opopw-justify-start">
         <ClassicButton
           variant="secondary"
           onClick={() =>
@@ -571,7 +571,7 @@ export const OptionEditor: React.FC<OptionEditorProps> = ({
             })
           }
         >
-          <CirclePlus className="wpab-wpoa-size-4" />{" "}
+          <CirclePlus className="opopw-size-4" />{" "}
           {__("Add Choice", "optionbay-product-options-addons-woo")}
         </ClassicButton>
       </div>

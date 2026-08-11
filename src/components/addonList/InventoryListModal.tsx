@@ -147,15 +147,15 @@ const InventoryListModal: React.FC<InventoryListModalProps> = ({
       isOpen={isOpen}
       onClose={onClose}
       title={
-        <div className="wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-gap-2">
-          <Package className="wpab-wpoa-w-5 wpab-wpoa-h-5 wpab-wpoa-text-[#2271b1]" />
+        <div className="opopw-flex opopw-items-center opopw-gap-2">
+          <Package className="opopw-w-5 opopw-h-5 opopw-text-[#2271b1]" />
           <span>{__("Inventory Management", "optionbay-product-options-addons-woo")}</span>
         </div>
       }
-      maxWidth="wpab-wpoa-max-w-4xl"
+      maxWidth="opopw-max-w-4xl"
       footer={
-        <div className="wpab-wpoa-flex wpab-wpoa-justify-between wpab-wpoa-w-full wpab-wpoa-items-center">
-          <p className="wpab-wpoa-text-xs wpab-wpoa-text-gray-500 wpab-wpoa-m-0">
+        <div className="opopw-flex opopw-justify-between opopw-w-full opopw-items-center">
+          <p className="opopw-text-xs opopw-text-gray-500 opopw-m-0">
             {__("Total Pools:", "optionbay-product-options-addons-woo")} {items.length}
           </p>
           <ClassicButton variant="secondary" onClick={onClose}>
@@ -164,14 +164,14 @@ const InventoryListModal: React.FC<InventoryListModalProps> = ({
         </div>
       }
     >
-      <div className="wpab-wpoa-flex wpab-wpoa-flex-col wpab-wpoa-gap-4">
+      <div className="opopw-flex opopw-flex-col opopw-gap-4">
         {/* Toolbar */}
-        <div className="wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-justify-between wpab-wpoa-gap-4">
-          <div className="wpab-wpoa-relative wpab-wpoa-flex-1">
-            <Search className="wpab-wpoa-absolute wpab-wpoa-left-3 wpab-wpoa-top-1/2 wpab-wpoa-translate-y-[-50%] wpab-wpoa-w-4 wpab-wpoa-h-4 wpab-wpoa-text-gray-400" />
+        <div className="opopw-flex opopw-items-center opopw-justify-between opopw-gap-4">
+          <div className="opopw-relative opopw-flex-1">
+            <Search className="opopw-absolute opopw-left-3 opopw-top-1/2 opopw-translate-y-[-50%] opopw-w-4 opopw-h-4 opopw-text-gray-400" />
             <input
               type="text"
-              className="wpab-wpoa-w-full wpab-wpoa-pl-9 wpab-wpoa-pr-4 wpab-wpoa-py-2 wpab-wpoa-text-sm wpab-wpoa-border wpab-wpoa-border-gray-200 wpab-wpoa-rounded-lg focus:wpab-wpoa-outline-none focus:wpab-wpoa-border-[#2271b1] focus:wpab-wpoa-ring-1 focus:wpab-wpoa-ring-[#2271b1]/20 wpab-wpoa-transition-all"
+              className="opopw-w-full opopw-pl-9 opopw-pr-4 opopw-py-2 opopw-text-sm opopw-border opopw-border-gray-200 opopw-rounded-lg focus:opopw-outline-none focus:opopw-border-[#2271b1] focus:opopw-ring-1 focus:opopw-ring-[#2271b1]/20 opopw-transition-all"
               placeholder={__("Search inventory...", "optionbay-product-options-addons-woo")}
               value={search}
               onChange={(e) => setSearch(e.target.value)}
@@ -181,11 +181,11 @@ const InventoryListModal: React.FC<InventoryListModalProps> = ({
             variant="secondary"
             onClick={fetchInventory}
             disabled={loading}
-            className="wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-gap-2"
+            className="opopw-flex opopw-items-center opopw-gap-2"
           >
             <RefreshCw
-              className={`wpab-wpoa-w-4 wpab-wpoa-h-4 ${
-                loading ? "wpab-wpoa-animate-spin" : ""
+              className={`opopw-w-4 opopw-h-4 ${
+                loading ? "opopw-animate-spin" : ""
               }`}
             />
             {__("Refresh", "optionbay-product-options-addons-woo")}
@@ -193,37 +193,37 @@ const InventoryListModal: React.FC<InventoryListModalProps> = ({
         </div>
 
         {/* Table */}
-        <div className="wpab-wpoa-border wpab-wpoa-border-gray-100 wpab-wpoa-rounded-xl wpab-wpoa-overflow-hidden">
-          <table className="wpab-wpoa-w-full wpab-wpoa-text-left wpab-wpoa-border-collapse">
-            <thead className="wpab-wpoa-bg-gray-50/50">
+        <div className="opopw-border opopw-border-gray-100 opopw-rounded-xl opopw-overflow-hidden">
+          <table className="opopw-w-full opopw-text-left opopw-border-collapse">
+            <thead className="opopw-bg-gray-50/50">
               <tr>
-                <th className="wpab-wpoa-px-4 wpab-wpoa-py-3 wpab-wpoa-text-xs wpab-wpoa-font-semibold wpab-wpoa-text-gray-500 wpab-wpoa-uppercase wpab-wpoa-tracking-wider">
+                <th className="opopw-px-4 opopw-py-3 opopw-text-xs opopw-font-semibold opopw-text-gray-500 opopw-uppercase opopw-tracking-wider">
                   {__("ID", "optionbay-product-options-addons-woo")}
                 </th>
-                <th className="wpab-wpoa-px-4 wpab-wpoa-py-3 wpab-wpoa-text-xs wpab-wpoa-font-semibold wpab-wpoa-text-gray-500 wpab-wpoa-uppercase wpab-wpoa-tracking-wider">
+                <th className="opopw-px-4 opopw-py-3 opopw-text-xs opopw-font-semibold opopw-text-gray-500 opopw-uppercase opopw-tracking-wider">
                   {__("Name", "optionbay-product-options-addons-woo")}
                 </th>
-                <th className="wpab-wpoa-px-4 wpab-wpoa-py-3 wpab-wpoa-text-xs wpab-wpoa-font-semibold wpab-wpoa-text-gray-500 wpab-wpoa-uppercase wpab-wpoa-tracking-wider">
+                <th className="opopw-px-4 opopw-py-3 opopw-text-xs opopw-font-semibold opopw-text-gray-500 opopw-uppercase opopw-tracking-wider">
                   {__("Stock Status", "optionbay-product-options-addons-woo")}
                 </th>
-                <th className="wpab-wpoa-px-4 wpab-wpoa-py-3 wpab-wpoa-text-xs wpab-wpoa-font-semibold wpab-wpoa-text-gray-500 wpab-wpoa-uppercase wpab-wpoa-tracking-wider">
+                <th className="opopw-px-4 opopw-py-3 opopw-text-xs opopw-font-semibold opopw-text-gray-500 opopw-uppercase opopw-tracking-wider">
                   {__("Backorders", "optionbay-product-options-addons-woo")}
                 </th>
-                <th className="wpab-wpoa-px-4 wpab-wpoa-py-3 wpab-wpoa-text-xs wpab-wpoa-font-semibold wpab-wpoa-text-gray-500 wpab-wpoa-uppercase wpab-wpoa-tracking-wider wpab-wpoa-text-right">
+                <th className="opopw-px-4 opopw-py-3 opopw-text-xs opopw-font-semibold opopw-text-gray-500 opopw-uppercase opopw-tracking-wider opopw-text-right">
                   {__("Action", "optionbay-product-options-addons-woo")}
                 </th>
               </tr>
             </thead>
-            <tbody className="wpab-wpoa-divide-y wpab-wpoa-divide-gray-50">
+            <tbody className="opopw-divide-y opopw-divide-gray-50">
               {loading && items.length === 0 ? (
                 <tr>
                   <td
                     colSpan={5}
-                    className="wpab-wpoa-px-4 wpab-wpoa-py-12 wpab-wpoa-text-center"
+                    className="opopw-px-4 opopw-py-12 opopw-text-center"
                   >
-                    <div className="wpab-wpoa-flex wpab-wpoa-flex-col wpab-wpoa-items-center wpab-wpoa-gap-3">
-                      <RefreshCw className="wpab-wpoa-w-8 wpab-wpoa-h-8 wpab-wpoa-text-gray-300 wpab-wpoa-animate-spin" />
-                      <span className="wpab-wpoa-text-sm wpab-wpoa-text-gray-400">
+                    <div className="opopw-flex opopw-flex-col opopw-items-center opopw-gap-3">
+                      <RefreshCw className="opopw-w-8 opopw-h-8 opopw-text-gray-300 opopw-animate-spin" />
+                      <span className="opopw-text-sm opopw-text-gray-400">
                         {__("Loading inventory data...", "optionbay-product-options-addons-woo")}
                       </span>
                     </div>
@@ -233,11 +233,11 @@ const InventoryListModal: React.FC<InventoryListModalProps> = ({
                 <tr>
                   <td
                     colSpan={5}
-                    className="wpab-wpoa-px-4 wpab-wpoa-py-12 wpab-wpoa-text-center"
+                    className="opopw-px-4 opopw-py-12 opopw-text-center"
                   >
-                    <div className="wpab-wpoa-flex wpab-wpoa-flex-col wpab-wpoa-items-center wpab-wpoa-gap-3">
-                      <AlertCircle className="wpab-wpoa-w-8 wpab-wpoa-h-8 wpab-wpoa-text-gray-200" />
-                      <span className="wpab-wpoa-text-sm wpab-wpoa-text-gray-400">
+                    <div className="opopw-flex opopw-flex-col opopw-items-center opopw-gap-3">
+                      <AlertCircle className="opopw-w-8 opopw-h-8 opopw-text-gray-200" />
+                      <span className="opopw-text-sm opopw-text-gray-400">
                         {search
                           ? __("No matching inventory found.", "optionbay-product-options-addons-woo")
                           : __("No inventory pools created yet.", "optionbay-product-options-addons-woo")}
@@ -249,26 +249,26 @@ const InventoryListModal: React.FC<InventoryListModalProps> = ({
                 items.map((item) => (
                   <tr
                     key={item.id}
-                    className="hover:wpab-wpoa-bg-gray-50/50 wpab-wpoa-transition-colors"
+                    className="hover:opopw-bg-gray-50/50 opopw-transition-colors"
                   >
-                    <td className="wpab-wpoa-px-4 wpab-wpoa-py-4 wpab-wpoa-text-sm wpab-wpoa-text-gray-400">
+                    <td className="opopw-px-4 opopw-py-4 opopw-text-sm opopw-text-gray-400">
                       #{item.id}
                     </td>
-                    <td className="wpab-wpoa-px-4 wpab-wpoa-py-4">
-                      <span className="wpab-wpoa-text-sm wpab-wpoa-font-medium wpab-wpoa-text-gray-900">
+                    <td className="opopw-px-4 opopw-py-4">
+                      <span className="opopw-text-sm opopw-font-medium opopw-text-gray-900">
                         {item.name}
                       </span>
                     </td>
-                    <td className="wpab-wpoa-px-4 wpab-wpoa-py-4">
+                    <td className="opopw-px-4 opopw-py-4">
                       {editingId === item.id ? (
-                        <div className="wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-gap-2">
+                        <div className="opopw-flex opopw-items-center opopw-gap-2">
                           <input
                             autoFocus
                             type="number"
                             step={
                               parseFloat(item.stock_count.toString()) % 1 === 0 ? "1" : "0.01"
                             }
-                            className="wpab-wpoa-w-20 wpab-wpoa-px-2 wpab-wpoa-py-1 wpab-wpoa-text-sm wpab-wpoa-border wpab-wpoa-border-[#2271b1] wpab-wpoa-rounded focus:wpab-wpoa-outline-none"
+                            className="opopw-w-20 opopw-px-2 opopw-py-1 opopw-text-sm opopw-border opopw-border-[#2271b1] opopw-rounded focus:opopw-outline-none"
                             value={editValue}
                             onChange={(e) => setEditValue(e.target.value)}
                             onKeyDown={(e) => {
@@ -285,39 +285,39 @@ const InventoryListModal: React.FC<InventoryListModalProps> = ({
                         </div>
                       ) : (
                         <div
-                          className="wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-gap-2 wpab-wpoa-group/stock wpab-wpoa-cursor-pointer"
+                          className="opopw-flex opopw-items-center opopw-gap-2 opopw-group/stock opopw-cursor-pointer"
                           onClick={() => {
                             setEditingId(item.id);
                             setEditValue(item.stock_count.toString());
                           }}
                         >
                           <span
-                            className={`wpab-wpoa-text-sm wpab-wpoa-font-semibold wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-gap-1.5 ${
+                            className={`opopw-text-sm opopw-font-semibold opopw-flex opopw-items-center opopw-gap-1.5 ${
                               item.stock_count <= 0
-                                ? "wpab-wpoa-text-red-600"
+                                ? "opopw-text-red-600"
                                 : item.stock_count < 10
-                                  ? "wpab-wpoa-text-orange-600"
-                                  : "wpab-wpoa-text-green-600"
+                                  ? "opopw-text-orange-600"
+                                  : "opopw-text-green-600"
                             }`}
                           >
                             {item.stock_count <= 0 && !item.allow_backorders && (
-                              <AlertCircle className="wpab-wpoa-w-3.5 wpab-wpoa-h-3.5" />
+                              <AlertCircle className="opopw-w-3.5 opopw-h-3.5" />
                             )}
                             {formatStock(item.stock_count)}
                           </span>
-                          <span className="wpab-wpoa-text-[10px] wpab-wpoa-text-[#2271b1] wpab-wpoa-opacity-0 group-hover/stock:wpab-wpoa-opacity-100 wpab-wpoa-transition-opacity">
+                          <span className="opopw-text-[10px] opopw-text-[#2271b1] opopw-opacity-0 group-hover/stock:opopw-opacity-100 opopw-transition-opacity">
                             {__("Edit", "optionbay-product-options-addons-woo")}
                           </span>
                         </div>
                       )}
                     </td>
-                    <td className="wpab-wpoa-px-4 wpab-wpoa-py-4">
+                    <td className="opopw-px-4 opopw-py-4">
                       <span
                         onClick={() => handleToggleBackorders(item)}
-                        className={`wpab-wpoa-inline-flex wpab-wpoa-items-center wpab-wpoa-px-2.5 wpab-wpoa-py-0.5 wpab-wpoa-rounded-full wpab-wpoa-text-xs wpab-wpoa-font-medium wpab-wpoa-cursor-pointer hover:wpab-wpoa-opacity-80 wpab-wpoa-transition-all ${
+                        className={`opopw-inline-flex opopw-items-center opopw-px-2.5 opopw-py-0.5 opopw-rounded-full opopw-text-xs opopw-font-medium opopw-cursor-pointer hover:opopw-opacity-80 opopw-transition-all ${
                           item.allow_backorders
-                            ? "wpab-wpoa-bg-blue-50 wpab-wpoa-text-blue-700"
-                            : "wpab-wpoa-bg-gray-100 wpab-wpoa-text-gray-600"
+                            ? "opopw-bg-blue-50 opopw-text-blue-700"
+                            : "opopw-bg-gray-100 opopw-text-gray-600"
                         }`}
                         title={__("Click to toggle backorders", "optionbay-product-options-addons-woo")}
                       >
@@ -326,10 +326,10 @@ const InventoryListModal: React.FC<InventoryListModalProps> = ({
                           : __("Denied", "optionbay-product-options-addons-woo")}
                       </span>
                     </td>
-                    <td className="wpab-wpoa-px-4 wpab-wpoa-py-4 wpab-wpoa-text-right">
-                      <div className="wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-justify-end wpab-wpoa-gap-3">
+                    <td className="opopw-px-4 opopw-py-4 opopw-text-right">
+                      <div className="opopw-flex opopw-items-center opopw-justify-end opopw-gap-3">
                         <button
-                          className="wpab-wpoa-text-[#2271b1] hover:wpab-wpoa-text-[#135e96] wpab-wpoa-text-xs wpab-wpoa-font-medium hover:wpab-wpoa-underline wpab-wpoa-bg-transparent wpab-wpoa-border-none wpab-wpoa-cursor-pointer"
+                          className="opopw-text-[#2271b1] hover:opopw-text-[#135e96] opopw-text-xs opopw-font-medium hover:opopw-underline opopw-bg-transparent opopw-border-none opopw-cursor-pointer"
                           onClick={() => {
                             setEditingId(item.id);
                             setEditValue(item.stock_count.toString());
@@ -338,11 +338,11 @@ const InventoryListModal: React.FC<InventoryListModalProps> = ({
                           {__("Adjust Stock", "optionbay-product-options-addons-woo")}
                         </button>
                         <button
-                          className="wpab-wpoa-text-gray-400 hover:wpab-wpoa-text-red-600 wpab-wpoa-transition-colors wpab-wpoa-bg-transparent wpab-wpoa-border-none wpab-wpoa-cursor-pointer"
+                          className="opopw-text-gray-400 hover:opopw-text-red-600 opopw-transition-colors opopw-bg-transparent opopw-border-none opopw-cursor-pointer"
                           onClick={() => setDeletingId(item.id)}
                           title={__("Delete Inventory", "optionbay-product-options-addons-woo")}
                         >
-                          <Trash2 className="wpab-wpoa-w-4 wpab-wpoa-h-4" />
+                          <Trash2 className="opopw-w-4 opopw-h-4" />
                         </button>
                       </div>
                     </td>
@@ -372,32 +372,32 @@ const InventoryListModal: React.FC<InventoryListModalProps> = ({
           isOpen={true}
           onClose={() => setDeleteError(null)}
           title={
-            <div className="wpab-wpoa-text-red-600 wpab-wpoa-font-semibold wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-gap-2">
-              <AlertCircle className="wpab-wpoa-w-5 wpab-wpoa-h-5" />
+            <div className="opopw-text-red-600 opopw-font-semibold opopw-flex opopw-items-center opopw-gap-2">
+              <AlertCircle className="opopw-w-5 opopw-h-5" />
               {__("Cannot Delete Inventory", "optionbay-product-options-addons-woo")}
             </div>
           }
-          maxWidth="wpab-wpoa-max-w-md"
+          maxWidth="opopw-max-w-md"
           footer={
-            <div className="wpab-wpoa-flex wpab-wpoa-justify-end wpab-wpoa-w-full">
+            <div className="opopw-flex opopw-justify-end opopw-w-full">
               <ClassicButton onClick={() => setDeleteError(null)}>
                 {__("Close", "optionbay-product-options-addons-woo")}
               </ClassicButton>
             </div>
           }
         >
-          <div className="wpab-wpoa-p-2">
-            <p className="wpab-wpoa-mb-4 wpab-wpoa-text-gray-700 wpab-wpoa-text-sm leading-relaxed">
+          <div className="opopw-p-2">
+            <p className="opopw-mb-4 opopw-text-gray-700 opopw-text-sm leading-relaxed">
               {deleteError.message}
             </p>
-            <div className="wpab-wpoa-bg-red-50 wpab-wpoa-p-4 wpab-wpoa-rounded-lg wpab-wpoa-border wpab-wpoa-border-red-100">
-              <h4 className="wpab-wpoa-text-sm wpab-wpoa-font-semibold wpab-wpoa-text-red-800 wpab-wpoa-mb-2">
+            <div className="opopw-bg-red-50 opopw-p-4 opopw-rounded-lg opopw-border opopw-border-red-100">
+              <h4 className="opopw-text-sm opopw-font-semibold opopw-text-red-800 opopw-mb-2">
                 {__("Used by Option Groups:", "optionbay-product-options-addons-woo")}
               </h4>
-              <ul className="wpab-wpoa-list-disc wpab-wpoa-list-inside wpab-wpoa-text-sm wpab-wpoa-text-red-700 wpab-wpoa-flex wpab-wpoa-flex-col wpab-wpoa-gap-1">
+              <ul className="opopw-list-disc opopw-list-inside opopw-text-sm opopw-text-red-700 opopw-flex opopw-flex-col opopw-gap-1">
                 {deleteError.groups.map(g => (
                   <li key={g.id}>
-                    <a href={`?post_type=product&page=wpab-wpoa-options&action=edit&id=${g.id}`} target="_blank" rel="noreferrer" className="wpab-wpoa-underline hover:wpab-wpoa-text-red-900">
+                    <a href={`?post_type=product&page=opopw-options&action=edit&id=${g.id}`} target="_blank" rel="noreferrer" className="opopw-underline hover:opopw-text-red-900">
                       {g.name} (ID: {g.id})
                     </a>
                   </li>

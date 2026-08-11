@@ -118,8 +118,8 @@
 */
 
 *,
-*:not(.wpab-wpoa-ignore-preflight)::before,
-*:not(.wpab-wpoa-ignore-preflight)::after {
+*:not(.opopw-ignore-preflight)::before,
+*:not(.opopw-ignore-preflight)::after {
   box-sizing: border-box;
   /* 1 */
   border-width: 0;
@@ -206,12 +206,12 @@ abbr:where([title]) {
 Remove the default font size and weight for headings.
 */
 
-h1:not(.wpab-wpoa-ignore-preflight),
-h2:not(.wpab-wpoa-ignore-preflight),
-h3:not(.wpab-wpoa-ignore-preflight),
-h4:not(.wpab-wpoa-ignore-preflight),
-h5:not(.wpab-wpoa-ignore-preflight),
-h6:not(.wpab-wpoa-ignore-preflight) {
+h1:not(.opopw-ignore-preflight),
+h2:not(.opopw-ignore-preflight),
+h3:not(.opopw-ignore-preflight),
+h4:not(.opopw-ignore-preflight),
+h5:not(.opopw-ignore-preflight),
+h6:not(.opopw-ignore-preflight) {
   font-size: inherit;
   font-weight: inherit;
 }
@@ -220,7 +220,7 @@ h6:not(.wpab-wpoa-ignore-preflight) {
 Reset links to optimize for opt-in styling instead of opt-out.
 */
 
-a:not(.wpab-wpoa-ignore-preflight) {
+a:not(.opopw-ignore-preflight) {
   color: inherit;
   text-decoration: inherit;
 }
@@ -229,8 +229,8 @@ a:not(.wpab-wpoa-ignore-preflight) {
 Add the correct font weight in Edge and Safari.
 */
 
-b:not(.wpab-wpoa-ignore-preflight),
-strong:not(.wpab-wpoa-ignore-preflight) {
+b:not(.opopw-ignore-preflight),
+strong:not(.opopw-ignore-preflight) {
   font-weight: bolder;
 }
 
@@ -259,7 +259,7 @@ pre {
 Add the correct font size in all browsers.
 */
 
-small:not(.wpab-wpoa-ignore-preflight) {
+small:not(.opopw-ignore-preflight) {
   font-size: 80%;
 }
 
@@ -267,19 +267,19 @@ small:not(.wpab-wpoa-ignore-preflight) {
 Prevent `sub` and `sup` elements from affecting the line height in all browsers.
 */
 
-sub:not(.wpab-wpoa-ignore-preflight),
-sup:not(.wpab-wpoa-ignore-preflight) {
+sub:not(.opopw-ignore-preflight),
+sup:not(.opopw-ignore-preflight) {
   font-size: 75%;
   line-height: 0;
   position: relative;
   vertical-align: baseline;
 }
 
-sub:not(.wpab-wpoa-ignore-preflight) {
+sub:not(.opopw-ignore-preflight) {
   bottom: -0.25em;
 }
 
-sup:not(.wpab-wpoa-ignore-preflight) {
+sup:not(.opopw-ignore-preflight) {
   top: -0.5em;
 }
 
@@ -289,7 +289,7 @@ sup:not(.wpab-wpoa-ignore-preflight) {
 3. Remove gaps between table borders by default.
 */
 
-table:not(.wpab-wpoa-ignore-preflight) {
+table:not(.opopw-ignore-preflight) {
   text-indent: 0;
   /* 1 */
   border-color: inherit;
@@ -434,25 +434,25 @@ summary {
 Removes the default spacing and border for appropriate elements.
 */
 
-blockquote:not(.wpab-wpoa-ignore-preflight),
-dl:not(.wpab-wpoa-ignore-preflight),
-dd:not(.wpab-wpoa-ignore-preflight),
-h1:not(.wpab-wpoa-ignore-preflight),
+blockquote:not(.opopw-ignore-preflight),
+dl:not(.opopw-ignore-preflight),
+dd:not(.opopw-ignore-preflight),
+h1:not(.opopw-ignore-preflight),
 // use only on classic mode
-h2:not(.wpab-wpoa-ignore-preflight),
+h2:not(.opopw-ignore-preflight),
 // use only on classic mode
-h3:not(.wpab-wpoa-ignore-preflight),
+h3:not(.opopw-ignore-preflight),
 // use only on classic mode
-h4:not(.wpab-wpoa-ignore-preflight),
+h4:not(.opopw-ignore-preflight),
 // use only on classic mode
-h5:not(.wpab-wpoa-ignore-preflight),
+h5:not(.opopw-ignore-preflight),
 // use only on classic mode
-h6:not(.wpab-wpoa-ignore-preflight),
+h6:not(.opopw-ignore-preflight),
 // use only on classic mode
-hr:not(.wpab-wpoa-ignore-preflight),
-figure:not(.wpab-wpoa-ignore-preflight),
-p:not(.wpab-wpoa-ignore-preflight),
-pre:not(.wpab-wpoa-ignore-preflight) {
+hr:not(.opopw-ignore-preflight),
+figure:not(.opopw-ignore-preflight),
+p:not(.opopw-ignore-preflight),
+pre:not(.opopw-ignore-preflight) {
   margin: 0;
 }
 
@@ -573,7 +573,7 @@ video {
   padding-left: 0;
 }
 
-.product_page_wpab-wpoa-options #wpfooter {
+.product_page_opopw-options #wpfooter {
   display: none !important;
 }
 
@@ -597,25 +597,25 @@ video {
 
 
 
-.wpab-wpoa-add-campaigns-modal {
+.opopw-add-campaigns-modal {
   min-height: 90vh;
 }
 
-.wpab-wpoa-add-campaigns-modal-example {
+.opopw-add-campaigns-modal-example {
   width: 50%;
   display: none; // Hide on small devices
 }
 
-.wpab-wpoa-add-campaigns-modal-grid-cols {
+.opopw-add-campaigns-modal-grid-cols {
   overflow-y: auto;
   // scrollbar-width: none;
 }
 
-.wpab-wpoa-add-campaigns-modal-overlay {
+.opopw-add-campaigns-modal-overlay {
   display: block; // Show overlay on small devices
 }
 
-.wpab-wpoa-add-campaigns-modal-grid-item {
+.opopw-add-campaigns-modal-grid-item {
   min-height: 170px;
   width: 250px;
   padding-top: 40px;
@@ -628,46 +628,46 @@ video {
 
 
 @media (min-width: 600px) {
-  .wpab-wpoa-add-campaigns-modal {
+  .opopw-add-campaigns-modal {
     min-width: 560px;
     min-height: 400px;
   }
 
-  .wpab-wpoa-add-campaigns-modal-grid-cols {
+  .opopw-add-campaigns-modal-grid-cols {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (min-width: 850px) {
-  .wpab-wpoa-add-campaigns-modal {
+  .opopw-add-campaigns-modal {
     min-width: 835px;
   }
 
-  .wpab-wpoa-add-campaigns-modal-example {
+  .opopw-add-campaigns-modal-example {
     display: block; // Show example panel on larger devices
     width: 270px;
   }
 
-  .wpab-wpoa-add-campaigns-modal-overlay {
+  .opopw-add-campaigns-modal-overlay {
     display: none !important; // Hide overlay on larger devices
   }
 
-  .wpab-wpoa-add-campaigns-modal-grid-cols {
+  .opopw-add-campaigns-modal-grid-cols {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .wpab-wpoa-add-campaigns-modal-grid-item {
+  .opopw-add-campaigns-modal-grid-item {
     min-height: 136px;
     padding-top: 28px;
   }
 }
 
 @media (min-width: 1100px) {
-  .wpab-wpoa-add-campaigns-modal {
+  .opopw-add-campaigns-modal {
     min-width: 1080px;
   }
 
-  .wpab-wpoa-add-campaigns-modal-grid-cols {
+  .opopw-add-campaigns-modal-grid-cols {
     grid-template-columns: repeat(3, 1fr);
   }
 }
@@ -689,13 +689,13 @@ video {
   }
 }
 
-.wpab-wpoa-flash-highlight {
+.opopw-flash-highlight {
   animation: product-options-addons-wooFlashPulse 2s ease-in-out;
   border-left: 4px solid #d63638 !important;
 }
 
 /* Option Editor Accordion Nesting form-table Overrides */
-.wpab-wpoa-accordion-choice-details {
+.opopw-accordion-choice-details {
   .form-table {
     margin: 0 !important;
     width: 100% !important;
@@ -741,42 +741,42 @@ video {
 }
 
 /* Max-width Utility overrides to ensure standard widths are strictly respected */
-.wpab-wpoa-max-w-xs {
+.opopw-max-w-xs {
   max-width: 320px !important;
   width: 100% !important;
 }
 
-.wpab-wpoa-max-w-sm {
+.opopw-max-w-sm {
   max-width: 384px !important;
   width: 100% !important;
 }
 
-.wpab-wpoa-max-w-md {
+.opopw-max-w-md {
   max-width: 448px !important;
   width: 100% !important;
 }
 
-.wpab-wpoa-max-w-lg {
+.opopw-max-w-lg {
   max-width: 512px !important;
   width: 100% !important;
 }
 
-.wpab-wpoa-max-w-xl {
+.opopw-max-w-xl {
   max-width: 576px !important;
   width: 100% !important;
 }
 
-.wpab-wpoa-max-w-2xl {
+.opopw-max-w-2xl {
   max-width: 672px !important;
   width: 100% !important;
 }
 
-.wpab-wpoa-max-w-3xl {
+.opopw-max-w-3xl {
   max-width: 768px !important;
   width: 100% !important;
 }
 
-.wpab-wpoa-max-w-4xl {
+.opopw-max-w-4xl {
   max-width: 896px !important;
   width: 100% !important;
 }

@@ -21,29 +21,29 @@ const Button = forwardRef< HTMLButtonElement, ButtonProps >(
 		ref
 	) => {
 		const sizeClasses = {
-			small: 'wpab-wpoa-px-[8px] wpab-wpoa-py-[5px]',
-			medium: 'wpab-wpoa-px-[12px] wpab-wpoa-py-[6px]',
-			large: 'wpab-wpoa-px-[16px] wpab-wpoa-py-[10px]',
+			small: 'opopw-px-[8px] opopw-py-[5px]',
+			medium: 'opopw-px-[12px] opopw-py-[6px]',
+			large: 'opopw-px-[16px] opopw-py-[10px]',
 		};
 
 		const colorClasses = {
 			primary: {
-				solid: 'wpab-wpoa-bg-primary wpab-wpoa-text-white wpab-wpoa-border wpab-wpoa-border-primary hover:wpab-wpoa-bg-primary-hovered hover:wpab-wpoa-border-primary-hovered',
+				solid: 'opopw-bg-primary opopw-text-white opopw-border opopw-border-primary hover:opopw-bg-primary-hovered hover:opopw-border-primary-hovered',
 				outline:
-					'wpab-wpoa-bg-transparent wpab-wpoa-border wpab-wpoa-border-primary wpab-wpoa-text-primary hover:wpab-wpoa-bg-primary hover:wpab-wpoa-text-white',
-				ghost: 'wpab-wpoa-bg-transparent wpab-wpoa-text-primary hover:wpab-wpoa-text-primary-hovered hover:wpab-wpoa-bg-primary/10',
+					'opopw-bg-transparent opopw-border opopw-border-primary opopw-text-primary hover:opopw-bg-primary hover:opopw-text-white',
+				ghost: 'opopw-bg-transparent opopw-text-primary hover:opopw-text-primary-hovered hover:opopw-bg-primary/10',
 			},
 			secondary: {
-				solid: 'wpab-wpoa-bg-secondary wpab-wpoa-text-white wpab-wpoa-border wpab-wpoa-border-secondary hover:wpab-wpoa-bg-secondary-hovered',
+				solid: 'opopw-bg-secondary opopw-text-white opopw-border opopw-border-secondary hover:opopw-bg-secondary-hovered',
 				outline:
-					'wpab-wpoa-bg-transparent wpab-wpoa-border wpab-wpoa-border-secondary wpab-wpoa-text-secondary hover:wpab-wpoa-bg-secondary hover:wpab-wpoa-text-white',
-				ghost: 'wpab-wpoa-bg-transparent wpab-wpoa-text-[#1e1e1e] hover:!wpab-wpoa-text-primary',
+					'opopw-bg-transparent opopw-border opopw-border-secondary opopw-text-secondary hover:opopw-bg-secondary hover:opopw-text-white',
+				ghost: 'opopw-bg-transparent opopw-text-[#1e1e1e] hover:!opopw-text-primary',
 			},
 			danger: {
-				solid: 'wpab-wpoa-bg-red-500 wpab-wpoa-text-white wpab-wpoa-border wpab-wpoa-border-red-500 hover:wpab-wpoa-bg-red-600 hover:wpab-wpoa-border-red-600',
+				solid: 'opopw-bg-red-500 opopw-text-white opopw-border opopw-border-red-500 hover:opopw-bg-red-600 hover:opopw-border-red-600',
 				outline:
-					'wpab-wpoa-bg-transparent wpab-wpoa-border wpab-wpoa-border-red-500 wpab-wpoa-text-red-500 hover:wpab-wpoa-bg-red-500 hover:wpab-wpoa-text-white',
-				ghost: 'wpab-wpoa-bg-transparent wpab-wpoa-text-red-500 hover:wpab-wpoa-bg-red-500/10',
+					'opopw-bg-transparent opopw-border opopw-border-red-500 opopw-text-red-500 hover:opopw-bg-red-500 hover:opopw-text-white',
+				ghost: 'opopw-bg-transparent opopw-text-red-500 hover:opopw-bg-red-500/10',
 			},
 		};
 
@@ -56,9 +56,9 @@ const Button = forwardRef< HTMLButtonElement, ButtonProps >(
 			<button
 				ref={ ref }
 				className={ `
-                wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-justify-center wpab-wpoa-gap-[6px]
-                wpab-wpoa-text-default wpab-wpoa-rounded-[8px] wpab-wpoa-transition-all wpab-wpoa-duration-200
-                disabled:wpab-wpoa-opacity-50 disabled:wpab-wpoa-cursor-not-allowed
+                opopw-flex opopw-items-center opopw-justify-center opopw-gap-[6px]
+                opopw-text-default opopw-rounded-[8px] opopw-transition-all opopw-duration-200
+                disabled:opopw-opacity-50 disabled:opopw-cursor-not-allowed
                 ${ finalSizeClass } 
                 ${ variantClasses } 
                 ${ className }

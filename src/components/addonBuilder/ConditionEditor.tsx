@@ -47,8 +47,8 @@ export const ConditionEditor: React.FC<ConditionEditorProps> = ({
   if (siblingFields.length === 0) {
     return (
       <p
-        className={`wpab-wpoa-text-[#666] wpab-wpoa-italic ${
-          !hideLabel ? "wpab-wpoa-mt-4" : ""
+        className={`opopw-text-[#666] opopw-italic ${
+          !hideLabel ? "opopw-mt-4" : ""
         }`}
       >
         {__("Add more fields to set up conditional logic.", "optionbay-product-options-addons-woo")}
@@ -58,7 +58,7 @@ export const ConditionEditor: React.FC<ConditionEditorProps> = ({
 
   return (
     <div className="">
-      <div className="wpab-wpoa-flex wpab-wpoa-justify-between wpab-wpoa-items-center">
+      <div className="opopw-flex opopw-justify-between opopw-items-center">
         <ClassicCheckbox
           label={__("Enable Conditional Logic", "optionbay-product-options-addons-woo")}
           checked={conditions.status === "active"}
@@ -83,19 +83,19 @@ export const ConditionEditor: React.FC<ConditionEditorProps> = ({
               updateConditions({ rules });
             }}
           >
-            <CirclePlus className="wpab-wpoa-size-4" />{" "}
+            <CirclePlus className="opopw-size-4" />{" "}
             {__("Add Rule", "optionbay-product-options-addons-woo")}
           </ClassicButton>
         )}
       </div>
 
       {conditions.status === "active" && (
-        <div className="wpab-wpoa-mt-4 wpab-wpoa-space-y-4">
-          <div className="wpab-wpoa-flex wpab-wpoa-gap-2 wpab-wpoa-items-center wpab-wpoa-text-[13px]">
+        <div className="opopw-mt-4 opopw-space-y-4">
+          <div className="opopw-flex opopw-gap-2 opopw-items-center opopw-text-[13px]">
             <ClassicSelect
               value={conditions.action}
               classNames={{
-                innerContainer: "!wpab-wpoa-w-[85px]",
+                innerContainer: "!opopw-w-[85px]",
               }}
               onChange={(val) =>
                 updateConditions({
@@ -117,7 +117,7 @@ export const ConditionEditor: React.FC<ConditionEditorProps> = ({
             <ClassicSelect
               value={conditions.match}
               classNames={{
-                innerContainer: "!wpab-wpoa-w-[85px]",
+                innerContainer: "!opopw-w-[85px]",
               }}
               onChange={(val) =>
                 updateConditions({
@@ -138,24 +138,24 @@ export const ConditionEditor: React.FC<ConditionEditorProps> = ({
             <span>{__("of these rules match:", "optionbay-product-options-addons-woo")}</span>
           </div>
 
-          <div className="wpab-wpoa-border wpab-wpoa-border-[#c3c4c7] wpab-wpoa-rounded-[12px] wpab-wpoa-overflow-hidden wpab-wpoa-bg-white wpab-wpoa-condition-rules-table">
-            <div className="wpab-wpoa-w-0 wpab-wpoa-min-w-full wpab-wpoa-overflow-x-auto">
+          <div className="opopw-border opopw-border-[#c3c4c7] opopw-rounded-[12px] opopw-overflow-hidden opopw-bg-white opopw-condition-rules-table">
+            <div className="opopw-w-0 opopw-min-w-full opopw-overflow-x-auto">
               <table
-                className="wpab-wpoa-w-full wpab-wpoa-text-left wpab-wpoa-text-[13px]"
+                className="opopw-w-full opopw-text-left opopw-text-[13px]"
                 style={{ minWidth: "500px" }}
               >
                 <thead>
-                  <tr className="wpab-wpoa-border-b wpab-wpoa-border-[#c3c4c7]">
-                    <th className="!wpab-wpoa-py-[10px] !wpab-wpoa-px-[12px] wpab-wpoa-font-semibold wpab-wpoa-text-[#1d2327]">
+                  <tr className="opopw-border-b opopw-border-[#c3c4c7]">
+                    <th className="!opopw-py-[10px] !opopw-px-[12px] opopw-font-semibold opopw-text-[#1d2327]">
                       {__("Field", "optionbay-product-options-addons-woo")}
                     </th>
-                    <th className="!wpab-wpoa-py-[10px] !wpab-wpoa-px-[12px] wpab-wpoa-font-semibold wpab-wpoa-text-[#1d2327] wpab-wpoa-w-[150px]">
+                    <th className="!opopw-py-[10px] !opopw-px-[12px] opopw-font-semibold opopw-text-[#1d2327] opopw-w-[150px]">
                       {__("Operator", "optionbay-product-options-addons-woo")}
                     </th>
-                    <th className="!wpab-wpoa-py-[10px] !wpab-wpoa-px-[12px] wpab-wpoa-font-semibold wpab-wpoa-text-[#1d2327]">
+                    <th className="!opopw-py-[10px] !opopw-px-[12px] opopw-font-semibold opopw-text-[#1d2327]">
                       {__("Value", "optionbay-product-options-addons-woo")}
                     </th>
-                    <th className="!wpab-wpoa-py-[10px] !wpab-wpoa-px-[12px] wpab-wpoa-w-[40px]"></th>
+                    <th className="!opopw-py-[10px] !opopw-px-[12px] opopw-w-[40px]"></th>
                   </tr>
                 </thead>
                 <tbody>
@@ -243,9 +243,9 @@ export const ConditionEditor: React.FC<ConditionEditorProps> = ({
                       return (
                         <tr
                           key={idx}
-                          className="wpab-wpoa-border-b wpab-wpoa-border-[#c3c4c7] last:wpab-wpoa-border-none"
+                          className="opopw-border-b opopw-border-[#c3c4c7] last:opopw-border-none"
                         >
-                          <td className="wpab-wpoa-py-2 wpab-wpoa-px-3">
+                          <td className="opopw-py-2 opopw-px-3">
                             <ClassicSelect
                               value={rule.target_field_id}
                               differentDropdownWidth
@@ -284,7 +284,7 @@ export const ConditionEditor: React.FC<ConditionEditorProps> = ({
                               }
                             />
                           </td>
-                          <td className="wpab-wpoa-py-2 wpab-wpoa-px-3">
+                          <td className="opopw-py-2 opopw-px-3">
                             <ClassicSelect
                               differentDropdownWidth
                               value={rule.operator}
@@ -311,7 +311,7 @@ export const ConditionEditor: React.FC<ConditionEditorProps> = ({
                               }
                             />
                           </td>
-                          <td className="wpab-wpoa-py-2 wpab-wpoa-px-3">
+                          <td className="opopw-py-2 opopw-px-3">
                             {!["empty", "not_empty"].includes(rule.operator) &&
                               targetField && (
                                 <>
@@ -420,7 +420,7 @@ export const ConditionEditor: React.FC<ConditionEditorProps> = ({
                                 </>
                               )}
                           </td>
-                          <td className="wpab-wpoa-py-2">
+                          <td className="opopw-py-2">
                             <button
                               type="button"
                               onClick={() => {
@@ -429,10 +429,10 @@ export const ConditionEditor: React.FC<ConditionEditorProps> = ({
                                 );
                                 updateConditions({ rules });
                               }}
-                              className="wpab-wpoa-bg-transparent wpab-wpoa-border-none wpab-wpoa-cursor-pointer wpab-wpoa-p-1 wpab-wpoa-text-[#d63638] hover:wpab-wpoa-text-[#b32d2e] wpab-wpoa-transition-colors"
+                              className="opopw-bg-transparent opopw-border-none opopw-cursor-pointer opopw-p-1 opopw-text-[#d63638] hover:opopw-text-[#b32d2e] opopw-transition-colors"
                               title={__("Remove rule", "optionbay-product-options-addons-woo")}
                             >
-                              <Trash2 className="wpab-wpoa-size-4" />
+                              <Trash2 className="opopw-size-4" />
                             </button>
                           </td>
                         </tr>
@@ -442,7 +442,7 @@ export const ConditionEditor: React.FC<ConditionEditorProps> = ({
                     <tr>
                       <td
                         colSpan={4}
-                        className="wpab-wpoa-py-6 wpab-wpoa-text-center wpab-wpoa-text-[#94a3b8] wpab-wpoa-italic"
+                        className="opopw-py-6 opopw-text-center opopw-text-[#94a3b8] opopw-italic"
                       >
                         {__("No rules added yet.", "optionbay-product-options-addons-woo")}
                       </td>

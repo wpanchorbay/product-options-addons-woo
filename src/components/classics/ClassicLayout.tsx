@@ -31,11 +31,11 @@ const ClassicLayout: FC = () => {
 	return (
 		<div className="">
 			{context !== 'settings' && (
-				<h1 className="wpab-wpoa-ignore-preflight wpab-wpoa-font-[600] wpab-wpoa-text-[16px] wpab-wpoa-p-x-page-default wpab-wpoa-bg-white wpab-wpoa-m-0 wpab-wpoa-py-[18px]">
+				<h1 className="opopw-ignore-preflight opopw-font-[600] opopw-text-[16px] opopw-p-x-page-default opopw-bg-white opopw-m-0 opopw-py-[18px]">
 					{getPageTitle()}
 				</h1>
 			)}
-			<div className="wpab-wpoa-mt-2 wpab-wpoa-p-x-page-default">
+			<div className="opopw-mt-2 opopw-p-x-page-default">
 				<Outlet />
 			</div>
 		</div>

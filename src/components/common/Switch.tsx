@@ -22,19 +22,19 @@ export const Switch: React.FC< SwitchProps > = ( {
 } ) => {
 	const sizeConfig = {
 		small: {
-			switch: 'wpab-wpoa-h-4 wpab-wpoa-w-7',
-			thumb: 'wpab-wpoa-h-3 wpab-wpoa-w-3',
-			translate: 'wpab-wpoa-translate-x-3',
+			switch: 'opopw-h-4 opopw-w-7',
+			thumb: 'opopw-h-3 opopw-w-3',
+			translate: 'opopw-translate-x-3',
 		},
 		medium: {
-			switch: 'wpab-wpoa-h-6 wpab-wpoa-w-11',
-			thumb: 'wpab-wpoa-h-5 wpab-wpoa-w-5',
-			translate: 'wpab-wpoa-translate-x-5',
+			switch: 'opopw-h-6 opopw-w-11',
+			thumb: 'opopw-h-5 opopw-w-5',
+			translate: 'opopw-translate-x-5',
 		},
 		large: {
-			switch: 'wpab-wpoa-h-7 wpab-wpoa-w-14',
-			thumb: 'wpab-wpoa-h-6 wpab-wpoa-w-6',
-			translate: 'wpab-wpoa-translate-x-7',
+			switch: 'opopw-h-7 opopw-w-14',
+			thumb: 'opopw-h-6 opopw-w-6',
+			translate: 'opopw-translate-x-7',
 		},
 	};
 
@@ -48,21 +48,21 @@ export const Switch: React.FC< SwitchProps > = ( {
 			onClick={ () => ! disabled && onChange( ! checked ) }
 			disabled={ disabled }
 			className={ `
-        wpab-wpoa-group wpab-wpoa-relative wpab-wpoa-inline-flex wpab-wpoa-shrink-0 wpab-wpoa-cursor-pointer wpab-wpoa-items-center wpab-wpoa-rounded-full wpab-wpoa-border-2 wpab-wpoa-border-transparent wpab-wpoa-transition-colors wpab-wpoa-duration-200 wpab-wpoa-ease-in-out focus:wpab-wpoa-outline-none focus:wpab-wpoa-ring-2 focus:wpab-wpoa-ring-primary focus:wpab-wpoa-ring-offset-2
+        opopw-group opopw-relative opopw-inline-flex opopw-shrink-0 opopw-cursor-pointer opopw-items-center opopw-rounded-full opopw-border-2 opopw-border-transparent opopw-transition-colors opopw-duration-200 opopw-ease-in-out focus:opopw-outline-none focus:opopw-ring-2 focus:opopw-ring-primary focus:opopw-ring-offset-2
         ${ currentSize.switch }
-        ${ checked ? 'wpab-wpoa-bg-green-500' : 'wpab-wpoa-bg-black' }
-        ${ disabled ? 'wpab-wpoa-opacity-50 wpab-wpoa-cursor-not-allowed' : '' }
+        ${ checked ? 'opopw-bg-green-500' : 'opopw-bg-black' }
+        ${ disabled ? 'opopw-opacity-50 opopw-cursor-not-allowed' : '' }
         ${ className }
         ${ classNames?.root || '' }
       ` }
 		>
-			<span className="wpab-wpoa-sr-only">Toggle setting</span>
+			<span className="opopw-sr-only">Toggle setting</span>
 			<span
 				aria-hidden="true"
 				className={ `
-          wpab-wpoa-pointer-events-none wpab-wpoa-inline-block wpab-wpoa-transform wpab-wpoa-rounded-full wpab-wpoa-bg-white wpab-wpoa-shadow wpab-wpoa-ring-0 wpab-wpoa-transition wpab-wpoa-duration-200 wpab-wpoa-ease-in-out
+          opopw-pointer-events-none opopw-inline-block opopw-transform opopw-rounded-full opopw-bg-white opopw-shadow opopw-ring-0 opopw-transition opopw-duration-200 opopw-ease-in-out
           ${ currentSize.thumb }
-          ${ checked ? currentSize.translate : 'wpab-wpoa-translate-x-0' }
+          ${ checked ? currentSize.translate : 'opopw-translate-x-0' }
           ${ classNames?.thumb || '' }
         ` }
 			/>

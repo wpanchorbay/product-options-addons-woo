@@ -57,31 +57,31 @@ export const BuilderHeader: React.FC<BuilderHeaderProps> = ({
   };
 
   return (
-    <div className="wpab-wpoa-flex wpab-wpoa-flex-col sm:wpab-wpoa-flex-row wpab-wpoa-justify-between wpab-wpoa-items-start sm:wpab-wpoa-items-center wpab-wpoa-gap-4 wpab-wpoa-mb-6 wpab-wpoa-bg-white wpab-wpoa-p-[15px_20px] wpab-wpoa-rounded-lg wpab-wpoa-shadow-sm">
+    <div className="opopw-flex opopw-flex-col sm:opopw-flex-row opopw-justify-between opopw-items-start sm:opopw-items-center opopw-gap-4 opopw-mb-6 opopw-bg-white opopw-p-[15px_20px] opopw-rounded-lg opopw-shadow-sm">
       <Link
         to="/"
-        className="button button-secondary !wpab-wpoa-inline-flex wpab-wpoa-items-center wpab-wpoa-gap-1.5 wpab-wpoa-no-underline"
+        className="button button-secondary !opopw-inline-flex opopw-items-center opopw-gap-1.5 opopw-no-underline"
       >
-        <ArrowLeft size={14} className="wpab-wpoa-w-3.5 wpab-wpoa-h-3.5" />
+        <ArrowLeft size={14} className="opopw-w-3.5 opopw-h-3.5" />
         {__("Back to List", "optionbay-product-options-addons-woo")}
       </Link>
-      <div className="wpab-wpoa-flex wpab-wpoa-flex-wrap wpab-wpoa-items-center wpab-wpoa-gap-4">
-        <div className="wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-gap-2">
-          <span className="wpab-wpoa-text-[13px] wpab-wpoa-text-[#646970] wpab-wpoa-mr-1">
+      <div className="opopw-flex opopw-flex-wrap opopw-items-center opopw-gap-4">
+        <div className="opopw-flex opopw-items-center opopw-gap-2">
+          <span className="opopw-text-[13px] opopw-text-[#646970] opopw-mr-1">
             {__("Status:", "optionbay-product-options-addons-woo")}
           </span>
           <button
             type="button"
             onClick={handleStatusToggle}
             disabled={state.isSaving}
-            className={`wpab-wpoa-relative wpab-wpoa-inline-flex wpab-wpoa-h-5 wpab-wpoa-w-10 wpab-wpoa-items-center wpab-wpoa-rounded-full wpab-wpoa-transition-colors focus:wpab-wpoa-outline-none ${
+            className={`opopw-relative opopw-inline-flex opopw-h-5 opopw-w-10 opopw-items-center opopw-rounded-full opopw-transition-colors focus:opopw-outline-none ${
               state.status === "publish"
-                ? "wpab-wpoa-bg-blue-600"
-                : "wpab-wpoa-bg-gray-400"
+                ? "opopw-bg-blue-600"
+                : "opopw-bg-gray-400"
             } ${
               state.isSaving
-                ? "wpab-wpoa-opacity-50 wpab-wpoa-cursor-not-allowed"
-                : "wpab-wpoa-cursor-pointer"
+                ? "opopw-opacity-50 opopw-cursor-not-allowed"
+                : "opopw-cursor-pointer"
             }`}
             title={
               state.status === "publish"
@@ -90,18 +90,18 @@ export const BuilderHeader: React.FC<BuilderHeaderProps> = ({
             }
           >
             <span
-              className={`wpab-wpoa-inline-block wpab-wpoa-h-3.5 wpab-wpoa-w-3.5 wpab-wpoa-transform wpab-wpoa-rounded-full wpab-wpoa-bg-white wpab-wpoa-transition-transform ${
+              className={`opopw-inline-block opopw-h-3.5 opopw-w-3.5 opopw-transform opopw-rounded-full opopw-bg-white opopw-transition-transform ${
                 state.status === "publish"
-                  ? "wpab-wpoa-translate-x-5"
-                  : "wpab-wpoa-translate-x-1"
+                  ? "opopw-translate-x-5"
+                  : "opopw-translate-x-1"
               }`}
             />
           </button>
           <span
-            className={`wpab-wpoa-text-[13px] wpab-wpoa-min-w-[45px] ${
+            className={`opopw-text-[13px] opopw-min-w-[45px] ${
               state.status === "publish"
-                ? "wpab-wpoa-text-[#1d2327]"
-                : "wpab-wpoa-text-[#646970]"
+                ? "opopw-text-[#1d2327]"
+                : "opopw-text-[#646970]"
             }`}
           >
             {state.status === "publish"

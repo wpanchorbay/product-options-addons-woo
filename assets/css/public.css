@@ -1,23 +1,23 @@
-.wpab-wpoa-discount-table{
+.opopw-discount-table{
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
 }
 
-.wpab-wpoa-discount-table th,
-.wpab-wpoa-discount-table td {
+.opopw-discount-table th,
+.opopw-discount-table td {
     border: 1px solid #dddddd86;
     padding: 8px;
     text-align: left;
 }
 
-.wpab-wpoa-discount-table th {
+.opopw-discount-table th {
     font-weight: bold;
 }
 
-.wpab-wpoa-discount-table tr:nth-child(even) {
+.opopw-discount-table tr:nth-child(even) {
 }
 
-.wpab-wpoa-discount-table tr:hover {
+.opopw-discount-table tr:hover {
 
 }

@@ -85,8 +85,8 @@ export const ImportCard: React.FC = () => {
 	};
 
 	return (
-		<div className="wpab-wpoa-settings-section wpab-wpoa-mt-8 wpab-wpoa-mb-8">
-			<h2 className="wpab-wpoa-ignore-preflight">{__('Import Data', 'optionbay-product-options-addons-woo')}</h2>
+		<div className="opopw-settings-section opopw-mt-8 opopw-mb-8">
+			<h2 className="opopw-ignore-preflight">{__('Import Data', 'optionbay-product-options-addons-woo')}</h2>
 			<p className="description">{__('Upload an OptionBay - Product Options and Addons JSON export file to restore data.', 'optionbay-product-options-addons-woo')}</p>
 
 			<table className="form-table">
@@ -101,13 +101,13 @@ export const ImportCard: React.FC = () => {
 								accept=".json,application/json"
 								onChange={handleFileChange}
 								ref={fileInputRef}
-								className="wpab-wpoa-block wpab-wpoa-w-full wpab-wpoa-max-w-md wpab-wpoa-text-sm wpab-wpoa-text-gray-500 file:wpab-wpoa-mr-4 file:wpab-wpoa-py-2 file:wpab-wpoa-px-4 file:wpab-wpoa-rounded-full file:wpab-wpoa-border-0 file:wpab-wpoa-text-sm file:wpab-wpoa-font-semibold file:wpab-wpoa-bg-blue-50 file:wpab-wpoa-text-blue-700 hover:file:wpab-wpoa-bg-blue-100"
+								className="opopw-block opopw-w-full opopw-max-w-md opopw-text-sm opopw-text-gray-500 file:opopw-mr-4 file:opopw-py-2 file:opopw-px-4 file:opopw-rounded-full file:opopw-border-0 file:opopw-text-sm file:opopw-font-semibold file:opopw-bg-blue-50 file:opopw-text-blue-700 hover:file:opopw-bg-blue-100"
 							/>
 
 							{parsedData && (
-								<div className="wpab-wpoa-mt-6 wpab-wpoa-bg-gray-50 wpab-wpoa-p-4 wpab-wpoa-rounded-lg wpab-wpoa-border wpab-wpoa-border-gray-200">
-									<h4 className="wpab-wpoa-mt-0 wpab-wpoa-mb-3 wpab-wpoa-font-semibold">{__('What would you like to import?', 'optionbay-product-options-addons-woo')}</h4>
-									<div className="wpab-wpoa-flex wpab-wpoa-flex-col wpab-wpoa-gap-3">
+								<div className="opopw-mt-6 opopw-bg-gray-50 opopw-p-4 opopw-rounded-lg opopw-border opopw-border-gray-200">
+									<h4 className="opopw-mt-0 opopw-mb-3 opopw-font-semibold">{__('What would you like to import?', 'optionbay-product-options-addons-woo')}</h4>
+									<div className="opopw-flex opopw-flex-col opopw-gap-3">
 										{parsedData.groups && parsedData.groups.length > 0 && (
 											<ClassicCheckbox
 												checked={importGroups}
@@ -130,7 +130,7 @@ export const ImportCard: React.FC = () => {
 											/>
 										)}
 									</div>
-									<div className="wpab-wpoa-mt-4">
+									<div className="opopw-mt-4">
 										<ClassicButton
 											variant="primary"
 											onClick={handleImport}

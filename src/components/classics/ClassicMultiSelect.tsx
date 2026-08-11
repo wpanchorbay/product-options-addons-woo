@@ -345,20 +345,20 @@ export const ClassicMultiSelect: React.FC< ClassicMultiSelectProps > = ( {
 
 	return (
 		<div
-			className={ `${ sizeClass } ${ className } wpab-wpoa-align-middle` }
+			className={ `${ sizeClass } ${ className } opopw-align-middle` }
 			ref={ containerRef }
 		>
 			{ label && (
 				<label
 					htmlFor={ selectId }
-					className="wpab-wpoa-block wpab-wpoa-mb-1"
+					className="opopw-block opopw-mb-1"
 				>
 					{ label }
 				</label>
 			) }
 
 			<div
-				className="wpab-wpoa-relative"
+				className="opopw-relative"
 				style={ { width: explicitWidth } }
 			>
 				<div
@@ -380,31 +380,31 @@ export const ClassicMultiSelect: React.FC< ClassicMultiSelectProps > = ( {
 						setIsOpen( ! isOpen );
 					} }
 					onKeyDown={ handleTriggerKeyDown }
-					className={ `wpab-wpoa-flex wpab-wpoa-flex-wrap wpab-wpoa-items-center wpab-wpoa-gap-1 wpab-wpoa-bg-white wpab-wpoa-border wpab-wpoa-border-[#8c8f94] wpab-wpoa-rounded-[3px] wpab-wpoa-p-[3px_24px_3px_6px] wpab-wpoa-min-h-[30px] wpab-wpoa-transition-shadow wpab-wpoa-duration-100 wpab-wpoa-relative wpab-wpoa-box-border wpab-wpoa-w-full ${
+					className={ `opopw-flex opopw-flex-wrap opopw-items-center opopw-gap-1 opopw-bg-white opopw-border opopw-border-[#8c8f94] opopw-rounded-[3px] opopw-p-[3px_24px_3px_6px] opopw-min-h-[30px] opopw-transition-shadow opopw-duration-100 opopw-relative opopw-box-border opopw-w-full ${
 						disabled
-							? 'wpab-wpoa-cursor-not-allowed wpab-wpoa-bg-[#f0f0f1]'
-							: 'wpab-wpoa-cursor-text'
+							? 'opopw-cursor-not-allowed opopw-bg-[#f0f0f1]'
+							: 'opopw-cursor-text'
 					} ${
 						isOpen
-							? 'wpab-wpoa-border-[#2271b1] wpab-wpoa-shadow-[0_0_0_1px_#2271b1]'
-							: 'wpab-wpoa-shadow-none'
+							? 'opopw-border-[#2271b1] opopw-shadow-[0_0_0_1px_#2271b1]'
+							: 'opopw-shadow-none'
 					} ${
 						isError && ! isOpen
-							? '!wpab-wpoa-border-red-400 !wpab-wpoa-shadow-none'
+							? '!opopw-border-red-400 !opopw-shadow-none'
 							: ''
 					}` }
 				>
 					{ selectedOptions.map( ( opt ) => (
 						<span
 							key={ opt.value }
-							className="wpab-wpoa-bg-[#f0f0f1] wpab-wpoa-border wpab-wpoa-border-[#c3c4c7] wpab-wpoa-rounded-[3px] wpab-wpoa-px-1 wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-gap-1 wpab-wpoa-text-xs wpab-wpoa-text-[#3c434a] wpab-wpoa-leading-[20px]"
+							className="opopw-bg-[#f0f0f1] opopw-border opopw-border-[#c3c4c7] opopw-rounded-[3px] opopw-px-1 opopw-flex opopw-items-center opopw-gap-1 opopw-text-xs opopw-text-[#3c434a] opopw-leading-[20px]"
 						>
 							{ opt.label }
 							<button
 								onClick={ ( e ) =>
 									handleRemove( e, opt.value )
 								}
-								className="wpab-wpoa-bg-transparent wpab-wpoa-border-none wpab-wpoa-p-0 wpab-wpoa-cursor-pointer wpab-wpoa-text-[#8c8f94] wpab-wpoa-flex wpab-wpoa-items-center"
+								className="opopw-bg-transparent opopw-border-none opopw-p-0 opopw-cursor-pointer opopw-text-[#8c8f94] opopw-flex opopw-items-center"
 							>
 								<X size={ 12 } />
 							</button>
@@ -412,20 +412,20 @@ export const ClassicMultiSelect: React.FC< ClassicMultiSelectProps > = ( {
 					) ) }
 
 					{ ! enableSearch && value.length === 0 && (
-						<span className="wpab-wpoa-text-[#8c8f94] wpab-wpoa-text-[13px] wpab-wpoa-pl-1">
+						<span className="opopw-text-[#8c8f94] opopw-text-[13px] opopw-pl-1">
 							{ placeholder }
 						</span>
 					) }
 
 					{ /* Chevron icon pointing down */ }
-					<span className="wpab-wpoa-absolute wpab-wpoa-right-1.5 wpab-wpoa-top-1/2 -wpab-wpoa-translate-y-1/2 wpab-wpoa-flex wpab-wpoa-pointer-events-none">
+					<span className="opopw-absolute opopw-right-1.5 opopw-top-1/2 -opopw-translate-y-1/2 opopw-flex opopw-pointer-events-none">
 						<ChevronDown size={ 14 } color="#50575e" />
 					</span>
 				</div>
 
 				{ isOpen && (
 					<div
-						className="wpab-wpoa-absolute wpab-wpoa-z-[99999] wpab-wpoa-bg-white wpab-wpoa-border-2 wpab-wpoa-border-[#2271b1] wpab-wpoa-border-t-0  wpab-wpoa-rounded-b-[3px] wpab-wpoa-shadow-[0_3px_5px_rgba(0,0,0,0.2)] wpab-wpoa-p-0 wpab-wpoa-box-border wpab-wpoa-top-full wpab-wpoa-left-[-1px] wpab-wpoa-mt-[-3px]"
+						className="opopw-absolute opopw-z-[99999] opopw-bg-white opopw-border-2 opopw-border-[#2271b1] opopw-border-t-0  opopw-rounded-b-[3px] opopw-shadow-[0_3px_5px_rgba(0,0,0,0.2)] opopw-p-0 opopw-box-border opopw-top-full opopw-left-[-1px] opopw-mt-[-3px]"
 						style={ {
 							...( differentDropdownWidth
 								? { minWidth: 'calc(100% + 2px)' }
@@ -453,14 +453,14 @@ export const ClassicMultiSelect: React.FC< ClassicMultiSelectProps > = ( {
 									value.length === 0 ? placeholder : ''
 								}
 								disabled={ disabled }
-								className="wpab-wpoa-w-[calc(100%-8px)] wpab-wpoa-px-2 wpab-wpoa-leading-loose wpab-wpoa-min-h-[26px] wpab-wpoa-border wpab-wpoa-border-[#aaaaaa] wpab-wpoa-bg-[#fcfcfc] wpab-wpoa-rounded-[3px] wpab-wpoa-box-border wpab-wpoa-text-[13px] focus:wpab-wpoa-outline-none focus:wpab-wpoa-shadow-none wpab-wpoa-m-[4px]"
+								className="opopw-w-[calc(100%-8px)] opopw-px-2 opopw-leading-loose opopw-min-h-[26px] opopw-border opopw-border-[#aaaaaa] opopw-bg-[#fcfcfc] opopw-rounded-[3px] opopw-box-border opopw-text-[13px] focus:opopw-outline-none focus:opopw-shadow-none opopw-m-[4px]"
 							/>
 						) }
 						{ isLoading ? (
-							<div className="wpab-wpoa-py-2 wpab-wpoa-px-3 wpab-wpoa-text-[#646970] wpab-wpoa-text-[13px] wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-gap-2">
+							<div className="opopw-py-2 opopw-px-3 opopw-text-[#646970] opopw-text-[13px] opopw-flex opopw-items-center opopw-gap-2">
 								<Hourglass
 									size={ 14 }
-									className="wpab-wpoa-animate-spin"
+									className="opopw-animate-spin"
 								/>{ ' ' }
 								Loading...
 							</div>
@@ -468,10 +468,10 @@ export const ClassicMultiSelect: React.FC< ClassicMultiSelectProps > = ( {
 							<ul
 								ref={ listRef }
 								role="listbox"
-								className="wpab-wpoa-max-h-[220px] wpab-wpoa-overflow-y-auto wpab-wpoa-m-0 wpab-wpoa-p-0 wpab-wpoa-list-none"
+								className="opopw-max-h-[220px] opopw-overflow-y-auto opopw-m-0 opopw-p-0 opopw-list-none"
 							>
 								{ filteredOptions.length === 0 ? (
-									<li className="wpab-wpoa-px-3 wpab-wpoa-py-1.5 wpab-wpoa-text-[#646970] wpab-wpoa-italic wpab-wpoa-text-[13px] wpab-wpoa-m-0">
+									<li className="opopw-px-3 opopw-py-1.5 opopw-text-[#646970] opopw-italic opopw-text-[13px] opopw-m-0">
 										{ searchQuery
 											? 'No results found'
 											: 'No options available' }
@@ -531,44 +531,44 @@ export const ClassicMultiSelect: React.FC< ClassicMultiSelectProps > = ( {
 													e.stopPropagation();
 													handleSelect( opt );
 												} }
-												className={ `wpab-wpoa-px-3 wpab-wpoa-py-1.5 wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-justify-between wpab-wpoa-text-[13px] wpab-wpoa-m-0 ${
+												className={ `opopw-px-3 opopw-py-1.5 opopw-flex opopw-items-center opopw-justify-between opopw-text-[13px] opopw-m-0 ${
 													isDisabled
-														? 'wpab-wpoa-cursor-not-allowed'
-														: 'wpab-wpoa-cursor-pointer'
+														? 'opopw-cursor-not-allowed'
+														: 'opopw-cursor-pointer'
 												} ${
 													isHighlighted
-														? 'wpab-wpoa-bg-[#2271b1] wpab-wpoa-text-white'
+														? 'opopw-bg-[#2271b1] opopw-text-white'
 														: isDisabled
-														? 'wpab-wpoa-bg-transparent wpab-wpoa-text-[#a7aaad]'
-														: 'wpab-wpoa-bg-transparent wpab-wpoa-text-[#2c3338]'
+														? 'opopw-bg-transparent opopw-text-[#a7aaad]'
+														: 'opopw-bg-transparent opopw-text-[#2c3338]'
 												}` }
 											>
-												<div className="wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-gap-2">
+												<div className="opopw-flex opopw-items-center opopw-gap-2">
 													<div
 														className={ `
-                            wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-justify-center
-                            wpab-wpoa-w-4 wpab-wpoa-h-4 wpab-wpoa-rounded wpab-wpoa-border-2 wpab-wpoa-transition-all wpab-wpoa-duration-200
+                            opopw-flex opopw-items-center opopw-justify-center
+                            opopw-w-4 opopw-h-4 opopw-rounded opopw-border-2 opopw-transition-all opopw-duration-200
                             ${
 								isSelected
 									? isHighlighted
-										? 'wpab-wpoa-border-white wpab-wpoa-bg-white'
-										: 'wpab-wpoa-border-[#2271b1] wpab-wpoa-bg-[#2271b1]'
+										? 'opopw-border-white opopw-bg-white'
+										: 'opopw-border-[#2271b1] opopw-bg-[#2271b1]'
 									: isHighlighted
-									? 'wpab-wpoa-border-white wpab-wpoa-bg-transparent'
-									: 'wpab-wpoa-border-[#8c8f94] wpab-wpoa-bg-white'
+									? 'opopw-border-white opopw-bg-transparent'
+									: 'opopw-border-[#8c8f94] opopw-bg-white'
 							}
                           ` }
 													>
 														<svg
-															className={ `wpab-wpoa-w-3.5 wpab-wpoa-h-3.5 wpab-wpoa-transform wpab-wpoa-transition-transform wpab-wpoa-duration-200 ${
+															className={ `opopw-w-3.5 opopw-h-3.5 opopw-transform opopw-transition-transform opopw-duration-200 ${
 																isSelected
-																	? 'wpab-wpoa-scale-100'
-																	: 'wpab-wpoa-scale-0'
+																	? 'opopw-scale-100'
+																	: 'opopw-scale-0'
 															} ${
 																isHighlighted &&
 																isSelected
-																	? 'wpab-wpoa-text-[#2271b1]'
-																	: 'wpab-wpoa-text-white'
+																	? 'opopw-text-[#2271b1]'
+																	: 'opopw-text-white'
 															}` }
 															viewBox="0 0 24 24"
 															fill="none"
@@ -592,10 +592,10 @@ export const ClassicMultiSelect: React.FC< ClassicMultiSelectProps > = ( {
 												{ /* Icons for variants */ }
 												{ isPro && (
 													<span
-														className={ `wpab-wpoa-flex ${
+														className={ `opopw-flex ${
 															isHighlighted
-																? 'wpab-wpoa-text-white'
-																: 'wpab-wpoa-text-[#ffb900]'
+																? 'opopw-text-white'
+																: 'opopw-text-[#ffb900]'
 														}` }
 													>
 														<Lock size={ 14 } />
@@ -603,10 +603,10 @@ export const ClassicMultiSelect: React.FC< ClassicMultiSelectProps > = ( {
 												) }
 												{ isComingSoon && (
 													<span
-														className={ `wpab-wpoa-text-[10px] wpab-wpoa-uppercase wpab-wpoa-px-1.5 wpab-wpoa-py-0.5 wpab-wpoa-rounded-[10px] wpab-wpoa-font-semibold wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-gap-1 ${
+														className={ `opopw-text-[10px] opopw-uppercase opopw-px-1.5 opopw-py-0.5 opopw-rounded-[10px] opopw-font-semibold opopw-flex opopw-items-center opopw-gap-1 ${
 															isHighlighted
-																? 'wpab-wpoa-bg-white/20 wpab-wpoa-text-white'
-																: 'wpab-wpoa-bg-[#f0f0f1] wpab-wpoa-text-[#646970]'
+																? 'opopw-bg-white/20 opopw-text-white'
+																: 'opopw-bg-[#f0f0f1] opopw-text-[#646970]'
 														}` }
 													>
 														<Hourglass
@@ -626,12 +626,12 @@ export const ClassicMultiSelect: React.FC< ClassicMultiSelectProps > = ( {
 			</div>
 
 			{ description && (
-				<p className="description wpab-wpoa-mt-1">{ description }</p>
+				<p className="description opopw-mt-1">{ description }</p>
 			) }
 
 			{ tooltipState?.visible && (
 				<div
-					className="wpab-wpoa-fixed wpab-wpoa-bg-[#1d2327] wpab-wpoa-text-white wpab-wpoa-px-2.5 wpab-wpoa-py-1 wpab-wpoa-rounded-[3px] wpab-wpoa-text-[12px] wpab-wpoa-pointer-events-none wpab-wpoa-z-[100000] wpab-wpoa-whitespace-nowrap"
+					className="opopw-fixed opopw-bg-[#1d2327] opopw-text-white opopw-px-2.5 opopw-py-1 opopw-rounded-[3px] opopw-text-[12px] opopw-pointer-events-none opopw-z-[100000] opopw-whitespace-nowrap"
 					style={ {
 						top: tooltipState.top - 8,
 						left: tooltipState.left,
@@ -639,7 +639,7 @@ export const ClassicMultiSelect: React.FC< ClassicMultiSelectProps > = ( {
 					} }
 				>
 					{ tooltipState.text }
-					<div className="wpab-wpoa-absolute -wpab-wpoa-bottom-1 wpab-wpoa-left-1/2 -wpab-wpoa-translate-x-1/2 wpab-wpoa-border-x-4 wpab-wpoa-border-t-4 wpab-wpoa-border-x-transparent wpab-wpoa-border-b-transparent wpab-wpoa-border-t-[#1d2327]" />
+					<div className="opopw-absolute -opopw-bottom-1 opopw-left-1/2 -opopw-translate-x-1/2 opopw-border-x-4 opopw-border-t-4 opopw-border-x-transparent opopw-border-b-transparent opopw-border-t-[#1d2327]" />
 				</div>
 			) }
 		</div>

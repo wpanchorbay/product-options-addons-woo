@@ -161,11 +161,11 @@ export const OptionEditorAccordion: React.FC<OptionEditorAccordionProps> = ({
   console.log("correct file");
   return (
     <div
-      className={`wpab-wpoa-flex wpab-wpoa-flex-col wpab-wpoa-gap-1 ${!hideLabel ? "wpab-wpoa-mt-4" : ""
+      className={`opopw-flex opopw-flex-col opopw-gap-1 ${!hideLabel ? "opopw-mt-4" : ""
         }`}
     >
       {!hideLabel && (
-        <label className="wpab-wpoa-font-semibold wpab-wpoa-block wpab-wpoa-text-slate-800 wpab-wpoa-text-sm">
+        <label className="opopw-font-semibold opopw-block opopw-text-slate-800 opopw-text-sm">
           {__("Choices", "optionbay-product-options-addons-woo")}
         </label>
       )}
@@ -176,7 +176,7 @@ export const OptionEditorAccordion: React.FC<OptionEditorAccordionProps> = ({
             <div
               ref={provided.innerRef}
               {...provided.droppableProps}
-              className="wpab-wpoa-flex wpab-wpoa-flex-col"
+              className="opopw-flex opopw-flex-col"
             >
               {options.length > 0 ? (
                 options.map((opt, idx) => {
@@ -187,13 +187,13 @@ export const OptionEditorAccordion: React.FC<OptionEditorAccordionProps> = ({
                   const settingsFields = [
                     {
                       label: (
-                        <span className="wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-gap-1.5 wpab-wpoa-text-slate-700 wpab-wpoa-font-semibold wpab-wpoa-text-[12px] wpab-wpoa-uppercase wpab-wpoa-tracking-wider">
-                          <Tag size={13} className="wpab-wpoa-text-[#2271b1]" />
+                        <span className="opopw-flex opopw-items-center opopw-gap-1.5 opopw-text-slate-700 opopw-font-semibold opopw-text-[12px] opopw-uppercase opopw-tracking-wider">
+                          <Tag size={13} className="opopw-text-[#2271b1]" />
                           {__("Price Type", "optionbay-product-options-addons-woo")}
                         </span>
                       ),
                       render: () => (
-                        <div className="wpab-wpoa-max-w-xs">
+                        <div className="opopw-max-w-xs">
                           <ClassicSelect
                             value={opt.price_type}
                             differentDropdownWidth
@@ -224,16 +224,16 @@ export const OptionEditorAccordion: React.FC<OptionEditorAccordionProps> = ({
                       ? [
                         {
                           label: (
-                            <span className="wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-gap-1.5 wpab-wpoa-text-slate-700 wpab-wpoa-font-semibold wpab-wpoa-text-[12px] wpab-wpoa-uppercase wpab-wpoa-tracking-wider">
+                            <span className="opopw-flex opopw-items-center opopw-gap-1.5 opopw-text-slate-700 opopw-font-semibold opopw-text-[12px] opopw-uppercase opopw-tracking-wider">
                               <Tag
                                 size={13}
-                                className="wpab-wpoa-text-[#2271b1]"
+                                className="opopw-text-[#2271b1]"
                               />
                               {__("Price Amount", "optionbay-product-options-addons-woo")}
                             </span>
                           ),
                           render: () => (
-                            <div className="wpab-wpoa-flex wpab-wpoa-flex-col wpab-wpoa-gap-1.5 wpab-wpoa-max-w-xs">
+                            <div className="opopw-flex opopw-flex-col opopw-gap-1.5 opopw-max-w-xs">
                               <ClassicInput
                                 type="number"
                                 size="regular"
@@ -274,16 +274,16 @@ export const OptionEditorAccordion: React.FC<OptionEditorAccordionProps> = ({
                       : []),
                     {
                       label: (
-                        <span className="wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-gap-1.5 wpab-wpoa-text-slate-700 wpab-wpoa-font-semibold wpab-wpoa-text-[12px] wpab-wpoa-uppercase wpab-wpoa-tracking-wider">
+                        <span className="opopw-flex opopw-items-center opopw-gap-1.5 opopw-text-slate-700 opopw-font-semibold opopw-text-[12px] opopw-uppercase opopw-tracking-wider">
                           <Scale
                             size={13}
-                            className="wpab-wpoa-text-amber-500"
+                            className="opopw-text-amber-500"
                           />
                           {__("Weight (kg)", "optionbay-product-options-addons-woo")}
                         </span>
                       ),
                       render: () => (
-                        <div className="wpab-wpoa-max-w-xs">
+                        <div className="opopw-max-w-xs">
                           <ClassicInput
                             type="number"
                             size="regular"
@@ -315,16 +315,16 @@ export const OptionEditorAccordion: React.FC<OptionEditorAccordionProps> = ({
                     },
                     {
                       label: (
-                        <span className="wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-gap-1.5 wpab-wpoa-text-slate-700 wpab-wpoa-font-semibold wpab-wpoa-text-[12px] wpab-wpoa-uppercase wpab-wpoa-tracking-wider">
+                        <span className="opopw-flex opopw-items-center opopw-gap-1.5 opopw-text-slate-700 opopw-font-semibold opopw-text-[12px] opopw-uppercase opopw-tracking-wider">
                           <Package
                             size={13}
-                            className="wpab-wpoa-text-emerald-500"
+                            className="opopw-text-emerald-500"
                           />
                           {__("Stock Tracking", "optionbay-product-options-addons-woo")}
                         </span>
                       ),
                       render: () => (
-                        <div className="wpab-wpoa-flex wpab-wpoa-flex-col wpab-wpoa-gap-3">
+                        <div className="opopw-flex opopw-flex-col opopw-gap-3">
                           <ClassicCheckbox
                             label={__("Enable Stock Tracking", "optionbay-product-options-addons-woo")}
                             checked={opt.enable_stock || false}
@@ -346,9 +346,9 @@ export const OptionEditorAccordion: React.FC<OptionEditorAccordionProps> = ({
                           />
 
                           {opt.enable_stock && (
-                            <div className="wpab-wpoa-flex wpab-wpoa-flex-col wpab-wpoa-gap-4 wpab-wpoa-max-w-md">
-                              <div className="wpab-wpoa-flex wpab-wpoa-flex-col wpab-wpoa-gap-1">
-                                <label className="wpab-wpoa-text-[11px] wpab-wpoa-text-gray-500 wpab-wpoa-font-semibold wpab-wpoa-uppercase wpab-wpoa-tracking-wider">
+                            <div className="opopw-flex opopw-flex-col opopw-gap-4 opopw-max-w-md">
+                              <div className="opopw-flex opopw-flex-col opopw-gap-1">
+                                <label className="opopw-text-[11px] opopw-text-gray-500 opopw-font-semibold opopw-uppercase opopw-tracking-wider">
                                   {__("Select Pool", "optionbay-product-options-addons-woo")}
                                 </label>
                                 <InventoryPicker
@@ -371,8 +371,8 @@ export const OptionEditorAccordion: React.FC<OptionEditorAccordionProps> = ({
                                 />
                               </div>
 
-                              <div className="wpab-wpoa-flex wpab-wpoa-flex-col wpab-wpoa-gap-1">
-                                <label className="wpab-wpoa-text-[11px] wpab-wpoa-text-gray-500 wpab-wpoa-font-semibold wpab-wpoa-uppercase wpab-wpoa-tracking-wider">
+                              <div className="opopw-flex opopw-flex-col opopw-gap-1">
+                                <label className="opopw-text-[11px] opopw-text-gray-500 opopw-font-semibold opopw-uppercase opopw-tracking-wider">
                                   {__("Reduction Mode", "optionbay-product-options-addons-woo")}
                                 </label>
                                 <ClassicSelect
@@ -406,30 +406,30 @@ export const OptionEditorAccordion: React.FC<OptionEditorAccordionProps> = ({
                     },
                     {
                       label: (
-                        <span className="wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-gap-1.5 wpab-wpoa-text-slate-700 wpab-wpoa-font-semibold wpab-wpoa-text-[12px] wpab-wpoa-uppercase wpab-wpoa-tracking-wider">
+                        <span className="opopw-flex opopw-items-center opopw-gap-1.5 opopw-text-slate-700 opopw-font-semibold opopw-text-[12px] opopw-uppercase opopw-tracking-wider">
                           <Image
                             size={13}
-                            className="wpab-wpoa-text-sky-500"
+                            className="opopw-text-sky-500"
                           />
                           {__("Product Image", "optionbay-product-options-addons-woo")}
                         </span>
                       ),
                       render: () => (
-                        <div className="wpab-wpoa-flex wpab-wpoa-flex-col wpab-wpoa-gap-2">
-                          <p className="wpab-wpoa-text-[12px] wpab-wpoa-text-slate-500 wpab-wpoa-m-0">
+                        <div className="opopw-flex opopw-flex-col opopw-gap-2">
+                          <p className="opopw-text-[12px] opopw-text-slate-500 opopw-m-0">
                             {__("Link a product image to this choice. When a customer selects this option, the main product image will swap to this image.", "optionbay-product-options-addons-woo")}
                           </p>
                           {opt.linked_image_url ? (
-                            <div className="wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-gap-3">
+                            <div className="opopw-flex opopw-items-center opopw-gap-3">
                               <div
-                                className="wpab-wpoa-relative wpab-wpoa-w-16 wpab-wpoa-h-16 wpab-wpoa-rounded-[8px] wpab-wpoa-border wpab-wpoa-border-[#c3c4c7] wpab-wpoa-overflow-hidden wpab-wpoa-cursor-pointer hover:wpab-wpoa-border-[#2271b1] wpab-wpoa-transition-colors wpab-wpoa-group/linked"
+                                className="opopw-relative opopw-w-16 opopw-h-16 opopw-rounded-[8px] opopw-border opopw-border-[#c3c4c7] opopw-overflow-hidden opopw-cursor-pointer hover:opopw-border-[#2271b1] opopw-transition-colors opopw-group/linked"
                                 onClick={() => openLinkedImageLibrary(idx)}
                                 title={__("Change linked image", "optionbay-product-options-addons-woo")}
                               >
                                 <img
                                   src={opt.linked_image_url}
                                   alt={opt.label || "linked"}
-                                  className="wpab-wpoa-w-full wpab-wpoa-h-full wpab-wpoa-object-cover"
+                                  className="opopw-w-full opopw-h-full opopw-object-cover"
                                 />
                               </div>
                               <button
@@ -447,7 +447,7 @@ export const OptionEditorAccordion: React.FC<OptionEditorAccordionProps> = ({
                                     },
                                   })
                                 }
-                                className="wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-gap-1 wpab-wpoa-text-[12px] wpab-wpoa-text-[#d63638] hover:wpab-wpoa-text-[#b32d2e] wpab-wpoa-bg-transparent wpab-wpoa-border-none wpab-wpoa-cursor-pointer wpab-wpoa-transition-colors"
+                                className="opopw-flex opopw-items-center opopw-gap-1 opopw-text-[12px] opopw-text-[#d63638] hover:opopw-text-[#b32d2e] opopw-bg-transparent opopw-border-none opopw-cursor-pointer opopw-transition-colors"
                               >
                                 <X size={12} />
                                 {__("Remove", "optionbay-product-options-addons-woo")}
@@ -457,7 +457,7 @@ export const OptionEditorAccordion: React.FC<OptionEditorAccordionProps> = ({
                             <button
                               type="button"
                               onClick={() => openLinkedImageLibrary(idx)}
-                              className="wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-gap-2 wpab-wpoa-px-3 wpab-wpoa-py-2 wpab-wpoa-rounded-[8px] wpab-wpoa-border wpab-wpoa-border-dashed wpab-wpoa-border-[#c3c4c7] wpab-wpoa-bg-[#f6f7f7] wpab-wpoa-text-[13px] wpab-wpoa-text-[#646970] hover:wpab-wpoa-border-[#2271b1] hover:wpab-wpoa-text-[#2271b1] wpab-wpoa-transition-colors wpab-wpoa-cursor-pointer wpab-wpoa-w-fit"
+                              className="opopw-flex opopw-items-center opopw-gap-2 opopw-px-3 opopw-py-2 opopw-rounded-[8px] opopw-border opopw-border-dashed opopw-border-[#c3c4c7] opopw-bg-[#f6f7f7] opopw-text-[13px] opopw-text-[#646970] hover:opopw-border-[#2271b1] hover:opopw-text-[#2271b1] opopw-transition-colors opopw-cursor-pointer opopw-w-fit"
                             >
                               <ImagePlus size={14} />
                               {__("Select Product Image", "optionbay-product-options-addons-woo")}
@@ -474,11 +474,11 @@ export const OptionEditorAccordion: React.FC<OptionEditorAccordionProps> = ({
                         <div
                           ref={providedDrag.innerRef}
                           {...providedDrag.draggableProps}
-                          className={`wpab-wpoa-border wpab-wpoa-border-[#c3c4c7] wpab-wpoa-rounded-[12px] wpab-wpoa-bg-white wpab-wpoa-overflow-hidden wpab-wpoa-mb-2 wpab-wpoa-transition-all wpab-wpoa-duration-200 ${snapshot.isDragging
-                            ? "wpab-wpoa-shadow-2xl wpab-wpoa-border-[#2271b1] wpab-wpoa-ring-2 wpab-wpoa-ring-[#2271b1]/20 wpab-wpoa-z-50"
+                          className={`opopw-border opopw-border-[#c3c4c7] opopw-rounded-[12px] opopw-bg-white opopw-overflow-hidden opopw-mb-2 opopw-transition-all opopw-duration-200 ${snapshot.isDragging
+                            ? "opopw-shadow-2xl opopw-border-[#2271b1] opopw-ring-2 opopw-ring-[#2271b1]/20 opopw-z-50"
                             : isExpanded
-                              ? "wpab-wpoa-shadow-lg wpab-wpoa-border-[#2271b1] wpab-wpoa-ring-1 wpab-wpoa-ring-[#2271b1]/10"
-                              : "hover:wpab-wpoa-border-slate-400 hover:wpab-wpoa-shadow-md wpab-wpoa-shadow-[0_2px_5px_rgba(0,0,0,0.03)]"
+                              ? "opopw-shadow-lg opopw-border-[#2271b1] opopw-ring-1 opopw-ring-[#2271b1]/10"
+                              : "hover:opopw-border-slate-400 hover:opopw-shadow-md opopw-shadow-[0_2px_5px_rgba(0,0,0,0.03)]"
                             }`}
                         >
                           {/* Header Row */}
@@ -486,38 +486,38 @@ export const OptionEditorAccordion: React.FC<OptionEditorAccordionProps> = ({
                             onClick={() =>
                               setExpandedIndex(isExpanded ? null : idx)
                             }
-                            className={`wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-justify-between wpab-wpoa-py-3 wpab-wpoa-px-4 wpab-wpoa-transition-all wpab-wpoa-duration-200 wpab-wpoa-cursor-pointer ${isExpanded
-                              ? "wpab-wpoa-bg-[#f0f6fc] wpab-wpoa-border-b wpab-wpoa-border-[#e2e8f0]"
-                              : "wpab-wpoa-bg-[#f6f7f7] hover:wpab-wpoa-bg-[#f0f6fc]"
+                            className={`opopw-flex opopw-items-center opopw-justify-between opopw-py-3 opopw-px-4 opopw-transition-all opopw-duration-200 opopw-cursor-pointer ${isExpanded
+                              ? "opopw-bg-[#f0f6fc] opopw-border-b opopw-border-[#e2e8f0]"
+                              : "opopw-bg-[#f6f7f7] hover:opopw-bg-[#f0f6fc]"
                               }`}
                           >
-                            <div className="wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-gap-4 wpab-wpoa-flex-1">
+                            <div className="opopw-flex opopw-items-center opopw-gap-4 opopw-flex-1">
                               {/* Drag Handle Indicator */}
                               <div
                                 {...providedDrag.dragHandleProps}
-                                className="wpab-wpoa-text-gray-300 wpab-wpoa-cursor-grab active:wpab-wpoa-cursor-grabbing hover:wpab-wpoa-text-gray-400 wpab-wpoa-shrink-0 wpab-wpoa-flex wpab-wpoa-items-center"
+                                className="opopw-text-gray-300 opopw-cursor-grab active:opopw-cursor-grabbing hover:opopw-text-gray-400 opopw-shrink-0 opopw-flex opopw-items-center"
                               >
                                 <GripVertical size={16} />
                               </div>
 
                               {/* Choice Index Label */}
-                              <span className="wpab-wpoa-text-[11px] wpab-wpoa-font-bold wpab-wpoa-text-slate-400 wpab-wpoa-w-5 wpab-wpoa-text-center">
+                              <span className="opopw-text-[11px] opopw-font-bold opopw-text-slate-400 opopw-w-5 opopw-text-center">
                                 #{idx + 1}
                               </span>
 
                               {/* Color Swatch Picker */}
                               {isColorSwatch && (
                                 <div
-                                  className="wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-gap-2 wpab-wpoa-shrink-0"
+                                  className="opopw-flex opopw-items-center opopw-gap-2 opopw-shrink-0"
                                   onClick={(e) => e.stopPropagation()}
                                 >
                                   <label
-                                    className={`wpab-wpoa-block wpab-wpoa-w-6 wpab-wpoa-h-6 wpab-wpoa-rounded-full wpab-wpoa-border ${state.errors?.[
+                                    className={`opopw-block opopw-w-6 opopw-h-6 opopw-rounded-full opopw-border ${state.errors?.[
                                       `schema.${fieldIndex}.options.${idx}.color`
                                     ]
-                                      ? "wpab-wpoa-border-red-400"
-                                      : "wpab-wpoa-border-[#c3c4c7]"
-                                      } wpab-wpoa-cursor-pointer wpab-wpoa-overflow-hidden hover:wpab-wpoa-border-[#2271b1] wpab-wpoa-transition-colors`}
+                                      ? "opopw-border-red-400"
+                                      : "opopw-border-[#c3c4c7]"
+                                      } opopw-cursor-pointer opopw-overflow-hidden hover:opopw-border-[#2271b1] opopw-transition-colors`}
                                     style={{
                                       backgroundColor: opt.color || "#ffffff",
                                     }}
@@ -536,10 +536,10 @@ export const OptionEditorAccordion: React.FC<OptionEditorAccordionProps> = ({
                                           },
                                         })
                                       }
-                                      className="wpab-wpoa-opacity-0 wpab-wpoa-w-0 wpab-wpoa-h-0 wpab-wpoa-absolute"
+                                      className="opopw-opacity-0 opopw-w-0 opopw-h-0 opopw-absolute"
                                     />
                                   </label>
-                                  <span className="wpab-wpoa-text-[11px] wpab-wpoa-font-mono wpab-wpoa-text-slate-400 wpab-wpoa-hidden md:wpab-wpoa-inline">
+                                  <span className="opopw-text-[11px] opopw-font-mono opopw-text-slate-400 opopw-hidden md:opopw-inline">
                                     {opt.color || "#ffffff"}
                                   </span>
                                 </div>
@@ -552,33 +552,33 @@ export const OptionEditorAccordion: React.FC<OptionEditorAccordionProps> = ({
                                     e.stopPropagation();
                                     openMediaLibrary(idx);
                                   }}
-                                  className="wpab-wpoa-shrink-0"
+                                  className="opopw-shrink-0"
                                 >
                                   {opt.image_url ? (
                                     <div
-                                      className={`wpab-wpoa-relative wpab-wpoa-w-8 wpab-wpoa-h-8 wpab-wpoa-rounded-[6px] wpab-wpoa-border ${state.errors?.[
+                                      className={`opopw-relative opopw-w-8 opopw-h-8 opopw-rounded-[6px] opopw-border ${state.errors?.[
                                         `schema.${fieldIndex}.options.${idx}.image_url`
                                       ]
-                                        ? "wpab-wpoa-border-red-400"
-                                        : "wpab-wpoa-border-[#c3c4c7]"
-                                        } wpab-wpoa-overflow-hidden hover:wpab-wpoa-border-[#2271b1] wpab-wpoa-transition-colors wpab-wpoa-cursor-pointer`}
+                                        ? "opopw-border-red-400"
+                                        : "opopw-border-[#c3c4c7]"
+                                        } opopw-overflow-hidden hover:opopw-border-[#2271b1] opopw-transition-colors opopw-cursor-pointer`}
                                       title={__("Change image", "optionbay-product-options-addons-woo")}
                                     >
                                       <img
                                         src={opt.image_url}
                                         alt={opt.label || "swatch"}
-                                        className="wpab-wpoa-w-full wpab-wpoa-h-full wpab-wpoa-object-cover"
+                                        className="opopw-w-full opopw-h-full opopw-object-cover"
                                       />
                                     </div>
                                   ) : (
                                     <button
                                       type="button"
-                                      className={`wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-justify-center wpab-wpoa-w-8 wpab-wpoa-h-8 wpab-wpoa-rounded-[6px] wpab-wpoa-border wpab-wpoa-border-dashed ${state.errors?.[
+                                      className={`opopw-flex opopw-items-center opopw-justify-center opopw-w-8 opopw-h-8 opopw-rounded-[6px] opopw-border opopw-border-dashed ${state.errors?.[
                                         `schema.${fieldIndex}.options.${idx}.image_url`
                                       ]
-                                        ? "wpab-wpoa-border-red-400"
-                                        : "wpab-wpoa-border-[#c3c4c7]"
-                                        } wpab-wpoa-bg-white wpab-wpoa-text-[#646970] hover:wpab-wpoa-border-[#2271b1] hover:wpab-wpoa-text-[#2271b1] wpab-wpoa-transition-colors wpab-wpoa-cursor-pointer`}
+                                        ? "opopw-border-red-400"
+                                        : "opopw-border-[#c3c4c7]"
+                                        } opopw-bg-white opopw-text-[#646970] hover:opopw-border-[#2271b1] hover:opopw-text-[#2271b1] opopw-transition-colors opopw-cursor-pointer`}
                                       title={__("Upload image", "optionbay-product-options-addons-woo")}
                                     >
                                       <ImagePlus size={13} />
@@ -620,12 +620,12 @@ export const OptionEditorAccordion: React.FC<OptionEditorAccordionProps> = ({
                               </div>
 
                               {/* Badges Summary row */}
-                              <div className="wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-gap-1.5 wpab-wpoa-flex-wrap">
+                              <div className="opopw-flex opopw-items-center opopw-gap-1.5 opopw-flex-wrap">
                                 {/* Price Badge */}
                                 {(() => {
                                   if (opt.price_type === "none") {
                                     return (
-                                      <span className="wpab-wpoa-inline-flex wpab-wpoa-items-center wpab-wpoa-px-2.5 wpab-wpoa-py-0.5 wpab-wpoa-rounded-[6px] wpab-wpoa-text-[11px] wpab-wpoa-font-semibold wpab-wpoa-bg-[#f1f5f9] wpab-wpoa-text-slate-500 wpab-wpoa-border wpab-wpoa-border-slate-200/50">
+                                      <span className="opopw-inline-flex opopw-items-center opopw-px-2.5 opopw-py-0.5 opopw-rounded-[6px] opopw-text-[11px] opopw-font-semibold opopw-bg-[#f1f5f9] opopw-text-slate-500 opopw-border opopw-border-slate-200/50">
                                         {__("No Price", "optionbay-product-options-addons-woo")}
                                       </span>
                                     );
@@ -636,8 +636,8 @@ export const OptionEditorAccordion: React.FC<OptionEditorAccordionProps> = ({
                                     )?.label || opt.price_type;
                                   const displayPrice = `$${(opt.price ?? 0).toFixed(2)}`;
                                   return (
-                                    <span className="wpab-wpoa-inline-flex wpab-wpoa-items-center wpab-wpoa-px-2.5 wpab-wpoa-py-0.5 wpab-wpoa-rounded-[6px] wpab-wpoa-text-[11px] wpab-wpoa-font-semibold wpab-wpoa-bg-indigo-50 wpab-wpoa-text-indigo-700 wpab-wpoa-border wpab-wpoa-border-indigo-100/80">
-                                      <Tag className="wpab-wpoa-w-3 wpab-wpoa-h-3 wpab-wpoa-mr-1.5 wpab-wpoa-shrink-0 wpab-wpoa-text-indigo-500" />
+                                    <span className="opopw-inline-flex opopw-items-center opopw-px-2.5 opopw-py-0.5 opopw-rounded-[6px] opopw-text-[11px] opopw-font-semibold opopw-bg-indigo-50 opopw-text-indigo-700 opopw-border opopw-border-indigo-100/80">
+                                      <Tag className="opopw-w-3 opopw-h-3 opopw-mr-1.5 opopw-shrink-0 opopw-text-indigo-500" />
                                       {displayPrice} ({priceLabel})
                                     </span>
                                   );
@@ -645,24 +645,24 @@ export const OptionEditorAccordion: React.FC<OptionEditorAccordionProps> = ({
 
                                 {/* Stock Badge */}
                                 {opt.enable_stock && (
-                                  <span className="wpab-wpoa-inline-flex wpab-wpoa-items-center wpab-wpoa-px-2.5 wpab-wpoa-py-0.5 wpab-wpoa-rounded-[6px] wpab-wpoa-text-[11px] wpab-wpoa-font-semibold wpab-wpoa-bg-emerald-50 wpab-wpoa-text-emerald-700 wpab-wpoa-border wpab-wpoa-border-emerald-100/80">
-                                    <Package className="wpab-wpoa-w-3 wpab-wpoa-h-3 wpab-wpoa-mr-1.5 wpab-wpoa-shrink-0 wpab-wpoa-text-emerald-500" />
+                                  <span className="opopw-inline-flex opopw-items-center opopw-px-2.5 opopw-py-0.5 opopw-rounded-[6px] opopw-text-[11px] opopw-font-semibold opopw-bg-emerald-50 opopw-text-emerald-700 opopw-border opopw-border-emerald-100/80">
+                                    <Package className="opopw-w-3 opopw-h-3 opopw-mr-1.5 opopw-shrink-0 opopw-text-emerald-500" />
                                     {__("Stock Enabled", "optionbay-product-options-addons-woo")}
                                   </span>
                                 )}
 
                                 {/* Weight Badge */}
                                 {opt.weight && opt.weight > 0 ? (
-                                  <span className="wpab-wpoa-inline-flex wpab-wpoa-items-center wpab-wpoa-px-2.5 wpab-wpoa-py-0.5 wpab-wpoa-rounded-[6px] wpab-wpoa-text-[11px] wpab-wpoa-font-semibold wpab-wpoa-bg-amber-50 wpab-wpoa-text-amber-700 wpab-wpoa-border wpab-wpoa-border-amber-100/80">
-                                    <Scale className="wpab-wpoa-w-3 wpab-wpoa-h-3 wpab-wpoa-mr-1.5 wpab-wpoa-shrink-0 wpab-wpoa-text-amber-500" />
+                                  <span className="opopw-inline-flex opopw-items-center opopw-px-2.5 opopw-py-0.5 opopw-rounded-[6px] opopw-text-[11px] opopw-font-semibold opopw-bg-amber-50 opopw-text-amber-700 opopw-border opopw-border-amber-100/80">
+                                    <Scale className="opopw-w-3 opopw-h-3 opopw-mr-1.5 opopw-shrink-0 opopw-text-amber-500" />
                                     {opt.weight} {__("kg", "optionbay-product-options-addons-woo")}
                                   </span>
                                 ) : null}
 
                                 {/* Linked Product Image Badge */}
                                 {opt.linked_image_url && (
-                                  <span className="wpab-wpoa-inline-flex wpab-wpoa-items-center wpab-wpoa-px-2.5 wpab-wpoa-py-0.5 wpab-wpoa-rounded-[6px] wpab-wpoa-text-[11px] wpab-wpoa-font-semibold wpab-wpoa-bg-sky-50 wpab-wpoa-text-sky-700 wpab-wpoa-border wpab-wpoa-border-sky-100/80">
-                                    <Image className="wpab-wpoa-w-3 wpab-wpoa-h-3 wpab-wpoa-mr-1.5 wpab-wpoa-shrink-0 wpab-wpoa-text-sky-500" />
+                                  <span className="opopw-inline-flex opopw-items-center opopw-px-2.5 opopw-py-0.5 opopw-rounded-[6px] opopw-text-[11px] opopw-font-semibold opopw-bg-sky-50 opopw-text-sky-700 opopw-border opopw-border-sky-100/80">
+                                    <Image className="opopw-w-3 opopw-h-3 opopw-mr-1.5 opopw-shrink-0 opopw-text-sky-500" />
                                     {__("Image Linked", "optionbay-product-options-addons-woo")}
                                   </span>
                                 )}
@@ -671,7 +671,7 @@ export const OptionEditorAccordion: React.FC<OptionEditorAccordionProps> = ({
 
                             {/* Right Header Actions */}
                             <div
-                              className="wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-gap-1.5"
+                              className="opopw-flex opopw-items-center opopw-gap-1.5"
                               onClick={(e) => e.stopPropagation()}
                             >
                               {/* Expand/Collapse Chevron */}
@@ -680,7 +680,7 @@ export const OptionEditorAccordion: React.FC<OptionEditorAccordionProps> = ({
                                 onClick={() =>
                                   setExpandedIndex(isExpanded ? null : idx)
                                 }
-                                className="wpab-wpoa-bg-transparent wpab-wpoa-border-none wpab-wpoa-cursor-pointer wpab-wpoa-p-1.5 wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-justify-center wpab-wpoa-rounded-[6px] wpab-wpoa-text-[#646970] hover:wpab-wpoa-text-[#2271b1] hover:wpab-wpoa-bg-[#e2e8f0] wpab-wpoa-transition-colors"
+                                className="opopw-bg-transparent opopw-border-none opopw-cursor-pointer opopw-p-1.5 opopw-flex opopw-items-center opopw-justify-center opopw-rounded-[6px] opopw-text-[#646970] hover:opopw-text-[#2271b1] hover:opopw-bg-[#e2e8f0] opopw-transition-colors"
                                 title={
                                   isExpanded
                                     ? __("Collapse settings", "optionbay-product-options-addons-woo")
@@ -704,7 +704,7 @@ export const OptionEditorAccordion: React.FC<OptionEditorAccordionProps> = ({
                                     payload: { fieldId, optionIndex: idx },
                                   });
                                 }}
-                                className="wpab-wpoa-bg-transparent wpab-wpoa-border-none wpab-wpoa-cursor-pointer wpab-wpoa-p-1.5 wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-justify-center wpab-wpoa-rounded-[6px] wpab-wpoa-text-[#d63638] hover:wpab-wpoa-text-[#b32d2e] hover:wpab-wpoa-bg-[#fcf0f1] wpab-wpoa-transition-colors"
+                                className="opopw-bg-transparent opopw-border-none opopw-cursor-pointer opopw-p-1.5 opopw-flex opopw-items-center opopw-justify-center opopw-rounded-[6px] opopw-text-[#d63638] hover:opopw-text-[#b32d2e] hover:opopw-bg-[#fcf0f1] opopw-transition-colors"
                                 title={__("Remove choice", "optionbay-product-options-addons-woo")}
                               >
                                 <Trash2 size={16} />
@@ -714,7 +714,7 @@ export const OptionEditorAccordion: React.FC<OptionEditorAccordionProps> = ({
 
                           {/* Details Expanded Panel */}
                           {isExpanded && (
-                            <div className="wpab-wpoa-accordion-choice-details wpab-wpoa-p-0 wpab-wpoa-px-4 wpab-wpoa-bg-[#fdfdfd] wpab-wpoa-border-t wpab-wpoa-border-[#e2e8f0]">
+                            <div className="opopw-accordion-choice-details opopw-p-0 opopw-px-4 opopw-bg-[#fdfdfd] opopw-border-t opopw-border-[#e2e8f0]">
                               <ClassicSettingsTable fields={settingsFields} />
                             </div>
                           )}
@@ -724,7 +724,7 @@ export const OptionEditorAccordion: React.FC<OptionEditorAccordionProps> = ({
                   );
                 })
               ) : (
-                <div className="wpab-wpoa-border wpab-wpoa-border-[#c3c4c7] wpab-wpoa-rounded-[12px] wpab-wpoa-p-8 wpab-wpoa-text-center wpab-wpoa-text-[#94a3b8] wpab-wpoa-italic wpab-wpoa-bg-white wpab-wpoa-mb-2 wpab-wpoa-shadow-[0_2px_4px_rgba(0,0,0,0.01)]">
+                <div className="opopw-border opopw-border-[#c3c4c7] opopw-rounded-[12px] opopw-p-8 opopw-text-center opopw-text-[#94a3b8] opopw-italic opopw-bg-white opopw-mb-2 opopw-shadow-[0_2px_4px_rgba(0,0,0,0.01)]">
                   {__("No choices added yet.", "optionbay-product-options-addons-woo")}
                 </div>
               )}
@@ -735,7 +735,7 @@ export const OptionEditorAccordion: React.FC<OptionEditorAccordionProps> = ({
       </DragDropContext>
 
       {/* Footer / Add Choice */}
-      <div className="wpab-wpoa-flex wpab-wpoa-justify-start">
+      <div className="opopw-flex opopw-justify-start">
         <ClassicButton
           variant="secondary"
           onClick={() => {
@@ -754,7 +754,7 @@ export const OptionEditorAccordion: React.FC<OptionEditorAccordionProps> = ({
             setExpandedIndex(nextIdx);
           }}
         >
-          <CirclePlus className="wpab-wpoa-size-4" />{" "}
+          <CirclePlus className="opopw-size-4" />{" "}
           {__("Add Choice", "optionbay-product-options-addons-woo")}
         </ClassicButton>
       </div>

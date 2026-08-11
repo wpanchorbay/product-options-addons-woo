@@ -60,66 +60,66 @@ export const Popover: React.FC< PopoverProps > = ( {
 	switch ( align ) {
 		case 'top':
 			positionClasses =
-				'wpab-wpoa-bottom-full wpab-wpoa-mb-2 wpab-wpoa-left-1/2 wpab-wpoa--translate-x-1/2';
-			originClass = 'wpab-wpoa-origin-bottom';
+				'opopw-bottom-full opopw-mb-2 opopw-left-1/2 opopw--translate-x-1/2';
+			originClass = 'opopw-origin-bottom';
 			break;
 		case 'top-left':
 			positionClasses =
-				'wpab-wpoa-bottom-full wpab-wpoa-mb-2 wpab-wpoa-left-0';
-			originClass = 'wpab-wpoa-origin-bottom-left';
+				'opopw-bottom-full opopw-mb-2 opopw-left-0';
+			originClass = 'opopw-origin-bottom-left';
 			break;
 		case 'top-right':
 			positionClasses =
-				'wpab-wpoa-bottom-full wpab-wpoa-mb-2 wpab-wpoa-right-0';
-			originClass = 'wpab-wpoa-origin-bottom-right';
+				'opopw-bottom-full opopw-mb-2 opopw-right-0';
+			originClass = 'opopw-origin-bottom-right';
 			break;
 		case 'bottom':
 			positionClasses =
-				'wpab-wpoa-top-full wpab-wpoa-mt-2 wpab-wpoa-left-1/2 wpab-wpoa--translate-x-1/2';
-			originClass = 'wpab-wpoa-origin-top';
+				'opopw-top-full opopw-mt-2 opopw-left-1/2 opopw--translate-x-1/2';
+			originClass = 'opopw-origin-top';
 			break;
 		case 'bottom-left':
 			positionClasses =
-				'wpab-wpoa-top-full wpab-wpoa-mt-2 wpab-wpoa-left-0';
-			originClass = 'wpab-wpoa-origin-top-left';
+				'opopw-top-full opopw-mt-2 opopw-left-0';
+			originClass = 'opopw-origin-top-left';
 			break;
 		case 'bottom-right':
 			positionClasses =
-				'wpab-wpoa-top-full wpab-wpoa-mt-2 wpab-wpoa-right-0';
-			originClass = 'wpab-wpoa-origin-top-right';
+				'opopw-top-full opopw-mt-2 opopw-right-0';
+			originClass = 'opopw-origin-top-right';
 			break;
 		case 'left':
 			positionClasses =
-				'wpab-wpoa-right-full wpab-wpoa-mr-2 wpab-wpoa-top-1/2 wpab-wpoa--translate-y-1/2';
-			originClass = 'wpab-wpoa-origin-right';
+				'opopw-right-full opopw-mr-2 opopw-top-1/2 opopw--translate-y-1/2';
+			originClass = 'opopw-origin-right';
 			break;
 		case 'right':
 			positionClasses =
-				'wpab-wpoa-left-full wpab-wpoa-ml-2 wpab-wpoa-top-1/2 wpab-wpoa--translate-y-1/2';
-			originClass = 'wpab-wpoa-origin-left';
+				'opopw-left-full opopw-ml-2 opopw-top-1/2 opopw--translate-y-1/2';
+			originClass = 'opopw-origin-left';
 			break;
 		default:
 			positionClasses =
-				'wpab-wpoa-top-full wpab-wpoa-mt-2 wpab-wpoa-left-0';
-			originClass = 'wpab-wpoa-origin-top-left';
+				'opopw-top-full opopw-mt-2 opopw-left-0';
+			originClass = 'opopw-origin-top-left';
 	}
 
 	// Transition classes (Opacity + Scale)
 	const transitionClasses = isOpen
-		? 'wpab-wpoa-opacity-100 wpab-wpoa-scale-100 wpab-wpoa-pointer-events-auto'
-		: 'wpab-wpoa-opacity-0 wpab-wpoa-scale-95 wpab-wpoa-pointer-events-none';
+		? 'opopw-opacity-100 opopw-scale-100 opopw-pointer-events-auto'
+		: 'opopw-opacity-0 opopw-scale-95 opopw-pointer-events-none';
 
 	return (
 		<div
 			ref={ containerRef }
-			className={ `wpab-wpoa-relative wpab-wpoa-inline-block ${ className } ${
+			className={ `opopw-relative opopw-inline-block ${ className } ${
 				classNames?.root || ''
 			}` }
 		>
 			{ /* Trigger Wrapper */ }
 			<div
 				onClick={ toggle }
-				className={ `wpab-wpoa-cursor-pointer wpab-wpoa-inline-flex ${
+				className={ `opopw-cursor-pointer opopw-inline-flex ${
 					classNames?.triggerWrapper || ''
 				}` }
 			>
@@ -129,9 +129,9 @@ export const Popover: React.FC< PopoverProps > = ( {
 			{ /* Dropdown Content */ }
 			<div
 				className={ `
-          wpab-wpoa-absolute wpab-wpoa-z-50 wpab-wpoa-w-48
-          wpab-wpoa-bg-white wpab-wpoa-rounded-xl wpab-wpoa-shadow-xl wpab-wpoa-border wpab-wpoa-border-default
-          wpab-wpoa-transition-all wpab-wpoa-duration-200 wpab-wpoa-ease-out
+          opopw-absolute opopw-z-50 opopw-w-48
+          opopw-bg-white opopw-rounded-xl opopw-shadow-xl opopw-border opopw-border-default
+          opopw-transition-all opopw-duration-200 opopw-ease-out
           ${ positionClasses }
           ${ originClass }
           ${ transitionClasses }

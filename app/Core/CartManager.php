@@ -198,6 +198,8 @@ class CartManager extends Base {
 				$field_id = $field_schema['id'];
 				$value    = $group_data[ $field_id ] ?? null;
 
+				$value = apply_filters( 'opopw_cart_validate_field_value', $value, $field_schema, $group_id );
+
 				$result = $field->validate( $value );
 				if ( is_wp_error( $result ) ) {
 					wc_add_notice( $result->get_error_message(), 'error' );
@@ -422,6 +424,8 @@ class CartManager extends Base {
 
 				$value = $group_data[ $field_id ] ?? null;
 
+				$value = apply_filters( 'opopw_cart_process_field_value', $value, $field_schema, $group_id );
+
 				// Only save non-empty values
 				if ( null !== $value && '' !== $value ) {
 					$sanitized_value = $field->sanitize( $value );
@@ -437,24 +441,28 @@ class CartManager extends Base {
 
 					$intents = array();
 					if ( ! empty( $field_schema['enable_stock'] ) && ! empty( $field_schema['inventory_id'] ) ) {
-						$intents[] = array(
+						$intent    = array(
 							'id'     => $field_schema['inventory_id'],
 							'mode'   => $field_schema['reduction_mode'] ?? 'per_item_qty',
 							'value'  => $sanitized_value,
 							'amount' => 1.0, // Base unit
 						);
+						$intent    = apply_filters( 'opopw_stock_reduction_intent', $intent, $field_schema, $sanitized_value );
+						$intents[] = $intent;
 					}
 
 					if ( in_array( $field_schema['type'], array( 'select', 'radio', 'checkbox', 'color_swatch', 'image_swatch' ), true ) ) {
 						$values_array = is_array( $sanitized_value ) ? $sanitized_value : array( $sanitized_value );
 						foreach ( $field_schema['options'] as $opt ) {
 							if ( in_array( $opt['value'], $values_array, true ) && ! empty( $opt['enable_stock'] ) && ! empty( $opt['inventory_id'] ) ) {
-								$intents[] = array(
+								$intent    = array(
 									'id'     => $opt['inventory_id'],
 									'mode'   => $opt['reduction_mode'] ?? 'per_item_qty',
 									'value'  => $opt['value'],
 									'amount' => 1.0,
 								);
+								$intent    = apply_filters( 'opopw_stock_reduction_intent', $intent, $opt, $opt['value'] );
+								$intents[] = $intent;
 							}
 						}
 					}
@@ -627,6 +635,8 @@ class CartManager extends Base {
 			foreach ( $cart_item[ self::CART_KEY ]['fields'] as $field ) {
 				$display = $field['display_value'];
 
+				$display = apply_filters( 'opopw_cart_display_field', $display, $field );
+
 				$item_data[] = array(
 					'name'    => $field['name'],
 					'value'   => $display,
@@ -662,6 +672,8 @@ class CartManager extends Base {
 			foreach ( $values[ self::CART_KEY ]['fields'] as $field ) {
 
 				$display = $field['display_value'];
+
+				$display = apply_filters( 'opopw_order_display_field', $display, $field );
 
 				$item->add_meta_data( $field['name'], $display );
 
@@ -770,15 +782,18 @@ class CartManager extends Base {
 
 	/**
 	 * Helper: Calculate reduction amount.
-	 */
-	/**
-	 * Helper: Calculate reduction amount.
 	 *
 	 * @param int    $qty     The quantity.
 	 * @param string $mode    The reduction mode.
+	 * @param array  $intent  The stock intent structure.
 	 * @return float
 	 */
-	private function calculate_reduction_amount( $qty, $mode ) {
+	private function calculate_reduction_amount( $qty, $mode, $intent = null ) {
+		$custom_amount = apply_filters( 'opopw_calculate_reduction', null, $qty, $mode, $intent );
+		if ( null !== $custom_amount ) {
+			return $custom_amount;
+		}
+
 		if ( 'per_line_item' === $mode ) {
 			return 1.0;
 		}
@@ -798,7 +813,7 @@ class CartManager extends Base {
 	private function calculate_total_intent_reduction( $intent, $quantity ) {
 		$mode = $intent['mode'] ?? 'per_item_qty';
 
-		return $this->calculate_reduction_amount( $quantity, $mode );
+		return $this->calculate_reduction_amount( $quantity, $mode, $intent );
 	}
 
 	/**

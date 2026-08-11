@@ -85,23 +85,23 @@ export const InventoryPicker: React.FC<InventoryPickerProps> = ({
         : "";
 
     return (
-      <div className="wpab-wpoa-flex wpab-wpoa-justify-between wpab-wpoa-items-center wpab-wpoa-w-full">
-        <div className="wpab-wpoa-flex wpab-wpoa-flex-col wpab-wpoa-py-0.5">
-          <span className="wpab-wpoa-font-semibold wpab-wpoa-text-sm wpab-wpoa-leading-tight">
+      <div className="opopw-flex opopw-justify-between opopw-items-center opopw-w-full">
+        <div className="opopw-flex opopw-flex-col opopw-py-0.5">
+          <span className="opopw-font-semibold opopw-text-sm opopw-leading-tight">
             {opt.label}
           </span>
           <span
-            className={`wpab-wpoa-text-[11px] wpab-wpoa-leading-tight ${
+            className={`opopw-text-[11px] opopw-leading-tight ${
               isOutOfStock
-                ? "wpab-wpoa-text-red-500 wpab-wpoa-font-medium"
-                : "wpab-wpoa-text-gray-400"
+                ? "opopw-text-red-500 opopw-font-medium"
+                : "opopw-text-gray-400"
             }`}
           >
             {`${idLabel}${stockLabel}`}
           </span>
         </div>
         {isOutOfStock && (
-          <span className="wpab-wpoa-bg-red-50 wpab-wpoa-text-red-600 wpab-wpoa-text-[9px] wpab-wpoa-font-bold wpab-wpoa-px-1.5 wpab-wpoa-py-0.5 wpab-wpoa-rounded-full wpab-wpoa-border wpab-wpoa-border-red-100">
+          <span className="opopw-bg-red-50 opopw-text-red-600 opopw-text-[9px] opopw-font-bold opopw-px-1.5 opopw-py-0.5 opopw-rounded-full opopw-border opopw-border-red-100">
             {__("OUT OF STOCK", "optionbay-product-options-addons-woo")}
           </span>
         )}
@@ -124,7 +124,7 @@ export const InventoryPicker: React.FC<InventoryPickerProps> = ({
         renderOption={renderInventoryOption as any}
         dropdownFooter={
           <div
-            className="wpab-wpoa-p-2 wpab-wpoa-text-[#2271b1] hover:wpab-wpoa-bg-[#f0f6fc] wpab-wpoa-cursor-pointer wpab-wpoa-text-sm wpab-wpoa-font-medium wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-gap-2"
+            className="opopw-p-2 opopw-text-[#2271b1] hover:opopw-bg-[#f0f6fc] opopw-cursor-pointer opopw-text-sm opopw-font-medium opopw-flex opopw-items-center opopw-gap-2"
             onClick={() => setIsCreating(true)}
           >
             <Plus size={14} />
@@ -135,26 +135,26 @@ export const InventoryPicker: React.FC<InventoryPickerProps> = ({
 
       {isCreating && (
         <div
-          className="wpab-wpoa-fixed wpab-wpoa-inset-0 wpab-wpoa-bg-black/50 wpab-wpoa-z-[9999999] wpab-wpoa-flex wpab-wpoa-items-center wpab-wpoa-justify-center"
+          className="opopw-fixed opopw-inset-0 opopw-bg-black/50 opopw-z-[9999999] opopw-flex opopw-items-center opopw-justify-center"
           onClick={() => setIsCreating(false)}
         >
           <div
-            className="wpab-wpoa-bg-white wpab-wpoa-p-5 wpab-wpoa-rounded-lg wpab-wpoa-shadow-xl wpab-wpoa-w-[400px] wpab-wpoa-max-w-[90vw] wpab-wpoa-flex wpab-wpoa-flex-col wpab-wpoa-gap-4"
+            className="opopw-bg-white opopw-p-5 opopw-rounded-lg opopw-shadow-xl opopw-w-[400px] opopw-max-w-[90vw] opopw-flex opopw-flex-col opopw-gap-4"
             onClick={(e) => e.stopPropagation()}
           >
-            <h4 className="wpab-wpoa-m-0 wpab-wpoa-text-sm wpab-wpoa-font-semibold">
+            <h4 className="opopw-m-0 opopw-text-sm opopw-font-semibold">
               {__("New Inventory Pool", "optionbay-product-options-addons-woo")}
             </h4>
 
             <div>
               <label
-                htmlFor="ob-new-inventory-name"
-                className="wpab-wpoa-text-xs wpab-wpoa-font-medium wpab-wpoa-mb-1 wpab-wpoa-block"
+                htmlFor="opopw-new-inventory-name"
+                className="opopw-text-xs opopw-font-medium opopw-mb-1 opopw-block"
               >
                 {__("Pool Name", "optionbay-product-options-addons-woo")}
               </label>
               <ClassicInput
-                id="ob-new-inventory-name"
+                id="opopw-new-inventory-name"
                 size="regular"
                 value={newName}
                 onChange={(e) => setNewName(e.target.value)}
@@ -162,16 +162,16 @@ export const InventoryPicker: React.FC<InventoryPickerProps> = ({
               />
             </div>
 
-            <div className="wpab-wpoa-flex wpab-wpoa-gap-4">
-              <div className="wpab-wpoa-flex-1">
+            <div className="opopw-flex opopw-gap-4">
+              <div className="opopw-flex-1">
                 <label
-                  htmlFor="ob-new-inventory-stock"
-                  className="wpab-wpoa-text-xs wpab-wpoa-font-medium wpab-wpoa-mb-1 wpab-wpoa-block"
+                  htmlFor="opopw-new-inventory-stock"
+                  className="opopw-text-xs opopw-font-medium opopw-mb-1 opopw-block"
                 >
                   {__("Initial Stock", "optionbay-product-options-addons-woo")}
                 </label>
                 <ClassicInput
-                  id="ob-new-inventory-stock"
+                  id="opopw-new-inventory-stock"
                   type="number"
                   step="any"
                   size="small"
@@ -179,7 +179,7 @@ export const InventoryPicker: React.FC<InventoryPickerProps> = ({
                   onChange={(e) => setNewStock(e.target.value)}
                 />
               </div>
-              <div className="wpab-wpoa-flex-1 wpab-wpoa-pt-5">
+              <div className="opopw-flex-1 opopw-pt-5">
                 <ClassicCheckbox
                   label={__("Backorders?", "optionbay-product-options-addons-woo")}
                   checked={newBackorders}
@@ -188,7 +188,7 @@ export const InventoryPicker: React.FC<InventoryPickerProps> = ({
               </div>
             </div>
 
-            <div className="wpab-wpoa-flex wpab-wpoa-gap-2 wpab-wpoa-justify-end wpab-wpoa-mt-2">
+            <div className="opopw-flex opopw-gap-2 opopw-justify-end opopw-mt-2">
               <ClassicButton
                 variant="secondary"
                 onClick={() => setIsCreating(false)}

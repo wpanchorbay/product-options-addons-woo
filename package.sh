@@ -16,15 +16,12 @@ ZIP_NAME="$PLUGIN_SLUG.zip"
 rm -rf dist
 rm -f $ZIP_NAME
 
-# Create staging directories
-mkdir -p "dist/wordpress/$PLUGIN_SLUG"
-mkdir -p "dist/woocommerce/$PLUGIN_SLUG"
-
 # Helper function to copy plugin files to a target path
 copy_plugin_files() {
     local DEST=$1
+    local TRIM=$2
     echo "Copying files to $DEST..."
-    
+
     # Copy folders
     cp -r app "$DEST/"
     cp -r languages "$DEST/"
@@ -36,26 +33,30 @@ copy_plugin_files() {
     # Copy files
     cp index.php "$DEST/"
     cp readme.txt "$DEST/"
-    cp changelog.txt "$DEST/"
     cp uninstall.php "$DEST/"
     cp optionbay-product-options-addons-woo.php "$DEST/"
     cp composer.json "$DEST/"
+    [ -f changelog.txt ] && cp changelog.txt "$DEST/"
+
+    # For the WordPress.org build, drop dev/debug artifacts that are never enqueued.
+    if [ "$TRIM" = "trim" ]; then
+        rm -f "$DEST"/build/*.map "$DEST"/build/*-legacy.js "$DEST"/build/*.LICENSE.txt
+    fi
 }
 
-# Copy files to both staging areas
-copy_plugin_files "dist/wordpress/$PLUGIN_SLUG"
-copy_plugin_files "dist/woocommerce/$PLUGIN_SLUG"
-
-# Create WordPress Zip
+# Create WordPress Zip (files at archive root -- no wrapping folder)
 echo "Creating WordPress zip..."
-cd dist/wordpress
-zip -r "$ZIP_NAME" "$PLUGIN_SLUG"
-# Remove the folder after zipping to leave only the zip in the subfolder
-rm -rf "$PLUGIN_SLUG"
-cd ../..
+mkdir -p "dist/wordpress/staging"
+copy_plugin_files "dist/wordpress/staging" "trim"
+cd dist/wordpress/staging
+zip -r "../$ZIP_NAME" .
+cd ../../..
+rm -rf "dist/wordpress/staging"
 
-# Create WooCommerce Zip
+# Create WooCommerce Zip (keeps the wrapping folder)
 echo "Creating WooCommerce zip..."
+mkdir -p "dist/woocommerce/$PLUGIN_SLUG"
+copy_plugin_files "dist/woocommerce/$PLUGIN_SLUG"
 cd dist/woocommerce
 zip -r "$ZIP_NAME" "$PLUGIN_SLUG"
 # Remove the folder after zipping to leave only the zip in the subfolder
@@ -67,4 +68,5 @@ echo "Done! Packages created successfully:"
 echo "- dist/wordpress/$ZIP_NAME"
 echo "- dist/woocommerce/$ZIP_NAME"
 echo ""
-echo "Note: The zip files now contain the required parent directory '$PLUGIN_SLUG'."
+echo "Note: WordPress zip has files at the archive root (no '$PLUGIN_SLUG/' folder);"
+echo "      WooCommerce zip keeps the '$PLUGIN_SLUG/' parent directory."

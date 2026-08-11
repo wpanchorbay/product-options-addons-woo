@@ -37,7 +37,7 @@ export const ExportCard: React.FC = () => {
 			
 			const a = document.createElement('a');
 			a.href = url;
-			a.download = `wpab-wpoa-export-${new Date().toISOString().split('T')[0]}.json`;
+			a.download = `opopw-export-${new Date().toISOString().split('T')[0]}.json`;
 			document.body.appendChild(a);
 			a.click();
 			document.body.removeChild(a);
@@ -53,8 +53,8 @@ export const ExportCard: React.FC = () => {
 	};
 
 	return (
-		<div className="wpab-wpoa-settings-section wpab-wpoa-mt-8">
-			<h2 className="wpab-wpoa-ignore-preflight">{__('Export Data', 'optionbay-product-options-addons-woo')}</h2>
+		<div className="opopw-settings-section opopw-mt-8">
+			<h2 className="opopw-ignore-preflight">{__('Export Data', 'optionbay-product-options-addons-woo')}</h2>
 			<p className="description">{__('Select which entities you want to export to a JSON file.', 'optionbay-product-options-addons-woo')}</p>
 			
 			<table className="form-table">
@@ -64,7 +64,7 @@ export const ExportCard: React.FC = () => {
 							<label>{__('Entities to Export', 'optionbay-product-options-addons-woo')}</label>
 						</th>
 						<td>
-							<div className="wpab-wpoa-flex wpab-wpoa-flex-col wpab-wpoa-gap-3">
+							<div className="opopw-flex opopw-flex-col opopw-gap-3">
 								<ClassicCheckbox
 									checked={exportGroups}
 									onChange={setExportGroups}
@@ -81,7 +81,7 @@ export const ExportCard: React.FC = () => {
 									label={__('Plugin Settings', 'optionbay-product-options-addons-woo')}
 								/>
 							</div>
-							<div className="wpab-wpoa-mt-4">
+							<div className="opopw-mt-4">
 								<ClassicButton
 									variant="primary"
 									onClick={handleExport}

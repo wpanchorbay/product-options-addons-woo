@@ -9,6 +9,7 @@ import {
 import { useToast } from '../store/toast/use-toast';
 import { __ } from '@wordpress/i18n';
 import apiFetch from '@wordpress/api-fetch';
+import { applyFilters } from '@wordpress/hooks';
 import { SkeletonSettings } from '../components/loading/SkeletonSettings';
 import { TopProgressBar } from '../components/loading/TopProgressBar';
 
@@ -128,7 +129,7 @@ const Settings: React.FC = () => {
 
 	if (isLoading) {
 		return (
-			<div className="wpab-wpoa-p-page-default">
+			<div className="opopw-p-page-default">
 				<SkeletonSettings />
 			</div>
 		);
@@ -136,14 +137,14 @@ const Settings: React.FC = () => {
 
 	if (!settings) {
 		return (
-			<div className="wpab-wpoa-p-page-default">
+			<div className="opopw-p-page-default">
 				<p>{__('Failed to load settings.', 'optionbay-product-options-addons-woo')}</p>
 			</div>
 		);
 	}
 
 	return (
-		<div className="wpab-wpoa-p-page-default wpab-wpoa-ignore-preflight">
+		<div className="opopw-p-page-default opopw-ignore-preflight">
 			<input
 				type="hidden"
 				name="opopw_has_changes"
@@ -165,7 +166,7 @@ const Settings: React.FC = () => {
 							'optionbay-product-options-addons-woo'
 						),
 						render: () => (
-							<div className="wpab-wpoa-max-w-[300px]">
+							<div className="opopw-max-w-[300px]">
 								<ClassicSelect
 									value={settings.global_optionsOrientation}
 									onChange={(val) =>
@@ -408,7 +409,9 @@ const Settings: React.FC = () => {
 			/>
 
 
-			<div className="wpab-wpoa-mt-8">
+			{applyFilters('opopw_settings_sections', null, settings, setSettings) as React.ReactNode}
+
+			<div className="opopw-mt-8">
 				{ /* Native WooCommerce save button is used instead */}
 			</div>
 		</div>
