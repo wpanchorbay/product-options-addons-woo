@@ -64,7 +64,11 @@ function opopw_run() {
 					array(
 						'plugin_file'           => OPOPW_PLUGIN_BASENAME,
 						'plugin_slug'           => OPOPW_PLUGIN_NAME,
-						'remote_endpoint'       => 'https://dfs.wpanchorbay.com',
+						// The receiver only answers on this route; the bare origin returns
+						// 400, and the POST is non-blocking so that failure never surfaced.
+						'remote_endpoint'       => 'https://dfs.wpanchorbay.com/wp-json/wpab/v1/feedback',
+						'disclosure_label'      => __( 'What information is sent?', 'optionbay-product-options-addons-woo' ),
+						'disclosure_text'       => __( 'Pressing submit sends the reason you select and any note you type, together with your site address, the email address of your account, and your WordPress version. Choose "Skip & Deactivate" to send nothing.', 'optionbay-product-options-addons-woo' ),
 						'reasons'               => array(
 							array(
 								'id'          => 'couldnt_get_working',
