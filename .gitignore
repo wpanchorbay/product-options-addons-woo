@@ -18,3 +18,5 @@ product-options-addons-woo.zip
 /tests/e2e/test-results/
 /tests/e2e/results/
 /.antigravitycli
+.playwright-mcp/
+graphify-out/
