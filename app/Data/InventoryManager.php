@@ -85,6 +85,10 @@ class InventoryManager {
 		);
 
 		if ( $item ) {
+			$item['id']               = (int) $item['id'];
+			$item['stock_count']      = (float) $item['stock_count'];
+			$item['allow_backorders'] = ! empty( $item['allow_backorders'] );
+
 			wp_cache_set( $cache_key, $item, 'opopw_inventory', 3600 );
 		}
 
@@ -127,7 +131,8 @@ class InventoryManager {
 	 * @since 1.0.0
 	 * @param int   $id   Inventory ID.
 	 * @param array $data Data to update.
-	 * @return int|false
+	 * @return int|false|null Number of rows affected, false on a real DB error,
+	 *                        or null if there was nothing to update.
 	 */
 	public function update_item( $id, $data ) {
 		global $wpdb;
@@ -153,7 +158,7 @@ class InventoryManager {
 		}
 
 		if ( empty( $update_data ) ) {
-			return false;
+			return null; // Nothing to update — not a failure.
 		}
 
 		$update_data['updated_at'] = current_time( 'mysql' );
@@ -290,7 +295,7 @@ class InventoryManager {
 		$table_name = DbManager::get_inventory_table();
 
 		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, PluginCheck.Security.DirectDB.UnescapedDBParameter
-		return $wpdb->get_results(
+		$results = $wpdb->get_results(
 			$wpdb->prepare(
 				// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, PluginCheck.Security.DirectDB.UnescapedDBParameter -- Internal table name is safe.
 				"SELECT id, name, stock_count, allow_backorders FROM $table_name WHERE name LIKE %s LIMIT %d",
@@ -299,6 +304,16 @@ class InventoryManager {
 			),
 			ARRAY_A
 		);
+
+		if ( is_array( $results ) ) {
+			foreach ( $results as &$row ) {
+				$row['id']               = (int) $row['id'];
+				$row['stock_count']      = (float) $row['stock_count'];
+				$row['allow_backorders'] = ! empty( $row['allow_backorders'] );
+			}
+		}
+
+		return $results;
 	}
 
 	/**

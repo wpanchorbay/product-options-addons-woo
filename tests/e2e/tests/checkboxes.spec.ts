@@ -17,12 +17,15 @@ test.describe('Checkboxes (multi) lifecycle', () => {
   test('Admin persistence', async ({ page }) => {
     const log = new TestLogger('checkboxes.spec.ts', 'Admin persistence');
     log.start();
+    await log.step(page, 1, 'Open builder, add Checkboxes field');
     await openNewGroup(page, `Checkboxes ${Date.now()}`);
     await addField(page, FIELD_BUTTON.checkbox);
     await setFieldLabel(page, 'Add-ons');
     await setChoiceLabel(page, 1, 'Engrave');
     await setGlobal(page);
     await saveGroup(page);
+
+    await log.step(page, 2, 'Reload + verify persistence');
     await page.reload();
     await page.locator('span:has-text("Add-ons")').click();
     await expect(page.locator('input[placeholder="Choice Label"]').first()).toHaveValue('Engrave');
@@ -32,6 +35,7 @@ test.describe('Checkboxes (multi) lifecycle', () => {
   test('Multiple priced choices sum → cart', async ({ page, renderMode }) => {
     const log = new TestLogger('checkboxes.spec.ts', `Priced choices [${renderMode}]`);
     log.start();
+    await log.step(page, 1, 'Build Checkboxes with two priced choices');
     await openNewGroup(page, `Checkboxes Fee ${Date.now()}`);
     await addField(page, FIELD_BUTTON.checkbox);
     await setFieldLabel(page, 'Extras');
@@ -43,6 +47,7 @@ test.describe('Checkboxes (multi) lifecycle', () => {
     await setGlobal(page);
     const groupId = await saveGroup(page);
 
+    await log.step(page, 2, 'On Product A, check both choices → live total sums');
     await page.goto('/product/product-a/');
     // Target by visible option label (value slugs are auto-derived; label is stable).
     const c1 = page.locator('form.cart label').filter({ hasText: 'Gift Wrap' }).locator('input[type="checkbox"]');
@@ -54,6 +59,7 @@ test.describe('Checkboxes (multi) lifecycle', () => {
     await c2.check();
     await expect(liveTotal).toContainText('115', { timeout: 10000 });
 
+    await log.step(page, 3, 'Add to cart + verify cart shows add-on');
     await addToCart(page);
     await expectCartShowsAddon(page, renderMode, { label: 'Extras', total: '115' });
     log.end('passed');

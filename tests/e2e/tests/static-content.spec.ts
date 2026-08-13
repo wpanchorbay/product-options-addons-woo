@@ -34,7 +34,7 @@ test.describe('Static Content lifecycle', () => {
     await setGlobal(page);
     await saveGroup(page);
 
-    log.step(1, 'Frontend renders the static content (no input)');
+    await log.step(page, 1, 'Frontend renders the static content (no input)');
     await page.goto('/product/product-c/');
     await page.waitForSelector('form.cart', { timeout: 20000 });
     await expect(page.locator('form.cart .opopw-static-content')).toContainText('Hand wash only', { timeout: 15000 });

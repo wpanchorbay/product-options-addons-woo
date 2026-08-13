@@ -4,7 +4,8 @@ import { ClassicButton, ClassicSelect, ClassicInput } from '../classics';
 import { useAddonContext, getDefaultField } from '../../store/AddonContext';
 import { FIELD_TYPES, FIELD_TYPE_ICONS } from './constants';
 import { FormError } from './FormError';
-import { Plus, X, CirclePlus } from 'lucide-react';
+import { getUpgradeUrl } from '../../utils/pro';
+import { Plus, X, CirclePlus, Lock } from 'lucide-react';
 
 export const BuilderSidebar: React.FC = () => {
 	const { state, dispatch } = useAddonContext();
@@ -67,26 +68,49 @@ export const BuilderSidebar: React.FC = () => {
 				</div>
 				<div className="opopw-p-[15px]">
 					<div className="opopw-grid opopw-grid-cols-2 opopw-gap-2">
-						{ FIELD_TYPES.map( ( ft ) => (
-							<ClassicButton
-								key={ ft.value }
-								variant="secondary"
-								onClick={ () => addField( ft.value ) }
-								className="!opopw-justify-center !opopw-py-4 !opopw-px-2 !opopw-h-auto !opopw-text-[13px] !opopw-gap-2 !opopw-flex !opopw-text-[#2271b1] !opopw-border-[#2271b1] hover:!opopw-text-[#135e96] hover:!opopw-bg-[#f6f7f7] !opopw-rounded-[3px] !opopw-font-medium"
-							>
-								<span className="opopw-flex opopw-flex-col opopw-justify-center opopw-items-center">
-									{ FIELD_TYPE_ICONS[ ft.value ] &&
-										React.createElement(
-											FIELD_TYPE_ICONS[ ft.value ],
-											{
-												className:
-													'opopw-size-5 opopw-shrink-0',
-											}
-										) }
-									<span>{ ft.label }</span>
-								</span>
-							</ClassicButton>
-						) ) }
+						{ FIELD_TYPES.map( ( ft ) => {
+							const isLocked = ft.variant === 'buy_pro';
+							return (
+								<ClassicButton
+									key={ ft.value }
+									variant="secondary"
+									onClick={ () =>
+										isLocked
+											? window.open( getUpgradeUrl(), '_blank' )
+											: addField( ft.value )
+									}
+									title={
+										isLocked
+											? __( 'Available in Pro', 'optionbay-product-options-addons-woo' )
+											: undefined
+									}
+									className={ `!opopw-justify-center !opopw-py-4 !opopw-px-2 !opopw-h-auto !opopw-text-[13px] !opopw-gap-2 !opopw-flex !opopw-rounded-[3px] !opopw-font-medium ${
+										isLocked
+											? '!opopw-text-[#a7aaad] !opopw-border-[#dcdcde] hover:!opopw-bg-[#f6f7f7]'
+											: '!opopw-text-[#2271b1] !opopw-border-[#2271b1] hover:!opopw-text-[#135e96] hover:!opopw-bg-[#f6f7f7]'
+									}` }
+								>
+									<span className="opopw-flex opopw-flex-col opopw-justify-center opopw-items-center opopw-gap-1">
+										{ FIELD_TYPE_ICONS[ ft.value ] &&
+											React.createElement(
+												FIELD_TYPE_ICONS[ ft.value ],
+												{
+													className:
+														'opopw-size-5 opopw-shrink-0',
+												}
+											) }
+										<span className="opopw-flex opopw-items-center opopw-gap-1">
+											{ ft.label }
+											{ isLocked && (
+												<span className="opopw-flex opopw-text-[#ffb900]">
+													<Lock size={ 12 } />
+												</span>
+											) }
+										</span>
+									</span>
+								</ClassicButton>
+							);
+						} ) }
 					</div>
 				</div>
 			</div>
@@ -125,28 +149,53 @@ export const BuilderSidebar: React.FC = () => {
 							</div>
 							<div className="opopw-p-[12px]">
 								<div className="opopw-grid opopw-grid-cols-2 opopw-gap-2">
-									{ FIELD_TYPES.map( ( ft ) => (
-										<ClassicButton
-											key={ ft.value }
-											variant="secondary"
-											onClick={ () =>
-												addField( ft.value )
-											}
-											className="!opopw-justify-center !opopw-text-center !opopw-py-4 !opopw-px-2 !opopw-h-auto !opopw-text-[13px] !opopw-gap-2 !opopw-flex !opopw-flex-col !opopw-items-center !opopw-text-[#2271b1] !opopw-border-[#2271b1] hover:!opopw-text-[#135e96] hover:!opopw-bg-[#f6f7f7] !opopw-rounded-[3px] !opopw-font-medium"
-										>
-											{ FIELD_TYPE_ICONS[ ft.value ] &&
-												React.createElement(
-													FIELD_TYPE_ICONS[
-														ft.value
-													],
-													{
-														className:
-															'opopw-size-5 opopw-shrink-0',
-													}
-												) }
-											<span>+ { ft.label }</span>
-										</ClassicButton>
-									) ) }
+									{ FIELD_TYPES.map( ( ft ) => {
+										const isLocked =
+											ft.variant === 'buy_pro';
+										return (
+											<ClassicButton
+												key={ ft.value }
+												variant="secondary"
+												onClick={ () =>
+													isLocked
+														? window.open(
+																getUpgradeUrl(),
+																'_blank'
+														  )
+														: addField( ft.value )
+												}
+												title={
+													isLocked
+														? __( 'Available in Pro', 'optionbay-product-options-addons-woo' )
+														: undefined
+												}
+												className={ `!opopw-justify-center !opopw-text-center !opopw-py-4 !opopw-px-2 !opopw-h-auto !opopw-text-[13px] !opopw-gap-2 !opopw-flex !opopw-flex-col !opopw-items-center !opopw-rounded-[3px] !opopw-font-medium ${
+													isLocked
+														? '!opopw-text-[#a7aaad] !opopw-border-[#dcdcde] hover:!opopw-bg-[#f6f7f7]'
+														: '!opopw-text-[#2271b1] !opopw-border-[#2271b1] hover:!opopw-text-[#135e96] hover:!opopw-bg-[#f6f7f7]'
+												}` }
+											>
+												{ FIELD_TYPE_ICONS[ ft.value ] &&
+													React.createElement(
+														FIELD_TYPE_ICONS[
+															ft.value
+														],
+														{
+															className:
+																'opopw-size-5 opopw-shrink-0',
+														}
+													) }
+												<span className="opopw-flex opopw-items-center opopw-gap-1">
+													+ { ft.label }
+													{ isLocked && (
+														<span className="opopw-flex opopw-text-[#ffb900]">
+															<Lock size={ 12 } />
+														</span>
+													) }
+												</span>
+											</ClassicButton>
+										);
+									} ) }
 								</div>
 							</div>
 						</div>

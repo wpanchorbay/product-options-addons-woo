@@ -14,11 +14,14 @@ test.describe('Textarea lifecycle', () => {
   test('Admin persistence', async ({ page }) => {
     const log = new TestLogger('textarea.spec.ts', 'Admin persistence');
     log.start();
+    await log.step(page, 1, 'Open builder, add Textarea field');
     await openNewGroup(page, `Textarea ${Date.now()}`);
     await addField(page, FIELD_BUTTON.textarea);
     await setFieldLabel(page, 'Gift Note');
     await setGlobal(page);
     await saveGroup(page);
+
+    await log.step(page, 2, 'Reload + verify persistence');
     await page.reload();
     await page.locator('span:has-text("Gift Note")').click();
     await expect(page.locator('input[placeholder*="field label"]')).toHaveValue('Gift Note');
@@ -28,6 +31,7 @@ test.describe('Textarea lifecycle', () => {
   test('Flat-fee pricing → cart', async ({ page, renderMode }) => {
     const log = new TestLogger('textarea.spec.ts', `Flat fee [${renderMode}]`);
     log.start();
+    await log.step(page, 1, 'Create global group, Textarea with Flat Fee $10');
     await openNewGroup(page, `Textarea Fee ${Date.now()}`);
     await addField(page, FIELD_BUTTON.textarea);
     await setFieldLabel(page, 'Gift Note');
@@ -35,12 +39,14 @@ test.describe('Textarea lifecycle', () => {
     await setGlobal(page);
     await saveGroup(page);
 
+    await log.step(page, 2, 'On product-c, enter text → live total 85');
     await page.goto('/product/product-c/');
     const field = page.locator('form.cart textarea[name^="opopw_addons["]').first();
     await expect(field).toBeVisible({ timeout: 20000 });
     await field.fill('Happy birthday');
     await expect(page.locator('form.cart .opopw-live-total .amount').first()).toContainText('85', { timeout: 10000 });
 
+    await log.step(page, 3, 'Add to cart + verify cart shows add-on');
     await addToCart(page);
     await expectCartShowsAddon(page, renderMode, { label: 'Gift Note', value: 'Happy birthday', total: '85' });
     log.end('passed');

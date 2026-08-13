@@ -294,6 +294,7 @@ export const FieldRow: React.FC<FieldRowProps> = ({ field, index }) => {
                         options={FIELD_TYPES.map((ft) => ({
                           value: ft.value,
                           label: ft.label,
+                          variant: ft.variant,
                         }))}
                       />
                     ),
@@ -464,6 +465,7 @@ export const FieldRow: React.FC<FieldRowProps> = ({ field, index }) => {
                                 options={PRICE_TYPES.map((pt) => ({
                                   value: pt.value,
                                   label: pt.label,
+                                  variant: pt.variant,
                                 }))}
                               />
                               <FormError

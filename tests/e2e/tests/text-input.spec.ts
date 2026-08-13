@@ -16,7 +16,7 @@ test.describe('Text Input End-to-End lifecycle', () => {
     const log = new TestLogger('text-input.spec.ts', 'A. Admin');
     log.start();
     try {
-      log.step(1, 'Open builder, add Text Input');
+      await log.step(page, 1, 'Open builder, add Text Input');
       await page.goto('/wp-admin/edit.php?post_type=product&page=opopw-options');
       await page.click('a.page-title-action:has-text("Add new group")');
       await page.fill('input[placeholder*="Group Title"]', `Validation Group ${Date.now()}`);
@@ -26,12 +26,12 @@ test.describe('Text Input End-to-End lifecycle', () => {
       const labelInput = page.locator('input[placeholder*="field label"]');
       await expect(labelInput).toBeVisible();
 
-      log.step(2, 'Blank label triggers validation error');
+      await log.step(page, 2, 'Blank label triggers validation error');
       await labelInput.fill('');
       await page.click('button:has-text("Create Group")');
       await expect(page.locator('body')).toContainText('Field label is required', { timeout: 10000 });
 
-      log.step(3, 'Fill settings + save (global)');
+      await log.step(page, 3, 'Fill settings + save (global)');
       await labelInput.fill('Personal Message');
       await page.locator('textarea[placeholder*="Help text"]').fill('Maximum 50 characters');
       await page.locator('tr:has-text("Placeholder") input').fill('Type your name...');
@@ -40,7 +40,7 @@ test.describe('Text Input End-to-End lifecycle', () => {
       await page.click('button:has-text("Create Group")');
       await expect(page.locator('button:has-text("Update Group")')).toBeVisible({ timeout: 15000 });
 
-      log.step(4, 'Reload + verify persistence');
+      await log.step(page, 4, 'Reload + verify persistence');
       await page.reload();
       await page.locator('span:has-text("Personal Message")').click();
       await expect(labelInput).toHaveValue('Personal Message');
@@ -59,7 +59,7 @@ test.describe('Text Input End-to-End lifecycle', () => {
     const log = new TestLogger('text-input.spec.ts', `B. Flat Fee [${renderMode}]`);
     log.start();
     try {
-      log.step(1, 'Create global group, Text Input, Flat Fee $15');
+      await log.step(page, 1, 'Create global group, Text Input, Flat Fee $15');
       await page.goto('/wp-admin/edit.php?post_type=product&page=opopw-options');
       await page.click('a.page-title-action:has-text("Add new group")');
       await page.fill('input[placeholder*="Group Title"]', `Flat Fee Group ${Date.now()}`);
@@ -78,7 +78,7 @@ test.describe('Text Input End-to-End lifecycle', () => {
       await expect(page.locator('button:has-text("Update Group")')).toBeVisible({ timeout: 15000 });
 
       log.divider('Frontend');
-      log.step(2, 'On Product C, enter text → live total 75 + 15 = 90');
+      await log.step(page, 2, 'On Product C, enter text → live total 75 + 15 = 90');
       await page.goto('/product/product-c/');
       const addon = page.locator('form.cart input[name^="opopw_addons["]').first();
       await expect(addon).toBeVisible({ timeout: 20000 });
@@ -86,7 +86,7 @@ test.describe('Text Input End-to-End lifecycle', () => {
       await addon.fill('Hello');
       await expect(liveTotal).toContainText('90', { timeout: 10000 });
 
-      log.step(3, 'Add to cart + verify cart shows add-on');
+      await log.step(page, 3, 'Add to cart + verify cart shows add-on');
       await addToCart(page);
       await expectCartShowsAddon(page, renderMode, { label: 'Engraving', value: 'Hello', total: '90' });
       log.success('Cart shows engraving + total');

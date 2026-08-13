@@ -26,7 +26,7 @@ test.describe('Conditional logic (visibility)', () => {
     await page.keyboard.press('Tab');
     await page.waitForTimeout(800);
 
-    log.step(1, 'Enable conditional logic on Field B (Show when Field A = Trigger)');
+    await log.step(page, 1, 'Enable conditional logic on Field B (Show when Field A = Trigger)');
     const fieldBRow = page.locator('div[id^="opopw-field-row-"]').last();
     await fieldBRow.getByText('Enable Conditional Logic', { exact: true }).click();
     await page.waitForTimeout(800);
@@ -44,7 +44,7 @@ test.describe('Conditional logic (visibility)', () => {
     await setGlobal(page);
     await saveGroup(page);
 
-    log.step(2, 'Frontend: Field B hidden until Field A = "Trigger"');
+    await log.step(page, 2, 'Frontend: Field B hidden until Field A = "Trigger"');
     await page.goto('/product/product-a/');
     const fieldA = page.locator('.opopw-field').filter({ hasText: 'Field A' }).last();
     const fieldB = page.locator('.opopw-field').filter({ hasText: 'Field B' }).last();

@@ -186,7 +186,7 @@ class CartManager extends Base {
 			$group_data = $submitted_data[ $group_id ] ?? array();
 
 			foreach ( $schema as $field_schema ) {
-				if ( ! ConditionEvaluator::is_visible( $field_schema, $group_data ) ) {
+				if ( ! ConditionEvaluator::is_visible( $field_schema, $group_data, $schema ) ) {
 					continue;
 				}
 
@@ -413,7 +413,7 @@ class CartManager extends Base {
 			foreach ( $schema as $field_schema ) {
 				$field_id = $field_schema['id'] ?? 'unknown_id';
 
-				if ( ! ConditionEvaluator::is_visible( $field_schema, $group_data ) ) {
+				if ( ! ConditionEvaluator::is_visible( $field_schema, $group_data, $schema ) ) {
 					continue;
 				}
 
@@ -871,7 +871,7 @@ class CartManager extends Base {
 			$group_data = $submitted_data[ $group_id ] ?? array();
 
 			foreach ( $schema as $field_schema ) {
-				if ( ! ConditionEvaluator::is_visible( $field_schema, $group_data ) ) {
+				if ( ! ConditionEvaluator::is_visible( $field_schema, $group_data, $schema ) ) {
 					continue;
 				}
 

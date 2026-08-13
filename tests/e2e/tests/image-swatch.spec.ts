@@ -20,11 +20,13 @@ test.describe('Image Swatch (builder configurability)', () => {
   test('Field type is available and configurable', async ({ page }) => {
     const log = new TestLogger('image-swatch.spec.ts', 'Configurable');
     log.start();
+    await log.step(page, 1, 'Open builder, add Image Swatch field + choice');
     await openNewGroup(page, `Image ${Date.now()}`);
     await addField(page, FIELD_BUTTON.image_swatch);
     await setFieldLabel(page, 'Pattern');
     await setChoiceLabel(page, 1, 'Stripes');
 
+    await log.step(page, 2, 'Verify field label and choice label in builder');
     await expect(page.locator('input[placeholder*="field label"]').last()).toHaveValue('Pattern');
     await expect(page.locator('input[placeholder="Choice Label"]').first()).toHaveValue('Stripes');
     log.end('passed');

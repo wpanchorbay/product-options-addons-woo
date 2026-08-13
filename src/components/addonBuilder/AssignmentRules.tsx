@@ -1,10 +1,12 @@
 import React from "react";
 import { __ } from "@wordpress/i18n";
+import { Lock } from "lucide-react";
 import { ClassicMultiSelect } from "../classics";
 import { ClassicSettingsTable } from "../classics/ClassicSettingsTable";
 import { useAddonContext, Assignment } from "../../store/AddonContext";
 import { renderProductOption } from "./utils";
 import { FormError } from "./FormError";
+import { isProActive, getUpgradeUrl } from "../../utils/pro";
 
 /**
  * AssignmentRules — Simplified:
@@ -44,6 +46,7 @@ export const AssignmentRules: React.FC = () => {
     const newRows: Assignment[] = ids.map((id) => ({
       target_type: targetType,
       target_id: id,
+      is_exclusion: false,
     }));
 
     dispatch({
@@ -61,6 +64,7 @@ export const AssignmentRules: React.FC = () => {
         {
           target_type: "global",
           target_id: 0,
+          is_exclusion: false,
         },
       ],
     });
@@ -154,6 +158,51 @@ export const AssignmentRules: React.FC = () => {
                     <FormError
                       message={state.errors?.["assignments.0.target_id"]}
                     />
+                  </div>
+                ),
+              },
+            ]
+          : []),
+
+        // ── Section 3: Category/Tag targeting + Exceptions (Pro) ──
+        // Locked upsell teaser — only rendered when Pro is inactive. When Pro
+        // is active it swaps this whole component out via the
+        // `opopw_assignment_rules_component` filter and provides the real UI.
+        ...(!isProActive()
+          ? [
+              {
+                label: (
+                  <span className="opopw-flex opopw-items-center opopw-gap-2">
+                    {__("Categories, Tags & Exceptions", "optionbay-product-options-addons-woo")}
+                    <span className="opopw-flex opopw-text-[#ffb900]">
+                      <Lock size={14} />
+                    </span>
+                  </span>
+                ) as React.ReactNode,
+                tooltip: __(
+                  "Target by category or tag, and set exceptions, with Pro.",
+                  "optionbay-product-options-addons-woo",
+                ),
+                render: () => (
+                  <div className="opopw-opacity-70 opopw-border opopw-border-[#dcdcde] opopw-rounded-md opopw-p-3 opopw-bg-[#f6f7f7]">
+                    <p className="opopw-text-[13px] opopw-text-[#646970] opopw-m-0 opopw-mb-2">
+                      {__(
+                        "Target this option group by product category or tag, and exclude specific products.",
+                        "optionbay-product-options-addons-woo",
+                      )}
+                    </p>
+                    <a
+                      href={getUpgradeUrl()}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="opopw-text-[#2271b1] opopw-inline-flex opopw-items-center opopw-gap-1 opopw-text-[13px]"
+                    >
+                      <Lock size={12} className="opopw-text-[#ffb900]" />
+                      {__(
+                        "Upgrade to target by category/tag and set exceptions",
+                        "optionbay-product-options-addons-woo",
+                      )}
+                    </a>
                   </div>
                 ),
               },

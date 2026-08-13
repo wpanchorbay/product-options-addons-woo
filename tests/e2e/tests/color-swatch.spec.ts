@@ -17,12 +17,15 @@ test.describe('Color Swatch lifecycle', () => {
   test('Admin persistence', async ({ page }) => {
     const log = new TestLogger('color-swatch.spec.ts', 'Admin persistence');
     log.start();
+    await log.step(page, 1, 'Open builder, add Color Swatch field');
     await openNewGroup(page, `Color ${Date.now()}`);
     await addField(page, FIELD_BUTTON.color_swatch);
     await setFieldLabel(page, 'Frame Color');
     await setChoiceLabel(page, 1, 'Black');
     await setGlobal(page);
     await saveGroup(page);
+
+    await log.step(page, 2, 'Reload + verify persistence');
     await page.reload();
     await page.locator('span:has-text("Frame Color")').click();
     await expect(page.locator('input[placeholder="Choice Label"]').first()).toHaveValue('Black');
@@ -32,6 +35,7 @@ test.describe('Color Swatch lifecycle', () => {
   test('Priced swatch → cart', async ({ page, renderMode }) => {
     const log = new TestLogger('color-swatch.spec.ts', `Priced swatch [${renderMode}]`);
     log.start();
+    await log.step(page, 1, 'Build Color Swatch with a priced Gold choice');
     await openNewGroup(page, `Color Fee ${Date.now()}`);
     await addField(page, FIELD_BUTTON.color_swatch);
     await setFieldLabel(page, 'Frame Color');
@@ -42,6 +46,7 @@ test.describe('Color Swatch lifecycle', () => {
     await setGlobal(page);
     await saveGroup(page);
 
+    await log.step(page, 2, 'On Product A, select Gold swatch → live total');
     await page.goto('/product/product-a/');
     // Swatch radios are visually hidden — click the swatch label instead.
     const goldOption = page.locator('form.cart .opopw-swatch-option').filter({
@@ -52,6 +57,7 @@ test.describe('Color Swatch lifecycle', () => {
     await goldOption.locator('label.opopw-swatch-label').click();
     await expect(liveTotal).toContainText('115', { timeout: 10000 });
 
+    await log.step(page, 3, 'Add to cart + verify cart shows add-on');
     await addToCart(page);
     await expectCartShowsAddon(page, renderMode, { label: 'Frame Color', value: 'Gold', total: '115' });
     log.end('passed');

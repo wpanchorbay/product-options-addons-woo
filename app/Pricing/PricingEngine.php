@@ -47,12 +47,23 @@ class PricingEngine {
 	public static function get_strategy( string $type ) {
 		$type = $type ? $type : 'flat';
 
-		if ( ! array_key_exists( $type, self::$strategies ) ) {
+		/**
+		 * Filter the map of pricing-strategy identifiers to strategy classes.
+		 *
+		 * Allows the Pro add-on to register additional strategies such as
+		 * 'formula' or 'character_count' without editing Free.
+		 *
+		 * @since 1.0.2
+		 * @param array $strategies Map of type => fully-qualified strategy class name.
+		 */
+		$strategies = apply_filters( 'opopw_pricing_strategies', self::$strategies );
+
+		if ( ! array_key_exists( $type, $strategies ) ) {
 			opopw_log( "Pricing Engine: Unknown strategy '{$type}'. Falling back to 'flat'.", 'WARNING' );
 			$type = 'flat';
 		}
 
-		$class = self::$strategies[ $type ];
+		$class = $strategies[ $type ];
 		return new $class();
 	}
 
@@ -72,8 +83,18 @@ class PricingEngine {
 	 * @return float The calculated delta to be added to the product price.
 	 */
 	public static function calculate( string $type, float $base_price, float $configured_amount, $field_value, int $quantity, array $config = array() ) {
-		if ( 'none' === $type || 0.0 === $configured_amount ) {
-			opopw_log( "Pricing Engine: Type 'none' or amount 0. Price delta is 0.", 'DEBUG' );
+		if ( 'none' === $type ) {
+			opopw_log( "Pricing Engine: Type 'none'. Price delta is 0.", 'DEBUG' );
+			return 0.0;
+		}
+
+		// The amount-based short-circuit only applies to strategies whose delta is
+		// driven by the configured amount (flat/percentage). Strategies like the
+		// Pro 'formula' type legitimately carry an empty configured amount and must
+		// still run, so they are exempt from this early return.
+		$amount_based = apply_filters( 'opopw_amount_based_price_types', array( 'flat', 'percentage' ) );
+		if ( in_array( $type, $amount_based, true ) && 0.0 === $configured_amount ) {
+			opopw_log( "Pricing Engine: Amount-based type '{$type}' with amount 0. Price delta is 0.", 'DEBUG' );
 			return 0.0;
 		}
 

@@ -14,10 +14,10 @@ test.describe('Smoke Tests', () => {
     log.start();
 
     try {
-      log.step(1, 'Navigate to plugins page');
+      await log.step(page, 1, 'Navigate to plugins page');
       await page.goto('/wp-admin/plugins.php');
 
-      log.step(2, 'Verify plugin row is visible and active');
+      await log.step(page, 2, 'Verify plugin row is visible and active');
       const pluginRow = page.locator('tr[data-slug="optionbay-product-options-and-addons"]');
       await expect(pluginRow).toBeVisible();
       await expect(pluginRow).toHaveClass(/active/);
@@ -37,10 +37,10 @@ test.describe('Smoke Tests', () => {
     log.start();
 
     try {
-      log.step(1, 'Navigate to admin dashboard');
+      await log.step(page, 1, 'Navigate to admin dashboard');
       await page.goto('/wp-admin/');
 
-      log.step(2, 'Hover on Products menu and check for Options submenu');
+      await log.step(page, 2, 'Hover on Products menu and check for Options submenu');
       const menuLink = page.locator('li#menu-posts-product > a.menu-top');
       await menuLink.hover();
       const subMenuLink = page.locator('li#menu-posts-product a:has-text("Options")');

@@ -1,6 +1,6 @@
 {
   "name": "optionbay-product-options-addons-woo",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "OptionBay - Product Options and Addons - WooCommerce product options with advanced pricing, inventory, and conditional logic.",
   "main": "index.js",
   "scripts": {

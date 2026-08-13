@@ -1,4 +1,52 @@
-import { Page } from '@playwright/test';
+import { Page, test as pwTest } from '@playwright/test';
+import * as fs from 'fs';
+import * as path from 'path';
+
+// ─── Flat screenshot folder (no subfolders — every step, every test, every
+// theme lands here as one uniquely-named file) ─────────────────────
+const SCREENSHOT_DIR = path.join(__dirname, '..', 'screenshots');
+fs.mkdirSync(SCREENSHOT_DIR, { recursive: true });
+
+function slugify(s: string, maxLen = 60): string {
+    return s
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '')
+        .slice(0, maxLen) || 'x';
+}
+
+/**
+ * Build the flat, collision-proof screenshot filename:
+ * <project>__<spec>__<test>__NN-<label>.png
+ */
+function buildFilename(project: string, specFile: string, testName: string, n: number, label: string): string {
+    const specSlug = slugify(specFile.replace(/\.spec\.ts$/, ''));
+    const testSlug = slugify(testName);
+    const stepSlug = slugify(label);
+    return `${project}__${specSlug}__${testSlug}__${String(n).padStart(2, '0')}-${stepSlug}.png`;
+}
+
+/** Same as buildFilename, but reads project/spec/test from the currently-running TestInfo. */
+function screenshotFilename(specFile: string, testName: string, n: number, label: string): string {
+    const project = pwTest.info().project.name || 'unknown';
+    return buildFilename(project, specFile, testName, n, label);
+}
+
+/**
+ * Capture a screenshot into the shared flat screenshots/ folder when a test
+ * fails, independent of whether any TestLogger.step() ever ran — used by a
+ * global afterEach in fixtures.ts so a failure before step 1 (e.g. a login
+ * failure in beforeEach) still leaves a visual record.
+ */
+export async function captureFailureScreenshot(page: Page, testInfo: { file: string; title: string; project: { name: string } }): Promise<void> {
+    const specFile = path.basename(testInfo.file);
+    const filename = buildFilename(testInfo.project.name || 'unknown', specFile, testInfo.title, 99, 'FAILED');
+    try {
+        await page.screenshot({ path: path.join(SCREENSHOT_DIR, filename) });
+    } catch {
+        // Page may already be closed/crashed — nothing more we can do.
+    }
+}
 
 // ─── ANSI Color Codes ────────────────────────────────────────────
 const c = {
@@ -133,11 +181,23 @@ export class TestLogger {
 
     // ── Step Tracking ────────────────────────────────────────────
 
-    /** Log a numbered step */
-    step(n: number, description: string): void {
+    /**
+     * Log a numbered step AND capture a screenshot of it into the shared flat
+     * screenshots/ folder. `page` is required — every step is a visual step.
+     */
+    async step(page: Page, n: number, description: string): Promise<void> {
         this.stepCount = n;
         console.log(`  ${c.cyan}${stepIcon(n)}${c.reset} ${description}`);
+
+        const filename = screenshotFilename(this.file, this.testName, n, description);
+        try {
+            await page.screenshot({ path: path.join(SCREENSHOT_DIR, filename) });
+        } catch (e) {
+            // Never let screenshot capture fail the test itself.
+            console.log(`    ${c.yellow}⚠${c.reset} step screenshot failed: ${(e as Error).message}`);
+        }
     }
+
 
     // ── Status Messages ──────────────────────────────────────────
 

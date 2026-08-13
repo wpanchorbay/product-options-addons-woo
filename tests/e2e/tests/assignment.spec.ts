@@ -20,11 +20,11 @@ test.describe('Assignment rules (Free: global / specific product)', () => {
     await setTargetedProduct(page, 'Product A');
     await saveGroup(page);
 
-    log.step(1, 'Visible on Product A');
+    await log.step(page, 1, 'Visible on Product A');
     await page.goto('/product/product-a/');
     await expect(page.locator('form.cart input[name^="opopw_addons["]').first()).toBeVisible({ timeout: 20000 });
 
-    log.step(2, 'Absent on Product B');
+    await log.step(page, 2, 'Absent on Product B');
     await page.goto('/product/product-b/');
     await page.waitForSelector('form.cart', { timeout: 20000 });
     await expect(page.locator('form.cart input[name^="opopw_addons["]')).toHaveCount(0);

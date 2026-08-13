@@ -215,6 +215,7 @@ export const OptionEditorAccordion: React.FC<OptionEditorAccordionProps> = ({
                             options={PRICE_TYPES.map((pt) => ({
                               value: pt.value,
                               label: pt.label,
+                              variant: pt.variant,
                             }))}
                           />
                         </div>

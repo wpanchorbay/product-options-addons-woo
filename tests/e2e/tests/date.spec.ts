@@ -14,11 +14,14 @@ test.describe('Date Picker lifecycle', () => {
   test('Admin persistence', async ({ page }) => {
     const log = new TestLogger('date.spec.ts', 'Admin persistence');
     log.start();
+    await log.step(page, 1, 'Open builder, add Date Picker field');
     await openNewGroup(page, `Date ${Date.now()}`);
     await addField(page, FIELD_BUTTON.date);
     await setFieldLabel(page, 'Delivery Date');
     await setGlobal(page);
     await saveGroup(page);
+
+    await log.step(page, 2, 'Reload + verify persistence');
     await page.reload();
     await page.locator('span:has-text("Delivery Date")').click();
     await expect(page.locator('input[placeholder*="field label"]')).toHaveValue('Delivery Date');
@@ -28,6 +31,7 @@ test.describe('Date Picker lifecycle', () => {
   test('Flat-fee with date value → cart', async ({ page, renderMode }) => {
     const log = new TestLogger('date.spec.ts', `Flat fee [${renderMode}]`);
     log.start();
+    await log.step(page, 1, 'Build Date Picker with Flat Fee $8');
     await openNewGroup(page, `Date Fee ${Date.now()}`);
     await addField(page, FIELD_BUTTON.date);
     await setFieldLabel(page, 'Delivery Date');
@@ -35,12 +39,14 @@ test.describe('Date Picker lifecycle', () => {
     await setGlobal(page);
     await saveGroup(page);
 
+    await log.step(page, 2, 'On Product C, pick a date → live total 75 + 8 = 83');
     await page.goto('/product/product-c/');
     const field = page.locator('form.cart input.opopw-input--date').first();
     await expect(field).toBeVisible({ timeout: 20000 });
     await field.fill('2026-08-15');
     await expect(page.locator('form.cart .opopw-live-total .amount').first()).toContainText('83', { timeout: 10000 });
 
+    await log.step(page, 3, 'Add to cart + verify cart shows add-on');
     await addToCart(page);
     await expectCartShowsAddon(page, renderMode, { label: 'Delivery Date', total: '83' });
     log.end('passed');

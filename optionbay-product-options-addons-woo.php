@@ -7,8 +7,8 @@
  * Requires PHP:      7.4
  * Requires Plugins:  woocommerce
  * WC requires at least: 8.0
- * Version:           1.0.1
- * Stable tag:        1.0.1
+ * Version:           1.0.2
+ * Stable tag:        1.0.2
  * Author:            WPAnchorBay
  * Author URI:        https://wpanchorbay.com
  * License:           GPLv2 or later
@@ -27,7 +27,7 @@ if ( ! defined( 'WPINC' ) ) {
 define( 'OPOPW_PATH', plugin_dir_path( __FILE__ ) );
 define( 'OPOPW_DIR', plugin_dir_path( __FILE__ ) );
 define( 'OPOPW_URL', plugin_dir_url( __FILE__ ) );
-define( 'OPOPW_VERSION', '1.0.1' );
+define( 'OPOPW_VERSION', '1.0.2' );
 define( 'OPOPW_PLUGIN_NAME', 'optionbay-product-options-addons-woo' );
 define( 'OPOPW_TEXT_DOMAIN', 'optionbay-product-options-addons-woo' );
 define( 'OPOPW_OPTION_NAME', 'optionbay-product-options-addons-woo' );

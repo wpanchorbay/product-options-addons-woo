@@ -94,7 +94,29 @@ class ExportImportController extends ApiController {
 	 * @return bool|WP_Error
 	 */
 	public function permissions_check( $request ) {
-		return current_user_can( 'manage_woocommerce' ) || current_user_can( 'manage_options' );
+		if ( ! current_user_can( 'manage_woocommerce' ) && ! current_user_can( 'manage_options' ) ) {
+			return new WP_Error(
+				'rest_forbidden',
+				__( 'Sorry, you are not allowed to access this resource.', 'optionbay-product-options-addons-woo' ),
+				array( 'status' => rest_authorization_required_code() )
+			);
+		}
+
+		// Verify the REST nonce, matching every other write endpoint in this plugin.
+		$nonce = $request->get_header( 'X-WP-Nonce' );
+		if ( ! $nonce ) {
+			$nonce = isset( $_REQUEST['_wpnonce'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['_wpnonce'] ) ) : '';
+		}
+
+		if ( ! wp_verify_nonce( $nonce, 'wp_rest' ) ) {
+			return new WP_Error(
+				'rest_invalid_nonce',
+				__( 'Invalid or missing nonce.', 'optionbay-product-options-addons-woo' ),
+				array( 'status' => 403 )
+			);
+		}
+
+		return true;
 	}
 
 	/**

@@ -1,4 +1,5 @@
 import { test as base, expect, Page } from '@playwright/test';
+import { captureFailureScreenshot } from './tests/test-logger';
 
 export type RenderMode = 'classic' | 'block';
 
@@ -9,6 +10,17 @@ export type RenderMode = 'classic' | 'block';
  */
 export const test = base.extend<{ renderMode: RenderMode }>({
   renderMode: ['classic', { option: true }],
+});
+
+// Every step already gets its own screenshot via TestLogger.step(). This
+// backstops the case where a test fails before any step runs (e.g. a login
+// failure in beforeEach), so a failure is never left with no visual record.
+// Screenshots always land in the shared flat screenshots/ folder — never a
+// per-test subfolder.
+test.afterEach(async ({ page }, testInfo) => {
+  if (testInfo.status !== testInfo.expectedStatus) {
+    await captureFailureScreenshot(page, testInfo);
+  }
 });
 
 export { expect };

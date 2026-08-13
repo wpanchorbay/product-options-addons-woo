@@ -75,5 +75,10 @@ export interface PluginStore {
 	pluginData: PluginData;
 	wpSettings: WpSettings;
 	plugin_settings: PluginSettings;
-	proFeatures: ProFeatures;
+	/**
+	 * Whether the Pro add-on is active. Localized by Admin.php.
+	 * Absent/false means Pro-only features render as locked upsell teasers.
+	 */
+	isPro?: boolean;
+	upgradeUrl?: string;
 }

@@ -17,12 +17,15 @@ test.describe('Radio Buttons lifecycle', () => {
   test('Admin persistence', async ({ page }) => {
     const log = new TestLogger('radio.spec.ts', 'Admin persistence');
     log.start();
+    await log.step(page, 1, 'Open builder, add Radio Buttons field + choice, save (global)');
     await openNewGroup(page, `Radio ${Date.now()}`);
     await addField(page, FIELD_BUTTON.radio);
     await setFieldLabel(page, 'Material');
     await setChoiceLabel(page, 1, 'Metal');
     await setGlobal(page);
     await saveGroup(page);
+
+    await log.step(page, 2, 'Reload + verify persistence');
     await page.reload();
     await page.locator('span:has-text("Material")').click();
     await expect(page.locator('input[placeholder="Choice Label"]').first()).toHaveValue('Metal');
@@ -32,6 +35,7 @@ test.describe('Radio Buttons lifecycle', () => {
   test('Priced choices → cart', async ({ page, renderMode }) => {
     const log = new TestLogger('radio.spec.ts', `Priced choices [${renderMode}]`);
     log.start();
+    await log.step(page, 1, 'Create global group, Radio field, two priced choices ($10/$20)');
     await openNewGroup(page, `Radio Fee ${Date.now()}`);
     await addField(page, FIELD_BUTTON.radio);
     await setFieldLabel(page, 'Material');
@@ -43,6 +47,7 @@ test.describe('Radio Buttons lifecycle', () => {
     await setGlobal(page);
     const groupId = await saveGroup(page);
 
+    await log.step(page, 2, 'On Product A, select each choice → live total updates');
     await page.goto('/product/product-a/');
     const wood = page.locator(`form.cart input[type="radio"][name^="opopw_addons[${groupId}]"][value="wood"]`);
     const metal = page.locator(`form.cart input[type="radio"][name^="opopw_addons[${groupId}]"][value="metal"]`);
@@ -53,6 +58,7 @@ test.describe('Radio Buttons lifecycle', () => {
     await metal.check();
     await expect(liveTotal).toContainText('120', { timeout: 10000 });
 
+    await log.step(page, 3, 'Add to cart + verify cart shows priced choice');
     await addToCart(page);
     await expectCartShowsAddon(page, renderMode, { label: 'Material', value: 'Metal', total: '120' });
     log.end('passed');

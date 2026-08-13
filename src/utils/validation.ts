@@ -51,6 +51,7 @@ export const fieldOptionSchema = z
 			.min(1, { message: __("Choice value is required", "optionbay-product-options-addons-woo") }),
 		price_type: z.string().optional(),
 		price: z.number().optional(),
+		formula: z.string().optional(),
 		weight: z.number().optional(),
 		enable_stock: z.boolean().optional(),
 		inventory_id: z.union([z.number(), z.string()]).nullable().optional(),
@@ -60,7 +61,15 @@ export const fieldOptionSchema = z
 	})
 	.superRefine((data, ctx) => {
 		if (data.price_type && data.price_type !== "none" && data.price_type !== "") {
-			if (data.price === undefined || data.price === null || data.price === 0) {
+			if (data.price_type === "formula") {
+				if (!data.formula) {
+					ctx.addIssue({
+						code: z.ZodIssueCode.custom,
+						message: __("Formula is required", "optionbay-product-options-addons-woo"),
+						path: ["formula"],
+					});
+				}
+			} else if (data.price === undefined || data.price === null || data.price === 0) {
 				ctx.addIssue({
 					code: z.ZodIssueCode.custom,
 					message: __("Price is required", "optionbay-product-options-addons-woo"),
@@ -92,6 +101,7 @@ export const fieldDefinitionSchema = z
 		content: z.string().optional(),
 		price_type: z.string().optional(),
 		price: z.number().optional(),
+		formula: z.string().optional(),
 		weight: z.number().optional(),
 		options: z.array(fieldOptionSchema).optional(),
 		min_length: z.number().optional(),
@@ -120,7 +130,15 @@ export const fieldDefinitionSchema = z
 		const isChoiceType = ["select", "radio", "checkbox", "color_swatch", "image_swatch"].includes(data.type);
 
 		if (!isChoiceType && data.price_type && data.price_type !== "none" && data.price_type !== "") {
-			if (data.price === undefined || data.price === null || data.price === 0) {
+			if (data.price_type === "formula") {
+				if (!data.formula) {
+					ctx.addIssue({
+						code: z.ZodIssueCode.custom,
+						message: __("Formula is required", "optionbay-product-options-addons-woo"),
+						path: ["formula"],
+					});
+				}
+			} else if (data.price === undefined || data.price === null || data.price === 0) {
 				ctx.addIssue({
 					code: z.ZodIssueCode.custom,
 					message: __("Price is required", "optionbay-product-options-addons-woo"),

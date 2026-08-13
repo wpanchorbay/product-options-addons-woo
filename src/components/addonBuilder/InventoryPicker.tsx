@@ -46,6 +46,18 @@ export const InventoryPicker: React.FC<InventoryPickerProps> = ({
     setNewBackorders(false);
   };
 
+  // Normalize the incoming value: real pool ids may still be persisted as
+  // strings from before inventory_id was cast to int on save, while
+  // same-session, not-yet-saved pools use a "tmp_" string id — only the
+  // former needs coercing so it compares correctly against ClassicSelect's
+  // numeric option values.
+  const normalizedValue =
+    value === undefined || value === null || value === ""
+      ? null
+      : typeof value === "string" && value.startsWith("tmp_")
+        ? value
+        : Number(value);
+
   // Convert state.new_inventories to SelectOption format
   const localOptions: SelectOption[] = state.new_inventories.map((inv) => ({
     value: inv.tmp_id!,
@@ -113,7 +125,7 @@ export const InventoryPicker: React.FC<InventoryPickerProps> = ({
     <>
       <ClassicSelect
         size="regular"
-        value={value || null}
+        value={normalizedValue}
         isError={isError}
         onChange={(val) => onChange(val)}
         options={localOptions}

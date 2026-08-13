@@ -33,6 +33,20 @@ async function setOpt(name: string, value: string): Promise<void> {
   await wpCli(`option update ${name} '${value}'`).catch(() => {});
 }
 
+/** Folder slug QIT provisions the Pro add-on under (see qit.json). */
+export const PRO_PLUGIN_SLUG = 'optionbay-product-options-addons-woo-pro';
+
+/**
+ * Activate or deactivate the Pro add-on by slug, so the same spec files can be
+ * run once with Free alone and once with Free+Pro (regression pass). QIT
+ * installs (and may auto-activate) every plugin listed in qit.json's
+ * environments.default.plugins, so this is also used defensively at the start
+ * of the free-only phase to guarantee a clean baseline.
+ */
+export async function togglePlugin(slug: string, active: boolean): Promise<void> {
+  await wpCli(`plugin ${active ? 'activate' : 'deactivate'} ${slug}`).catch(() => '');
+}
+
 /** Option-group custom post type slug. */
 export const OPTION_GROUP_CPT = 'opopw_option_group';
 

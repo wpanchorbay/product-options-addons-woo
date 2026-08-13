@@ -101,6 +101,16 @@ User-facing documentation lives in a separate VitePress site: `/home/sdd/Documen
 
 When a change to this plugin **or** the Pro plugin (`optionbay-product-options-addons-woo-pro`) is a major one — a new/removed field type, a new pricing strategy, a changed admin UI flow (builder, assignment rules, settings), a changed conditional-logic/validation behavior, or a new/changed REST endpoint that affects documented behavior — call this out explicitly and suggest which doc page(s) under that docs site likely need updating. Minor refactors, bug fixes, or internal-only changes don't need this.
 
+## Release process
+
+Triggers: "make a zip", "make a release zip", "update the version", "is it ready to release".
+
+- **Version bump:** fetch `https://api.wordpress.org/plugins/info/1.0/optionbay-product-options-addons-woo.json`, take its `"version"`, bump the patch number by 1. Compare to the version already in the plugin header — use whichever is higher, never decrease.
+- **Update the version** in: `optionbay-product-options-addons-woo.php` `Version:` header, `define( 'OPOPW_VERSION', ... )`, `package.json` `"version"`, `readme.txt` `Stable tag:`, `languages/product-options-addons-woo.pot` `Project-Id-Version`.
+- **Changelog / Upgrade Notice:** draft new `== Changelog ==` and `== Upgrade Notice ==` entries in `readme.txt` from what was built this session, matching the existing `* Fixed: ...` / `* Added: ...` / `* Security: ...` bullet style. Confirm the draft with the user before writing it.
+- **Build & zip:** `./build.sh [version]` then `./package.sh [version]` (both already accept a version arg and produce `dist/wordpress/` + `dist/woocommerce/` zips — see Commands above).
+- **Ready to release** = version synced everywhere above, changelog/upgrade notice written, both zips build cleanly. Mention the `wp-plugin-review` skill as an optional deeper security/WPCS check — don't run it automatically.
+
 ## graphify
 
 This project has a knowledge graph at graphify-out/ with god nodes, community structure, and cross-file relationships.

@@ -11,7 +11,8 @@
     "environments": {
         "default": {
             "plugins": [
-                "woocommerce"
+                "woocommerce",
+                "../optionbay-product-options-addons-woo-pro"
             ]
         }
     }

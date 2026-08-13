@@ -15,8 +15,10 @@ echo "Spinning up new QIT environment..."
 qit env:up -n
 
 # 3. Source environment dynamically
+# tail -1 strips the "update available" banner qit prints ahead of the actual
+# export lines, which otherwise corrupts the sourced file path.
 echo "Sourcing environment..."
-source "$(qit env:source)"
+source "$(qit env:source 2>/dev/null | tail -1)"
 export WP_URL="$QIT_BASE_URL"
 echo "Target URL: $WP_URL"
 

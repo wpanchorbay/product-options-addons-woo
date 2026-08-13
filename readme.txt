@@ -6,7 +6,7 @@ Tested up to: 7.0
 Requires PHP: 7.4
 WC requires at least: 8.0
 WC tested up to: 8.7
-Stable tag: 1.0.1
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -132,13 +132,30 @@ No. Starter templates are created as drafts. You can review, edit, and publish t
 
 == Changelog ==
 
+= 1.0.2 =
+* Fixed: Option groups assigned by product category or tag now correctly display and validate.
+* Fixed: "Exclude" assignment rules are now persisted and applied.
+* Fixed: Conditional logic now cascades server-side — a hidden trigger field can no longer be used to unlock a dependent field.
+* Fixed: Import now sanitizes group schema and settings against the same allow-list as the admin UI.
+* Security: Export/Import REST endpoints now verify the request nonce.
+* Added: Pricing strategies and price types are now extensible (enables Pro dynamic pricing); Pro-only field types and pricing show as locked upgrade prompts when the Pro add-on is inactive.
+* Fixed: Inventory "Backorders" status in the View Inventory modal now reflects actual stored data (previously always showed "Allowed").
+* Fixed: Toggling backorders in the inventory list now applies on the first click instead of silently no-op'ing.
+* Fixed: A linked inventory pool now displays correctly when reopening a field, regardless of how it was originally linked.
+* Fixed: Updating an inventory item with no changes returns the current item instead of a server error.
+* Fixed: Builder validation no longer requires a numeric price amount for pricing strategies that don't use one (e.g. Pro's formula-based pricing).
+* Fixed: Various internal correctness and hardening fixes.
+
 = 1.0.1 =
 * UI improvements.
 
 = 1.0.0 =
 * Initial release.
 
-== Upgrade Notice == 
+== Upgrade Notice ==
+
+= 1.0.2 =
+Fixes category/tag and exclusion assignment rules, hardens conditional logic and import, and adds extensible pricing.
 
 = 1.0.1 =
 UI improvements.

@@ -358,6 +358,7 @@ export const OptionEditor: React.FC<OptionEditorProps> = ({
                         options={PRICE_TYPES.map((pt) => ({
                           value: pt.value,
                           label: pt.label,
+                          variant: pt.variant,
                         }))}
                         size="short"
                       />

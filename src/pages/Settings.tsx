@@ -10,8 +10,10 @@ import { useToast } from '../store/toast/use-toast';
 import { __ } from '@wordpress/i18n';
 import apiFetch from '@wordpress/api-fetch';
 import { applyFilters } from '@wordpress/hooks';
+import { Lock } from 'lucide-react';
 import { SkeletonSettings } from '../components/loading/SkeletonSettings';
 import { TopProgressBar } from '../components/loading/TopProgressBar';
+import { isProActive, getUpgradeUrl } from '../utils/pro';
 
 interface SettingsData {
 	global_optionsOrientation: 'vertical' | 'horizontal';
@@ -408,6 +410,58 @@ const Settings: React.FC = () => {
 				]}
 			/>
 
+
+			{!isProActive() && (
+				<ClassicSettingsTable
+					title={
+						(
+							<span className="opopw-flex opopw-items-center opopw-gap-2">
+								{__('Pro License', 'optionbay-product-options-addons-woo')}
+								<span className="opopw-flex opopw-text-[#ffb900]">
+									<Lock size={16} />
+								</span>
+							</span>
+						) as React.ReactNode
+					}
+					description={__(
+						'Pro License & automatic updates are available in the Pro add-on.',
+						'optionbay-product-options-addons-woo'
+					)}
+					fields={[
+						{
+							label: __('License Key', 'optionbay-product-options-addons-woo'),
+							render: () => (
+								<div className="opopw-opacity-70">
+									<input
+										type="password"
+										disabled
+										value=""
+										placeholder={__(
+											'Enter your license key',
+											'optionbay-product-options-addons-woo'
+										)}
+										className="opopw-w-full opopw-max-w-md opopw-px-3 opopw-py-2 opopw-border opopw-border-[#c3c4c7] opopw-rounded opopw-cursor-not-allowed"
+									/>
+									<p className="description opopw-mt-1">
+										<a
+											href={getUpgradeUrl()}
+											target="_blank"
+											rel="noopener noreferrer"
+											className="opopw-text-[#2271b1] opopw-inline-flex opopw-items-center opopw-gap-1"
+										>
+											<Lock size={12} className="opopw-text-[#ffb900]" />
+											{__(
+												'Upgrade to Pro for license activation & automatic updates',
+												'optionbay-product-options-addons-woo'
+											)}
+										</a>
+									</p>
+								</div>
+							),
+						},
+					]}
+				/>
+			)}
 
 			{applyFilters('opopw_settings_sections', null, settings, setSettings) as React.ReactNode}
 

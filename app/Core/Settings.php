@@ -153,7 +153,9 @@ class Settings {
 			$options                 = $this->get_settings();
 			$options[ $key_or_data ] = $val;
 		} else {
-			$options = $key_or_data;
+			// Merge into existing settings so a partial array update (e.g. a single
+			// preloader flag) doesn't wipe every other stored key.
+			$options = array_merge( $this->get_settings(), (array) $key_or_data );
 		}
 
 		update_option( OPOPW_OPTION_NAME, $options );

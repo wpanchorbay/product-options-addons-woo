@@ -199,12 +199,13 @@ class DbManager {
 			$result = $wpdb->insert( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery
 				$table_name,
 				array(
-					'group_id'    => absint( $group_id ),
-					'target_type' => sanitize_text_field( $assignment['target_type'] ?? 'global' ),
-					'target_id'   => absint( $assignment['target_id'] ?? 0 ),
-					'priority'    => absint( $assignment['priority'] ?? 10 ),
+					'group_id'     => absint( $group_id ),
+					'target_type'  => sanitize_text_field( $assignment['target_type'] ?? 'global' ),
+					'target_id'    => absint( $assignment['target_id'] ?? 0 ),
+					'is_exclusion' => ! empty( $assignment['is_exclusion'] ) ? 1 : 0,
+					'priority'     => absint( $assignment['priority'] ?? 10 ),
 				),
-				array( '%d', '%s', '%d', '%d' )
+				array( '%d', '%s', '%d', '%d', '%d' )
 			);
 
 			if ( $result ) {
@@ -254,15 +255,16 @@ class DbManager {
 		$results = $wpdb->get_results(
 			$wpdb->prepare(
 				// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared, PluginCheck.Security.DirectDB.UnescapedDBParameter -- Internal table name is safe.
-				"SELECT target_type, target_id, priority FROM $table_name WHERE group_id = %d ORDER BY priority ASC",
+				"SELECT target_type, target_id, is_exclusion, priority FROM $table_name WHERE group_id = %d ORDER BY priority ASC",
 				absint( $group_id )
 			),
 			ARRAY_A
 		);
 
 		foreach ( $results as &$row ) {
-			$row['target_id'] = (int) $row['target_id'];
-			$row['priority']  = (int) $row['priority'];
+			$row['target_id']    = (int) $row['target_id'];
+			$row['is_exclusion'] = ! empty( $row['is_exclusion'] );
+			$row['priority']     = (int) $row['priority'];
 		}
 
 		return $results;
@@ -275,13 +277,20 @@ class DbManager {
 	 * displayed on a given product page.
 	 *
 	 * @since 1.0.0
-	 * @param int $product_id The WooCommerce product ID.
+	 * @param int   $product_id   The WooCommerce product ID.
+	 * @param array $category_ids Product category term IDs to match 'category' target rules.
+	 * @param array $tag_ids      Product tag term IDs to match 'tag' target rules.
 	 * @return array Ordered array of group IDs to display.
 	 */
-	public function get_groups_for_product( $product_id ) {
+	public function get_groups_for_product( $product_id, array $category_ids = array(), array $tag_ids = array() ) {
+		$category_ids = array_values( array_unique( array_filter( array_map( 'absint', $category_ids ) ) ) );
+		$tag_ids      = array_values( array_unique( array_filter( array_map( 'absint', $tag_ids ) ) ) );
+
 		$version_cache = wp_cache_get( 'opopw_assignments_version', 'opopw_assignments' );
 		$version       = $version_cache ? $version_cache : 1;
-		$cache_key     = "product_groups_{$product_id}_{$version}";
+		$cat_key       = $category_ids ? implode( '-', $category_ids ) : '0';
+		$tag_key       = $tag_ids ? implode( '-', $tag_ids ) : '0';
+		$cache_key     = "product_groups_{$product_id}_c{$cat_key}_t{$tag_key}_{$version}";
 		$cached        = wp_cache_get( $cache_key, 'opopw_assignments' );
 
 		if ( false !== $cached ) {
@@ -292,26 +301,41 @@ class DbManager {
 		$table_name  = esc_sql( self::get_assignments_table() );
 		$posts_table = esc_sql( $wpdb->posts );
 
-		// Build target conditions
+		// Build target conditions. Values are appended in the same order the
+		// placeholders appear in the query so $wpdb->prepare() binds correctly.
 		$conditions = array();
 		$values     = array();
 
-		// Global assignments
-		$conditions[] = "(target_type = 'global' AND target_id = 0)";
+		// Global assignments.
+		$conditions[] = "(a.target_type = 'global' AND a.target_id = 0)";
 
-		// Product-specific
-		$conditions[] = "(target_type = 'product' AND target_id = %d)";
+		// Product-specific.
+		$conditions[] = "(a.target_type = 'product' AND a.target_id = %d)";
 		$values[]     = absint( $product_id );
+
+		// Category rules.
+		if ( $category_ids ) {
+			$placeholders = implode( ', ', array_fill( 0, count( $category_ids ), '%d' ) );
+			$conditions[] = "(a.target_type = 'category' AND a.target_id IN ({$placeholders}))";
+			$values       = array_merge( $values, $category_ids );
+		}
+
+		// Tag rules.
+		if ( $tag_ids ) {
+			$placeholders = implode( ', ', array_fill( 0, count( $tag_ids ), '%d' ) );
+			$conditions[] = "(a.target_type = 'tag' AND a.target_id IN ({$placeholders}))";
+			$values       = array_merge( $values, $tag_ids );
+		}
 
 		$where_clause = implode( ' OR ', $conditions );
 
-		// Get all matching assignments
-		// We join with the posts table to ensure we only get 'publish' status groups
-		$query = "SELECT a.group_id, MIN(a.priority) as priority
+		// Get all matching assignments (inclusions and exclusions).
+		// We join with the posts table to ensure we only get 'publish' status groups.
+		$query = "SELECT a.group_id, a.is_exclusion, MIN(a.priority) as priority
                   FROM {$table_name} as a
                   JOIN {$posts_table} as p ON a.group_id = p.ID
                   WHERE ({$where_clause}) AND p.post_status = 'publish'
-                  GROUP BY a.group_id
+                  GROUP BY a.group_id, a.is_exclusion
                   ORDER BY priority ASC"; // phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
 
 		$results = $wpdb->get_results( // phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
@@ -319,10 +343,25 @@ class DbManager {
 			ARRAY_A
 		);
 
-		$group_ids = array();
+		// Partition into included groups (ordered by priority) and excluded groups.
+		$included = array();
+		$excluded = array();
 
 		foreach ( $results as $row ) {
-			$group_ids[] = absint( $row['group_id'] );
+			$gid = absint( $row['group_id'] );
+			if ( ! empty( $row['is_exclusion'] ) ) {
+				$excluded[ $gid ] = true;
+			} else {
+				$included[] = $gid;
+			}
+		}
+
+		// An exclusion rule for this product/category/tag removes the group entirely.
+		$group_ids = array();
+		foreach ( $included as $gid ) {
+			if ( ! isset( $excluded[ $gid ] ) && ! in_array( $gid, $group_ids, true ) ) {
+				$group_ids[] = $gid;
+			}
 		}
 
 		wp_cache_set( $cache_key, $group_ids, 'opopw_assignments', 3600 );

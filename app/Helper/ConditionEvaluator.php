@@ -37,9 +37,15 @@ class ConditionEvaluator {
 	 * @since 1.0.0
 	 * @param array $field_schema   The schema of the field being evaluated.
 	 * @param array $submitted_data The data submitted for this group ($_POST['opopw_addons'][$group_id]).
+	 * @param array $all_fields     Optional. The full list of field schemas for the group. When
+	 *                              provided, conditional logic cascades: a trigger field that is
+	 *                              itself hidden contributes no value to downstream rules, mirroring
+	 *                              the client which clears hidden inputs. Prevents forged submissions
+	 *                              from unlocking a field via a hidden trigger.
+	 * @param array $resolving      Internal. Set of field IDs currently being resolved (cycle guard).
 	 * @return bool True if visible, false if hidden.
 	 */
-	public static function is_visible( array $field_schema, array $submitted_data ) {
+	public static function is_visible( array $field_schema, array $submitted_data, array $all_fields = array(), array $resolving = array() ) {
 		$conditions = $field_schema['conditions'] ?? array();
 
 		// If conditions are not active, it's always visible by default
@@ -55,10 +61,16 @@ class ConditionEvaluator {
 
 		opopw_log( 'Evaluating conditions for field: ' . ( $field_schema['id'] ?? 'unknown' ), 'DEBUG' );
 
+		// Mark this field as being resolved so a cyclic rule graph can't recurse forever.
+		$field_id = $field_schema['id'] ?? '';
+		if ( '' !== $field_id ) {
+			$resolving[ $field_id ] = true;
+		}
+
 		$results = array();
 		// Map over all rules and assess each one individually
 		foreach ( $rules as $rule ) {
-			$rule_result = self::evaluate_rule( $rule, $submitted_data );
+			$rule_result = self::evaluate_rule( $rule, $submitted_data, $all_fields, $resolving );
 			$results[]   = $rule_result;
 		}
 
@@ -95,17 +107,30 @@ class ConditionEvaluator {
 	 * @since 1.0.0
 	 * @param array $rule The rule definition containing target_field_id, operator, and value.
 	 * @param array $submitted_data All previously processed user inputs for this group.
+	 * @param array $all_fields     Optional. Full group field schemas, for cascade resolution.
+	 * @param array $resolving      Internal. Field IDs currently being resolved (cycle guard).
 	 * @return bool True if the specific rule condition is satisfied.
 	 */
-	private static function evaluate_rule( array $rule, array $submitted_data ) {
+	private static function evaluate_rule( array $rule, array $submitted_data, array $all_fields = array(), array $resolving = array() ) {
 		$target_id = $rule['target_field_id'] ?? '';
 		if ( empty( $target_id ) ) {
 			return false;
 		}
 
 		$target_value = $submitted_data[ $target_id ] ?? '';
-		$rule_value   = $rule['value'] ?? '';
-		$op           = $rule['operator'] ?? '==';
+
+		// Cascade: if the trigger field is itself hidden under the current data, it
+		// contributes no value (the client clears hidden inputs). This blocks forged
+		// submissions that set a hidden trigger directly to unlock a downstream field.
+		if ( ! empty( $all_fields ) && ! isset( $resolving[ $target_id ] ) ) {
+			$target_field = self::find_field( $all_fields, $target_id );
+			if ( null !== $target_field && ! self::is_visible( $target_field, $submitted_data, $all_fields, $resolving ) ) {
+				$target_value = is_array( $target_value ) ? array() : '';
+			}
+		}
+
+		$rule_value = $rule['value'] ?? '';
+		$op         = $rule['operator'] ?? '==';
 
 		// Handle array values (e.g. multi-checkbox)
 		if ( is_array( $target_value ) ) {
@@ -155,5 +180,22 @@ class ConditionEvaluator {
 			default:
 				return false;
 		}
+	}
+
+	/**
+	 * Find a field schema by its ID within a group's field list.
+	 *
+	 * @since 1.0.2
+	 * @param array  $all_fields Full group field schemas.
+	 * @param string $field_id   The field ID to locate.
+	 * @return array|null The matching field schema, or null if not found.
+	 */
+	private static function find_field( array $all_fields, $field_id ) {
+		foreach ( $all_fields as $field ) {
+			if ( is_array( $field ) && ( $field['id'] ?? '' ) === $field_id ) {
+				return $field;
+			}
+		}
+		return null;
 	}
 }

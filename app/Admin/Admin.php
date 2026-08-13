@@ -261,6 +261,8 @@ class Admin {
 				'products_url'    => admin_url( 'edit.php?post_type=product' ),
 				'settings_url'    => admin_url( 'admin.php?page=wc-settings&tab=products&section=optionbay-product-options-addons-woo' ),
 				'context'         => $context,
+				'isPro'           => class_exists( 'OpopwPro\\Core\\Plugin' ),
+				'upgradeUrl'      => apply_filters( 'opopw_upgrade_url', 'https://wpanchorbay.com/plugins/smart-product-options-addons/#pricing' ),
 			)
 		);
 

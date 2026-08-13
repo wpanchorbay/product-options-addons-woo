@@ -379,7 +379,7 @@ class AddonGroupController extends ApiController {
 			$id_map = array();
 			foreach ( $new_inventories as $new_inv ) {
 				$inv_id = \Opopw\Data\InventoryManager::get_instance()->create_item( $new_inv );
-				if ( ! inv_id ) {
+				if ( ! $inv_id ) {
 					throw new \Exception( __( 'Failed to create global inventory item.', 'optionbay-product-options-addons-woo' ) );
 				}
 				$id_map[ $new_inv['tmp_id'] ] = $inv_id;
@@ -509,7 +509,7 @@ class AddonGroupController extends ApiController {
 				$id_map = array();
 				foreach ( $new_inventories as $new_inv ) {
 					$inv_id = \Opopw\Data\InventoryManager::get_instance()->create_item( $new_inv );
-					if ( ! inv_id ) {
+					if ( ! $inv_id ) {
 						throw new \Exception( __( 'Failed to create global inventory item.', 'optionbay-product-options-addons-woo' ) );
 					}
 					$id_map[ $new_inv['tmp_id'] ] = $inv_id;
@@ -847,13 +847,13 @@ class AddonGroupController extends ApiController {
 	 * @param array $schema Raw schema array.
 	 * @return array Sanitized schema.
 	 */
-	private function sanitize_schema( $schema ) {
+	public function sanitize_schema( $schema ) {
 		if ( ! is_array( $schema ) ) {
 			return array();
 		}
 
 		$allowed_types       = apply_filters( 'opopw_allowed_field_types', array( 'text', 'textarea', 'select', 'radio', 'checkbox', 'color_swatch', 'image_swatch', 'number', 'static_content', 'email', 'single_checkbox', 'date', 'time', 'datetime' ) );
-		$allowed_price_types = array( 'none', 'flat', 'percentage' );
+		$allowed_price_types = self::get_allowed_price_types();
 
 		$sanitized = array();
 
@@ -876,7 +876,7 @@ class AddonGroupController extends ApiController {
 				'price'          => floatval( $field['price'] ?? 0 ),
 				'weight'         => floatval( $field['weight'] ?? 0 ),
 				'enable_stock'   => ! empty( $field['enable_stock'] ),
-				'inventory_id'   => $field['inventory_id'] ?? null,
+				'inventory_id'   => $this->sanitize_inventory_id( $field['inventory_id'] ?? null ),
 				'reduction_mode' => $field['reduction_mode'] ?? 'per_item_qty',
 			);
 
@@ -900,7 +900,7 @@ class AddonGroupController extends ApiController {
 						'color'            => sanitize_text_field( $option['color'] ?? '' ),
 						'image_url'        => esc_url_raw( $option['image_url'] ?? '' ),
 						'enable_stock'     => ! empty( $option['enable_stock'] ),
-						'inventory_id'     => $option['inventory_id'] ?? null,
+						'inventory_id'     => $this->sanitize_inventory_id( $option['inventory_id'] ?? null ),
 						'reduction_mode'   => $option['reduction_mode'] ?? 'per_item_qty',
 						'linked_image_id'  => isset( $option['linked_image_id'] ) ? intval( $option['linked_image_id'] ) : null,
 						'linked_image_url' => isset( $option['linked_image_url'] ) ? esc_url_raw( $option['linked_image_url'] ) : '',
@@ -964,10 +964,47 @@ class AddonGroupController extends ApiController {
 				);
 			}
 
+			/**
+			 * Filter a sanitized field. The core allow-list above omits
+			 * field-type-specific keys owned by extensions; the Pro add-on hooks
+			 * this to preserve and sanitize its keys (formula, allowed_types,
+			 * max_file_size, reduction_formula) so they persist on the field.
+			 *
+			 * @since 1.0.2
+			 * @param array $clean_field The sanitized field.
+			 * @param array $field       The raw field input.
+			 */
+			$clean_field = apply_filters( 'opopw_sanitize_field', $clean_field, $field );
+
 			$sanitized[] = $clean_field;
 		}
 
 		return $sanitized;
+	}
+
+	/**
+	 * Sanitize an inventory_id value on a field/option.
+	 *
+	 * A field can still be carrying a "tmp_..." placeholder id here if it
+	 * references a newly-created pool that swap_inventory_ids() didn't
+	 * resolve (e.g. its matching new_inventories entry was missing/failed
+	 * validation) — absint() would silently collapse that to 0, destroying
+	 * the link, so the placeholder is preserved as-is instead.
+	 *
+	 * @since 1.0.2
+	 * @param mixed $value Raw inventory_id value.
+	 * @return int|string|null
+	 */
+	private function sanitize_inventory_id( $value ) {
+		if ( null === $value || '' === $value ) {
+			return null;
+		}
+
+		if ( is_string( $value ) && 0 === strpos( $value, 'tmp_' ) ) {
+			return sanitize_text_field( $value );
+		}
+
+		return absint( $value );
 	}
 
 	/**
@@ -1065,8 +1102,10 @@ class AddonGroupController extends ApiController {
 	 */
 	private function get_validation_rules() {
 
-		$allowed_types = apply_filters( 'opopw_allowed_field_types', array( 'text', 'textarea', 'select', 'radio', 'checkbox', 'color_swatch', 'image_swatch', 'number', 'static_content', 'email', 'single_checkbox', 'date', 'time', 'datetime' ) );
-		return array(
+		$allowed_types       = apply_filters( 'opopw_allowed_field_types', array( 'text', 'textarea', 'select', 'radio', 'checkbox', 'color_swatch', 'image_swatch', 'number', 'static_content', 'email', 'single_checkbox', 'date', 'time', 'datetime' ) );
+		$allowed_price_types = self::get_allowed_price_types();
+		$price_types_rule    = implode( ',', $allowed_price_types );
+		$rules               = array(
 			'title'                                       => 'required|min:3|max:255',
 			'status'                                      => 'required|in:publish,draft',
 			'schema'                                      => 'required|array',
@@ -1078,7 +1117,7 @@ class AddonGroupController extends ApiController {
 			'schema.*.placeholder'                        => 'nullable',
 			'schema.*.required'                           => 'boolean',
 			'schema.*.class_name'                         => 'nullable',
-			'schema.*.price_type'                         => 'required_with:schema|in:none,flat,percentage',
+			'schema.*.price_type'                         => 'required_with:schema|in:' . $price_types_rule,
 			'schema.*.price'                              => 'required_if:schema.*.price_type,flat,percentage|numeric',
 			'schema.*.weight'                             => 'numeric',
 			'schema.*.min_length'                         => 'numeric',
@@ -1093,7 +1132,7 @@ class AddonGroupController extends ApiController {
 			'schema.*.options'                            => 'array',
 			'schema.*.options.*.label'                    => 'required_with:schema.*.options',
 			'schema.*.options.*.value'                    => 'required_with:schema.*.options',
-			'schema.*.options.*.price_type'               => 'in:flat,none',
+			'schema.*.options.*.price_type'               => 'in:' . $price_types_rule,
 			'schema.*.options.*.price'                    => 'required_if:schema.*.options.*.price_type,flat|numeric',
 			'schema.*.options.*.weight'                   => 'numeric',
 			'schema.*.options.*.color'                    => 'required_if:schema.*.type,color_swatch',
@@ -1121,7 +1160,36 @@ class AddonGroupController extends ApiController {
 			'assignments'                                 => 'array',
 			'assignments.*.target_type'                   => 'required|in:global,product,category,tag',
 			'assignments.*.target_id'                     => 'required|numeric',
+			'assignments.*.is_exclusion'                  => 'boolean',
+			'assignments.*.priority'                      => 'nullable|numeric',
 		);
+
+		/**
+		 * Filter the option-group validation rules.
+		 *
+		 * Rakit's getValidData() only returns keys that have a rule, so any
+		 * field key without a rule here is stripped on save. The Pro add-on
+		 * registers rules for its own schema keys (formula, allowed_types,
+		 * max_file_size, reduction_formula) through this filter so they survive.
+		 *
+		 * @since 1.0.2
+		 * @param array $rules The validation rules.
+		 */
+		return apply_filters( 'opopw_validation_rules', $rules );
+	}
+
+	/**
+	 * Get the allowed price types for schema validation and sanitization.
+	 *
+	 * Filterable so the Pro add-on can register additional pricing strategies
+	 * (e.g. 'formula', 'character_count') at a single source of truth used by
+	 * both the validator and the sanitizer.
+	 *
+	 * @since 1.0.2
+	 * @return array
+	 */
+	public static function get_allowed_price_types() {
+		return apply_filters( 'opopw_allowed_price_types', array( 'none', 'flat', 'percentage' ) );
 	}
 
 	/**

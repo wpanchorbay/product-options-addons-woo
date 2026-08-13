@@ -11,6 +11,7 @@ namespace Opopw\Core;
 
 use Opopw\Data\DbManager;
 use Opopw\Data\InventoryManager;
+use Opopw\Api\AddonGroupController;
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
@@ -37,9 +38,12 @@ class Importer {
 	public static function import_data( $payload ) {
 		$id_map = array(); // old_id => new_id
 
+		// Bound each collection so a maliciously huge payload cannot exhaust resources.
+		$max_items = (int) apply_filters( 'opopw_import_max_items', 1000 );
+
 		// 1. Import Inventory first so we can remap IDs in groups
 		if ( ! empty( $payload['inventory'] ) && is_array( $payload['inventory'] ) ) {
-			foreach ( $payload['inventory'] as $inv ) {
+			foreach ( array_slice( $payload['inventory'], 0, $max_items ) as $inv ) {
 				$old_id = $inv['id'] ?? null;
 				if ( ! empty( $inv['name'] ) ) {
 					$new_id = InventoryManager::get_instance()->create_item(
@@ -58,7 +62,7 @@ class Importer {
 
 		// 2. Import Groups
 		if ( ! empty( $payload['groups'] ) && is_array( $payload['groups'] ) ) {
-			foreach ( $payload['groups'] as $group ) {
+			foreach ( array_slice( $payload['groups'], 0, $max_items ) as $group ) {
 				$schema = isset( $group['schema'] ) && is_array( $group['schema'] ) ? $group['schema'] : array();
 
 				// Remap inventory IDs in schema
@@ -88,6 +92,10 @@ class Importer {
 				);
 
 				if ( ! is_wp_error( $post_id ) ) {
+					// Run the imported schema through the same sanitizer the REST
+					// create/update path uses, so an import can't persist less-safe
+					// data than the admin UI allows.
+					$schema = AddonGroupController::get_instance()->sanitize_schema( $schema );
 					update_post_meta( $post_id, AddonGroup::META_SCHEMA, wp_slash( wp_json_encode( $schema ) ) );
 
 					// Only import global assignments to avoid breaking target site relations
@@ -106,11 +114,11 @@ class Importer {
 			}
 		}
 
-		// 3. Import Settings
+		// 3. Import Settings — allow-list + sanitize against the settings schema
+		// instead of trusting arbitrary keys/values from the payload.
 		if ( ! empty( $payload['settings'] ) && is_array( $payload['settings'] ) ) {
-			foreach ( $payload['settings'] as $key => $val ) {
-				Settings::get_instance()->update_settings( $key, $val );
-			}
+			$sanitized_settings = Settings::get_instance()->sanitize_settings_object( $payload['settings'] );
+			Settings::get_instance()->update_settings( $sanitized_settings );
 		}
 
 		return true;
