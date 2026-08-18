@@ -113,8 +113,19 @@ export const ClassicSelect: React.FC< ClassicSelectProps > = ( {
 	const searchInputRef = useRef< HTMLInputElement >( null );
 	const interactionType = useRef< 'mouse' | 'keyboard' >( 'keyboard' );
 
-	// Portal coordinates
-	const [ coords, setCoords ] = useState( { top: 0, left: 0, width: 0 } );
+	// Portal coordinates. The dropdown is `position: fixed`, so its on-screen
+	// position never changes as the page scrolls unless these are explicitly
+	// recalculated — openUpward flips it above the trigger when there isn't
+	// enough room below, so a trigger far down a long page can never end up
+	// with a dropdown permanently rendered past the bottom of the viewport
+	// (unreachable by scrolling, since scrolling doesn't move fixed elements).
+	const [ coords, setCoords ] = useState( {
+		top: 0,
+		bottom: 0,
+		left: 0,
+		width: 0,
+		openUpward: false,
+	} );
 
 	// Tooltip state for buy_pro
 	const [ tooltipState, setTooltipState ] = useState< {
@@ -271,15 +282,27 @@ export const ClassicSelect: React.FC< ClassicSelectProps > = ( {
 		);
 	}, [ effectiveOptions, searchQuery, enableSearch, endpoint ] );
 
+	// Estimated dropdown height (max-height on the option list, plus room for
+	// an optional search input/header) used only to decide whether there's
+	// enough space below the trigger to open downward.
+	const ESTIMATED_DROPDOWN_HEIGHT = 260;
+
 	const updateCoords = () => {
 		if ( ! containerRef.current ) {
 			return;
 		}
 		const rect = containerRef.current.getBoundingClientRect();
+		const spaceBelow = window.innerHeight - rect.bottom;
+		const spaceAbove = rect.top;
+		const openUpward =
+			spaceBelow < ESTIMATED_DROPDOWN_HEIGHT && spaceAbove > spaceBelow;
+
 		setCoords( {
 			top: rect.bottom,
+			bottom: window.innerHeight - rect.top,
 			left: rect.left,
 			width: rect.width,
+			openUpward,
 		} );
 	};
 
@@ -561,13 +584,17 @@ export const ClassicSelect: React.FC< ClassicSelectProps > = ( {
 							className={ `opopw-fixed opopw-z-[999999] opopw-bg-white opopw-border-2 opopw-border-[#2271b1] ${
 								differentDropdownWidth
 									? 'opopw-rounded-[3px]'
-									: 'opopw-border-t-0 opopw-mt-[-3px] opopw-rounded-b-[3px]'
-							} 
+									: coords.openUpward
+										? 'opopw-border-b-0 opopw-mb-[-3px] opopw-rounded-t-[3px]'
+										: 'opopw-border-t-0 opopw-mt-[-3px] opopw-rounded-b-[3px]'
+							}
               opopw-rounded-b-[3px] opopw-shadow-[0_3px_5px_rgba(0,0,0,0.2)] opopw-p-0 opopw-box-border ${
 					classNames?.dropdown || ''
 				}`.trim() }
 							style={ {
-								top: coords.top,
+								...( coords.openUpward
+									? { bottom: coords.bottom }
+									: { top: coords.top } ),
 								left: coords.left - 1, // Offset for border alignment
 								width: coords.width + 2, // Compensate for border
 								...( differentDropdownWidth

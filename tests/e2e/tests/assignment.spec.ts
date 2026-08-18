@@ -11,7 +11,15 @@ test.describe('Assignment rules (Free: global / specific product)', () => {
     await login(page);
   });
 
-  test('Targeted group shows only on the chosen product', async ({ page }) => {
+  test('Targeted group shows only on the chosen product', async ({ page }, testInfo) => {
+    // When Pro is active, Pro's ProAssignmentRules component (opopw_assignment_rules_component)
+    // replaces this exact UI/copy ("Apply to specific products" vs Pro's "Apply to
+    // specific products, categories, or tags") — Pro's own targeting is covered by
+    // assignment-targeting.spec.ts, which runs under pro-classic/pro-block.
+    test.skip(
+      testInfo.project.name.startsWith('pro-'),
+      'Free-specific targeting UI copy; superseded by Pro\'s own component when Pro is active.'
+    );
     const log = new TestLogger('assignment.spec.ts', 'Targeted product');
     log.start();
     await openNewGroup(page, `Targeted ${Date.now()}`);

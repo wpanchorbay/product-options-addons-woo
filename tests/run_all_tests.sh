@@ -22,9 +22,47 @@ source "$(qit env:source 2>/dev/null | tail -1)"
 export WP_URL="$QIT_BASE_URL"
 echo "Target URL: $WP_URL"
 
-# 4. Run full test suite
-echo "Running full test suite..."
+# 4. Run the full test suite as 4 SEQUENTIAL Playwright invocations, one per
+# phase, instead of a single unfiltered `npx playwright test`.
+#
+# Why: classic, block-setup, and pro-setup all share classic-setup as their
+# only declared dependency. Playwright's scheduler runs all three ready
+# sibling projects back-to-back once that shared dependency finishes — it
+# does NOT wait for `classic`'s full ~54-test project to drain first, despite
+# their declaration order in playwright.config.ts. In a single unfiltered
+# run this activates Pro (via pro-setup) *before* classic's own tests run,
+# breaking every Free-only assertion (00-pro-absence, locked-pro-ui,
+# assignment, conditional-logic, conditional-cascade) in the classic/block
+# phases. Invoking each phase as its own process forces the order without
+# touching the dependency graph, so single-phase `--project=X` runs (e.g.
+# run_single_test.sh) stay exactly as cheap as they are today.
+echo "Running full test suite (4 sequential phases)..."
 cd tests/e2e
 npm install
 npx playwright install chromium
-npx playwright test --workers=1
+
+overall_status=0
+
+run_phase() {
+  echo ""
+  echo "=== Phase: $* ==="
+  npx playwright test --workers=1 "$@"
+  local status=$?
+  if [ $status -ne 0 ]; then
+    overall_status=1
+  fi
+  return $status
+}
+
+run_phase --project=classic-setup --project=classic
+run_phase --project=block-setup --project=block
+run_phase --project=pro-setup --project=pro-classic
+run_phase --project=pro-block-setup --project=pro-block
+
+echo ""
+if [ $overall_status -eq 0 ]; then
+  echo "All phases passed."
+else
+  echo "One or more phases had failures — see output above."
+fi
+exit $overall_status
