@@ -101,6 +101,35 @@ User-facing documentation lives in a separate VitePress site: `/home/sdd/Documen
 
 When a change to this plugin **or** the Pro plugin (`optionbay-product-options-addons-woo-pro`) is a major one — a new/removed field type, a new pricing strategy, a changed admin UI flow (builder, assignment rules, settings), a changed conditional-logic/validation behavior, or a new/changed REST endpoint that affects documented behavior — call this out explicitly and suggest which doc page(s) under that docs site likely need updating. Minor refactors, bug fixes, or internal-only changes don't need this.
 
+## Known issues
+
+Found while building demo data with `bay-demo-kit` (2026-08-22). Verified against
+this source tree, not just against a running site. No fix applied here.
+
+### `Preloader::run()` is guarded by a settings flag, not by the data it creates
+
+`app/Core/Preloader.php:35-45` — `run()` (called from `app/Core/Activator.php:57`)
+returns early only when the `global_isPreloaded` setting is truthy. It never checks
+whether the six preloaded groups already exist. If that flag is ever lost while the
+groups survive — a reinstall, a settings reset, a partially-completed uninstall —
+the next activation creates a **second complete set** of them.
+
+Observed on a test site: two identical sets of the six demo groups
+(*Gift Wrapping Service*, *Laptop Configurator*, *Gourmet Pizza Builder*,
+*Custom Apparel*, *Floral Arrangement Options*, *Auto Detailing Booking*),
+twelve posts in total, each with its own row in `opopw_assignments`.
+
+Two things make this worse than a cosmetic duplicate:
+
+1. Every preloaded group gets a `target_type => 'global'` assignment
+   (`Preloader.php:88-96`), so the assignments table accumulates global rows that
+   are consulted for **every** product, not just a scoped one.
+2. The groups are created as `draft`, so they are easy to miss in the admin list
+   and nothing ever cleans them up.
+
+Deduplicating by title (or stamping the created posts with a meta key and querying
+for it) before inserting would make the preload idempotent regardless of the flag.
+
 ## Release process
 
 Triggers: "make a zip", "make a release zip", "update the version", "is it ready to release".

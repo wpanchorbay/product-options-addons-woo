@@ -63,10 +63,20 @@ zip -r "$ZIP_NAME" "$PLUGIN_SLUG"
 rm -rf "$PLUGIN_SLUG"
 cd ../..
 
+# dist/svn/trunk mirrors the real WordPress.org SVN layout (trunk/ IS the
+# plugin root, no plugin-slug wrapper) -- rsync straight into an svn working
+# copy's trunk/ for `svn commit`. Left as a plain folder on purpose (not
+# zipped, not removed after) since that's how svn expects it. Trimmed like
+# the WordPress zip, since this is the same wp.org-facing file set.
+echo "Creating dist/svn/trunk..."
+mkdir -p "dist/svn/trunk"
+copy_plugin_files "dist/svn/trunk" "trim"
+
 echo "------------------------------------------------"
 echo "Done! Packages created successfully:"
 echo "- dist/wordpress/$ZIP_NAME"
 echo "- dist/woocommerce/$ZIP_NAME"
+echo "- dist/svn/trunk/ (uncompressed, ready for \`svn commit\` into a checkout's trunk/)"
 echo ""
 echo "Note: WordPress zip has files at the archive root (no '$PLUGIN_SLUG/' folder);"
 echo "      WooCommerce zip keeps the '$PLUGIN_SLUG/' parent directory."
