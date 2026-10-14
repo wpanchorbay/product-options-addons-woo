@@ -1195,15 +1195,19 @@ class CartManager extends Base {
 				$field_id = $field_schema['id'];
 				$value    = $group_data[ $field_id ] ?? null;
 
-				// File-style fields arrive in $_FILES. Read only its metadata here: the
+				// Upload-style fields arrive in $_FILES. Read only its metadata here: the
 				// 'opopw_cart_process_field_value' filter (which may move the upload)
-				// must run exactly once per request, in add_cart_item_data().
-				// phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-				$files_data = isset( $_FILES['opopw_addons'] ) ? (array) $_FILES['opopw_addons'] : array();
-				$file_name  = $files_data['name'][ $group_id ][ $field_id ] ?? '';
-				$file_error = $files_data['error'][ $group_id ][ $field_id ] ?? UPLOAD_ERR_NO_FILE;
-				if ( ! empty( $file_name ) && UPLOAD_ERR_NO_FILE !== $file_error ) {
-					$value = $file_name;
+				// must run exactly once per request, in add_cart_item_data(). Every other
+				// type uses the submitted POST value, the same one add_cart_item_data() stores.
+				$upload_types = apply_filters( 'opopw_upload_field_types', array( 'file' ) );
+				if ( in_array( $field_schema['type'] ?? '', (array) $upload_types, true ) ) {
+					// phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+					$files_data = isset( $_FILES['opopw_addons'] ) ? (array) $_FILES['opopw_addons'] : array();
+					$file_name  = $files_data['name'][ $group_id ][ $field_id ] ?? '';
+					$file_error = $files_data['error'][ $group_id ][ $field_id ] ?? UPLOAD_ERR_NO_FILE;
+					if ( is_string( $file_name ) && '' !== $file_name && is_numeric( $file_error ) && UPLOAD_ERR_NO_FILE !== (int) $file_error ) {
+						$value = $file_name;
+					}
 				}
 
 				// Mirror add_cart_item_data(): an empty field is not stored, so it must not reserve stock.
