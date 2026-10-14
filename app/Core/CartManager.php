@@ -1187,8 +1187,19 @@ class CartManager extends Base {
 					continue;
 				}
 
+				// Presentational fields never carry a value or stock.
+				if ( in_array( $field_schema['type'] ?? '', opopw_get_presentational_field_types(), true ) ) {
+					continue;
+				}
+
 				$field_id = $field_schema['id'];
 				$value    = $group_data[ $field_id ] ?? null;
+				$value    = apply_filters( 'opopw_cart_process_field_value', $value, $field_schema, $group_id );
+
+				// Mirror add_cart_item_data(): an empty field is not stored, so it must not reserve stock.
+				if ( null === $value || '' === $value ) {
+					continue;
+				}
 
 				if ( ! empty( $field_schema['enable_stock'] ) && ! empty( $field_schema['inventory_id'] ) ) {
 					$inv_id = $field_schema['inventory_id'];
