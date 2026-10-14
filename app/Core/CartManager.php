@@ -1194,10 +1194,20 @@ class CartManager extends Base {
 
 				$field_id = $field_schema['id'];
 				$value    = $group_data[ $field_id ] ?? null;
-				$value    = apply_filters( 'opopw_cart_process_field_value', $value, $field_schema, $group_id );
+
+				// File-style fields arrive in $_FILES. Read only its metadata here: the
+				// 'opopw_cart_process_field_value' filter (which may move the upload)
+				// must run exactly once per request, in add_cart_item_data().
+				// phpcs:ignore WordPress.Security.NonceVerification.Missing, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+				$files_data = isset( $_FILES['opopw_addons'] ) ? (array) $_FILES['opopw_addons'] : array();
+				$file_name  = $files_data['name'][ $group_id ][ $field_id ] ?? '';
+				$file_error = $files_data['error'][ $group_id ][ $field_id ] ?? UPLOAD_ERR_NO_FILE;
+				if ( ! empty( $file_name ) && UPLOAD_ERR_NO_FILE !== $file_error ) {
+					$value = $file_name;
+				}
 
 				// Mirror add_cart_item_data(): an empty field is not stored, so it must not reserve stock.
-				if ( null === $value || '' === $value ) {
+				if ( null === $value || '' === $value || array() === $value ) {
 					continue;
 				}
 
