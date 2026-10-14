@@ -290,17 +290,24 @@ class AddonRenderer extends Base {
 		}
 
 		$hydration_data = array(
-			'schemas'     => $schemas,
-			'basePrice'   => $base_price,
-			'currency'    => $currency,
-			'decimals'    => $decimals,
-			'thousandSep' => $thousand_sep,
-			'decimalSep'  => $decimal_sep,
-			'priceFormat' => $price_format,
-			'inventory'   => $inventory_data,
-			'i18n'        => array(
+			'schemas'             => $schemas,
+			'basePrice'           => $base_price,
+			'currency'            => $currency,
+			'decimals'            => $decimals,
+			'thousandSep'         => $thousand_sep,
+			'decimalSep'          => $decimal_sep,
+			'priceFormat'         => $price_format,
+			'inventory'           => $inventory_data,
+			'i18n'                => array(
 				'outOfStock' => __( 'Out of stock', 'optionbay-product-options-addons-woo' ),
 			),
+			// Single source for the client's conditional-logic skip rule. The PHP
+			// list is filterable (opopw_presentational_field_types), so hydrating
+			// it here means a type Pro registers is honoured by both evaluators.
+			// A hardcoded JS copy would drift: PHP would skip a rule targeting the
+			// new type while JS still evaluated it, hiding a field the server
+			// considers visible and required.
+			'presentationalTypes' => opopw_get_presentational_field_types(),
 		);
 
 		// Hydrate JS state using the standard WordPress inline script method
@@ -408,15 +415,16 @@ class AddonRenderer extends Base {
 			'opopw-frontend',
 			OPOPW_URL . 'assets/css/frontend.css',
 			array(),
-			time()
+			OPOPW_VERSION
 		);
 
-		// Frontend JS
+		// Frontend JS. 'wp-hooks' powers the `opopw_frontend_price_delta`
+		// extension point used by the Pro pricing strategies.
 		wp_enqueue_script(
 			'opopw-frontend',
 			OPOPW_URL . 'assets/js/frontend.js',
-			array( 'jquery' ),
-			time(),
+			array( 'jquery', 'wp-hooks' ),
+			OPOPW_VERSION,
 			true
 		);
 
