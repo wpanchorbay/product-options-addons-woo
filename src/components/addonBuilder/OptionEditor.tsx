@@ -1,8 +1,9 @@
 import React from "react";
 import { __ } from "@wordpress/i18n";
+import { applyFilters } from "@wordpress/hooks";
 import { ClassicInput, ClassicSelect, ClassicButton } from "../classics";
 import { useAddonContext, FieldOption } from "../../store/AddonContext";
-import { PRICE_TYPES, REDUCTION_MODES } from "./constants";
+import { OPTION_PRICE_TYPES, REDUCTION_MODES } from "./constants";
 import { FormError } from "./FormError";
 import { InventoryPicker } from "./InventoryPicker";
 import { ClassicCheckbox } from "../classics";
@@ -330,6 +331,34 @@ export const OptionEditor: React.FC<OptionEditorProps> = ({
                           />
                         </>
                       )}
+
+                      {/*
+                        Extension point for per-option settings. Pro uses this
+                        to render the Math Formula input when an option is
+                        formula-priced; its counterpart on the server is the
+                        `opopw_sanitize_option` filter, which lets the value
+                        persist. Both are required or the option saves its
+                        price type but not its expression.
+                      */}
+                      {(
+                        applyFilters(
+                          "opopw_option_settings",
+                          [],
+                          opt,
+                          (updates: Partial<FieldOption>) =>
+                            dispatch({
+                              type: "UPDATE_OPTION",
+                              payload: { fieldId, optionIndex: idx, updates },
+                            })
+                        ) as any[]
+                      ).map((extra, extraIdx) => (
+                        <div key={extraIdx} className="opopw-mt-2">
+                          <label className="opopw-text-xs opopw-block opopw-mb-1">
+                            {extra.label}
+                          </label>
+                          {extra.render()}
+                        </div>
+                      ))}
                     </td>
 
                     {/* Price Type */}
@@ -355,7 +384,7 @@ export const OptionEditor: React.FC<OptionEditorProps> = ({
                             },
                           })
                         }
-                        options={PRICE_TYPES.map((pt) => ({
+                        options={OPTION_PRICE_TYPES.map((pt) => ({
                           value: pt.value,
                           label: pt.label,
                           variant: pt.variant,

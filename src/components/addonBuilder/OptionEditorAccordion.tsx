@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import { __ } from "@wordpress/i18n";
+import { applyFilters } from "@wordpress/hooks";
 import {
   DragDropContext,
   Droppable,
@@ -14,7 +15,7 @@ import {
 } from "../classics";
 import { ClassicSettingsTable } from "../classics/ClassicSettingsTable";
 import { useAddonContext, FieldOption } from "../../store/AddonContext";
-import { PRICE_TYPES, REDUCTION_MODES } from "./constants";
+import { OPTION_PRICE_TYPES, REDUCTION_MODES } from "./constants";
 import { FormError } from "./FormError";
 import { InventoryPicker } from "./InventoryPicker";
 import {
@@ -212,7 +213,7 @@ export const OptionEditorAccordion: React.FC<OptionEditorAccordionProps> = ({
                                 },
                               })
                             }
-                            options={PRICE_TYPES.map((pt) => ({
+                            options={OPTION_PRICE_TYPES.map((pt) => ({
                               value: pt.value,
                               label: pt.label,
                               variant: pt.variant,
@@ -221,6 +222,16 @@ export const OptionEditorAccordion: React.FC<OptionEditorAccordionProps> = ({
                         </div>
                       ),
                     },
+                    ...(applyFilters(
+                      "opopw_option_settings",
+                      [],
+                      opt,
+                      (updates: Partial<FieldOption>) =>
+                        dispatch({
+                          type: "UPDATE_OPTION",
+                          payload: { fieldId, optionIndex: idx, updates },
+                        })
+                    ) as any[]),
                     ...(opt.price_type !== "none"
                       ? [
                         {
@@ -632,7 +643,7 @@ export const OptionEditorAccordion: React.FC<OptionEditorAccordionProps> = ({
                                     );
                                   }
                                   const priceLabel =
-                                    PRICE_TYPES.find(
+                                    OPTION_PRICE_TYPES.find(
                                       (pt) => pt.value === opt.price_type,
                                     )?.label || opt.price_type;
                                   const displayPrice = `$${(opt.price ?? 0).toFixed(2)}`;

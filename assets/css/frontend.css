@@ -450,3 +450,57 @@
     object-fit: cover;
     display: block;
 }
+
+/* ── Presentational fields ────────────────────────────────────────────────
+   Themes style headings and rules aggressively (large margins, custom font
+   stacks, uppercase transforms, decorative pseudo-elements). These are scoped
+   resets so a heading dropped into the add-ons block renders predictably
+   regardless of the active theme. */
+.opopw-field--divider {
+	margin: 0;
+}
+
+.opopw-field--divider .opopw-field__input {
+	padding: 0;
+}
+
+.opopw-divider {
+	border: 0;
+	border-top: 1px solid var(--opopw-divider-color, #dcdcde);
+	margin: 1.25em 0;
+	height: 0;
+	padding: 0;
+	background: none;
+}
+
+.opopw-divider::before,
+.opopw-divider::after {
+	content: none;
+}
+
+.opopw-field--heading .opopw-field__input {
+	padding: 0;
+}
+
+.opopw-heading {
+	margin: 1.25em 0 0.5em;
+	padding: 0;
+	font-size: var(--opopw-font-size-label, 1.1em);
+	font-weight: 600;
+	line-height: 1.3;
+	text-transform: none;
+	letter-spacing: normal;
+	color: inherit;
+	border: 0;
+	background: none;
+}
+
+.opopw-heading::before,
+.opopw-heading::after {
+	content: none;
+}
+
+.opopw-field--heading:first-child .opopw-heading,
+.opopw-field--divider:first-child .opopw-divider {
+	margin-top: 0;
+}

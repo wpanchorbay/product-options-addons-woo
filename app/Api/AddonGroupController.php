@@ -852,7 +852,7 @@ class AddonGroupController extends ApiController {
 			return array();
 		}
 
-		$allowed_types       = apply_filters( 'opopw_allowed_field_types', array( 'text', 'textarea', 'select', 'radio', 'checkbox', 'color_swatch', 'image_swatch', 'number', 'static_content', 'email', 'single_checkbox', 'date', 'time', 'datetime' ) );
+		$allowed_types       = self::get_allowed_field_types();
 		$allowed_price_types = self::get_allowed_price_types();
 
 		$sanitized = array();
@@ -908,8 +908,32 @@ class AddonGroupController extends ApiController {
 					if ( ! empty( $clean_option['enable_stock'] ) ) {
 						$options_have_stock = true;
 					}
+					/**
+					 * Filter a sanitized option.
+					 *
+					 * The allow-list above omits keys owned by extensions, so the
+					 * Pro add-on hooks this to preserve its per-option keys (e.g.
+					 * 'formula'). Counterpart to 'opopw_sanitize_field' below;
+					 * without it, option-level Pro pricing saves as type-only and
+					 * silently prices at 0.
+					 *
+					 * @since 1.0.3
+					 * @param array $clean_option The sanitized option.
+					 * @param array $option       The raw option input.
+					 * @param array $field        The raw parent field input.
+					 */
+					$clean_option = apply_filters( 'opopw_sanitize_option', $clean_option, $option, $field );
+
 					$clean_field['options'][] = $clean_option;
 				}
+			}
+
+			// Presentational fields carry no submitted value, so a stray 'required'
+			// flag would block add-to-cart on something the customer cannot fill in.
+			if ( in_array( $clean_field['type'], self::get_presentational_field_types(), true ) ) {
+				$clean_field['required']     = false;
+				$clean_field['enable_stock'] = false;
+				$clean_field['inventory_id'] = null;
 			}
 
 			// If any choice has stock tracking enabled, the field itself cannot have stock tracking enabled
@@ -948,6 +972,10 @@ class AddonGroupController extends ApiController {
 				$clean_field['max_time'] = sanitize_text_field( $field['max_time'] );
 			}
 
+			if ( isset( $field['heading_level'] ) ) {
+				$level                        = sanitize_text_field( $field['heading_level'] );
+				$clean_field['heading_level'] = in_array( $level, array( 'h2', 'h3', 'h4', 'h5' ), true ) ? $level : 'h3';
+			}
 			if ( isset( $field['display_style'] ) ) {
 				$clean_field['display_style'] = sanitize_text_field( $field['display_style'] );
 			}
@@ -1102,7 +1130,7 @@ class AddonGroupController extends ApiController {
 	 */
 	private function get_validation_rules() {
 
-		$allowed_types       = apply_filters( 'opopw_allowed_field_types', array( 'text', 'textarea', 'select', 'radio', 'checkbox', 'color_swatch', 'image_swatch', 'number', 'static_content', 'email', 'single_checkbox', 'date', 'time', 'datetime' ) );
+		$allowed_types       = self::get_allowed_field_types();
 		$allowed_price_types = self::get_allowed_price_types();
 		$price_types_rule    = implode( ',', $allowed_price_types );
 		$rules               = array(
@@ -1112,7 +1140,9 @@ class AddonGroupController extends ApiController {
 			'schema.*.id'                                 => 'required',
 			'schema.*.type'                               => 'required|in:' . implode( ',', $allowed_types ),
 			'schema.*.content'                            => 'nullable',
-			'schema.*.label'                              => 'required',
+			// Not 'required': presentational fields (separator, heading) render no
+			// label input at all. Enforced per-type in validate() instead.
+			'schema.*.label'                              => 'nullable',
 			'schema.*.description'                        => 'nullable',
 			'schema.*.placeholder'                        => 'nullable',
 			'schema.*.required'                           => 'boolean',
@@ -1148,6 +1178,7 @@ class AddonGroupController extends ApiController {
 			'schema.*.conditions.rules.*.operator'        => 'required_with:schema.*.conditions.rules|in:==,!=,>,<,>=,<=,contains,not_contains,empty,not_empty',
 			'schema.*.conditions.rules.*.value'           => 'present',
 			'schema.*.display_style'                      => 'nullable|in:swatch_only,swatch_label',
+			'schema.*.heading_level'                      => 'nullable|in:h2,h3,h4,h5',
 			'schema.*.enable_stock'                       => 'boolean',
 			'schema.*.inventory_id'                       => 'required_if:schema.*.enable_stock,1',
 			'schema.*.options.*.enable_stock'             => 'boolean',
@@ -1176,6 +1207,57 @@ class AddonGroupController extends ApiController {
 		 * @param array $rules The validation rules.
 		 */
 		return apply_filters( 'opopw_validation_rules', $rules );
+	}
+
+	/**
+	 * Get the allow-list of field types accepted on save.
+	 *
+	 * Single source of truth shared by sanitize_schema() and
+	 * get_validation_rules(). The same literal was previously duplicated in
+	 * both, which is exactly the drift CLAUDE.md warns about. Mirrors the
+	 * existing get_allowed_price_types() pattern below.
+	 *
+	 * @since 1.0.3
+	 * @return array
+	 */
+	public static function get_allowed_field_types() {
+		return apply_filters(
+			'opopw_allowed_field_types',
+			array(
+				'text',
+				'textarea',
+				'select',
+				'radio',
+				'checkbox',
+				'color_swatch',
+				'image_swatch',
+				'number',
+				'static_content',
+				'email',
+				'single_checkbox',
+				'date',
+				'time',
+				'datetime',
+				'url',
+				'tel',
+				'divider',
+				'heading',
+			)
+		);
+	}
+
+	/**
+	 * Get the field types that render as presentation only.
+	 *
+	 * These carry no submitted value, so they never reach the cart, can never
+	 * be required, and cannot act as conditional-logic triggers. Filterable so
+	 * Pro can register its own presentational types.
+	 *
+	 * @since 1.0.3
+	 * @return array
+	 */
+	public static function get_presentational_field_types() {
+		return opopw_get_presentational_field_types();
 	}
 
 	/**
@@ -1241,14 +1323,26 @@ class AddonGroupController extends ApiController {
 
 		$errors = array();
 
+		$presentational = self::get_presentational_field_types();
+
 		if ( isset( $validated['schema'] ) && is_array( $validated['schema'] ) ) {
 			foreach ( $validated['schema'] as $f_idx => $field ) {
+				$field_type = $field['type'] ?? '';
 				$price_type = $field['price_type'] ?? 'none';
 				$price      = floatval( $field['price'] ?? 0 );
 
+				// A label is required for anything the customer interacts with,
+				// but a separator has none and a heading uses it as its text.
+				if ( ! in_array( $field_type, $presentational, true ) && '' === trim( (string) ( $field['label'] ?? '' ) ) ) {
+					$errors[ "schema.{$f_idx}.label" ] = __( 'Label is required.', 'optionbay-product-options-addons-woo' );
+				}
+
+				// Zero is rejected because it means "no price"; NEGATIVE amounts
+				// are supported on purpose — they are how discount options
+				// ("No gift wrap: -2.00") are configured.
 				if ( in_array( $price_type, array( 'flat', 'percentage' ), true ) ) {
-					if ( $price <= 0 ) {
-						$errors[ "schema.{$f_idx}.price" ] = __( 'Price must be greater than 0 when a price type is selected.', 'optionbay-product-options-addons-woo' );
+					if ( 0.0 === $price ) {
+						$errors[ "schema.{$f_idx}.price" ] = __( 'Price must not be 0 when a price type is selected.', 'optionbay-product-options-addons-woo' );
 					}
 				}
 
@@ -1264,9 +1358,10 @@ class AddonGroupController extends ApiController {
 						$opt_price_type = $option['price_type'] ?? 'none';
 						$opt_price      = floatval( $option['price'] ?? 0 );
 
+						// As above: 0 is meaningless, negatives are discount options.
 						if ( in_array( $opt_price_type, array( 'flat' ), true ) ) {
-							if ( $opt_price <= 0 ) {
-								$errors[ "schema.{$f_idx}.options.{$o_idx}.price" ] = __( 'Price must be greater than 0 when a price type is selected.', 'optionbay-product-options-addons-woo' );
+							if ( 0.0 === $opt_price ) {
+								$errors[ "schema.{$f_idx}.options.{$o_idx}.price" ] = __( 'Price must not be 0 when a price type is selected.', 'optionbay-product-options-addons-woo' );
 							}
 						}
 					}

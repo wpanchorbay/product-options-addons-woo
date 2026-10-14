@@ -56,6 +56,10 @@ class FieldFactory {
 				'color_swatch'    => ColorSwatchField::class,
 				'image_swatch'    => ImageSwatchField::class,
 				'static_content'  => StaticContentField::class,
+				'url'             => UrlField::class,
+				'tel'             => TelField::class,
+				'divider'         => DividerField::class,
+				'heading'         => HeadingField::class,
 			);
 
 			/**

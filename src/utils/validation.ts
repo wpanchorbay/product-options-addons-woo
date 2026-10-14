@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { PRESENTATIONAL_TYPES } from "../components/addonBuilder/constants";
 import { __ } from '@wordpress/i18n';
 
 export const conditionRuleSchema = z
@@ -91,9 +92,10 @@ export const fieldDefinitionSchema = z
 	.object({
 		id: z.string(),
 		type: z.string(),
-		label: z.string().min(1, {
-			message: __("Field label is required", "optionbay-product-options-addons-woo"),
-		}),
+		// Not .min(1): a separator renders no label and a heading may be left
+		// blank while being written. Enforced per-type in superRefine below,
+		// mirroring the server's own presentational exemption.
+		label: z.string(),
 		description: z.string().optional(),
 		placeholder: z.string().optional(),
 		required: z.boolean(),
@@ -169,6 +171,15 @@ export const fieldDefinitionSchema = z
 						path: ["options", idx, "image_url"],
 					});
 				}
+			});
+		}
+
+		// 3a. Label required for anything the customer interacts with.
+		if (!PRESENTATIONAL_TYPES.includes(data.type) && !data.label?.trim()) {
+			ctx.addIssue({
+				code: z.ZodIssueCode.custom,
+				message: __("Field label is required", "optionbay-product-options-addons-woo"),
+				path: ["label"],
 			});
 		}
 

@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useReducer, ReactNode } from "react";
 import { __ } from "@wordpress/i18n";
 import { applyFilters } from "@wordpress/hooks";
+import { PRESENTATIONAL_TYPES } from "../components/addonBuilder/constants";
 
 // ─── Types ───────────────────────────────────────────────────────────────
 
@@ -56,6 +57,7 @@ export interface FieldDefinition {
   content?: string;
   conditions: FieldConditions;
   display_style?: "swatch_only" | "swatch_label";
+  heading_level?: "h2" | "h3" | "h4" | "h5";
   enable_stock?: boolean;
   inventory_id?: number | string;
   reduction_mode?: string;
@@ -217,6 +219,28 @@ export function getDefaultField(type: string): FieldDefinition {
     case "static_content":
       base.content = "";
       break;
+
+    case "url":
+      base.placeholder = "https://example.com";
+      break;
+
+    case "tel":
+      base.placeholder = "+1 555 123 4567";
+      break;
+
+    case "heading":
+      base.heading_level = "h3";
+      break;
+  }
+
+  // Presentational fields carry no value: they can never be required, priced
+  // or stock-tracked. Enforced here as well as server-side so the builder can
+  // never produce a shape the sanitizer would have to correct.
+  if (PRESENTATIONAL_TYPES.includes(type)) {
+    base.required = false;
+    base.price_type = "none";
+    base.price = undefined;
+    base.enable_stock = false;
   }
 
   return applyFilters('opopw_field_defaults', base, type) as FieldDefinition;
