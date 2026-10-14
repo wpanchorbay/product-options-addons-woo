@@ -220,6 +220,14 @@ class InventoryManager {
 	public function decrement_stock( $id, $amount ) {
 		global $wpdb;
 
+		// Nothing to take. Without this the UPDATE below can report 0 affected
+		// rows (the row is unchanged apart from updated_at, which may already
+		// hold the current second) and be misread as insufficient stock,
+		// throwing during checkout on a perfectly valid order.
+		if ( floatval( $amount ) <= 0 ) {
+			return true;
+		}
+
 		// phpcs:ignore PluginCheck.Security.DirectDB.UnescapedDBParameter -- Internal table name is safe.
 		$table_name = DbManager::get_inventory_table();
 
@@ -242,6 +250,11 @@ class InventoryManager {
 			opopw_log( sprintf( 'InventoryManager: Decrement stock ID %d by amount %f FAILED (possibly insufficient stock).', $id, $amount ), 'ERROR' );
 		}
 
+		// NB: the (bool) cast is load-bearing. The WHERE clause above is the
+		// oversell guard: insufficient stock matches 0 rows and $wpdb->query()
+		// returns int 0, which must read as failure so the caller throws.
+		// Comparing `false !== $result` instead would report success and let
+		// the pool go negative silently.
 		return (bool) $result;
 	}
 
@@ -255,6 +268,11 @@ class InventoryManager {
 	 */
 	public function increment_stock( $id, $amount ) {
 		global $wpdb;
+
+		// Nothing to give back; short-circuit so a no-op does not log an error.
+		if ( floatval( $amount ) <= 0 ) {
+			return true;
+		}
 
 		// phpcs:ignore PluginCheck.Security.DirectDB.UnescapedDBParameter -- Internal table name is safe.
 		$table_name = DbManager::get_inventory_table();
@@ -359,16 +377,6 @@ class InventoryManager {
 	 * @return float
 	 */
 	private function calculate_intent_reduction( $intent, $quantity ) {
-		$mode = $intent['mode'] ?? 'per_item_qty';
-
-		if ( 'per_line_item' === $mode ) {
-			return 1.0;
-		}
-
-		if ( 'per_item_qty' === $mode ) {
-			return floatval( $quantity );
-		}
-
-		return floatval( $quantity );
+		return opopw_calculate_intent_reduction( $intent, $quantity );
 	}
 }

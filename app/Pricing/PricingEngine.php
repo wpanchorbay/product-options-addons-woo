@@ -98,6 +98,20 @@ class PricingEngine {
 			return 0.0;
 		}
 
+		// An unregistered type charges nothing, mirroring the client's
+		// `opopw_frontend_price_delta` fallback in assets/js/frontend.js.
+		//
+		// get_strategy() falls back to 'flat', which is confidently wrong: a
+		// field saved with a Pro type such as 'character_count' would, once Pro
+		// is deactivated, bill its per-character amount as a single flat fee at
+		// checkout while the product page showed no charge at all. Silently
+		// charging a number nobody configured is worse than charging nothing.
+		$registered = apply_filters( 'opopw_pricing_strategies', self::$strategies );
+		if ( ! array_key_exists( $type, $registered ) ) {
+			opopw_log( "Pricing Engine: Unregistered type '{$type}'. Price delta is 0.", 'WARNING' );
+			return 0.0;
+		}
+
 		$strategy = self::get_strategy( $type );
 		$result   = $strategy->calculate( $base_price, $configured_amount, $field_value, $quantity, $config );
 
