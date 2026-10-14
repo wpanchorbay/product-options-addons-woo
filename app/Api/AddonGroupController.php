@@ -934,6 +934,9 @@ class AddonGroupController extends ApiController {
 				$clean_field['required']     = false;
 				$clean_field['enable_stock'] = false;
 				$clean_field['inventory_id'] = null;
+				$clean_field['price_type']   = 'none';
+				$clean_field['price']        = 0.0;
+				$clean_field['weight']       = 0.0;
 			}
 
 			// If any choice has stock tracking enabled, the field itself cannot have stock tracking enabled

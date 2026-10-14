@@ -462,6 +462,11 @@ class CartManager extends Base {
 					continue;
 				}
 
+				// Presentational fields carry no value; ignore forged submissions.
+				if ( in_array( $field_schema['type'] ?? '', opopw_get_presentational_field_types(), true ) ) {
+					continue;
+				}
+
 				$field = FieldFactory::create( $group_id, $field_schema );
 				if ( ! $field ) {
 					continue;
@@ -622,6 +627,8 @@ class CartManager extends Base {
 				if ( in_array( $field_schema['type'], array( 'select', 'radio', 'checkbox', 'color_swatch', 'image_swatch' ), true ) ) {
 					$options = $field_schema['options'] ?? array();
 					$values  = is_array( $field_data['value'] ) ? $field_data['value'] : array( $field_data['value'] );
+					// Each selected option is priced once, however often it was submitted.
+					$values = array_values( array_unique( $values, SORT_REGULAR ) );
 
 					foreach ( $values as $val ) {
 						foreach ( $options as $opt ) {
