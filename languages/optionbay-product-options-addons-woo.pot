@@ -2,14 +2,14 @@
 # This file is distributed under the GPLv2 or later.
 msgid ""
 msgstr ""
-"Project-Id-Version: OptionBay - Product Options and Addons 1.0.2\n"
+"Project-Id-Version: OptionBay - Product Options and Addons 1.0.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/optionbay-product-options-addons-woo\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-08-13T10:20:32+00:00\n"
+"POT-Creation-Date: 2026-08-29T08:01:30+00:00\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "X-Generator: WP-CLI 2.12.0\n"
 "X-Domain: optionbay-product-options-addons-woo\n"
@@ -19,7 +19,11 @@ msgstr ""
 #: app/Admin/Admin.php:71
 #: app/Admin/Admin.php:72
 #: app/Admin/Admin.php:73
+#: dist/svn/trunk/app/Admin/Admin.php:71
+#: dist/svn/trunk/app/Admin/Admin.php:72
+#: dist/svn/trunk/app/Admin/Admin.php:73
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "OptionBay - Product Options and Addons"
 msgstr ""
 
@@ -47,23 +51,32 @@ msgstr ""
 #: app/Admin/Admin.php:98
 #: app/Admin/Admin.php:116
 #: app/Admin/WCSettingsTab.php:27
+#: dist/svn/trunk/app/Admin/Admin.php:97
+#: dist/svn/trunk/app/Admin/Admin.php:98
+#: dist/svn/trunk/app/Admin/Admin.php:116
+#: dist/svn/trunk/app/Admin/WCSettingsTab.php:27
 msgid "Options"
 msgstr ""
 
 #: app/Admin/Admin.php:203
+#: dist/svn/trunk/app/Admin/Admin.php:203
 msgid "Loading..."
 msgstr ""
 
 #: app/Admin/Admin.php:288
+#: dist/svn/trunk/app/Admin/Admin.php:288
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Settings"
 msgstr ""
 
 #: app/Admin/Admin.php:289
+#: dist/svn/trunk/app/Admin/Admin.php:289
 msgid "Documentation"
 msgstr ""
 
 #: app/Admin/Admin.php:290
+#: dist/svn/trunk/app/Admin/Admin.php:290
 msgid "Support"
 msgstr ""
 
@@ -72,271 +85,358 @@ msgstr ""
 #: app/Api/AddonGroupController.php:577
 #: app/Api/AddonGroupController.php:633
 #: app/Api/AddonGroupController.php:702
+#: dist/svn/trunk/app/Api/AddonGroupController.php:321
+#: dist/svn/trunk/app/Api/AddonGroupController.php:463
+#: dist/svn/trunk/app/Api/AddonGroupController.php:577
+#: dist/svn/trunk/app/Api/AddonGroupController.php:633
+#: dist/svn/trunk/app/Api/AddonGroupController.php:702
 msgid "Option group not found."
 msgstr ""
 
 #: app/Api/AddonGroupController.php:383
 #: app/Api/AddonGroupController.php:513
+#: dist/svn/trunk/app/Api/AddonGroupController.php:383
+#: dist/svn/trunk/app/Api/AddonGroupController.php:513
 msgid "Failed to create global inventory item."
 msgstr ""
 
 #: app/Api/AddonGroupController.php:432
+#: dist/svn/trunk/app/Api/AddonGroupController.php:432
 msgid "Option group created successfully."
 msgstr ""
 
 #: app/Api/AddonGroupController.php:554
+#: dist/svn/trunk/app/Api/AddonGroupController.php:554
 msgid "Option group updated successfully."
 msgstr ""
 
 #: app/Api/AddonGroupController.php:588
+#: dist/svn/trunk/app/Api/AddonGroupController.php:588
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Option group permanently deleted."
 msgstr ""
 
 #: app/Api/AddonGroupController.php:592
+#: dist/svn/trunk/app/Api/AddonGroupController.php:592
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Option group moved to trash."
 msgstr ""
 
 #: app/Api/AddonGroupController.php:598
+#: dist/svn/trunk/app/Api/AddonGroupController.php:598
 msgid "Failed to delete option group."
 msgstr ""
 
 #: app/Api/AddonGroupController.php:639
+#: dist/svn/trunk/app/Api/AddonGroupController.php:639
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "(Copy)"
 msgstr ""
 
 #: app/Api/AddonGroupController.php:657
+#: dist/svn/trunk/app/Api/AddonGroupController.php:657
 msgid "Failed to duplicate option group."
 msgstr ""
 
 #: app/Api/AddonGroupController.php:679
+#: dist/svn/trunk/app/Api/AddonGroupController.php:679
 msgid "Option group duplicated successfully."
 msgstr ""
 
 #: app/Api/AddonGroupController.php:718
+#: dist/svn/trunk/app/Api/AddonGroupController.php:718
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Failed to update status."
 msgstr ""
 
 #: app/Api/AddonGroupController.php:749
+#: dist/svn/trunk/app/Api/AddonGroupController.php:749
 msgid "No option group IDs provided."
 msgstr ""
 
 #. translators: 1: action name, 2: processed count, 3: failed count
 #: app/Api/AddonGroupController.php:831
+#: dist/svn/trunk/app/Api/AddonGroupController.php:831
 #, php-format
 msgid "Bulk action \"%1$s\" completed. Success: %2$d, Failed: %3$d."
 msgstr ""
 
-#: app/Api/AddonGroupController.php:1203
+#: app/Api/AddonGroupController.php:1285
+#: dist/svn/trunk/app/Api/AddonGroupController.php:1285
 msgid "is required"
 msgstr ""
 
-#: app/Api/AddonGroupController.php:1204
+#: app/Api/AddonGroupController.php:1286
+#: dist/svn/trunk/app/Api/AddonGroupController.php:1286
 msgid "minimum is :min"
 msgstr ""
 
-#: app/Api/AddonGroupController.php:1205
+#: app/Api/AddonGroupController.php:1287
+#: dist/svn/trunk/app/Api/AddonGroupController.php:1287
 msgid "maximum is :max"
 msgstr ""
 
-#: app/Api/AddonGroupController.php:1206
+#: app/Api/AddonGroupController.php:1288
+#: dist/svn/trunk/app/Api/AddonGroupController.php:1288
 msgid "must be a number"
 msgstr ""
 
-#: app/Api/AddonGroupController.php:1218
+#: app/Api/AddonGroupController.php:1300
+#: dist/svn/trunk/app/Api/AddonGroupController.php:1300
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Title"
 msgstr ""
 
-#: app/Api/AddonGroupController.php:1219
+#: app/Api/AddonGroupController.php:1301
+#: dist/svn/trunk/app/Api/AddonGroupController.php:1301
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Label"
 msgstr ""
 
-#: app/Api/AddonGroupController.php:1220
+#: app/Api/AddonGroupController.php:1302
+#: dist/svn/trunk/app/Api/AddonGroupController.php:1302
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Type"
 msgstr ""
 
-#: app/Api/AddonGroupController.php:1221
+#: app/Api/AddonGroupController.php:1303
+#: dist/svn/trunk/app/Api/AddonGroupController.php:1303
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Choice Label"
 msgstr ""
 
-#: app/Api/AddonGroupController.php:1222
+#: app/Api/AddonGroupController.php:1304
+#: dist/svn/trunk/app/Api/AddonGroupController.php:1304
 msgid "Assignment target"
 msgstr ""
 
-#: app/Api/AddonGroupController.php:1251
-#: app/Api/AddonGroupController.php:1269
-msgid "Price must be greater than 0 when a price type is selected."
+#: app/Api/AddonGroupController.php:1337
+#: dist/svn/trunk/app/Api/AddonGroupController.php:1337
+msgid "Label is required."
 msgstr ""
 
-#: app/Api/AddonGroupController.php:1276
+#: app/Api/AddonGroupController.php:1345
+#: app/Api/AddonGroupController.php:1364
+#: dist/svn/trunk/app/Api/AddonGroupController.php:1345
+#: dist/svn/trunk/app/Api/AddonGroupController.php:1364
+msgid "Price must not be 0 when a price type is selected."
+msgstr ""
+
+#: app/Api/AddonGroupController.php:1371
+#: dist/svn/trunk/app/Api/AddonGroupController.php:1371
 msgid "Field stock tracking cannot be enabled when individual choice stock tracking is enabled."
 msgstr ""
 
-#: app/Api/AddonGroupController.php:1284
+#: app/Api/AddonGroupController.php:1379
 #: app/Api/ApiController.php:206
+#: dist/svn/trunk/app/Api/AddonGroupController.php:1379
+#: dist/svn/trunk/app/Api/ApiController.php:206
 msgid "Invalid data provided."
 msgstr ""
 
 #: app/Api/ApiController.php:101
+#: dist/svn/trunk/app/Api/ApiController.php:101
 msgid "Cloning is not allowed."
 msgstr ""
 
 #: app/Api/ApiController.php:112
+#: dist/svn/trunk/app/Api/ApiController.php:112
 msgid "Unserializing is not allowed."
 msgstr ""
 
 #: app/Api/ApiController.php:126
 #: app/Api/ApiController.php:150
 #: app/Api/ExportImportController.php:100
+#: dist/svn/trunk/app/Api/ApiController.php:126
+#: dist/svn/trunk/app/Api/ApiController.php:150
+#: dist/svn/trunk/app/Api/ExportImportController.php:100
 msgid "Sorry, you are not allowed to access this resource."
 msgstr ""
 
 #: app/Api/ApiController.php:133
+#: dist/svn/trunk/app/Api/ApiController.php:133
 msgid "The security token is invalid."
 msgstr ""
 
 #: app/Api/ApiController.php:164
 #: app/Api/ExportImportController.php:114
+#: dist/svn/trunk/app/Api/ApiController.php:164
+#: dist/svn/trunk/app/Api/ExportImportController.php:114
 msgid "Invalid or missing nonce."
 msgstr ""
 
 #: app/Api/ExportImportController.php:156
+#: dist/svn/trunk/app/Api/ExportImportController.php:156
 msgid "Invalid JSON payload."
 msgstr ""
 
 #: app/Api/ExportImportController.php:164
+#: dist/svn/trunk/app/Api/ExportImportController.php:164
 msgid "Data imported successfully."
 msgstr ""
 
 #: app/Api/InventoryController.php:156
+#: dist/svn/trunk/app/Api/InventoryController.php:156
 msgid "Inventory item not found"
 msgstr ""
 
 #: app/Api/InventoryController.php:204
+#: dist/svn/trunk/app/Api/InventoryController.php:204
 msgid "Failed to create inventory item"
 msgstr ""
 
 #: app/Api/InventoryController.php:239
+#: dist/svn/trunk/app/Api/InventoryController.php:239
 msgid "Failed to update inventory item"
 msgstr ""
 
 #: app/Api/InventoryController.php:290
+#: dist/svn/trunk/app/Api/InventoryController.php:290
 msgid "This inventory is currently being used by one or more option groups. It cannot be deleted."
 msgstr ""
 
 #: app/Api/InventoryController.php:302
+#: dist/svn/trunk/app/Api/InventoryController.php:302
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Failed to delete inventory item."
 msgstr ""
 
 #: app/Api/SettingsController.php:147
+#: dist/svn/trunk/app/Api/SettingsController.php:147
 msgid "Settings updated successfully."
 msgstr ""
 
 #: app/Core/AddonGroup.php:77
+#: dist/svn/trunk/app/Core/AddonGroup.php:77
 msgctxt "Post type general name"
 msgid "Option Groups"
 msgstr ""
 
 #: app/Core/AddonGroup.php:78
+#: dist/svn/trunk/app/Core/AddonGroup.php:78
 msgctxt "Post type singular name"
 msgid "Option Group"
 msgstr ""
 
 #: app/Core/AddonGroup.php:79
+#: dist/svn/trunk/app/Core/AddonGroup.php:79
 msgctxt "Admin Menu text"
 msgid "Option Groups"
 msgstr ""
 
 #: app/Core/AddonGroup.php:80
+#: dist/svn/trunk/app/Core/AddonGroup.php:80
 msgid "Add New"
 msgstr ""
 
 #: app/Core/AddonGroup.php:81
+#: dist/svn/trunk/app/Core/AddonGroup.php:81
 msgid "Add New Option Group"
 msgstr ""
 
 #: app/Core/AddonGroup.php:82
+#: dist/svn/trunk/app/Core/AddonGroup.php:82
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Edit Option Group"
 msgstr ""
 
 #: app/Core/AddonGroup.php:83
+#: dist/svn/trunk/app/Core/AddonGroup.php:83
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "New Option Group"
 msgstr ""
 
 #: app/Core/AddonGroup.php:84
+#: dist/svn/trunk/app/Core/AddonGroup.php:84
 msgid "View Option Group"
 msgstr ""
 
 #: app/Core/AddonGroup.php:85
+#: dist/svn/trunk/app/Core/AddonGroup.php:85
 msgid "Search Option Groups"
 msgstr ""
 
 #: app/Core/AddonGroup.php:86
+#: dist/svn/trunk/app/Core/AddonGroup.php:86
 msgid "No option groups found"
 msgstr ""
 
 #: app/Core/AddonGroup.php:87
+#: dist/svn/trunk/app/Core/AddonGroup.php:87
 msgid "No option groups found in Trash"
 msgstr ""
 
 #: app/Core/AddonRenderer.php:192
+#: dist/svn/trunk/app/Core/AddonRenderer.php:192
 msgid "Total Product Price:"
 msgstr ""
 
 #: app/Core/AddonRenderer.php:302
-#: assets/js/frontend.js:329
-#: assets/js/frontend.js:386
-#: assets/js/frontend.js:389
+#: dist/svn/trunk/app/Core/AddonRenderer.php:302
+#: assets/js/frontend.js:411
+#: assets/js/frontend.js:468
+#: assets/js/frontend.js:471
+#: dist/svn/trunk/assets/js/frontend.js:370
+#: dist/svn/trunk/assets/js/frontend.js:427
+#: dist/svn/trunk/assets/js/frontend.js:430
 msgid "Out of stock"
 msgstr ""
 
 #. translators: 1: inventory pool name, 2: remaining stock amount
-#: app/Core/CartManager.php:178
+#: app/Core/CartManager.php:221
+#: dist/svn/trunk/app/Core/CartManager.php:212
 #, php-format
 msgid "Insufficient stock for \"%1$s\". Only %2$s remaining."
 msgstr ""
 
 #. translators: %s: inventory pool name
-#: app/Core/CartManager.php:260
-#: app/Core/CartManager.php:322
+#: app/Core/CartManager.php:303
+#: app/Core/CartManager.php:365
+#: dist/svn/trunk/app/Core/CartManager.php:294
+#: dist/svn/trunk/app/Core/CartManager.php:356
 #, php-format
 msgid "Cannot update quantity for \"%s\". Insufficient stock."
 msgstr ""
 
 #. translators: %s: inventory pool name
-#: app/Core/CartManager.php:374
+#: app/Core/CartManager.php:417
+#: dist/svn/trunk/app/Core/CartManager.php:408
 #, php-format
 msgid "Insufficient stock for \"%s\". Please reduce quantity."
 msgstr ""
 
 #. translators: %1$d: inventory ID
-#: app/Core/CartManager.php:726
+#: app/Core/CartManager.php:861
+#: dist/svn/trunk/app/Core/CartManager.php:766
 #, php-format
 msgid "Insufficient stock for an option in your cart (Inventory #%1$d). Please adjust your order."
 msgstr ""
 
 #. translators: 1: inventory ID, 2: reduction amount
-#: app/Core/CartManager.php:729
+#: app/Core/CartManager.php:871
 #, php-format
-msgid "OptionBay - Product Options and Addons: Failed to reduce stock for inventory #%1$d (Amount: %2$s). Order halted."
+msgid "OptionBay - Product Options and Addons: Could not reduce add-on stock for inventory #%1$d (Amount: %2$s). Add-on stock for this order is incomplete."
 msgstr ""
 
 #: app/Fields/BaseField.php:170
+#: dist/svn/trunk/app/Fields/BaseField.php:170
 msgid "required"
 msgstr ""
 
 #. translators: %s: field label
 #: app/Fields/BaseField.php:222
+#: dist/svn/trunk/app/Fields/BaseField.php:222
 #, php-format
 msgid "%s is required."
 msgstr ""
@@ -345,20 +445,26 @@ msgstr ""
 #: app/Fields/CheckboxField.php:144
 #: app/Fields/RadioField.php:96
 #: app/Fields/SelectField.php:107
+#: dist/svn/trunk/app/Fields/CheckboxField.php:144
+#: dist/svn/trunk/app/Fields/RadioField.php:96
+#: dist/svn/trunk/app/Fields/SelectField.php:107
 #, php-format
 msgid "Invalid selection for %s."
 msgstr ""
 
 #: app/Fields/CheckboxField.php:181
+#: dist/svn/trunk/app/Fields/CheckboxField.php:181
 msgid "Yes"
 msgstr ""
 
 #: app/Fields/CheckboxField.php:181
+#: dist/svn/trunk/app/Fields/CheckboxField.php:181
 msgid "No"
 msgstr ""
 
 #. translators: %s: field label
 #: app/Fields/DateField.php:84
+#: dist/svn/trunk/app/Fields/DateField.php:84
 #, php-format
 msgid "%s is not a valid date format."
 msgstr ""
@@ -369,6 +475,9 @@ msgstr ""
 #: app/Fields/DateField.php:93
 #: app/Fields/DateTimeField.php:96
 #: app/Fields/TimeField.php:92
+#: dist/svn/trunk/app/Fields/DateField.php:93
+#: dist/svn/trunk/app/Fields/DateTimeField.php:96
+#: dist/svn/trunk/app/Fields/TimeField.php:92
 #, php-format
 msgid "%1$s must be on or after %2$s."
 msgstr ""
@@ -379,1525 +488,1985 @@ msgstr ""
 #: app/Fields/DateField.php:99
 #: app/Fields/DateTimeField.php:107
 #: app/Fields/TimeField.php:98
+#: dist/svn/trunk/app/Fields/DateField.php:99
+#: dist/svn/trunk/app/Fields/DateTimeField.php:107
+#: dist/svn/trunk/app/Fields/TimeField.php:98
 #, php-format
 msgid "%1$s must be on or before %2$s."
 msgstr ""
 
 #. translators: %s: field label
 #: app/Fields/DateTimeField.php:84
+#: dist/svn/trunk/app/Fields/DateTimeField.php:84
 #, php-format
 msgid "%s is not a valid date & time format."
 msgstr ""
 
 #. translators: %s: field label
 #: app/Fields/EmailField.php:83
+#: dist/svn/trunk/app/Fields/EmailField.php:83
 #, php-format
 msgid "%s must be a valid email address."
 msgstr ""
 
 #. translators: 1: field label, 2: minimum value
 #: app/Fields/NumberField.php:93
+#: dist/svn/trunk/app/Fields/NumberField.php:93
 #, php-format
 msgid "%1$s must be at least %2$s."
 msgstr ""
 
 #. translators: 1: field label, 2: maximum value
 #: app/Fields/NumberField.php:105
+#: dist/svn/trunk/app/Fields/NumberField.php:105
 #, php-format
 msgid "%1$s must be at most %2$s."
 msgstr ""
 
 #: app/Fields/SelectField.php:48
+#: dist/svn/trunk/app/Fields/SelectField.php:48
 msgid "Choose an option..."
+msgstr ""
+
+#. translators: %s: field label
+#: app/Fields/TelField.php:98
+#: dist/svn/trunk/app/Fields/TelField.php:98
+#, php-format
+msgid "%s must be a valid phone number."
 msgstr ""
 
 #. translators: 1: field label, 2: max length
 #: app/Fields/TextareaField.php:78
 #: app/Fields/TextField.php:90
+#: dist/svn/trunk/app/Fields/TextareaField.php:78
+#: dist/svn/trunk/app/Fields/TextField.php:90
 #, php-format
 msgid "%1$s must be at most %2$d characters."
 msgstr ""
 
 #. translators: 1: field label, 2: min length
 #: app/Fields/TextField.php:102
+#: dist/svn/trunk/app/Fields/TextField.php:102
 #, php-format
 msgid "%1$s must be at least %2$d characters."
 msgstr ""
 
 #. translators: %s: field label
 #: app/Fields/TimeField.php:83
+#: dist/svn/trunk/app/Fields/TimeField.php:83
 #, php-format
 msgid "%s is not a valid time format."
 msgstr ""
 
-#: optionbay-product-options-addons-woo.php:70
+#. translators: %s: field label
+#: app/Fields/UrlField.php:97
+#: dist/svn/trunk/app/Fields/UrlField.php:97
+#, php-format
+msgid "%s must be a valid URL starting with http:// or https://."
+msgstr ""
+
+#. translators: 1: inventory ID, 2: reduction amount
+#: dist/svn/trunk/app/Core/CartManager.php:769
+#, php-format
+msgid "OptionBay - Product Options and Addons: Failed to reduce stock for inventory #%1$d (Amount: %2$s). Order halted."
+msgstr ""
+
+#: dist/svn/trunk/optionbay-product-options-addons-woo.php:69
+#: optionbay-product-options-addons-woo.php:69
 msgid "What information is sent?"
 msgstr ""
 
-#: optionbay-product-options-addons-woo.php:71
+#: dist/svn/trunk/optionbay-product-options-addons-woo.php:70
+#: optionbay-product-options-addons-woo.php:70
 msgid "Pressing submit sends the reason you select and any note you type, together with your site address, the email address of your account, and your WordPress version. Choose \"Skip & Deactivate\" to send nothing."
 msgstr ""
 
-#: optionbay-product-options-addons-woo.php:75
+#: dist/svn/trunk/optionbay-product-options-addons-woo.php:74
+#: optionbay-product-options-addons-woo.php:74
 msgid "I couldn't get it working"
 msgstr ""
 
-#: optionbay-product-options-addons-woo.php:77
+#: dist/svn/trunk/optionbay-product-options-addons-woo.php:76
+#: optionbay-product-options-addons-woo.php:76
 msgid "What were you trying to configure?"
 msgstr ""
 
-#: optionbay-product-options-addons-woo.php:81
+#: dist/svn/trunk/optionbay-product-options-addons-woo.php:80
+#: optionbay-product-options-addons-woo.php:80
 msgid "It's missing a feature I need"
 msgstr ""
 
-#: optionbay-product-options-addons-woo.php:83
+#: dist/svn/trunk/optionbay-product-options-addons-woo.php:82
+#: optionbay-product-options-addons-woo.php:82
 msgid "What feature?"
 msgstr ""
 
-#: optionbay-product-options-addons-woo.php:87
+#: dist/svn/trunk/optionbay-product-options-addons-woo.php:86
+#: optionbay-product-options-addons-woo.php:86
 msgid "It conflicted with my theme or another plugin"
 msgstr ""
 
-#: optionbay-product-options-addons-woo.php:89
+#: dist/svn/trunk/optionbay-product-options-addons-woo.php:88
+#: optionbay-product-options-addons-woo.php:88
 msgid "Which theme/plugin?"
 msgstr ""
 
-#: optionbay-product-options-addons-woo.php:93
+#: dist/svn/trunk/optionbay-product-options-addons-woo.php:92
+#: optionbay-product-options-addons-woo.php:92
 msgid "It slowed down my site"
 msgstr ""
 
-#: optionbay-product-options-addons-woo.php:95
+#: dist/svn/trunk/optionbay-product-options-addons-woo.php:94
+#: optionbay-product-options-addons-woo.php:94
 msgid "Please describe (we will investigate your site automatically)"
 msgstr ""
 
-#: optionbay-product-options-addons-woo.php:99
+#: dist/svn/trunk/optionbay-product-options-addons-woo.php:98
+#: optionbay-product-options-addons-woo.php:98
 msgid "I found a better alternative"
 msgstr ""
 
-#: optionbay-product-options-addons-woo.php:101
+#: dist/svn/trunk/optionbay-product-options-addons-woo.php:100
+#: optionbay-product-options-addons-woo.php:100
 msgid "Which plugin?"
 msgstr ""
 
-#: optionbay-product-options-addons-woo.php:105
+#: dist/svn/trunk/optionbay-product-options-addons-woo.php:104
+#: optionbay-product-options-addons-woo.php:104
 msgid "It's too complicated to set up"
 msgstr ""
 
-#: optionbay-product-options-addons-woo.php:107
+#: dist/svn/trunk/optionbay-product-options-addons-woo.php:106
+#: optionbay-product-options-addons-woo.php:106
 msgid "What part was confusing?"
 msgstr ""
 
-#: optionbay-product-options-addons-woo.php:111
+#: dist/svn/trunk/optionbay-product-options-addons-woo.php:110
+#: optionbay-product-options-addons-woo.php:110
 msgid "I no longer need product options on my store"
 msgstr ""
 
-#: optionbay-product-options-addons-woo.php:116
+#: dist/svn/trunk/optionbay-product-options-addons-woo.php:115
+#: optionbay-product-options-addons-woo.php:115
 msgid "It's temporary — I'm troubleshooting/debugging"
 msgstr ""
 
-#: optionbay-product-options-addons-woo.php:121
+#: dist/svn/trunk/optionbay-product-options-addons-woo.php:120
+#: optionbay-product-options-addons-woo.php:120
 msgid "Other"
 msgstr ""
 
-#: optionbay-product-options-addons-woo.php:123
+#: dist/svn/trunk/optionbay-product-options-addons-woo.php:122
+#: optionbay-product-options-addons-woo.php:122
 msgid "Please share the reason"
 msgstr ""
 
-#: optionbay-product-options-addons-woo.php:131
+#: dist/svn/trunk/optionbay-product-options-addons-woo.php:130
+#: optionbay-product-options-addons-woo.php:130
 msgid "Enjoying OptionBay?"
 msgstr ""
 
-#: optionbay-product-options-addons-woo.php:132
+#: dist/svn/trunk/optionbay-product-options-addons-woo.php:131
+#: optionbay-product-options-addons-woo.php:131
 msgid "You've been using OptionBay for a few days now. If it's been helpful, would you mind leaving a quick review? It really helps!"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Option Groups"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Inventory Management"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Total Pools:"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Close"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Search inventory..."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Refresh"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "ID"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Name"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Stock Status"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Backorders"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Action"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Loading inventory data..."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "No matching inventory found."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "No inventory pools created yet."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Edit"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Click to toggle backorders"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Allowed"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Denied"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Adjust Stock"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Delete Inventory"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Are you sure you want to delete this inventory item? This action cannot be undone."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Delete"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Cannot Delete Inventory"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Used by Option Groups:"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Export Data"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Select which entities you want to export to a JSON file."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Entities to Export"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Inventory Pools"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Plugin Settings"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Please select at least one entity to export."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Export downloaded successfully."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Failed to export data."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Exporting..."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Download JSON Export"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Import Data"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Upload an OptionBay - Product Options and Addons JSON export file to restore data."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "JSON File"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Please select a valid .json file."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Invalid JSON file."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "What would you like to import?"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Option Groups (Appends as new)"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Inventory Pools (Appends as new)"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Plugin Settings (Overwrites current)"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Please select at least one entity to import."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Data imported successfully. Please reload the page to see changes."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Failed to import data."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Importing..."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Run Import"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "permanently delete"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "move to trash"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "restore"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "publish"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "draft"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Confirm Action"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 #, js-format
 msgid "Are you sure you want to %s %d selected items?"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Bulk action applied successfully."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Failed to execute bulk action."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Permanently Delete"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Move to Trash"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Are you sure you want to permanently delete this option group? This action cannot be undone."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Are you sure you want to move this option group to trash?"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Failed to delete group."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "None"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "All Products"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "categories"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "products"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Bulk actions"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Restore"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Delete Permanently"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Publish"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Draft"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Apply"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 #, js-format
 msgid "%1$d of %2$d selected"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "items"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "← Previous"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Page"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "of"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Next →"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Display Columns"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Fields"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Assigned To"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Status"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Created By"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Created At"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Updated By"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Updated At"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Add new group"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Import"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Export"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Import Option Groups"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Export Option Groups"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Loading…"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "All"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Published"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Trash"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "View Inventory"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Search option groups..."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Search groups"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "No option groups found."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Create your first option group"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "(Untitled)"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Option group restored."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Failed to restore group."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Option group duplicated."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Failed to duplicate group."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Duplicate"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Option group published."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Option group moved to draft."
 msgstr ""
 
 #: build/options.js:1
-msgid "Target field is required"
-msgstr ""
-
-#: build/options.js:1
-msgid "Value is required"
-msgstr ""
-
-#: build/options.js:1
-msgid "At least one rule is required when logic is active"
-msgstr ""
-
-#: build/options.js:1
-msgid "Choice label is required"
-msgstr ""
-
-#: build/options.js:1
-msgid "Choice value is required"
-msgstr ""
-
-#: build/options.js:1
-msgid "Formula is required"
-msgstr ""
-
-#: build/options.js:1
-msgid "Price is required"
-msgstr ""
-
-#: build/options.js:1
-msgid "Inventory pool is required"
-msgstr ""
-
-#: build/options.js:1
-msgid "Field label is required"
-msgstr ""
-
-#: build/options.js:1
-msgid "At least one choice is required"
-msgstr ""
-
-#: build/options.js:1
-msgid "Color is required for swatch choices"
-msgstr ""
-
-#: build/options.js:1
-msgid "Image is required for swatch choices"
-msgstr ""
-
-#: build/options.js:1
-msgid "Content is required for static fields"
-msgstr ""
-
-#: build/options.js:1
-msgid "Field stock tracking cannot be enabled when individual choice stock tracking is enabled"
-msgstr ""
-
-#: build/options.js:1
-msgid "Group Title is required"
-msgstr ""
-
-#: build/options.js:1
-msgid "At least one target (global or product) is required for targeted visibility."
-msgstr ""
-
-#: build/options.js:1
-msgid "Back to List"
-msgstr ""
-
-#: build/options.js:1
-msgid "Status:"
-msgstr ""
-
-#: build/options.js:1
-msgid "Saving…"
-msgstr ""
-
-#: build/options.js:1
-msgid "Update Group"
-msgstr ""
-
-#: build/options.js:1
-msgid "Create Group"
-msgstr ""
-
-#: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Text Input"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Textarea"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Dropdown"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Checkboxes"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Radio Buttons"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Checkbox"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Number"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Email"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Date Picker"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Time Picker"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Date & Time"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Color Swatch"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Image Swatch"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Static Content"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
+msgid "URL"
+msgstr ""
+
+#: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
+msgid "Telephone"
+msgstr ""
+
+#: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
+msgid "Separator"
+msgstr ""
+
+#: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
+msgid "Heading"
+msgstr ""
+
+#: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "File Upload"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Formula"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "No Price"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Flat Fee"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Percentage of Base"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Formula-based Pricing"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Price per Character"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
+msgid "Price per Word"
+msgstr ""
+
+#: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Per Item Quantity"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Per Line Item (Once)"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
+msgid "Target field is required"
+msgstr ""
+
+#: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
+msgid "Value is required"
+msgstr ""
+
+#: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
+msgid "At least one rule is required when logic is active"
+msgstr ""
+
+#: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
+msgid "Choice label is required"
+msgstr ""
+
+#: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
+msgid "Choice value is required"
+msgstr ""
+
+#: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
+msgid "Formula is required"
+msgstr ""
+
+#: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
+msgid "Price is required"
+msgstr ""
+
+#: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
+msgid "Inventory pool is required"
+msgstr ""
+
+#: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
+msgid "At least one choice is required"
+msgstr ""
+
+#: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
+msgid "Color is required for swatch choices"
+msgstr ""
+
+#: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
+msgid "Image is required for swatch choices"
+msgstr ""
+
+#: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
+msgid "Field label is required"
+msgstr ""
+
+#: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
+msgid "Content is required for static fields"
+msgstr ""
+
+#: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
+msgid "Field stock tracking cannot be enabled when individual choice stock tracking is enabled"
+msgstr ""
+
+#: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
+msgid "Group Title is required"
+msgstr ""
+
+#: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
+msgid "At least one target (global or product) is required for targeted visibility."
+msgstr ""
+
+#: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
+msgid "Back to List"
+msgstr ""
+
+#: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
+msgid "Status:"
+msgstr ""
+
+#: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
+msgid "Saving…"
+msgstr ""
+
+#: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
+msgid "Update Group"
+msgstr ""
+
+#: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
+msgid "Create Group"
+msgstr ""
+
+#: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Add Fields"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Available in Pro"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Add Field"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Assignment Rules"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Control where this option group appears on your store."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Visibility"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "The broad scope of where this option group is active."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Apply to all products"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Apply to specific products"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Reach"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Specific targets for displaying this group."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Products"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Search products…"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Categories, Tags & Exceptions"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Target by category or tag, and set exceptions, with Pro."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Target this option group by product category or tag, and exclude specific products."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Upgrade to target by category/tag and set exceptions"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "The name of the field shown to the customer on the product page."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "A unique identifier for this field, used for internal tracking and conditional logic."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "The input method used to collect data from customers."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Additional instruction text displayed below the field input on the product page."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "A short hint displayed inside the input when it is empty."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Whether this field must be completed before the product can be added to the cart."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Custom CSS class for advanced styling of the field container."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "The calculation method used to determine the price impact of this field."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "The monetary value added to or subtracted from the product price."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "The weight adjustment for this field, used in shipping calculations."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Validation rules such as character limits or numeric ranges."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Allowed file extensions and maximum file size for uploads."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "The list of selectable options available for this field."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Rules that determine when this field is shown or hidden based on other field values."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Select inventory pool…"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "[New]"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "in stock"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "OUT OF STOCK"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Create New Pool"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "New Inventory Pool"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Pool Name"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "e.g. Premium Material"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Initial Stock"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Backorders?"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Cancel"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Add & Select"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Select Product Image"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Link this image"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Choices"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Price Type"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Price Amount"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Price"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Weight (kg)"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Weight"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Stock Tracking"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Enable Stock Tracking"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Select Pool"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Reduction Mode"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Product Image"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Link a product image to this choice. When a customer selects this option, the main product image will swap to this image."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Change linked image"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Remove"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Select Image"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Use this image"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Change image"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Upload image"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Stock Enabled"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "kg"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Image Linked"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Collapse settings"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Expand settings"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Remove choice"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "No choices added yet."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Add Choice"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Add more fields to set up conditional logic."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Enable Conditional Logic"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Add Rule"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Show"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Hide"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "this field if"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "ALL"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "ANY"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "of these rules match:"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Field"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Operator"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Value"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "equals"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "not equals"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "greater than"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "less than"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "greater than or equals"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "less than or equals"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "contains"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "not contains"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "is empty"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "is not empty"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Select field…"
 msgstr ""
 
 #: build/options.js:1
+msgid "(no longer supported)"
+msgstr ""
+
+#: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Checked"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Unchecked"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Select option…"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Remove rule"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "No rules added yet."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "This field has errors"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Drag to reorder"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "(No name)"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Edit field"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Move up"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Move down"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Delete field"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Field Type"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "The label for static content is for internal admin reference only and will not be displayed on the frontend."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Enter field label"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Content"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "The static content to be displayed on the product page."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Enter text, images, or other static content using the visual editor."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Description"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Help text shown below the field"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Validation"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Field is Required"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Pricing Logic"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Placeholder"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Optional placeholder text"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Restrictions"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Min Length:"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Max Length:"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Min:"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Max:"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Step Value:"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Min Date:"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Max Date:"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Min Time:"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Max Time:"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
+msgid "Heading Level"
+msgstr ""
+
+#: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
+msgid "A product page already has an H1 and H2s. Pick a level that keeps the page outline valid."
+msgstr ""
+
+#: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
+msgid "Heading 2"
+msgstr ""
+
+#: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
+msgid "Heading 3"
+msgstr ""
+
+#: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
+msgid "Heading 4"
+msgstr ""
+
+#: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
+msgid "Heading 5"
+msgstr ""
+
+#: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Display Style"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "The visual presentation of swatches on the frontend."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Choose whether to show just the swatch or the swatch with the label name."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Swatch Only"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Swatch + Label"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Stock tracking and automatic reduction rules for this field."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "If enabled, stock is reduced automatically when an order is placed."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Conditional Logic"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Delete Field"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Are you sure you want to remove this field?"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Failed to load option group."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Choice"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Group Title : "
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Option Group Title"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Assignment Rules : "
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Please fix the validation errors below."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Option group updated."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Option group created."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Please fix the validation errors reported by the server."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Failed to save option group."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Enter Option Group Title"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Drag and drop fields to reorder them."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Your group is empty"
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Click the field buttons in the sidebar to start building."
 msgstr ""
 
 #: build/options.js:1
+#: dist/svn/trunk/build/options.js:12
 msgid "Add field"
 msgstr ""
 
 #: build/options.js:1
 #: build/settings.js:1
+#: dist/svn/trunk/build/options.js:12
+#: dist/svn/trunk/build/settings.js:12
 msgid "Validation Error"
 msgstr ""
 
 #: build/options.js:1
 #: build/settings.js:1
+#: dist/svn/trunk/build/options.js:12
+#: dist/svn/trunk/build/settings.js:12
 msgid "Locate & Edit Field"
 msgstr ""
 
 #: build/settings.js:1
+#: dist/svn/trunk/build/settings.js:12
 msgid "Failed to load settings."
 msgstr ""
 
 #: build/settings.js:1
+#: dist/svn/trunk/build/settings.js:12
 msgid "Settings saved successfully."
 msgstr ""
 
 #: build/settings.js:1
+#: dist/svn/trunk/build/settings.js:12
 msgid "Failed to save settings."
 msgstr ""
 
 #: build/settings.js:1
+#: dist/svn/trunk/build/settings.js:12
 msgid "General Settings"
 msgstr ""
 
 #: build/settings.js:1
+#: dist/svn/trunk/build/settings.js:12
 msgid "Manage global display and layout preferences for your product options."
 msgstr ""
 
 #: build/settings.js:1
+#: dist/svn/trunk/build/settings.js:12
 msgid "Options Orientation"
 msgstr ""
 
 #: build/settings.js:1
+#: dist/svn/trunk/build/settings.js:12
 msgid "The visual arrangement of radio and checkbox groups."
 msgstr ""
 
 #: build/settings.js:1
+#: dist/svn/trunk/build/settings.js:12
 msgid "Vertical"
 msgstr ""
 
 #: build/settings.js:1
+#: dist/svn/trunk/build/settings.js:12
 msgid "Horizontal"
 msgstr ""
 
 #: build/settings.js:1
+#: dist/svn/trunk/build/settings.js:12
 msgid "How options inside a group are arranged."
 msgstr ""
 
 #: build/settings.js:1
+#: dist/svn/trunk/build/settings.js:12
 msgid "Label Font Size"
 msgstr ""
 
 #: build/settings.js:1
+#: dist/svn/trunk/build/settings.js:12
 msgid "Font size for field labels."
 msgstr ""
 
 #: build/settings.js:1
+#: dist/svn/trunk/build/settings.js:12
 msgid "Use 'inherit' or a value like '14px', '1rem'."
 msgstr ""
 
 #: build/settings.js:1
+#: dist/svn/trunk/build/settings.js:12
 msgid "Input Font Size"
 msgstr ""
 
 #: build/settings.js:1
+#: dist/svn/trunk/build/settings.js:12
 msgid "Font size for inputs and choice labels."
 msgstr ""
 
 #: build/settings.js:1
+#: dist/svn/trunk/build/settings.js:12
 msgid "Color Swatch Size"
 msgstr ""
 
 #: build/settings.js:1
+#: dist/svn/trunk/build/settings.js:12
 msgid "Width and height of color swatches."
 msgstr ""
 
 #: build/settings.js:1
+#: dist/svn/trunk/build/settings.js:12
 msgid "Default is '32px'."
 msgstr ""
 
 #: build/settings.js:1
+#: dist/svn/trunk/build/settings.js:12
 msgid "Image Swatch Size"
 msgstr ""
 
 #: build/settings.js:1
+#: dist/svn/trunk/build/settings.js:12
 msgid "Width and height of image swatches."
 msgstr ""
 
 #: build/settings.js:1
+#: dist/svn/trunk/build/settings.js:12
 msgid "Default is '64px'."
 msgstr ""
 
 #: build/settings.js:1
+#: dist/svn/trunk/build/settings.js:12
 msgid "Color Swatch Roundness"
 msgstr ""
 
 #: build/settings.js:1
+#: dist/svn/trunk/build/settings.js:12
 msgid "Border radius of color swatches."
 msgstr ""
 
 #: build/settings.js:1
+#: dist/svn/trunk/build/settings.js:12
 msgid "Use '4px' or '50%'."
 msgstr ""
 
 #: build/settings.js:1
+#: dist/svn/trunk/build/settings.js:12
 msgid "Image Swatch Roundness"
 msgstr ""
 
 #: build/settings.js:1
+#: dist/svn/trunk/build/settings.js:12
 msgid "Border radius of image swatches."
 msgstr ""
 
 #: build/settings.js:1
+#: dist/svn/trunk/build/settings.js:12
 msgid "System & Maintenance"
 msgstr ""
 
 #: build/settings.js:1
+#: dist/svn/trunk/build/settings.js:12
 msgid "Advanced configurations for data persistence and troubleshooting."
 msgstr ""
 
 #: build/settings.js:1
+#: dist/svn/trunk/build/settings.js:12
 msgid "Debug Mode"
 msgstr ""
 
 #: build/settings.js:1
+#: dist/svn/trunk/build/settings.js:12
 msgid "Enable developer logging"
 msgstr ""
 
 #: build/settings.js:1
+#: dist/svn/trunk/build/settings.js:12
 msgid "Detailed logs will be written to the database for troubleshooting."
 msgstr ""
 
 #: build/settings.js:1
+#: dist/svn/trunk/build/settings.js:12
 msgid "Delete Data on Uninstall"
 msgstr ""
 
 #: build/settings.js:1
+#: dist/svn/trunk/build/settings.js:12
 msgid "Purge data on plugin deletion"
 msgstr ""
 
 #: build/settings.js:1
+#: dist/svn/trunk/build/settings.js:12
 msgid "CAUTION: If enabled, all OptionBay - Product Options and Addons data (groups, assignments, settings) will be permanently deleted when the plugin is uninstalled."
 msgstr ""
 
 #: build/settings.js:1
+#: dist/svn/trunk/build/settings.js:12
 msgid "Pro License"
 msgstr ""
 
 #: build/settings.js:1
+#: dist/svn/trunk/build/settings.js:12
 msgid "Pro License & automatic updates are available in the Pro add-on."
 msgstr ""
 
 #: build/settings.js:1
+#: dist/svn/trunk/build/settings.js:12
 msgid "License Key"
 msgstr ""
 
 #: build/settings.js:1
+#: dist/svn/trunk/build/settings.js:12
 msgid "Enter your license key"
 msgstr ""
 
 #: build/settings.js:1
+#: dist/svn/trunk/build/settings.js:12
 msgid "Upgrade to Pro for license activation & automatic updates"
 msgstr ""
