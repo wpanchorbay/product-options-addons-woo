@@ -163,9 +163,9 @@ abstract class BaseField implements InterfaceField {
 
 		// Dynamically render label HTML safely escaping user settings
 		// Skip wrapper label for single_checkbox (label is on the toggle itself)
-		// and heading fields (content is rendered directly)
+		// and for presentational fields, which render their own content directly.
 		$label = $this->get( 'label' );
-		if ( ! empty( $label ) && ! in_array( $field_type, array( 'single_checkbox', 'heading', 'static_content' ), true ) ) {
+		if ( ! empty( $label ) && ! in_array( $field_type, array( 'single_checkbox', 'heading', 'static_content', 'divider' ), true ) ) {
 			$price_label   = $this->format_price_label( $this->get( 'price', 0 ), $this->get( 'price_type', 'none' ) );
 			$required_mark = $this->get( 'required' ) ? ' <abbr class="opopw-required" title="' . esc_attr__( 'required', 'optionbay-product-options-addons-woo' ) . '">*</abbr>' : '';
 			$html         .= sprintf(

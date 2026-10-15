@@ -8,6 +8,7 @@ import {
 } from "../classics";
 import { useAddonContext, FieldDefinition } from "../../store/AddonContext";
 import { FormError } from "./FormError";
+import { isPresentational } from "./constants";
 import { CirclePlus, Trash2 } from "lucide-react";
 
 interface ConditionEditorProps {
@@ -22,7 +23,13 @@ export const ConditionEditor: React.FC<ConditionEditorProps> = ({
   hideLabel = false,
 }) => {
   const { state, dispatch } = useAddonContext();
-  const siblingFields = state.schema.filter((f) => f.id !== field.id);
+  // Presentational fields submit no value, so a rule targeting one resolves to
+  // "" and an "is empty" / '== ""' comparison would fire permanently. Keep them
+  // out of the trigger list entirely; the PHP and JS evaluators skip any such
+  // rule already saved.
+  const siblingFields = state.schema.filter(
+    (f) => f.id !== field.id && !isPresentational(f.type)
+  );
   const conditions = field.conditions || {
     status: "inactive",
     action: "show",
@@ -30,9 +37,6 @@ export const ConditionEditor: React.FC<ConditionEditorProps> = ({
     rules: [],
   };
 
-  console.log('ConditionEditor for field:', field.id, 'label:', field.label);
-  console.log('Total schema fields:', state.schema.length);
-  console.log('Sibling fields:', siblingFields.length);
 
   const updateConditions = (updates: Partial<typeof conditions>) => {
     dispatch({
@@ -161,10 +165,24 @@ export const ConditionEditor: React.FC<ConditionEditorProps> = ({
                 <tbody>
                   {conditions.rules && conditions.rules.length > 0 ? (
                     conditions.rules.map((rule, idx) => {
-                      const targetField = siblingFields.find(
+                      // Look the target up in the FULL schema, not just the
+                      // selectable siblings: a rule saved before presentational
+                      // fields were excluded still points at one, and resolving
+                      // it here keeps the operator list correct for its type.
+                      const targetField = state.schema.find(
                         (f) => f.id === rule.target_field_id,
                       );
                       const ruleType = targetField?.type || "text";
+
+                      // Keep that legacy target in this row's options so the
+                      // select renders it instead of falling back to the empty
+                      // placeholder — which would silently rewrite the rule to a
+                      // different field on the next save.
+                      const legacyTarget =
+                        targetField &&
+                        !siblingFields.some((f) => f.id === targetField.id)
+                          ? targetField
+                          : null;
 
                       const operatorOptions = [
                         {
@@ -274,6 +292,14 @@ export const ConditionEditor: React.FC<ConditionEditorProps> = ({
                                   value: sf.id,
                                   label: sf.label || sf.id,
                                 })),
+                                ...(legacyTarget
+                                  ? [
+                                      {
+                                        value: legacyTarget.id,
+                                        label: `${legacyTarget.label || legacyTarget.id} ${__("(no longer supported)", "optionbay-product-options-addons-woo")}`,
+                                      },
+                                    ]
+                                  : []),
                               ]}
                             />
                             <FormError

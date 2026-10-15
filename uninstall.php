@@ -28,6 +28,7 @@ function opopw_run_uninstall() {
 	if ( ! empty( $options['advanced_deleteAllOnUninstall'] ) && true === $options['advanced_deleteAllOnUninstall'] ) {
 		opopw_drop_custom_tables();
 		opopw_delete_custom_posts();
+		opopw_delete_order_item_meta();
 		opopw_delete_plugin_options();
 		opopw_remove_capabilities();
 	}
@@ -53,6 +54,42 @@ function opopw_delete_custom_posts() {
 			wp_delete_post( $post_id, true );
 		}
 	}
+}
+
+/**
+ * Delete order-item meta written by this plugin.
+ *
+ * Deleting the option-group posts only cascades to postmeta, so the stock
+ * intents and ledger written onto WooCommerce order line items were previously
+ * left behind on uninstall. HPOS-safe: order item meta lives in
+ * woocommerce_order_itemmeta under both storage engines.
+ *
+ * @since 1.0.3
+ */
+function opopw_delete_order_item_meta() {
+	global $wpdb;
+
+	$table = $wpdb->prefix . 'woocommerce_order_itemmeta';
+
+	// phpcs:ignore WordPress.DB.DirectDatabaseQuery.SchemaChange
+	$exists = $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $table ) );
+	if ( $exists !== $table ) {
+		return;
+	}
+
+	$meta_keys = array(
+		'_opopw_stock_intents',
+		'_opopw_stock_ledger',
+		'_opopw_stock_restored',
+	);
+
+	foreach ( $meta_keys as $meta_key ) {
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+		$wpdb->delete( $table, array( 'meta_key' => $meta_key ), array( '%s' ) ); // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
+	}
+
+	// Order-level marker written by pre-1.0.3 releases.
+	delete_post_meta_by_key( '_opopw_stock_restored' );
 }
 
 /**

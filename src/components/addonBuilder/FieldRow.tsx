@@ -15,6 +15,7 @@ import {
   FIELD_TYPE_ICONS,
   FIELD_TYPES,
   PRICE_TYPES,
+  isPresentational,
   REDUCTION_MODES,
 } from "./constants";
 import {
@@ -299,7 +300,7 @@ export const FieldRow: React.FC<FieldRowProps> = ({ field, index }) => {
                       />
                     ),
                   },
-                  ...(field.type === "static_content"
+                  ...(isPresentational(field.type)
                     ? [
                         {
                           label: __("Label", "optionbay-product-options-addons-woo"),
@@ -309,10 +310,17 @@ export const FieldRow: React.FC<FieldRowProps> = ({ field, index }) => {
                               <ClassicInput
                                 size="regular"
                                 value={field.label}
-                                description={__(
-                                  "The label for static content is for internal admin reference only and will not be displayed on the frontend.",
-                                  "optionbay-product-options-addons-woo"
-                                )}
+                                description={
+                                  field.type === "heading"
+                                    ? __(
+                                        "The text shown as the heading on the product page.",
+                                        "optionbay-product-options-addons-woo"
+                                      )
+                                    : __(
+                                        "The label is for internal admin reference only and will not be displayed on the frontend.",
+                                        "optionbay-product-options-addons-woo"
+                                      )
+                                }
                                 isError={
                                   !!state.errors?.[`schema.${index}.label`]
                                 }
@@ -334,6 +342,8 @@ export const FieldRow: React.FC<FieldRowProps> = ({ field, index }) => {
                             </>
                           ),
                         },
+                        ...(field.type === "static_content"
+                          ? [
                         {
                           label: __("Content", "optionbay-product-options-addons-woo"),
                           tooltip: __(
@@ -356,6 +366,8 @@ export const FieldRow: React.FC<FieldRowProps> = ({ field, index }) => {
                             />
                           ),
                         },
+                            ]
+                          : []),
                       ]
                     : [
                         {
@@ -415,7 +427,7 @@ export const FieldRow: React.FC<FieldRowProps> = ({ field, index }) => {
                           ),
                         },
                       ]),
-                  ...(["static_content"].includes(field.type)
+                  ...(isPresentational(field.type)
                     ? []
                     : [
                         {
@@ -444,7 +456,7 @@ export const FieldRow: React.FC<FieldRowProps> = ({ field, index }) => {
                           ),
                         },
                       ]),
-                  ...(!hasOptions && field.type !== "static_content"
+                  ...(!hasOptions && !isPresentational(field.type)
                     ? [
                         {
                           label: __("Pricing Logic", "optionbay-product-options-addons-woo"),
@@ -781,6 +793,43 @@ export const FieldRow: React.FC<FieldRowProps> = ({ field, index }) => {
                         },
                       ]
                     : []),
+                  ...(field.type === "heading"
+                    ? [
+                        {
+                          label: __("Heading Level", "optionbay-product-options-addons-woo"),
+                          tooltip: __(
+                            "A product page already has an H1 and H2s. Pick a level that keeps the page outline valid.",
+                            "optionbay-product-options-addons-woo",
+                          ),
+                          render: () => (
+                            <ClassicSelect
+                              differentDropdownWidth
+                              value={field.heading_level || "h3"}
+                              isError={
+                                !!state.errors?.[
+                                  `schema.${index}.heading_level`
+                                ]
+                              }
+                              onChange={(val) =>
+                                update({
+                                  heading_level: val as
+                                    | "h2"
+                                    | "h3"
+                                    | "h4"
+                                    | "h5",
+                                })
+                              }
+                              options={[
+                                { value: "h2", label: __("Heading 2", "optionbay-product-options-addons-woo") },
+                                { value: "h3", label: __("Heading 3", "optionbay-product-options-addons-woo") },
+                                { value: "h4", label: __("Heading 4", "optionbay-product-options-addons-woo") },
+                                { value: "h5", label: __("Heading 5", "optionbay-product-options-addons-woo") },
+                              ]}
+                            />
+                          ),
+                        },
+                      ]
+                    : []),
                   ...(hasOptions && field.options
                     ? [
                         ...(["color_swatch", "image_swatch"].includes(
@@ -846,7 +895,7 @@ export const FieldRow: React.FC<FieldRowProps> = ({ field, index }) => {
                         },
                       ]
                     : []),
-                  ...(!anyOptionHasStock && field.type !== "static_content"
+                  ...(!anyOptionHasStock && !isPresentational(field.type)
                     ? [
                         {
                           label: __("Inventory Management", "optionbay-product-options-addons-woo"),

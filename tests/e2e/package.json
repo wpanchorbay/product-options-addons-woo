@@ -1,9 +1,0 @@
-{
-  "name": "optionbay-woo-e2e",
-  "private": true,
-  "devDependencies": {
-    "@playwright/test": "^1.40.0",
-    "playwright-ctrf-json-reporter": "^0.0.6",
-    "@woocommerce/qit-runtime": "^0.1.3"
-  }
-}

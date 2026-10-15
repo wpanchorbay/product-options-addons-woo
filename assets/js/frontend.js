@@ -69,9 +69,46 @@
   }
 
   /**
+   * Field types that render presentation only and submit no value.
+   *
+   * Mirrors the PHP `opopw_presentational_field_types` list. Kept in sync by
+   * hand; both sides must agree or a rule will be skipped on one and honoured
+   * on the other.
+   */
+  // Hydrated from PHP's opopw_get_presentational_field_types() so the two
+  // evaluators cannot drift; the literal is only a fallback for a cached page
+  // rendered before this key existed.
+  var PRESENTATIONAL_TYPES =
+    (window.opopwSchema && window.opopwSchema.presentationalTypes) ||
+    ["static_content", "divider", "heading"];
+
+  /**
+   * Look up a field definition within a group's schema.
+   */
+  function findField(groupId, fieldId) {
+    var groupData = schemas[groupId];
+    if (!groupData || !groupData.fields) return null;
+    for (var i = 0; i < groupData.fields.length; i++) {
+      if (groupData.fields[i].id === fieldId) return groupData.fields[i];
+    }
+    return null;
+  }
+
+  /**
    * Evaluate a single condition rule.
+   *
+   * Returns null when the rule targets a presentational field. Those submit no
+   * value, so "is empty" or '== ""' against one would fire permanently. jQuery's
+   * $.map drops null entries, so the rule is skipped rather than forced false —
+   * forcing false would flip an existing ALL/show group to permanently hidden.
+   * The PHP evaluator skips the same rules for the same reason.
    */
   function evaluateRule(rule, groupId) {
+    var targetField = findField(groupId, rule.target_field_id);
+    if (targetField && PRESENTATIONAL_TYPES.indexOf(targetField.type) !== -1) {
+      return null;
+    }
+
     var targetValue = getFieldValue(groupId, rule.target_field_id);
     var ruleValue = rule.value;
     var op = rule.operator;
@@ -162,6 +199,29 @@
         var res = evaluateRule(rule, groupId);
         return res;
       });
+
+      // Every rule was skipped ($.map drops the nulls evaluateRule returns for
+      // presentational targets), so the condition carries no information.
+      // Combining an empty set is NOT neutral: [].some() is false, so 'ANY'
+      // with action 'show' would hide the field permanently. Mirrors
+      // ConditionEvaluator::is_visible().
+      //
+      // This must SHOW the field explicitly, not just skip the toggle:
+      // BaseField::get_wrapper_attributes() renders a 'show'-action field with
+      // .opopw-hidden already applied to avoid a layout shift, so returning
+      // early would leave it hidden — the very bug this guards against.
+      if (results.length === 0) {
+        $('#opopw-options')
+          .find(
+            '.opopw-field[data-group-id="' +
+            groupId +
+            '"][data-field-id="' +
+            field.id +
+            '"]'
+          )
+          .removeClass("opopw-hidden");
+        return;
+      }
 
       // Apply match strategy
       var match = conditions.match || "ALL";
@@ -262,6 +322,17 @@
   /**
    * Calculate price for option-based fields (select/radio/checkbox)
    */
+  /**
+   * The quantity currently entered on the add-to-cart form.
+   *
+   * Single source for pricing and stock. PHP substitutes the real cart quantity
+   * into [quantity]; this must supply the same number or a formula using that
+   * token previews one price and charges another.
+   */
+  function getCurrentQty() {
+    return parseInt($("form.cart").find("input.qty").val()) || 1;
+  }
+
   function calculateOptionPrice(field, value) {
     var total = 0;
     var values = Array.isArray(value) ? value : [value];
@@ -273,13 +344,17 @@
         }
 
         var priceType = opt.price_type || "flat";
+        var optPrice = parseFloat(opt.price);
 
-        if (parseFloat(opt.price) > 0) {
-          total += computePriceByType(
-            priceType,
-            parseFloat(opt.price)
-          );
-        }
+        // Negative prices are a supported feature (discount options), and
+        // formula-priced options legitimately carry no amount at all, so this
+        // must not gate on `> 0`.
+        total += computePriceByType(priceType, isNaN(optPrice) ? 0 : optPrice, v, {
+          basePrice: basePrice,
+          quantity: getCurrentQty(),
+          field: field,
+          option: opt,
+        });
       });
     });
 
@@ -293,9 +368,16 @@
     var priceType = field.price_type || "none";
     var price = parseFloat(field.price) || 0;
 
-    if (priceType === "none" || price === 0) return 0;
+    // Only "none" short-circuits. A formula-priced field carries no `price`,
+    // so returning early on `price === 0` made the extension point unreachable
+    // for the headline Pro pricing type.
+    if (priceType === "none") return 0;
 
-    return computePriceByType(priceType, price);
+    return computePriceByType(priceType, price, value, {
+      basePrice: basePrice,
+      quantity: getCurrentQty(),
+      field: field,
+    });
   }
 
   /**
@@ -305,7 +387,7 @@
     if (!OB.inventory) return;
 
     var $form = $("form.cart");
-    var currentQty = parseInt($form.find("input.qty").val()) || 1;
+    var currentQty = getCurrentQty();
 
     $.each(schemas, function (groupId, groupData) {
       if (!groupData.fields) return;
@@ -424,26 +506,43 @@
   /**
    * Compute price based on type (flat, percentage, etc.)
    */
-  function computePriceByType(type, amount) {
+  function computePriceByType(type, amount, value, ctx) {
     switch (type) {
       case "flat":
         return amount;
       case "percentage":
         return (basePrice * amount) / 100;
-      default:
-        return amount;
     }
+
+    // Unknown type: ask extensions (Pro registers formula / character_count /
+    // word_count here). Returning `amount` instead — as this used to — reports
+    // a confidently wrong number, which is worse than reporting none.
+    var delta = null;
+    if (window.wp && window.wp.hooks && window.wp.hooks.applyFilters) {
+      delta = window.wp.hooks.applyFilters(
+        "opopw_frontend_price_delta",
+        null,
+        type,
+        amount,
+        value,
+        ctx || {}
+      );
+    }
+
+    return typeof delta === "number" && isFinite(delta) ? delta : 0;
   }
 
   /**
    * Update the live total price display on the page.
    */
   function updatePriceDisplay(addonTotal) {
-    var finalTotal = basePrice + addonTotal;
+    // Clamp so a large discount can never render a negative product price.
+    var finalTotal = Math.max(0, basePrice + addonTotal);
 
     var $totalEl = $(".opopw-live-total");
 
-    if (addonTotal > 0) {
+    // Show for any non-zero delta, including a net discount.
+    if (Math.abs(addonTotal) > 0.0001) {
       $totalEl.show();
       var formatted = formatPrice(finalTotal);
       $totalEl.find(".amount").html(formatted);

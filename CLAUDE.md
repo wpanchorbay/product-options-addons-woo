@@ -32,14 +32,25 @@ composer install
 
 **Release:** `./build.sh [version]` runs both JS builds, renames legacy `.LICENSE.txt` files, and prepends copyright/attribution headers. `./package.sh [version]` runs `build.sh` then produces two zips under `dist/`: `wordpress/` (WordPress.org layout, no wrapper folder, strips `.map`/`-legacy.js`/`.LICENSE.txt`) and `woocommerce/` (wrapped in a folder, keeps full build artifacts — used for QIT managed-test uploads). Both exclude `src/` and `node_modules/`; only compiled `build/` output ships.
 
-There is no PHP/JS unit test suite. Testing is via WooCommerce **QIT** (see the `qit` skill) as an **environment provider**, not native `qit run:e2e`: runner scripts spin up an ephemeral site with `qit env:up`, then run Playwright directly against `$QIT_BASE_URL` (exported as `WP_URL`).
+There is no PHP/JS unit test suite, and **this repo no longer contains any tests**.
 
-- `qit.json` — SUT + `environments.default.plugins` (just `woocommerce`; Free doesn't need Pro).
-- `tests/e2e/` — Playwright package (own `package.json`, vendored `node_modules`). `playwright.config.ts` requires `WP_URL` (source `qit env:source` first); `workers: 1`, `fullyParallel: false` (theme switching + shared store data make parallelism unsafe).
-- **Theme matrix**: 4 projects — `classic-setup` → `classic` (shortcode cart/checkout) runs before `block-setup` → `block` (block cart/checkout) via project `dependencies`. Specs import `{ test, expect }` from `../fixtures` (sets the `renderMode` use-option). Block-cart add-on display can legitimately fail on some assertions — block cart currently has no Store API integration for add-ons, a known product gap, not a test bug (see `fixtures.ts` comments).
-- `tests/00-pro-absence.spec.ts` explicitly verifies Free behaves correctly when Pro is **not** installed — don't remove/weaken this when touching Free/Pro coupling code.
-- `tests/run_all_tests.sh` (fresh env + full matrix), `run_single_test.sh [spec] [--project=…]`, `run_qit_managed_tests.sh` (packages the zip via `package.sh`, runs QIT cloud managed tests — needs `QIT_TOKEN`).
-- `.github/workflows/phpcs.yml` (WPCS + PHPCompatibility for PHP 7.4–8.3) and `tests.yml` (QIT env + Playwright on push/PR to `main`/`e2e-tests`).
+The whole E2E suite lives in the **Pro** repo (`../optionbay-product-options-addons-woo-pro`),
+matching the convention already used by notifybaypro, tubebaypro and pointbaypro: Pro is the QIT
+SUT and Free is installed alongside it as a sibling, so the free plugin is exercised by
+*deactivating Pro at runtime* rather than by a second suite. Maintaining two suites here is what
+let them drift apart — Free's had 39 specs / 103 tests, Pro's a 21-spec fork of the same ground.
+
+- **To test the free plugin**, from the Pro repo: `bash tests/run_free_tests.sh`. It brings up the
+  environment, deactivates Pro, and runs only the projects that skip every `*.pro.spec.ts`.
+  `tests/e2e/tests/00-pro-absence.spec.ts` asserts Pro is genuinely inactive and must **pass**
+  there — it is the guard that stops a free release being certified while Pro is live. Don't
+  remove or weaken it when touching Free/Pro coupling code.
+- **Managed (cloud) QIT tests for the free zip**, also from the Pro repo:
+  `bash tests/run_qit_managed_tests.sh --free` — it packages *this* plugin and runs the checks
+  against Free's own slug.
+- `qit.json` here is retained but unused by the suite; the environment is defined by Pro's.
+- `.github/workflows/phpcs.yml` (WPCS + PHPCompatibility for PHP 7.4–8.3) is the only workflow
+  left. `tests.yml` was removed with the suite; E2E now runs from the Pro repo's workflow.
 
 ## Bootstrap & wiring
 

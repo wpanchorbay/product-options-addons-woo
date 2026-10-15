@@ -67,11 +67,40 @@ class ConditionEvaluator {
 			$resolving[ $field_id ] = true;
 		}
 
+		$presentational = opopw_get_presentational_field_types();
+
 		$results = array();
 		// Map over all rules and assess each one individually
 		foreach ( $rules as $rule ) {
+			// A rule targeting a presentational field is SKIPPED, not failed.
+			// Those fields submit no value, so the target resolves to '' and an
+			// 'empty' or '== ""' rule would fire permanently. Returning false
+			// instead would flip an existing ALL/show group to permanently
+			// hidden on upgrade — and a hidden required field is skipped by
+			// validation, silently losing order data. The client-side evaluator
+			// drops the same rules, so both sides agree.
+			$target_id = $rule['target_field_id'] ?? '';
+			if ( '' !== $target_id && ! empty( $all_fields ) ) {
+				$target_field = self::find_field( $all_fields, $target_id );
+				if ( null !== $target_field && in_array( $target_field['type'] ?? '', $presentational, true ) ) {
+					continue;
+				}
+			}
+
 			$rule_result = self::evaluate_rule( $rule, $submitted_data, $all_fields, $resolving );
 			$results[]   = $rule_result;
+		}
+
+		// Every rule was skipped (all targeted presentational fields), so the
+		// condition carries no information. Combining an empty set is NOT
+		// neutral: 'ANY' would yield false and an action of 'show' would hide
+		// the field permanently — the exact upgrade-time flip the skip above
+		// exists to prevent, and a hidden required field is dropped by
+		// validation, silently losing order data. An inert condition must
+		// never hide anything, so the field stays visible under both match
+		// types and both actions.
+		if ( empty( $results ) ) {
+			return true;
 		}
 
 		$match         = $conditions['match'] ?? 'ALL';
