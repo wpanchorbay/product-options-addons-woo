@@ -114,32 +114,17 @@ When a change to this plugin **or** the Pro plugin (`optionbay-product-options-a
 
 ## Known issues
 
-Found while building demo data with `bay-demo-kit` (2026-08-22). Verified against
-this source tree, not just against a running site. No fix applied here.
+### Preloader duplicates (fixed in 1.0.3; old duplicates remain)
 
-### `Preloader::run()` is guarded by a settings flag, not by the data it creates
-
-`app/Core/Preloader.php:35-45` — `run()` (called from `app/Core/Activator.php:57`)
-returns early only when the `global_isPreloaded` setting is truthy. It never checks
-whether the six preloaded groups already exist. If that flag is ever lost while the
-groups survive — a reinstall, a settings reset, a partially-completed uninstall —
-the next activation creates a **second complete set** of them.
-
-Observed on a test site: two identical sets of the six demo groups
-(*Gift Wrapping Service*, *Laptop Configurator*, *Gourmet Pizza Builder*,
-*Custom Apparel*, *Floral Arrangement Options*, *Auto Detailing Booking*),
-twelve posts in total, each with its own row in `opopw_assignments`.
-
-Two things make this worse than a cosmetic duplicate:
-
-1. Every preloaded group gets a `target_type => 'global'` assignment
-   (`Preloader.php:88-96`), so the assignments table accumulates global rows that
-   are consulted for **every** product, not just a scoped one.
-2. The groups are created as `draft`, so they are easy to miss in the admin list
-   and nothing ever cleans them up.
-
-Deduplicating by title (or stamping the created posts with a meta key and querying
-for it) before inserting would make the preload idempotent regardless of the flag.
+Earlier releases created a second set of the six demo groups on every activation, because
+`Activator::activate()` reset all settings to defaults (clearing `global_isPreloaded`) and
+`Preloader::run()` guarded only on that flag. Fixed in 1.0.3: activation now only fills in
+missing settings keys (saved values are kept), and `Preloader` stamps each demo post with
+`_opopw_preloaded_key` (sanitized title) and skips any template whose stamped post already
+exists in any status, trash included. Duplicate demo groups created by earlier versions
+carry no stamp and are NOT removed automatically (they are user data); delete them manually
+from the Option Groups list if unwanted. Note that pre-1.0.3 demo groups also lack the stamp,
+so a site that still has them and lost the flag would get one more stamped set.
 
 ## Release process
 
