@@ -135,6 +135,7 @@ No. Starter templates are created as drafts. You can review, edit, and publish t
 = 1.0.3 =
 * Added: URL, Tel, Separator and Heading field types.
 * Fixed: Reactivating the plugin no longer resets your saved settings or creates another set of the six draft demo option groups.
+* Fixed: Uninstall with "delete all data" enabled now also removes the activation-time and deactivation-feedback options and the review-notice dismissal user meta.
 * Fixed: An empty stock-tracked field no longer blocks add-to-cart when its stock pool has none left.
 * Fixed: Inventory stock is now given back when an order is cancelled or set to pending, and on refunds, including partial refunds with "Restock refunded items".
 * Fixed: A checkbox value submitted twice is now counted and priced once.
