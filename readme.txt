@@ -6,7 +6,7 @@ Tested up to: 7.0
 Requires PHP: 7.4
 WC requires at least: 8.0
 WC tested up to: 8.7
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -132,6 +132,16 @@ No. Starter templates are created as drafts. You can review, edit, and publish t
 
 == Changelog ==
 
+= 1.0.3 =
+* Added: URL, Tel, Separator and Heading field types.
+* Fixed: Reactivating the plugin no longer resets your saved settings or creates another set of the six draft demo option groups.
+* Fixed: An empty stock-tracked field no longer blocks add-to-cart when its stock pool has none left.
+* Fixed: Inventory stock is now given back when an order is cancelled or set to pending, and on refunds, including partial refunds with "Restock refunded items".
+* Fixed: A checkbox value submitted twice is now counted and priced once.
+* Fixed: Values sent for Separator and Heading fields are ignored by the cart.
+* Fixed: The live price preview handles negative option prices and never shows a total below zero.
+* Fixed: Various internal correctness fixes.
+
 = 1.0.2 =
 * Fixed: Option groups assigned by product category or tag now correctly display and validate.
 * Fixed: "Exclude" assignment rules are now persisted and applied.
@@ -153,6 +163,9 @@ No. Starter templates are created as drafts. You can review, edit, and publish t
 * Initial release.
 
 == Upgrade Notice ==
+
+= 1.0.3 =
+No action needed. Fixes add-to-cart being blocked by empty stock-tracked fields and restores inventory on cancelled and refunded orders. Orders cancelled before updating are not corrected retroactively, so check your stock pool counts under Options > Inventory. Demo option groups duplicated by earlier activations are not removed automatically; delete any extra copies from Option Groups if you do not need them.
 
 = 1.0.2 =
 Fixes category/tag and exclusion assignment rules, hardens conditional logic and import, and adds extensible pricing.

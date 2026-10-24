@@ -24,6 +24,37 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Preloader {
 
 	/**
+	 * Post meta key that stamps a post as created from a preload template.
+	 *
+	 * @since 1.0.3
+	 */
+	const META_PRELOADED_KEY = '_opopw_preloaded_key';
+
+	/**
+	 * Check whether a preloaded group for the given template key already exists.
+	 *
+	 * Looks at every status, including trash, so a trashed demo group is not recreated.
+	 *
+	 * @since 1.0.3
+	 * @param string $key Template key.
+	 * @return bool
+	 */
+	private static function group_exists( $key ) {
+		$ids = get_posts(
+			array(
+				'post_type'      => AddonGroup::POST_TYPE,
+				'post_status'    => array( 'publish', 'draft', 'pending', 'private', 'future', 'trash' ),
+				'posts_per_page' => 1,
+				'fields'         => 'ids',
+				'no_found_rows'  => true,
+				'meta_key'       => self::META_PRELOADED_KEY, // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_key
+				'meta_value'     => $key, // phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_value
+			)
+		);
+		return ! empty( $ids );
+	}
+
+	/**
 	 * Run the preloader logic.
 	 *
 	 * Checks if data has already been preloaded. If not, reads JSON files
@@ -68,6 +99,11 @@ class Preloader {
 				continue;
 			}
 
+			$template_key = sanitize_title( $group_data['title'] );
+			if ( self::group_exists( $template_key ) ) {
+				continue;
+			}
+
 			$post_id = wp_insert_post(
 				array(
 					'post_type'   => AddonGroup::POST_TYPE,
@@ -80,6 +116,9 @@ class Preloader {
 				opopw_log( 'Failed to create preloaded group: ' . $group_data['title'], 'ERROR' );
 				continue;
 			}
+
+			// Stamp the post so later runs can detect it.
+			update_post_meta( $post_id, self::META_PRELOADED_KEY, $template_key );
 
 			// Save schema
 			update_post_meta( $post_id, AddonGroup::META_SCHEMA, wp_slash( wp_json_encode( $group_data['schema'] ) ) );
