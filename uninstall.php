@@ -11,8 +11,12 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 	exit;
 }
 
-define( 'OPOPW_OPTION_NAME', 'optionbay-product-options-addons-woo' );
-define( 'OPOPW_TEXT_DOMAIN', 'optionbay-product-options-addons-woo' );
+if ( ! defined( 'OPOPW_OPTION_NAME' ) ) {
+	define( 'OPOPW_OPTION_NAME', 'optionbay-product-options-addons-woo' );
+}
+if ( ! defined( 'OPOPW_TEXT_DOMAIN' ) ) {
+	define( 'OPOPW_TEXT_DOMAIN', 'optionbay-product-options-addons-woo' );
+}
 
 opopw_run_uninstall();
 
@@ -30,6 +34,7 @@ function opopw_run_uninstall() {
 		opopw_delete_custom_posts();
 		opopw_delete_order_item_meta();
 		opopw_delete_plugin_options();
+		opopw_delete_feedback_data();
 		opopw_remove_capabilities();
 	}
 }
@@ -117,6 +122,23 @@ function opopw_drop_custom_tables() {
  */
 function opopw_delete_plugin_options() {
 	delete_option( OPOPW_OPTION_NAME );
+}
+
+/**
+ * Delete the options and user meta written by the bundled
+ * deactivation-feedback package (activation time, feedback log, review-notice
+ * dismissals).
+ *
+ * @since 1.0.3
+ */
+function opopw_delete_feedback_data() {
+	global $wpdb;
+
+	delete_option( 'wpab_activated_at_' . OPOPW_TEXT_DOMAIN );
+	delete_option( 'wpab_deactivation_feedback_log_' . OPOPW_TEXT_DOMAIN );
+
+	// Remove the per-user dismissal meta for every user.
+	delete_metadata( 'user', 0, 'wpab_review_dismissed_' . OPOPW_TEXT_DOMAIN, '', true );
 }
 
 /**
