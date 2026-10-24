@@ -1,5 +1,5 @@
 === OptionBay - Product Options and Addons ===
-Contributors: wpanchorbay, sankarsan
+Contributors: wpanchorbay, sankarsan, forhadkhan, arifac, shuvendushekhar
 Tags: woocommerce, product options, product addons, extra product options, conditional logic
 Requires at least: 6.8
 Tested up to: 7.0
