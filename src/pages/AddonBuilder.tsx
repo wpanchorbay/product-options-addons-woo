@@ -90,8 +90,6 @@ function BuilderInner() {
         new_inventories: state.new_inventories,
       };
 
-      console.log('Validating payload:', JSON.stringify(payload, null, 2));
-
       const result = addonGroupSchema.safeParse(payload);
       if (!result.success) {
         const fieldErrors: Record<string, string> = {};
