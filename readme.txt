@@ -134,6 +134,7 @@ No. Starter templates are created as drafts. You can review, edit, and publish t
 
 = 1.0.3 =
 * Added: URL, Tel, Separator and Heading field types.
+* Fixed: Reactivating the plugin no longer resets your saved settings or creates another set of the six draft demo option groups.
 * Fixed: An empty stock-tracked field no longer blocks add-to-cart when its stock pool has none left.
 * Fixed: Inventory stock is now given back when an order is cancelled or set to pending, and on refunds, including partial refunds with "Restock refunded items".
 * Fixed: A checkbox value submitted twice is now counted and priced once.
@@ -164,7 +165,7 @@ No. Starter templates are created as drafts. You can review, edit, and publish t
 == Upgrade Notice ==
 
 = 1.0.3 =
-No action needed. Fixes add-to-cart being blocked by empty stock-tracked fields and restores inventory on cancelled and refunded orders. Orders cancelled before updating are not corrected retroactively, so check your stock pool counts under Options > Inventory.
+No action needed. Fixes add-to-cart being blocked by empty stock-tracked fields and restores inventory on cancelled and refunded orders. Orders cancelled before updating are not corrected retroactively, so check your stock pool counts under Options > Inventory. Demo option groups duplicated by earlier activations are not removed automatically; delete any extra copies from Option Groups if you do not need them.
 
 = 1.0.2 =
 Fixes category/tag and exclusion assignment rules, hardens conditional logic and import, and adds extensible pricing.
