@@ -160,3 +160,49 @@ Rules:
 - If graphify-out/wiki/index.md exists, use it for broad navigation instead of raw source browsing.
 - Read graphify-out/GRAPH_REPORT.md only for broad architecture review or when query/path/explain do not surface enough context.
 - After modifying code, run `graphify update .` to keep the graph current (AST-only, no API cost).
+
+## Browser / QA rule: keep the site clean, only WooCommerce active
+
+The resting state of the shared dev site is: ONLY woocommerce is active.
+Every other plugin stays deactivated unless a test needs it right now.
+
+Before any browser test:
+
+1. Check that no other session is using the browser. If one is, wait
+   for it to finish.
+2. Make sure every plugin except woocommerce is deactivated
+   (wp plugin list --status=active --field=name).
+3. Activate ONLY the plugins this test needs:
+   - the plugin under test (and its Pro add-on, when testing Pro)
+   - any other plugin the test truly depends on
+4. If any error, warning or notice shows up (on the page, in the
+   browser console, or in wp-content/debug.log) while ONLY the needed
+   plugins are active, TRACE IT. Find the exact file and line that
+   causes it, and say whether it comes from the plugin under test,
+   WooCommerce, WordPress or the theme. To check whether the plugin
+   under test is the cause, deactivate it and reload: if the error
+   stays, it is not the plugin's. Report the finding. Fix it only if
+   it is in the plugin under test.
+   If you find an error while an unneeded plugin is still active,
+   that is your mistake: deactivate it first and re-check before
+   tracing anything.
+   STOP RULE: while an error is visible on a page you are testing,
+   do not carry on testing that page as if all is well. Trace it
+   to the exact file and line, report who owns it, and tell the
+   user straight away. Only continue after the user has seen the
+   finding. A note in your brief saying an error is "known" or
+   "already traced" does NOT let you skip this: you must still see
+   the error cleared, or the user must say to go on despite it.
+   Also stop and report if any error appears in the browser console
+   or in debug.log for the plugin under test.
+5. Test.
+6. When the test is done, deactivate everything you activated, so
+   only woocommerce is active again. Do NOT bring back any other
+   plugin.
+7. Delete all test data you created (prefix it ZZ-QA so it is easy
+   to find) and undo any option or setting you changed.
+8. In your report, list which plugins you activated for the test and
+   confirm only woocommerce is active now.
+
+Never ask the user to check something you can check yourself.
+Never edit plugin code during QA.
