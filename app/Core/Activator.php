@@ -39,8 +39,16 @@ class Activator {
 		opopw_log( 'Activator: Firing OptionBay - Product Options and Addons activation steps.', 'INFO' );
 
 		// Set up the default options if they don't exist.
-		/* Default Settings */
-		Settings::get_instance()->update_settings( Settings::get_instance()->get_default_settings() );
+		// Default settings.
+		// Only fill in keys that are missing: saved values (including global_isPreloaded)
+		// must survive a deactivate/reactivate cycle.
+		$existing_options = get_option( OPOPW_OPTION_NAME );
+		if ( ! is_array( $existing_options ) ) {
+			$existing_options = array();
+		}
+		Settings::get_instance()->update_settings(
+			array_merge( Settings::get_instance()->get_default_settings(), $existing_options )
+		);
 
 		// Create custom database tables.
 		self::create_custom_tables();
