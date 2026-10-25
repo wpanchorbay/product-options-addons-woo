@@ -153,14 +153,12 @@ Every other plugin stays deactivated unless a test needs it right now.
 
 Before any browser test:
 
-1. Check that no other session is using the browser. If one is, wait
-   for it to finish.
-2. Make sure every plugin except woocommerce is deactivated
+1. Make sure every plugin except woocommerce is deactivated
    (wp plugin list --status=active --field=name).
-3. Activate ONLY the plugins this test needs:
+2. Activate ONLY the plugins this test needs:
    - the plugin under test (and its Pro add-on, when testing Pro)
    - any other plugin the test truly depends on
-4. If any error, warning or notice shows up (on the page, in the
+3. If any error, warning or notice shows up (on the page, in the
    browser console, or in wp-content/debug.log) while ONLY the needed
    plugins are active, TRACE IT. Find the exact file and line that
    causes it, and say whether it comes from the plugin under test,
@@ -180,13 +178,13 @@ Before any browser test:
    the error cleared, or the user must say to go on despite it.
    Also stop and report if any error appears in the browser console
    or in debug.log for the plugin under test.
-5. Test.
-6. When the test is done, deactivate everything you activated, so
+4. Test.
+5. When the test is done, deactivate everything you activated, so
    only woocommerce is active again. Do NOT bring back any other
    plugin.
-7. Delete all test data you created (prefix it ZZ-QA so it is easy
+6. Delete all test data you created (prefix it ZZ-QA so it is easy
    to find) and undo any option or setting you changed.
-8. In your report, list which plugins you activated for the test and
+7. In your report, list which plugins you activated for the test and
    confirm only woocommerce is active now.
 
 Never ask the user to check something you can check yourself.

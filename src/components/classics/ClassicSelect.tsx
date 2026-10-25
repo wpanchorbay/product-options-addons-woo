@@ -187,6 +187,12 @@ export const ClassicSelect: React.FC< ClassicSelectProps > = ( {
 		) {
 			return;
 		}
+		// Unsaved items (e.g. a just-created inventory pool selected under a
+		// temporary "tmp_" id) do not exist server-side; their label comes from
+		// the parent-supplied options, so skip the lookup.
+		if ( String( value ).startsWith( 'tmp_' ) ) {
+			return;
+		}
 		initialFetchDone.current = true;
 
 		const separator = endpoint.includes( '?' ) ? '&' : '?';

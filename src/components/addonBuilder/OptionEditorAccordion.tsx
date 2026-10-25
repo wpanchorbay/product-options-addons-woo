@@ -159,7 +159,6 @@ export const OptionEditorAccordion: React.FC<OptionEditorAccordionProps> = ({
     if (isImageSwatch) base.image_url = "";
     return base;
   };
-  console.log("correct file");
   return (
     <div
       className={`opopw-flex opopw-flex-col opopw-gap-1 ${!hideLabel ? "opopw-mt-4" : ""
