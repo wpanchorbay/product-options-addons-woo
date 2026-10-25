@@ -2,7 +2,7 @@
 Contributors: wpanchorbay, sankarsan, forhadkhan, arifac, shuvendushekhar
 Tags: woocommerce, product options, product addons, extra product options, conditional logic
 Requires at least: 6.8
-Tested up to: 7.0
+Tested up to: 7.1
 Requires PHP: 7.4
 WC requires at least: 8.0
 WC tested up to: 8.7
