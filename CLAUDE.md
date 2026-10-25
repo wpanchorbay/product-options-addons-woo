@@ -132,6 +132,7 @@ Triggers: "make a zip", "make a release zip", "update the version", "is it ready
 
 - **Version bump:** fetch `https://api.wordpress.org/plugins/info/1.0/optionbay-product-options-addons-woo.json`, take its `"version"`, bump the patch number by 1. Compare to the version already in the plugin header — use whichever is higher, never decrease.
 - **Update the version** in: `optionbay-product-options-addons-woo.php` `Version:` header, `define( 'OPOPW_VERSION', ... )`, `package.json` `"version"`, `readme.txt` `Stable tag:`, `languages/product-options-addons-woo.pot` `Project-Id-Version`.
+- **Docs site version label:** in the docs repo (`/home/sdd/Documents/campaign-bay-testing/docs/optionbay`) update the version dropdown in `.vitepress/config.mts` (both the `text: "vX.Y.Z"` button and the `"vX.Y.Z (Latest)"` item) and add the release entry to `changelog.md`.
 - **Changelog / Upgrade Notice:** draft new `== Changelog ==` and `== Upgrade Notice ==` entries in `readme.txt` from what was built this session, matching the existing `* Fixed: ...` / `* Added: ...` / `* Security: ...` bullet style. Confirm the draft with the user before writing it.
 - **Build & zip:** `./build.sh [version]` then `./package.sh [version]` (both already accept a version arg and produce `dist/wordpress/` + `dist/woocommerce/` zips — see Commands above).
 - **Ready to release** = version synced everywhere above, changelog/upgrade notice written, both zips build cleanly. Mention the `wp-plugin-review` skill as an optional deeper security/WPCS check — don't run it automatically.
