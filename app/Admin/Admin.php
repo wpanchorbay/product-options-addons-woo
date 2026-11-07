@@ -176,6 +176,42 @@ class Admin {
 	}
 
 	/**
+	 * Opt OptionBay's admin screens in to the shared WPAnchorBay banner.
+	 *
+	 * The banner shows on screens whose id contains the plugin's brand key. These screens do not
+	 * ("product_page_opopw-options" and the shared WooCommerce settings screen), so they opt in here.
+	 *
+	 * @since 1.0.4
+	 * @access public
+	 * @param bool       $show   Whether to show the banner on this screen.
+	 * @param \WP_Screen $screen The current screen.
+	 * @return bool
+	 */
+	public function show_wpab_banner( $show, $screen ) {
+		if ( ! $screen instanceof \WP_Screen ) {
+			return $show;
+		}
+
+		// The Options page under Products.
+		if ( 'product_page_opopw-options' === $screen->id ) {
+			return true;
+		}
+
+		// The Options section of WooCommerce > Settings > Products.
+		if ( 'woocommerce_page_wc-settings' === $screen->id ) {
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- reads a tab name only, changes nothing.
+			$tab = isset( $_GET['tab'] ) ? sanitize_key( wp_unslash( $_GET['tab'] ) ) : '';
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- reads a section name only, changes nothing.
+			$section = isset( $_GET['section'] ) ? sanitize_key( wp_unslash( $_GET['section'] ) ) : '';
+			if ( 'products' === $tab && 'optionbay-product-options-addons-woo' === $section ) {
+				return true;
+			}
+		}
+
+		return $show;
+	}
+
+	/**
 	 * Add has sticky header class.
 	 *
 	 * @since 1.0.0
@@ -306,6 +342,7 @@ class Admin {
 		$loader->add_filter( 'woocommerce_get_settings_products', $this, 'filter_products_settings', 10, 2 );
 		$loader->add_action( 'woocommerce_admin_field_opopw_settings_root', $this, 'add_setting_root_div' );
 		$loader->add_filter( 'admin_body_class', $this, 'add_has_sticky_header' );
+		$loader->add_filter( 'wpab_banner_show_on_screen', $this, 'show_wpab_banner', 10, 2 );
 		$loader->add_action( 'admin_enqueue_scripts', $this, 'enqueue_resources' );
 
 		$plugin_basename = plugin_basename( OPOPW_PATH . 'optionbay-product-options-addons-woo.php' );

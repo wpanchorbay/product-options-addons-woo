@@ -29,6 +29,7 @@ copy_plugin_files() {
     cp -r build "$DEST/"
     cp -r vendor "$DEST/"
     cp -r config "$DEST/"
+    cp -r includes "$DEST/"
 
     # Copy files
     cp index.php "$DEST/"

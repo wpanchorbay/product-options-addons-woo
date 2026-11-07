@@ -18,7 +18,15 @@ if ( ! defined( 'OPOPW_TEXT_DOMAIN' ) ) {
 	define( 'OPOPW_TEXT_DOMAIN', 'optionbay-product-options-addons-woo' );
 }
 
+// Read the opt-in before the cleanup below deletes the plugin option; the shared banner cleanup needs it.
+$opopw_wpab_options = get_option( OPOPW_OPTION_NAME );
+$opopw_wpab_delete  = ! empty( $opopw_wpab_options['advanced_deleteAllOnUninstall'] ) && true === $opopw_wpab_options['advanced_deleteAllOnUninstall'];
+
 opopw_run_uninstall();
+
+// Shared WPAnchorBay banner cleanup: removes the "banner closed" user meta only when the last WPAnchorBay plugin is uninstalled.
+require_once __DIR__ . '/includes/wpab-banner/wpab-banner-uninstall.php';
+wpab_banner_uninstall( WP_UNINSTALL_PLUGIN, $opopw_wpab_delete );
 
 /**
  * The main controller function for the uninstallation process.

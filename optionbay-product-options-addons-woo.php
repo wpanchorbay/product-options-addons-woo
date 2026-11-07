@@ -34,6 +34,11 @@ define( 'OPOPW_OPTION_NAME', 'optionbay-product-options-addons-woo' );
 define( 'OPOPW_PLUGIN_BASENAME', plugin_basename( __FILE__ ) );
 define( 'OPOPW_DEV_MODE', true );
 
+// WPAnchorBay campaign banner. Admin only, and at file scope so its AJAX dismiss handler also registers on admin-ajax.php.
+if ( is_admin() ) {
+	require_once __DIR__ . '/includes/wpab-banner/wpab-banner-loader.php';
+}
+
 /**
  * Initialize Composer Autoloader.
  */
