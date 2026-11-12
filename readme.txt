@@ -6,7 +6,7 @@ Tested up to: 7.1
 Requires PHP: 7.4
 WC requires at least: 8.0
 WC tested up to: 8.7
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -132,6 +132,9 @@ No. Starter templates are created as drafts. You can review, edit, and publish t
 
 == Changelog ==
 
+= 1.0.4 =
+* Added: A dismissible Black Friday deals notice from WPAnchorBay for administrators, on the Plugins screen, the Options page and OptionBay's Products settings section, through 5 December 2026. Closing it hides it for good.
+
 = 1.0.3 =
 * Added: URL, Tel, Separator and Heading field types.
 * Fixed: Reactivating the plugin no longer resets your saved settings or creates another set of the six draft demo option groups.
@@ -164,6 +167,9 @@ No. Starter templates are created as drafts. You can review, edit, and publish t
 * Initial release.
 
 == Upgrade Notice ==
+
+= 1.0.4 =
+Adds a dismissible Black Friday notice for administrators on the Plugins and OptionBay screens, through 5 December 2026. No changes to product options, pricing or checkout.
 
 = 1.0.3 =
 No action needed. Fixes add-to-cart being blocked by empty stock-tracked fields and restores inventory on cancelled and refunded orders. Orders cancelled before updating are not corrected retroactively, so check your stock pool counts under Options > Inventory. Demo option groups duplicated by earlier activations are not removed automatically; delete any extra copies from Option Groups if you do not need them.
