@@ -30,6 +30,8 @@ copy_plugin_files() {
     cp -r vendor "$DEST/"
     cp -r config "$DEST/"
     cp -r includes "$DEST/"
+    # The banner README is developer documentation; it stays in the repo but never ships.
+    rm -f "$DEST/includes/wpab-banner/README.md"
 
     # Copy files
     cp index.php "$DEST/"
